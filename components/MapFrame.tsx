@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef } from 'react';
+import { FONT_EVENT, FONT_KEY } from './FontSizeControl';
 
 /**
  * Exibe um mapa (HTML estático em /public/mapas) e mantém o tema do iframe
@@ -17,6 +18,10 @@ export default function MapFrame({ slug, title }: { slug: string; title: string 
     doc.documentElement.setAttribute('data-theme', theme);
   }, []);
 
+  const setScale = useCallback((scale: number) => {
+    ref.current?.contentDocument?.documentElement.style.setProperty('--fs', String(scale));
+  }, []);
+
   const onLoad = useCallback(() => {
     const doc = ref.current?.contentDocument;
     if (!doc) return;
@@ -25,7 +30,19 @@ export default function MapFrame({ slug, title }: { slug: string; title: string 
     style.textContent = '.theme-fab{display:none !important;}';
     doc.head.appendChild(style);
     sync();
-  }, [sync]);
+    try {
+      const v = parseFloat(localStorage.getItem(FONT_KEY) ?? '');
+      if (v > 0.5 && v < 3) setScale(v);
+    } catch {
+      /* mantém o tamanho padrão */
+    }
+  }, [sync, setScale]);
+
+  useEffect(() => {
+    const onScale = (e: Event) => setScale((e as CustomEvent<number>).detail);
+    window.addEventListener(FONT_EVENT, onScale);
+    return () => window.removeEventListener(FONT_EVENT, onScale);
+  }, [setScale]);
 
   useEffect(() => {
     const observer = new MutationObserver(sync);

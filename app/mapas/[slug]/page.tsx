@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ExternalLink, Maximize2 } from 'lucide-react';
+import FontSizeControl from '@/components/FontSizeControl';
 import MapFrame from '@/components/MapFrame';
 import ThemeToggle from '@/components/ThemeToggle';
 import { getMap, getSubject, maps } from '@/data/maps';
@@ -43,6 +44,7 @@ export default async function MapPage({ params }: Props) {
                 <ExternalLink size={14} aria-hidden /> <span>Online</span>
               </a>
             )}
+            <FontSizeControl />
             <ThemeToggle />
           </div>
         </div>
