@@ -1,0 +1,229 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matemática e Estatística</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root{
+    --paper: #eef1f0;
+    --paper-2: #e2e8e4;
+    --paper-3: #d2ddd6;
+    --ink: #17262a;
+    --ink-soft: #47585c;
+    --ink-faint: #7c8b8d;
+    --accent: #2c5f6b;
+    --accent-strong: #163b44;
+    --accent-tint: #d9e6e6;
+    --brass: #a5701c;
+    --brass-tint: #f1e1bd;
+    --wine: #7a3b52;
+    --wine-tint: #efe0e6;
+    --line: #c1cdc6;
+    --line-soft: #dbe3dd;
+    --shadow: 0 1px 2px rgba(23,38,42,.06), 0 8px 24px -14px rgba(23,38,42,.28);
+    --font-display: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #10171a; --paper-2: #161e21; --paper-3: #1f2a2c;
+      --ink: #e6ece9; --ink-soft: #aab8b5; --ink-faint: #7c8b8d;
+      --accent: #7fb8c4; --accent-strong: #a9d3db; --accent-tint: #1c2f33;
+      --brass: #e0b563; --brass-tint: #2f2717;
+      --wine: #d99cb3; --wine-tint: #35232b;
+      --line: #2b3a38; --line-soft: #1a2226;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #10171a; --paper-2: #161e21; --paper-3: #1f2a2c;
+    --ink: #e6ece9; --ink-soft: #aab8b5; --ink-faint: #7c8b8d;
+    --accent: #7fb8c4; --accent-strong: #a9d3db; --accent-tint: #1c2f33;
+    --brass: #e0b563; --brass-tint: #2f2717;
+    --wine: #d99cb3; --wine-tint: #35232b;
+    --line: #2b3a38; --line-soft: #1a2226;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:15.5px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:var(--font-display); color:var(--ink); text-wrap:balance; margin:0;}
+  p{margin:0 0 .9em; max-width:66ch;}
+  a{color:inherit;}
+  ::selection{background:var(--accent-tint); color:var(--accent-strong);}
+  :focus-visible{outline:2.5px solid var(--brass); outline-offset:2px; border-radius:3px;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+
+  .hero{padding:56px 0 28px; border-bottom:1px solid var(--line-soft);}
+  .eyebrow{display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:18px;}
+  .eyebrow::before{content:""; display:inline-block; width:22px; height:1px; background:var(--accent);}
+  h1.title{font-size:clamp(2rem, 4.6vw, 3rem); font-weight:700; letter-spacing:-.01em; line-height:1.08;}
+  h1.title em{font-style:italic; font-weight:500; color:var(--accent-strong);}
+  .dek{font-size:1.08rem; color:var(--ink-soft); margin-top:16px; max-width:58ch;}
+
+  .relevance{margin-top:28px; display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px; padding:16px 20px; background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px;}
+  .relevance .stat{display:flex; flex-direction:column; gap:2px;}
+  .relevance .stat .num{font-family:var(--font-display); font-weight:700; font-size:1.5rem; line-height:1;}
+  .relevance .stat .lbl{font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);}
+  .relevance-note{font-size:.9rem; color:var(--ink-soft); flex:1; min-width:220px;}
+  .relevance-note b{color:var(--ink); font-weight:600;}
+
+  .subnav-shell{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-soft);}
+  .subnav{display:flex; gap:6px; overflow-x:auto; padding:12px 24px; max-width:980px; margin:0 auto; scrollbar-width:thin;}
+  .subnav a{flex:none; font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; padding:7px 12px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); text-decoration:none; white-space:nowrap; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
+  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+  .subnav .sep{flex:none; width:1px; background:var(--line); margin:4px 4px;}
+
+  .diagram-section{padding:44px 0 8px;}
+  .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
+  .diagram-intro h2{font-size:12.5px; font-weight:600; font-family:var(--font-body); color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em;}
+  .diagram-intro p{font-size:.86rem; color:var(--ink-faint); margin:0; max-width:36ch; text-align:right;}
+  .diagram-frame{border:1px solid var(--line-soft); border-radius:16px; background:var(--paper-2); padding:8px; box-shadow:var(--shadow);}
+  svg.mindmap{width:100%; height:auto; display:block;}
+  .mm-link{cursor:pointer;}
+  .mm-node rect.card{fill:var(--paper); stroke:var(--line); stroke-width:1.4; transition:stroke .15s ease, fill .15s ease;}
+  .mm-node .label{font-family:var(--font-display); font-weight:600; fill:var(--ink); font-size:24px;}
+  .mm-node .kicker{font-family:var(--font-mono); fill:var(--ink-faint); font-size:12.5px; letter-spacing:.03em;}
+  .mm-link:hover .mm-node rect.card, .mm-link.active .mm-node rect.card{fill:var(--accent-tint); stroke:var(--accent);}
+  .mm-node.sintaxe .kicker{fill:var(--wine);}
+  .mm-link:hover .mm-node.sintaxe rect.card, .mm-link.active .mm-node.sintaxe rect.card{fill:var(--wine-tint); stroke:var(--wine);}
+  .mm-node.semantica .kicker{fill:var(--brass);}
+  .mm-link:hover .mm-node.semantica rect.card, .mm-link.active .mm-node.semantica rect.card{fill:var(--brass-tint); stroke:var(--brass);}
+  .mm-center rect{fill:var(--accent-strong); stroke:none;}
+  .mm-center .label{fill:var(--paper); font-size:28px;}
+  .mm-lines line{stroke:var(--line); stroke-width:1.6;}
+
+  .grid-section{padding:36px 0 8px;}
+  .class-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:12px; margin-top:16px;}
+  .class-card{display:block; text-decoration:none; padding:14px 16px; border:1px solid var(--line-soft); border-radius:10px; background:var(--paper-2); transition:border-color .15s ease, transform .15s ease;}
+  .class-card:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .class-card .tag{display:inline-block; font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:5px; margin-bottom:8px; font-weight:600;}
+  .class-card.m .tag{background:var(--accent-tint); color:var(--accent-strong);}
+  .class-card.s .tag{background:var(--wine-tint); color:var(--wine);}
+  .class-card.se .tag{background:var(--brass-tint); color:var(--brass);}
+  .class-card h3{font-size:1.05rem; font-weight:700; margin-bottom:4px;}
+  .class-card p{font-size:.83rem; color:var(--ink-soft); margin:0 0 6px;}
+  .class-card .ex{font-family:var(--font-mono); font-size:.78rem; color:var(--ink-faint);}
+
+  .category{padding:56px 0 8px;}
+  .category-head{border-bottom:2px solid var(--ink); padding-bottom:14px; margin-bottom:8px; display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;}
+  .category-head h2{font-size:clamp(1.6rem,3.4vw,2.1rem); font-weight:700;}
+  .category-head .count{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em;}
+
+  .branch{padding:44px 0; border-bottom:1px solid var(--line-soft); scroll-margin-top:64px;}
+  .branch:last-of-type{border-bottom:none;}
+  .branch-head{display:grid; grid-template-columns:auto 1fr; gap:14px 18px; align-items:start; margin-bottom:22px;}
+  .branch-num{font-family:var(--font-mono); font-size:12px; color:var(--brass); border:1px solid var(--line); border-radius:8px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-weight:600;}
+  .branch.sintaxe .branch-num{color:var(--wine);}
+  .branch.semantica .branch-num{color:var(--brass);}
+  .branch-head h3{font-size:clamp(1.3rem,2.6vw,1.6rem); font-weight:700;}
+  .branch-kicker{grid-column:2; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); margin-top:-12px;}
+
+  h4.sub{font-size:1rem; font-weight:700; margin:26px 0 10px; color:var(--accent-strong);}
+  .branch.sintaxe h4.sub{color:var(--wine);}
+  .branch.semantica h4.sub{color:var(--brass);}
+  ul.plain, ol.plain{margin:0 0 1em; padding-left:1.25em;}
+  ul.plain li, ol.plain li{margin-bottom:.4em; max-width:62ch;}
+  ul.plain li::marker{color:var(--brass);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 20px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0 20px;}
+  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:14px 0 20px;}
+  @media (max-width:760px){.grid-4{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:640px){.grid-2, .grid-3{grid-template-columns:1fr;}}
+
+  .example{background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px; padding:14px 16px;}
+  .example .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); font-weight:600; display:block; margin-bottom:6px;}
+  .example.alt .tag{color:var(--wine);}
+  .example.gold .tag{color:var(--brass);}
+  .example p{margin:0; font-size:.92rem;}
+
+  .callout{border-left:3px solid var(--brass); background:var(--brass-tint); padding:14px 18px; border-radius:0 8px 8px 0; margin:20px 0;}
+  .callout .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--brass); font-weight:700; display:block; margin-bottom:4px;}
+  .callout p{margin:0; font-size:.94rem;}
+  .callout p:last-child{margin-bottom:0;}
+
+  .pair{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px; padding:12px 14px; border:1px solid var(--line-soft); border-radius:10px; background:var(--paper-2); margin-bottom:10px;}
+  .pair .side{font-size:.9rem;}
+  .pair .side b{display:block; font-family:var(--font-display); font-size:1.05rem; margin-bottom:2px;}
+  .pair .vs{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); text-transform:uppercase;}
+  @media (max-width:640px){.pair{grid-template-columns:1fr;} .pair .vs{justify-self:start;}}
+
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 18px;}
+  .chip{font-family:var(--font-mono); font-size:.8rem; padding:4px 10px; border-radius:999px; background:var(--paper-2); border:1px solid var(--line-soft); color:var(--ink-soft);}
+  .chip-group{margin-bottom:14px;}
+  .chip-group .gl{font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); display:block; margin-bottom:6px;}
+
+  details.exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  details.exam summary{cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; display:flex; align-items:center; gap:8px;}
+  details.exam summary::-webkit-details-marker{display:none;}
+  details.exam summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:12px;}
+  details.exam[open] summary::before{content:"\2013";}
+  details.exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  details.exam .opts{margin:10px 0 0; padding-left:1.2em; font-size:.88rem; color:var(--ink-soft);}
+  details.exam .opts li{margin-bottom:3px;}
+  details.exam .a{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:.92rem; color:var(--ink-soft);}
+  details.exam .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+  details.exam .a ul{margin:8px 0 0; padding-left:1.1em;}
+  details.exam .a li{margin-bottom:4px;}
+
+  table.data{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.87rem;}
+  table.data th, table.data td{text-align:left; padding:8px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+  table.data th{font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; border-bottom:1.5px solid var(--line);}
+  table.data td.hl{color:var(--accent-strong); font-weight:700;}
+  table.data td.wine{color:var(--wine); font-weight:700;}
+  .table-scroll{overflow-x:auto;}
+
+  footer{padding:44px 0 64px; color:var(--ink-faint); font-size:.85rem;}
+  footer .wrap{border-top:1px solid var(--line-soft); padding-top:24px;}
+
+  @media (prefers-reduced-motion: reduce){ * {transition:none !important;} }
+  .lucide{width:1em; height:1em; stroke-width:2; flex:none; vertical-align:-.14em; margin-right:6px;}
+  .eyebrow .lucide{width:15px; height:15px; margin-right:0;}
+  details.exam summary .lucide{width:15px; height:15px; margin-right:0;}
+  .callout .tag .lucide, .example .tag .lucide{width:13px; height:13px; vertical-align:-2px;}
+  .class-card .tag .lucide{width:11px; height:11px; vertical-align:-1.5px; margin-right:4px;}
+  .branch-num .lucide{width:16px; height:16px; margin:0;}
+  .eyebrow::before{display:none !important;}
+  .eyebrow .back{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:50%; color:var(--accent); text-decoration:none; transition:background .15s ease, border-color .15s ease;}
+  .eyebrow .back:hover{background:var(--accent-tint); border-color:var(--accent);}
+  .eyebrow .back .lucide{width:16px; height:16px; margin:0;}
+  .theme-fab{position:fixed; right:18px; bottom:18px; z-index:50; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow);}
+  .theme-fab:hover{border-color:var(--accent); color:var(--accent);}
+  .theme-fab .lucide{width:19px; height:19px; margin:0;}
+  .theme-fab .i-sun{display:none;}
+  :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
+  :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
+
+  .mm-node .label{font-size:19px;}
+  .mm-node .kicker{font-size:11px;}
+  .note-src{font-size:.85rem; color:var(--ink-faint); margin:0 0 18px;}
+  .badge-comp{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; padding:3px 10px; border-radius:999px; background:var(--brass-tint); color:var(--brass); font-weight:700; margin-top:14px;}
+</style>
+
+<header class="hero"><div class="wrap"><div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a>Raciocínio Lógico &middot; Complemento</div><h1 class="title">Matemática e <em>Estatística</em></h1><p class="dek">Regra de três, porcentagem, medidas de posição e de dispersão, e leitura de gráficos e tabelas, com contas resolvidas.</p><div class="relevance"><div class="stat"><span class="num">4</span><span class="lbl">ramos</span></div><div class="stat"><span class="num">12</span><span class="lbl">treinos autorais</span></div><div class="stat"><span class="num">7</span><span class="lbl">medidas estatísticas</span></div><p class="relevance-note">Conteúdo <b>complementar</b>, elaborado a partir do edital da <b>ManausPrev</b> (Raciocínio Lógico-Matemático) e de conhecimento geral de matemática e lógica. Não vem de apostilas do curso. Os exercícios são <b>autorais</b>, com resolução passo a passo.</p></div></div></header>
+<nav class="subnav-shell"><div class="subnav" id="subnav"><a href="#proporcao">Regra de três</a><a href="#porcentagem">Porcentagem</a><a href="#estatistica">Estatística</a><a href="#graficos">Gráficos</a></div></nav>
+<main><section class="diagram-section"><div class="wrap"><div class="diagram-intro"><h2>O mapa</h2><p>Quatro tópicos numéricos do edital.</p></div><div class="diagram-frame"><svg class="mindmap" viewBox="0 0 1000 360" role="img" aria-label="Mapa mental com quatro ramos: proporcionalidade e regra de três, porcentagem, estatística descritiva, e gráficos e tabelas."><g class="mm-lines"><line x1="500" y1="104" x2="125" y2="220"/><line x1="500" y1="104" x2="375" y2="220"/><line x1="500" y1="104" x2="625" y2="220"/><line x1="500" y1="104" x2="875" y2="220"/></g><g class="mm-center"><rect x="350" y="20" width="300" height="84" rx="18"/><text x="500" y="58" text-anchor="middle" class="label">Matemática</text><text x="500" y="86" text-anchor="middle" class="label">e Estatística</text></g><a href="#proporcao" class="mm-link" aria-label="Ir para Regra de Três"><g class="mm-node" transform="translate(125,220)"><rect class="card" x="-113" y="0" width="226" height="100" rx="14"/><text class="label" x="0" y="34" text-anchor="middle">Regra</text><text class="label" x="0" y="58" text-anchor="middle">de Três</text><text class="kicker" x="0" y="84" text-anchor="middle">DIRETA · INVERSA</text></g></a><a href="#porcentagem" class="mm-link" aria-label="Ir para Porcentagem"><g class="mm-node sintaxe" transform="translate(375,220)"><rect class="card" x="-113" y="0" width="226" height="100" rx="14"/><text class="label" x="0" y="40" text-anchor="middle">Porcentagem</text><text class="kicker" x="0" y="70" text-anchor="middle">ACRÉSCIMOS · DESCONTOS</text></g></a><a href="#estatistica" class="mm-link" aria-label="Ir para Estatística Descritiva"><g class="mm-node semantica" transform="translate(625,220)"><rect class="card" x="-113" y="0" width="226" height="100" rx="14"/><text class="label" x="0" y="34" text-anchor="middle">Estatística</text><text class="label" x="0" y="58" text-anchor="middle">Descritiva</text><text class="kicker" x="0" y="84" text-anchor="middle">MÉDIA · MEDIANA · DP</text></g></a><a href="#graficos" class="mm-link" aria-label="Ir para Gráficos e Tabelas"><g class="mm-node" transform="translate(875,220)"><rect class="card" x="-113" y="0" width="226" height="100" rx="14"/><text class="label" x="0" y="34" text-anchor="middle">Gráficos</text><text class="label" x="0" y="58" text-anchor="middle">e Tabelas</text><text class="kicker" x="0" y="84" text-anchor="middle">HISTOGRAMA · SETORES</text></g></a></svg></div></div></section>
+<section class="category"><div class="wrap"><div id="proporcao" class="branch"><div class="branch-head"><span class="branch-num">01</span><h3>Proporcionalidade e Regra de Três</h3><span class="branch-kicker">razão, direta, inversa e partes</span></div><p>Razão é a divisão de duas grandezas (a/b). <b>Proporção</b> é a igualdade entre duas razões (a/b = c/d), em que o <b>produto dos extremos é igual ao produto dos meios</b> (a·d = b·c).</p><div class="table-scroll"><table class="data"><thead><tr><th>Relação</th><th>Como reconhecer</th><th>Como montar</th></tr></thead><tbody><tr><td class="hl">Diretamente proporcional</td><td>Se uma aumenta, a outra também</td><td>Razões na <b>mesma</b> ordem</td></tr><tr><td class="hl">Inversamente proporcional</td><td>Se uma aumenta, a outra diminui</td><td>Inverta uma das razões (ou multiplique em linha)</td></tr></tbody></table></div><h4 class="sub">Regra de três simples</h4><div class="grid-2"><div class="example"><span class="tag">Direta</span><p>3 técnicos instalam 18 computadores em um dia. Quantos instalam 5 técnicos no mesmo ritmo?<br>3/5 = 18/x &rarr; x = 5 · 18 / 3 = <b>30</b>.</p></div><div class="example alt"><span class="tag">Inversa</span><p>6 técnicos terminam uma tarefa em 10 dias. Em quantos dias 15 técnicos?<br>6 · 10 = 15 · x &rarr; x = 60 / 15 = <b>4 dias</b>.</p></div></div><h4 class="sub">Divisão em partes proporcionais</h4><p>Dividir R$ 1.200 entre A e B na razão 3 : 5. Total de partes = 3 + 5 = 8; cada parte vale 1.200 / 8 = 150. A recebe 3 · 150 = <b>R$ 450</b> e B recebe 5 · 150 = <b>R$ 750</b>.</p><div class="callout warn"><span class="tag">Pergunte sempre</span><p>Se dobra uma grandeza, o que acontece com a outra? Se <b>também dobra</b>, é direta. Se <b>cai pela metade</b>, é inversa. Mais gente na mesma tarefa: menos tempo (inversa). Mais gente no mesmo tempo: mais produção (direta).</p></div><details class="exam"><summary>Treino autoral 1</summary><div class="q">Uma impressora produz 120 páginas em 8 minutos. Quantas páginas produz em 20 minutos?</div><div class="a"><span class="verdict">300 páginas</span> &mdash; Direta: 120 / 8 = 15 páginas por minuto; 15 · 20 = 300.</div></details><details class="exam"><summary>Treino autoral 2</summary><div class="q">Quatro atendentes respondem a todos os chamados em 6 horas. Com 3 atendentes, no mesmo ritmo, em quantas horas?</div><div class="a"><span class="verdict">8 horas</span> &mdash; Inversa: 4 · 6 = 24 atendente-horas; 24 / 3 = 8.</div></details><details class="exam"><summary>Treino autoral 3</summary><div class="q">Uma verba de R$ 900 será dividida entre dois setores na razão 2 : 7. Quanto recebe o setor com a menor parte?</div><div class="a"><span class="verdict">R$ 200</span> &mdash; Total de partes 9; cada parte vale 100; o menor recebe 2 · 100 = 200.</div></details></div></div></section><section class="category"><div class="wrap"><div id="porcentagem" class="branch sintaxe"><div class="branch-head"><span class="branch-num">02</span><h3>Porcentagem, Acréscimos e Descontos</h3><span class="branch-kicker">fatores, variação e pegadinhas</span></div><p>Porcentagem é uma fração de denominador 100: <b>p% = p/100</b>. Para calcular x% de N, faça N · x / 100.</p><div class="table-scroll"><table class="data"><thead><tr><th>Variação</th><th>Fator de multiplicação</th><th>Exemplo</th></tr></thead><tbody><tr><td class="hl">Aumento de 20%</td><td>1,20</td><td>R$ 2.500 com 8% de aumento: 2.500 · 1,08 = R$ 2.700</td></tr><tr><td class="hl">Desconto de 15%</td><td>0,85</td><td>R$ 200 com 15% de desconto: 200 · 0,85 = R$ 170</td></tr><tr><td class="hl">Aumentos sucessivos</td><td>Multiplicam-se os fatores</td><td>20% e depois 20%: 1,2 · 1,2 = 1,44, ou seja, <b>44%</b></td></tr><tr><td class="hl">Aumento e desconto</td><td>Multiplicam-se os fatores</td><td>10% de aumento e 10% de desconto: 1,1 · 0,9 = 0,99, ou seja, <b>queda de 1%</b></td></tr></tbody></table></div><h4 class="sub">Variação percentual</h4><p>Variação = (valor novo − valor antigo) / valor antigo. De 80 para 100: 20/80 = <b>+25%</b>. De 100 para 80: −20/100 = <b>−20%</b>. A variação de ida e a de volta <b>não são iguais</b>, porque a base muda.</p><div class="grid-2"><div class="example"><span class="tag">Achar o valor original</span><p>Depois de 20% de desconto, o preço ficou R$ 240. Original x: 0,8 · x = 240 &rarr; x = <b>R$ 300</b>.</p></div><div class="example alt"><span class="tag">Pontos percentuais</span><p>Uma taxa que passa de 10% para 12% subiu <b>2 pontos percentuais</b>, o que é um aumento de <b>20%</b> na taxa (2/10).</p></div></div><div class="callout warn"><span class="tag">Pegadinhas</span><p>Descontos sucessivos <b>não somam</b>: 10% e 10% de desconto dão 19%, não 20% (0,9 · 0,9 = 0,81). Para achar o original, <b>divida</b> pelo fator, não aplique o percentual sobre o preço final.</p></div><details class="exam"><summary>Treino autoral 4</summary><div class="q">Um produto de R$ 400 sofre desconto de 10% e depois aumento de 10%. Qual o preço final?</div><div class="a"><span class="verdict">R$ 396</span> &mdash; 400 · 0,9 = 360; 360 · 1,1 = 396 (queda de 1%).</div></details><details class="exam"><summary>Treino autoral 5</summary><div class="q">O número de chamados passou de 200 para 250. Qual foi o aumento percentual?</div><div class="a"><span class="verdict">25%</span> &mdash; (250 − 200) / 200 = 50/200 = 0,25.</div></details><details class="exam"><summary>Treino autoral 6</summary><div class="q">Após um aumento de 25%, um salário passou a R$ 3.000. Qual era o salário antes?</div><div class="a"><span class="verdict">R$ 2.400</span> &mdash; 1,25 · x = 3.000; x = 3.000 / 1,25 = 2.400.</div></details></div></div></section><section class="category"><div class="wrap"><div id="estatistica" class="branch semantica"><div class="branch-head"><span class="branch-num">03</span><h3>Estatística: Tendência Central e Dispersão</h3><span class="branch-kicker">média, mediana, moda e desvio padrão</span></div><h4 class="sub">Medidas de tendência central</h4><div class="table-scroll"><table class="data"><thead><tr><th>Medida</th><th>Como calcular</th><th>Observação</th></tr></thead><tbody><tr><td class="hl">Média aritmética simples</td><td>Soma dos valores dividida pela quantidade</td><td>Sensível a valores extremos</td></tr><tr><td class="hl">Média ponderada</td><td>Soma de (valor · peso) dividida pela soma dos pesos</td><td>Cada valor tem importância diferente</td></tr><tr><td class="hl">Mediana</td><td>Valor central com os dados <b>ordenados</b>; se a quantidade for par, média dos dois centrais</td><td>Pouco afetada por extremos</td></tr><tr><td class="hl">Moda</td><td>Valor que <b>mais se repete</b></td><td>Pode não existir ou haver mais de uma</td></tr></tbody></table></div><h4 class="sub">Medidas de dispersão</h4><div class="table-scroll"><table class="data"><thead><tr><th>Medida</th><th>Como calcular</th></tr></thead><tbody><tr><td class="hl">Amplitude</td><td>Maior valor − menor valor</td></tr><tr><td class="hl">Desvio médio</td><td>Média dos <b>módulos</b> das distâncias até a média</td></tr><tr><td class="hl">Variância</td><td>Média dos <b>quadrados</b> das distâncias até a média (populacional: divide por n; amostral: divide por n − 1)</td></tr><tr><td class="hl">Desvio padrão</td><td>Raiz quadrada da variância; tem a mesma unidade dos dados</td></tr></tbody></table></div><h4 class="sub">Exemplo completo: notas 4, 6, 6, 7, 9</h4><div class="table-scroll"><table class="data"><thead><tr><th>Medida</th><th>Cálculo</th><th>Resultado</th></tr></thead><tbody><tr><td class="hl">Média</td><td>(4 + 6 + 6 + 7 + 9) / 5 = 32 / 5</td><td><b>6,4</b></td></tr><tr><td class="hl">Mediana</td><td>Ordenados: 4, 6, <b>6</b>, 7, 9</td><td><b>6</b></td></tr><tr><td class="hl">Moda</td><td>O 6 aparece duas vezes</td><td><b>6</b></td></tr><tr><td class="hl">Amplitude</td><td>9 − 4</td><td><b>5</b></td></tr><tr><td class="hl">Desvio médio</td><td>(2,4 + 0,4 + 0,4 + 0,6 + 2,6) / 5 = 6,4 / 5</td><td><b>1,28</b></td></tr><tr><td class="hl">Variância (populacional)</td><td>(5,76 + 0,16 + 0,16 + 0,36 + 6,76) / 5 = 13,2 / 5</td><td><b>2,64</b></td></tr><tr><td class="hl">Desvio padrão (populacional)</td><td>Raiz de 2,64</td><td><b>≈ 1,62</b></td></tr></tbody></table></div><div class="grid-2"><div class="example"><span class="tag">Média ponderada</span><p>Notas 8 (peso 2), 6 (peso 3) e 10 (peso 5): (8·2 + 6·3 + 10·5) / (2 + 3 + 5) = 84 / 10 = <b>8,4</b>.</p></div><div class="example alt"><span class="tag">Mediana com quantidade par</span><p>Dados 3, 5, 8, 10: mediana = (5 + 8) / 2 = <b>6,5</b>.</p></div></div><h4 class="sub">O que acontece se os dados mudarem</h4><div class="table-scroll"><table class="data"><thead><tr><th>Operação em todos os valores</th><th>Média e mediana</th><th>Desvio padrão</th><th>Variância</th></tr></thead><tbody><tr><td class="hl">Somar uma constante k</td><td>Somam k</td><td><b>Não muda</b></td><td><b>Não muda</b></td></tr><tr><td class="hl">Multiplicar por k</td><td>Multiplicam por k</td><td>Multiplica por |k|</td><td>Multiplica por k²</td></tr></tbody></table></div><div class="callout warn"><span class="tag">Quando usar cada uma</span><p>Com valores extremos (salários muito altos, por exemplo), a <b>mediana</b> representa melhor o "típico" que a média. Dados mais concentrados em torno da média têm <b>desvio padrão menor</b>.</p></div><details class="exam"><summary>Treino autoral 7</summary><div class="q">Qual a mediana de 12, 7, 9, 15, 10?</div><div class="a"><span class="verdict">10</span> &mdash; Ordenados: 7, 9, 10, 12, 15. O valor central é 10.</div></details><details class="exam"><summary>Treino autoral 8</summary><div class="q">Todos os salários de uma equipe recebem um aumento fixo de R$ 300. O que acontece com a média e com o desvio padrão?</div><div class="a"><span class="verdict">A média aumenta R$ 300; o desvio padrão não muda</span> &mdash; Somar uma constante desloca os dados sem alterar o quanto eles se espalham.</div></details><details class="exam"><summary>Treino autoral 9</summary><div class="q">Uma pessoa tem notas 5 (peso 1) e 9 (peso 3). Qual a média ponderada?</div><div class="a"><span class="verdict">8</span> &mdash; (5·1 + 9·3) / (1 + 3) = 32 / 4 = 8.</div></details></div></div></section><section class="category"><div class="wrap"><div id="graficos" class="branch"><div class="branch-head"><span class="branch-num">04</span><h3>Gráficos, Tabelas e Infográficos</h3><span class="branch-kicker">frequências e leitura de dados</span></div><h4 class="sub">Tabelas de frequência</h4><p>Frequência absoluta (f) é a contagem. Frequência relativa (fr) = f / n, em porcentagem. Frequência acumulada soma as frequências até a classe.</p><div class="table-scroll"><table class="data"><thead><tr><th>Categoria</th><th>f</th><th>fr</th><th>Ângulo no gráfico de setores</th></tr></thead><tbody><tr><td class="hl">A</td><td>8</td><td>20%</td><td>72°</td></tr><tr><td class="hl">B</td><td>12</td><td>30%</td><td>108°</td></tr><tr><td class="hl">C</td><td>20</td><td>50%</td><td>180°</td></tr><tr><td class="hl"><b>Total</b></td><td><b>40</b></td><td><b>100%</b></td><td><b>360°</b></td></tr></tbody></table></div><h4 class="sub">Tipos de gráfico</h4><div class="table-scroll"><table class="data"><thead><tr><th>Gráfico</th><th>Melhor uso</th><th>Atenção</th></tr></thead><tbody><tr><td class="hl">Barras / colunas</td><td>Comparar <b>categorias</b></td><td>Barras separadas; a altura mostra o valor</td></tr><tr><td class="hl">Histograma</td><td>Distribuição de dados <b>contínuos</b> em classes</td><td>Barras <b>contíguas</b>; a altura (ou área) indica a frequência da classe</td></tr><tr><td class="hl">Setores (pizza)</td><td>Partes de um <b>todo</b> (100% = 360°)</td><td>Cada 1% vale 3,6°; muitas fatias dificultam a leitura</td></tr><tr><td class="hl">Linhas</td><td><b>Evolução no tempo</b></td><td>Observe a inclinação e a escala do eixo</td></tr><tr><td class="hl">Dispersão</td><td>Relação entre duas variáveis</td><td>Mostra tendência, não causa</td></tr><tr><td class="hl">Infográfico</td><td>Combina texto, imagens e dados</td><td>Leia legenda, unidade e fonte</td></tr></tbody></table></div><div class="callout warn"><span class="tag">Cuidados na leitura</span><p>Verifique o <b>título, a unidade, a legenda e o eixo</b> (eixo que não começa do zero exagera diferenças). Distinga <b>valor absoluto</b> de <b>variação percentual</b> e leia a pergunta: "quanto" ou "quantos por cento"?</p></div><details class="exam"><summary>Treino autoral 10</summary><div class="q">Em um gráfico de setores, uma categoria representa 25% do total. Qual o ângulo do setor?</div><div class="a"><span class="verdict">90°</span> &mdash; 25% de 360° = 0,25 · 360 = 90°.</div></details><details class="exam"><summary>Treino autoral 11</summary><div class="q">Uma pesquisa com 50 usuários mostra que 35 estão satisfeitos. Qual a frequência relativa dos satisfeitos?</div><div class="a"><span class="verdict">70%</span> &mdash; 35 / 50 = 0,70.</div></details><details class="exam"><summary>Treino autoral 12</summary><div class="q">Qual gráfico é mais adequado para mostrar a evolução mensal do número de chamados durante um ano?</div><div class="a"><span class="verdict">Gráfico de linhas</span> &mdash; O eixo horizontal representa o tempo e a linha mostra a tendência.</div></details></div></div></section></main>
+<footer><div class="wrap"><p style="margin:0;">Mapa complementar de Raciocínio Lógico-Matemático, montado a partir do conteúdo programático do edital. Exercícios autorais no estilo das bancas; refaça as contas à mão para fixar.</p></div></footer>
+<button type="button" class="theme-fab" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i></button>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  var mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function saved(){ try{ return localStorage.getItem('mapas-theme'); }catch(e){ return null; } }
+  function current(){ return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
+  function apply(t){ root.setAttribute('data-theme', t); btn.setAttribute('aria-pressed', t==='dark'); }
+  var s=saved(); apply(s==='dark'||s==='light' ? s : current());
+  btn.addEventListener('click', function(){
+    var t=current()==='dark' ? 'light' : 'dark'; apply(t);
+    try{ localStorage.setItem('mapas-theme', t); }catch(e){}
+  });
+})();
+</script>
+<script>(function(){var links=[].slice.call(document.querySelectorAll('#subnav a'));var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));}).filter(Boolean);var mm=[].slice.call(document.querySelectorAll('.mm-link'));function on(id){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id);});mm.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id);});}if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){on(e.target.id);}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});secs.forEach(function(s){o.observe(s);});}})();</script>
+<script>lucide.createIcons();</script>

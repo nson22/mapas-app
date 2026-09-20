@@ -1,0 +1,591 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pronomes, Coordenação &amp; Crase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root{
+    --paper: #eef1f0;
+    --paper-2: #e2e8e4;
+    --paper-3: #d2ddd6;
+    --ink: #17262a;
+    --ink-soft: #47585c;
+    --ink-faint: #7c8b8d;
+    --accent: #2c5f6b;
+    --accent-strong: #163b44;
+    --accent-tint: #d9e6e6;
+    --brass: #a5701c;
+    --brass-tint: #f1e1bd;
+    --wine: #7a3b52;
+    --wine-tint: #efe0e6;
+    --line: #c1cdc6;
+    --line-soft: #dbe3dd;
+    --shadow: 0 1px 2px rgba(23,38,42,.06), 0 8px 24px -14px rgba(23,38,42,.28);
+    --font-display: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #10171a; --paper-2: #161e21; --paper-3: #1f2a2c;
+      --ink: #e6ece9; --ink-soft: #aab8b5; --ink-faint: #7c8b8d;
+      --accent: #7fb8c4; --accent-strong: #a9d3db; --accent-tint: #1c2f33;
+      --brass: #e0b563; --brass-tint: #2f2717;
+      --wine: #d99cb3; --wine-tint: #35232b;
+      --line: #2b3a38; --line-soft: #1a2226;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #10171a; --paper-2: #161e21; --paper-3: #1f2a2c;
+    --ink: #e6ece9; --ink-soft: #aab8b5; --ink-faint: #7c8b8d;
+    --accent: #7fb8c4; --accent-strong: #a9d3db; --accent-tint: #1c2f33;
+    --brass: #e0b563; --brass-tint: #2f2717;
+    --wine: #d99cb3; --wine-tint: #35232b;
+    --line: #2b3a38; --line-soft: #1a2226;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:15.5px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:var(--font-display); color:var(--ink); text-wrap:balance; margin:0;}
+  p{margin:0 0 .9em; max-width:66ch;}
+  a{color:inherit;}
+  ::selection{background:var(--accent-tint); color:var(--accent-strong);}
+  :focus-visible{outline:2.5px solid var(--brass); outline-offset:2px; border-radius:3px;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+
+  .hero{padding:56px 0 28px; border-bottom:1px solid var(--line-soft);}
+  .eyebrow{display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:18px;}
+  .eyebrow::before{content:""; display:inline-block; width:22px; height:1px; background:var(--accent);}
+  h1.title{font-size:clamp(2rem, 4.6vw, 3rem); font-weight:700; letter-spacing:-.01em; line-height:1.08;}
+  h1.title em{font-style:italic; font-weight:500; color:var(--accent-strong);}
+  .dek{font-size:1.08rem; color:var(--ink-soft); margin-top:16px; max-width:58ch;}
+
+  .relevance{margin-top:28px; display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px; padding:16px 20px; background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px;}
+  .relevance .stat{display:flex; flex-direction:column; gap:2px;}
+  .relevance .stat .num{font-family:var(--font-display); font-weight:700; font-size:1.5rem; line-height:1;}
+  .relevance .stat .lbl{font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);}
+  .relevance-note{font-size:.9rem; color:var(--ink-soft); flex:1; min-width:220px;}
+  .relevance-note b{color:var(--ink); font-weight:600;}
+
+  .subnav-shell{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-soft);}
+  .subnav{display:flex; gap:6px; overflow-x:auto; padding:12px 24px; max-width:980px; margin:0 auto; scrollbar-width:thin;}
+  .subnav a{flex:none; font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; padding:7px 12px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); text-decoration:none; white-space:nowrap; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
+  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+  .subnav .sep{flex:none; width:1px; background:var(--line); margin:4px 4px;}
+
+  .diagram-section{padding:44px 0 8px;}
+  .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
+  .diagram-intro h2{font-size:12.5px; font-weight:600; font-family:var(--font-body); color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em;}
+  .diagram-intro p{font-size:.86rem; color:var(--ink-faint); margin:0; max-width:36ch; text-align:right;}
+  .diagram-frame{border:1px solid var(--line-soft); border-radius:16px; background:var(--paper-2); padding:8px; box-shadow:var(--shadow);}
+  svg.mindmap{width:100%; height:auto; display:block;}
+  .mm-link{cursor:pointer;}
+  .mm-node rect.card{fill:var(--paper); stroke:var(--line); stroke-width:1.4; transition:stroke .15s ease, fill .15s ease;}
+  .mm-node .label{font-family:var(--font-display); font-weight:600; fill:var(--ink); font-size:24px;}
+  .mm-node .kicker{font-family:var(--font-mono); fill:var(--ink-faint); font-size:12.5px; letter-spacing:.03em;}
+  .mm-link:hover .mm-node rect.card, .mm-link.active .mm-node rect.card{fill:var(--accent-tint); stroke:var(--accent);}
+  .mm-node.sintaxe .kicker{fill:var(--wine);}
+  .mm-link:hover .mm-node.sintaxe rect.card, .mm-link.active .mm-node.sintaxe rect.card{fill:var(--wine-tint); stroke:var(--wine);}
+  .mm-node.semantica .kicker{fill:var(--brass);}
+  .mm-link:hover .mm-node.semantica rect.card, .mm-link.active .mm-node.semantica rect.card{fill:var(--brass-tint); stroke:var(--brass);}
+  .mm-center rect{fill:var(--accent-strong); stroke:none;}
+  .mm-center .label{fill:var(--paper); font-size:28px;}
+  .mm-lines line{stroke:var(--line); stroke-width:1.6;}
+
+  .grid-section{padding:36px 0 8px;}
+  .class-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:12px; margin-top:16px;}
+  .class-card{display:block; text-decoration:none; padding:14px 16px; border:1px solid var(--line-soft); border-radius:10px; background:var(--paper-2); transition:border-color .15s ease, transform .15s ease;}
+  .class-card:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .class-card .tag{display:inline-block; font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:5px; margin-bottom:8px; font-weight:600;}
+  .class-card.m .tag{background:var(--accent-tint); color:var(--accent-strong);}
+  .class-card.s .tag{background:var(--wine-tint); color:var(--wine);}
+  .class-card.se .tag{background:var(--brass-tint); color:var(--brass);}
+  .class-card h3{font-size:1.05rem; font-weight:700; margin-bottom:4px;}
+  .class-card p{font-size:.83rem; color:var(--ink-soft); margin:0 0 6px;}
+  .class-card .ex{font-family:var(--font-mono); font-size:.78rem; color:var(--ink-faint);}
+
+  .category{padding:56px 0 8px;}
+  .category-head{border-bottom:2px solid var(--ink); padding-bottom:14px; margin-bottom:8px; display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;}
+  .category-head h2{font-size:clamp(1.6rem,3.4vw,2.1rem); font-weight:700;}
+  .category-head .count{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em;}
+
+  .branch{padding:44px 0; border-bottom:1px solid var(--line-soft); scroll-margin-top:64px;}
+  .branch:last-of-type{border-bottom:none;}
+  .branch-head{display:grid; grid-template-columns:auto 1fr; gap:14px 18px; align-items:start; margin-bottom:22px;}
+  .branch-num{font-family:var(--font-mono); font-size:12px; color:var(--brass); border:1px solid var(--line); border-radius:8px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-weight:600;}
+  .branch.sintaxe .branch-num{color:var(--wine);}
+  .branch.semantica .branch-num{color:var(--brass);}
+  .branch-head h3{font-size:clamp(1.3rem,2.6vw,1.6rem); font-weight:700;}
+  .branch-kicker{grid-column:2; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); margin-top:-12px;}
+
+  h4.sub{font-size:1rem; font-weight:700; margin:26px 0 10px; color:var(--accent-strong);}
+  .branch.sintaxe h4.sub{color:var(--wine);}
+  .branch.semantica h4.sub{color:var(--brass);}
+  ul.plain, ol.plain{margin:0 0 1em; padding-left:1.25em;}
+  ul.plain li, ol.plain li{margin-bottom:.4em; max-width:62ch;}
+  ul.plain li::marker{color:var(--brass);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 20px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0 20px;}
+  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:14px 0 20px;}
+  @media (max-width:760px){.grid-4{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:640px){.grid-2, .grid-3{grid-template-columns:1fr;}}
+
+  .example{background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px; padding:14px 16px;}
+  .example .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); font-weight:600; display:block; margin-bottom:6px;}
+  .example.alt .tag{color:var(--wine);}
+  .example.gold .tag{color:var(--brass);}
+  .example p{margin:0; font-size:.92rem;}
+
+  .callout{border-left:3px solid var(--brass); background:var(--brass-tint); padding:14px 18px; border-radius:0 8px 8px 0; margin:20px 0;}
+  .callout .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--brass); font-weight:700; display:block; margin-bottom:4px;}
+  .callout p{margin:0; font-size:.94rem;}
+  .callout p:last-child{margin-bottom:0;}
+
+  .pair{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px; padding:12px 14px; border:1px solid var(--line-soft); border-radius:10px; background:var(--paper-2); margin-bottom:10px;}
+  .pair .side{font-size:.9rem;}
+  .pair .side b{display:block; font-family:var(--font-display); font-size:1.05rem; margin-bottom:2px;}
+  .pair .vs{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); text-transform:uppercase;}
+  @media (max-width:640px){.pair{grid-template-columns:1fr;} .pair .vs{justify-self:start;}}
+
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 18px;}
+  .chip{font-family:var(--font-mono); font-size:.8rem; padding:4px 10px; border-radius:999px; background:var(--paper-2); border:1px solid var(--line-soft); color:var(--ink-soft);}
+  .chip-group{margin-bottom:14px;}
+  .chip-group .gl{font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); display:block; margin-bottom:6px;}
+
+  details.exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  details.exam summary{cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; display:flex; align-items:center; gap:8px;}
+  details.exam summary::-webkit-details-marker{display:none;}
+  details.exam summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:12px;}
+  details.exam[open] summary::before{content:"\2013";}
+  details.exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  details.exam .opts{margin:10px 0 0; padding-left:1.2em; font-size:.88rem; color:var(--ink-soft);}
+  details.exam .opts li{margin-bottom:3px;}
+  details.exam .a{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:.92rem; color:var(--ink-soft);}
+  details.exam .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+  details.exam .a ul{margin:8px 0 0; padding-left:1.1em;}
+  details.exam .a li{margin-bottom:4px;}
+
+  table.data{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.87rem;}
+  table.data th, table.data td{text-align:left; padding:8px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+  table.data th{font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; border-bottom:1.5px solid var(--line);}
+  table.data td.hl{color:var(--accent-strong); font-weight:700;}
+  table.data td.wine{color:var(--wine); font-weight:700;}
+  .table-scroll{overflow-x:auto;}
+
+  footer{padding:44px 0 64px; color:var(--ink-faint); font-size:.85rem;}
+  footer .wrap{border-top:1px solid var(--line-soft); padding-top:24px;}
+
+  @media (prefers-reduced-motion: reduce){ * {transition:none !important;} }
+  .lucide{width:1em; height:1em; stroke-width:2; flex:none; vertical-align:-.14em; margin-right:6px;}
+  .eyebrow .lucide{width:15px; height:15px; margin-right:0;}
+  details.exam summary .lucide{width:15px; height:15px; margin-right:0;}
+  .callout .tag .lucide, .example .tag .lucide{width:13px; height:13px; vertical-align:-2px;}
+  .class-card .tag .lucide{width:11px; height:11px; vertical-align:-1.5px; margin-right:4px;}
+  .branch-num .lucide{width:16px; height:16px; margin:0;}
+  .eyebrow::before{display:none !important;}
+  .eyebrow .back{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:50%; color:var(--accent); text-decoration:none; transition:background .15s ease, border-color .15s ease;}
+  .eyebrow .back:hover{background:var(--accent-tint); border-color:var(--accent);}
+  .eyebrow .back .lucide{width:16px; height:16px; margin:0;}
+  .theme-fab{position:fixed; right:18px; bottom:18px; z-index:50; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow);}
+  .theme-fab:hover{border-color:var(--accent); color:var(--accent);}
+  .theme-fab .lucide{width:19px; height:19px; margin:0;}
+  .theme-fab .i-sun{display:none;}
+  :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
+  :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a>Língua Portuguesa &middot; Mapa Mental</div>
+    <h1 class="title">Colocação Pronominal, Coordenação &amp; <em>Crase</em></h1>
+    <p class="dek">Onde vai o pronome oblíquo, como se ligam as orações independentes e quando o acento grave é obrigatório, proibido ou facultativo &mdash; três temas de gramática normativa muito cobrados.</p>
+
+    <div class="relevance">
+      <div class="stat"><span class="num">3</span><span class="lbl">apostilas reunidas</span></div>
+      <div class="stat"><span class="num">3</span><span class="lbl">posições do pronome</span></div>
+      <div class="stat"><span class="num">5</span><span class="lbl">tipos de coordenada</span></div>
+      <p class="relevance-note">Material do prof. <b>Allan Santos</b> (Letras &ndash; UFAM), preparatório para o <b>TJAM</b>. Este mapa reúne <b>Colocação Pronominal</b>, <b>Período Composto</b> (apenas por coordenação, único tipo presente no PDF) e <b>Emprego da Crase</b>.</p>
+    </div>
+  </div>
+</header>
+
+<nav class="subnav-shell">
+  <div class="subnav" id="subnav">
+    <a href="#colocacao">Colocação Pronominal</a>
+    <span class="sep"></span>
+    <a href="#periodo">Período Composto</a>
+    <span class="sep"></span>
+    <a href="#crase">Crase</a>
+  </div>
+</nav>
+
+<main>
+  <section class="diagram-section">
+    <div class="wrap">
+      <div class="diagram-intro">
+        <h2>O mapa</h2>
+        <p>Três assuntos de sintaxe e ortografia normativa.</p>
+      </div>
+      <div class="diagram-frame">
+        <svg class="mindmap" viewBox="0 0 1000 430" role="img" aria-label="Mapa mental com um núcleo central conectado a três ramos: Colocação Pronominal (próclise, mesóclise, ênclise), Período Composto por Coordenação (sindéticas e assindéticas) e Emprego da Crase.">
+          <g class="mm-lines">
+            <line x1="500" y1="134" x2="190" y2="260"/>
+            <line x1="500" y1="134" x2="500" y2="260"/>
+            <line x1="500" y1="134" x2="810" y2="260"/>
+          </g>
+
+          <g class="mm-center">
+            <rect x="350" y="40" width="300" height="94" rx="18"/>
+            <text x="500" y="82" text-anchor="middle" class="label">Gramática</text>
+            <text x="500" y="112" text-anchor="middle" class="label">Normativa</text>
+          </g>
+
+          <a href="#colocacao" class="mm-link" aria-label="Ir para Colocação Pronominal">
+            <g class="mm-node" transform="translate(190,260)">
+              <rect class="card" x="-140" y="0" width="280" height="120" rx="16"/>
+              <text class="label" x="0" y="46" text-anchor="middle">Colocação</text>
+              <text class="kicker" x="0" y="76" text-anchor="middle">ONDE VAI O PRONOME</text>
+              <text class="kicker" x="0" y="98" text-anchor="middle">PRÓCLISE · MESÓCLISE · ÊNCLISE</text>
+            </g>
+          </a>
+
+          <a href="#periodo" class="mm-link" aria-label="Ir para Período Composto">
+            <g class="mm-node sintaxe" transform="translate(500,260)">
+              <rect class="card" x="-140" y="0" width="280" height="120" rx="16"/>
+              <text class="label" x="0" y="46" text-anchor="middle">Coordenação</text>
+              <text class="kicker" x="0" y="76" text-anchor="middle">ORAÇÕES INDEPENDENTES</text>
+              <text class="kicker" x="0" y="98" text-anchor="middle">SINDÉTICAS · ASSINDÉTICAS</text>
+            </g>
+          </a>
+
+          <a href="#crase" class="mm-link" aria-label="Ir para Crase">
+            <g class="mm-node semantica" transform="translate(810,260)">
+              <rect class="card" x="-140" y="0" width="280" height="120" rx="16"/>
+              <text class="label" x="0" y="46" text-anchor="middle">Crase</text>
+              <text class="kicker" x="0" y="76" text-anchor="middle">PREPOSIÇÃO A + ARTIGO A</text>
+              <text class="kicker" x="0" y="98" text-anchor="middle">PROIBIDA · FACULTATIVA</text>
+            </g>
+          </a>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid-section">
+    <div class="wrap">
+      <div class="diagram-intro">
+        <h2>Quadro-resumo</h2>
+        <p>Toque em qualquer tema para abrir a explicação completa.</p>
+      </div>
+      <div class="class-grid">
+        <a class="class-card m" href="#colocacao"><span class="tag">Colocação</span><h3>Próclise</h3><p>Pronome antes do verbo, atraído por certas palavras.</p><span class="ex">Não me esqueça</span></a>
+        <a class="class-card m" href="#colocacao"><span class="tag">Colocação</span><h3>Mesóclise e Ênclise</h3><p>No meio do futuro; depois do verbo quando não há alternativa.</p><span class="ex">Realizar-se-á · Silenciem-se</span></a>
+        <a class="class-card s" href="#periodo"><span class="tag">Coordenação</span><h3>Aditiva · Adversativa · Alternativa</h3><p>Soma, oposição e escolha entre orações.</p><span class="ex">e · mas · ou</span></a>
+        <a class="class-card s" href="#periodo"><span class="tag">Coordenação</span><h3>Conclusiva · Explicativa</h3><p>Conclusão e justificação.</p><span class="ex">portanto · pois</span></a>
+        <a class="class-card se" href="#crase"><span class="tag">Crase</span><h3>Quando ocorre</h3><p>Fusão de preposição A com artigo, locuções femininas, aquele/aquilo.</p><span class="ex">à tarde · àquela</span></a>
+        <a class="class-card se" href="#crase"><span class="tag">Crase</span><h3>Quando não ocorre</h3><p>Masculinos, verbos, numerais, pronomes pessoais.</p><span class="ex">a lápis · a ela</span></a>
+        <a class="class-card se" href="#crase"><span class="tag">Crase</span><h3>Casos facultativos</h3><p>Até, nomes de mulher, possessivo adjetivo.</p><span class="ex">até a/à · a/à sua</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COLOCAÇÃO PRONOMINAL ================= -->
+  <section class="category">
+    <div class="wrap">
+      <div id="colocacao" class="branch">
+        <div class="branch-head">
+          <span class="branch-num">01</span>
+          <h3>Colocação Pronominal</h3>
+          <span class="branch-kicker">a posição do pronome oblíquo átono em relação ao verbo</span>
+        </div>
+        <p>Trata da correta colocação dos <b>pronomes oblíquos átonos</b> na frase. Na fala a regra não é rigorosamente seguida, mas na escrita ela deve ser observada.</p>
+
+        <div class="table-scroll"><table class="data">
+          <thead><tr><th>Pessoa</th><th>Caso reto</th><th>Oblíquo átono (sem preposição)</th><th>Oblíquo tônico (com preposição)</th></tr></thead>
+          <tbody>
+            <tr><td>1ª sing.</td><td>eu</td><td class="hl">me</td><td>mim</td></tr>
+            <tr><td>2ª sing.</td><td>tu</td><td class="hl">te</td><td>ti</td></tr>
+            <tr><td>3ª sing.</td><td>ele, ela</td><td class="hl">se, lhe, o, a</td><td>si, ele, ela</td></tr>
+            <tr><td>1ª pl.</td><td>nós</td><td class="hl">nos</td><td>nós</td></tr>
+            <tr><td>2ª pl.</td><td>vós</td><td class="hl">vos</td><td>vós</td></tr>
+            <tr><td>3ª pl.</td><td>eles, elas</td><td class="hl">se, lhes, os, as</td><td>si, eles, elas</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="callout">
+          <span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Ordem de prioridade</span>
+          <p>Primeiro tente a <b>próclise</b>; se não der, a <b>mesóclise</b>; só em último caso, a <b>ênclise</b>.</p>
+        </div>
+
+        <h4 class="sub">1. Próclise &mdash; pronome antes do verbo</h4>
+        <p>Usada quando o verbo é precedido de <b>palavras atrativas</b>:</p>
+        <div class="grid-2">
+          <div class="example"><span class="tag">a) Palavras negativas</span><p>não, nunca, ninguém, jamais&hellip;<br><i>Não me trouxe o carro. Ninguém nos ajudou.</i></p></div>
+          <div class="example"><span class="tag">b) Advérbios</span><p><i>Amanhã me trarão o carro.</i><br><b>Mas:</b> <i>Agora, negam-se a depor</i> &mdash; com vírgula, recomenda-se a ênclise.</p></div>
+          <div class="example"><span class="tag">c) Conjunções subordinativas</span><p>que, se, já que, pois que, como, para que, a fim de que, enquanto, quando, desde que&hellip;<br><i>Soube que me negariam.</i></p></div>
+          <div class="example"><span class="tag">d) Pronomes relativos</span><p>o qual, a qual, cujo, cuja, que&hellip;<br><i>O carro que lhe emprestei foi devolvido.</i></p></div>
+          <div class="example"><span class="tag">e) Pronomes indefinidos</span><p>alguém, ninguém, tudo, nada, cada, qualquer, certo, outro, muito, pouco, vários, alguns, todos<br><i>Alguém nos trouxe o carro.</i></p></div>
+          <div class="example"><span class="tag">f) Pronomes demonstrativos</span><p>este, esta, isto, esse, essa, isso, aquele, aquela, aquilo<br><i>Isso me irrita muito.</i></p></div>
+          <div class="example"><span class="tag">g) Pronomes pessoais retos</span><p>eu, tu, ele, nós, vós, eles<br><i>Eu te amo!</i></p></div>
+          <div class="example"><span class="tag">h) Palavras interrogativas</span><p><i>Quem te fez a encomenda? Quanto te cobraram?</i></p></div>
+          <div class="example"><span class="tag">i) Palavras exclamativas</span><p><i>Como me enganaram!</i></p></div>
+          <div class="example"><span class="tag">j) Orações optativas (desejo)</span><p><i>Que Deus o ajude.</i></p></div>
+        </div>
+        <div class="callout">
+          <span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Próclise obrigatória &mdash; &ldquo;em se tratando&rdquo;</span>
+          <p><b>em + pronome oblíquo átono + verbo no gerúndio.</b> <i>Em se tratando de política, nada declaro.</i></p>
+        </div>
+
+        <h4 class="sub">2. Mesóclise &mdash; pronome no meio do verbo</h4>
+        <p>Usada com o verbo no <b>futuro do presente</b> ou <b>futuro do pretérito</b>, desde que <b>não haja palavra atrativa</b> antes.</p>
+        <div class="grid-2">
+          <div class="example"><span class="tag">Futuro do presente</span><p><i>Realizar-se-á, na próxima semana, um grande evento em prol da paz.</i></p></div>
+          <div class="example"><span class="tag">Futuro do pretérito</span><p><i>Não fosse os meus compromissos, acompanhar-te-ia nessa viagem.</i></p></div>
+        </div>
+
+        <h4 class="sub">3. Ênclise &mdash; pronome depois do verbo</h4>
+        <p>Usada quando a próclise e a mesóclise <b>não são possíveis</b>:</p>
+        <ul class="plain">
+          <li><b>Imperativo afirmativo:</b> <i>Quando eu avisar, silenciem-se todos.</i></li>
+          <li><b>Gerúndio:</b> <i>Recusou a proposta fazendo-se de desentendida.</i></li>
+          <li><b>Verbo iniciando a oração:</b> <i>Vou-me embora agora mesmo.</i></li>
+          <li><b>Pausa antes do verbo:</b> <i>Se eu ganho na loteria, mudo-me hoje mesmo.</i></li>
+        </ul>
+
+        <h4 class="sub">4. Casos facultativos</h4>
+        <ul class="plain">
+          <li><b>Infinitivo impessoal</b> sem palavra atrativa: <i>É preciso se dedicar / É preciso dedicar-se.</i></li>
+          <li><b>Sem atrativo nem regra de ênclise</b>: <i>A professora me corrigiu / corrigiu-me com firmeza.</i></li>
+        </ul>
+
+        <h4 class="sub">5. Locuções verbais</h4>
+        <div class="grid-2">
+          <div class="example"><span class="tag">Principal no particípio</span><p>Pronome <b>depois do auxiliar</b>: <i>Haviam-me convidado.</i><br>Com palavra atrativa, <b>antes do auxiliar</b>: <i>Não me haviam convidado.</i></p></div>
+          <div class="example alt"><span class="tag">Auxiliar no futuro</span><p>Sem atrativo, ocorre <b>mesóclise</b>: <i>Haver-me-iam convidado.</i></p></div>
+          <div class="example"><span class="tag">Principal no infinitivo/gerúndio, sem atrativo</span><p>Depois do auxiliar <b>ou</b> do principal: <i>Devo esclarecer-lhe / Devo-lhe esclarecer.</i></p></div>
+          <div class="example alt"><span class="tag">Com atrativo</span><p>Antes do auxiliar <b>ou</b> depois do principal: <i>Não lhe posso esclarecer / Não posso esclarecer-lhe.</i></p></div>
+        </div>
+
+        <details class="exam">
+          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025 &middot; FUB</summary>
+          <div class="q">&ldquo;A produção abrange histórias de mulheres que se destacam em áreas como ciências exatas&hellip;&rdquo; No trecho &ldquo;se destacam&rdquo;, a próclise é obrigatória. Certo ou Errado?</div>
+          <div class="a"><span class="verdict">CERTO</span> &mdash; o pronome relativo <b>que</b> é palavra atrativa. <i>(Gabarito não impresso no PDF; resolvido pela regra da alínea d.)</i></div>
+        </details>
+        <details class="exam">
+          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; FGV 2025 &middot; SEEC-RN</summary>
+          <div class="q">Assinale a frase em que <b>não</b> foi respeitada a norma padrão de colocação pronominal.</div>
+          <ul class="opts" style="list-style:upper-alpha;">
+            <li>A derrota não é amarga se você não a engolir.</li>
+            <li>Afligir-se antes do tempo é afligir-se duas vezes.</li>
+            <li>A estupidez de gente brilhante nunca me deixa.</li>
+            <li>Todos me odeiam porque sou popular.</li>
+            <li>Me indigno, logo existo.</li>
+          </ul>
+          <div class="a"><span class="verdict">E</span> &mdash; ênclise obrigatória quando o verbo inicia a oração: <i>Indigno-me, logo existo.</i> As demais têm atrativo (negação, indefinido) ou infinitivo facultativo. <i>(Resolvido pelas regras do material.)</i></div>
+        </details>
+        <details class="exam">
+          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025 &middot; IBAMA</summary>
+          <div class="q">Em &ldquo;agora elas já se defrontam com um futuro ecológico&rdquo;, o advérbio &ldquo;já&rdquo; é fator que justifica a próclise de &ldquo;se&rdquo;. Certo ou Errado?</div>
+          <div class="a"><span class="verdict">CERTO</span> &mdash; advérbios são palavras atrativas (regra b), e não há vírgula separando. <i>(Gabarito não impresso; resolvido pela regra.)</i></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PERÍODO COMPOSTO ================= -->
+  <section class="category">
+    <div class="wrap">
+      <div id="periodo" class="branch sintaxe">
+        <div class="branch-head">
+          <span class="branch-num">02</span>
+          <h3>Período Composto por Coordenação</h3>
+          <span class="branch-kicker">orações sintaticamente independentes entre si</span>
+        </div>
+        <p>Cujas orações <b>não dependem sintaticamente umas das outras</b>. <i>Gritou com o irmão / e correu para o quarto.</i> <i>Descansei, / fui à praia / e visitei lugares maravilhosos.</i></p>
+        <div class="callout">
+          <span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Nota do material</span>
+          <p>O PDF trata apenas da <b>coordenação</b>. Período composto por subordinação não consta desta apostila.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="example"><span class="tag">Assindética</span><p>Sem conjunção.<br><i>Não coma bolo quente; ficará com dores de barriga.</i></p></div>
+          <div class="example alt"><span class="tag">Sindética</span><p>Com conjunção.<br><i>Vou sair e já volto!</i></p></div>
+        </div>
+
+        <h4 class="sub">As 5 sindéticas</h4>
+        <div class="table-scroll"><table class="data">
+          <thead><tr><th>Tipo</th><th>Ideia</th><th>Conjunções frequentes</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td class="wine">Aditiva</td><td>soma</td><td>e, bem como, como também, mas ainda, mas também</td><td><i>Conheceu a Europa, como também a Ásia.</i></td></tr>
+            <tr><td class="wine">Adversativa</td><td>oposição</td><td>contudo, entretanto, mas, no entanto, porém, todavia</td><td><i>O jantar estava delicioso, mas deveria ter reduzido o sal.</i></td></tr>
+            <tr><td class="wine">Alternativa</td><td>alternância, escolha</td><td>ou, ou&hellip;ou, ora&hellip;ora, já&hellip;já, quer&hellip;quer, seja&hellip;seja</td><td><i>Assistirei um filme ou lerei um livro.</i></td></tr>
+            <tr><td class="wine">Conclusiva</td><td>conclusão</td><td>assim, então, logo, pois, por isso, portanto</td><td><i>Ela tirou péssimas notas, por isso, não viajará.</i></td></tr>
+            <tr><td class="wine">Explicativa</td><td>explicação, justificação</td><td>pois, porque, que</td><td><i>Foi recompensado, pois foi bom aluno.</i></td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="callout warn">
+          <span class="tag"><i data-lucide="triangle-alert" aria-hidden="true"></i>Pegadinha &middot; &ldquo;pois&rdquo;</span>
+          <p>&ldquo;Pois&rdquo; aparece tanto como <b>conclusiva</b> quanto como <b>explicativa</b>. Nos exemplos do material: <i>Está cansado, pois trabalhou o dia inteiro</i> (explica) &mdash; <i>Não estudou nem revisou, portanto foi mal</i> (conclui).</p>
+        </div>
+
+        <h4 class="sub">Treino do material (sem gabarito impresso)</h4>
+        <ul class="plain">
+          <li><i>Gosto de ler romances, <b>mas</b> prefiro livros de história.</i> &rarr; adversativa</li>
+          <li><i>Estudou a matéria com afinco, <b>e</b> fez um excelente resumo.</i> &rarr; aditiva</li>
+          <li><i>Você pode sair mais cedo, <b>ou</b> pode terminar o relatório antes.</i> &rarr; alternativa</li>
+          <li><i>Não estudou nem revisou a matéria, <b>portanto</b> foi mal na prova.</i> &rarr; conclusiva</li>
+          <li><i>Está cansado, <b>pois</b> trabalhou o dia inteiro.</i> &rarr; explicativa</li>
+        </ul>
+
+        <details class="exam">
+          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025</summary>
+          <div class="q">&ldquo;Então, por que não alugar o carro em vez de comprar?&rdquo; No texto sobre consumo compartilhado, o vocábulo &ldquo;Então&rdquo; introduz uma conclusão. Certo ou Errado?</div>
+          <div class="a"><span class="verdict">Gabarito não impresso</span> &mdash; o material destaca: <b>&ldquo;Então&rdquo; só pode introduzir tempo ou conclusão. NUNCA explicação.</b> A anotação sugere que a afirmação de conclusão é a leitura esperada, mas o PDF não traz o gabarito oficial.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CRASE ================= -->
+  <section class="category">
+    <div class="wrap">
+      <div id="crase" class="branch semantica">
+        <div class="branch-head">
+          <span class="branch-num">03</span>
+          <h3>Emprego da Crase</h3>
+          <span class="branch-kicker">fusão da preposição A com outra vogal &ldquo;a&rdquo;</span>
+        </div>
+        <p>&ldquo;Crase&rdquo; vem do grego e significa <b>fusão, mistura</b>. Marca-se com o acento grave (<b>`</b>). Exige dominar a regência de verbos e nomes que pedem a preposição <b>a</b>.</p>
+        <div class="example"><span class="tag">Crase é</span><p>Preposição <b>a</b> + artigo definido feminino (<b>a, as</b>): <i>Refiro-me a + a prova &rarr; Refiro-me <b>à</b> prova de ontem.</i></p></div>
+
+        <h4 class="sub">Testes de confirmação</h4>
+        <div class="grid-2">
+          <div class="example"><span class="tag">Troca por masculino</span><p>Se aparecer <b>ao(s)</b>, há crase.<br><i>Solicitadas à diretora &rarr; solicitadas ao diretor.</i></p></div>
+          <div class="example alt"><span class="tag">Nomes geográficos: verbo VOLTAR</span><p>Se der &ldquo;volto <b>da</b>&rdquo;, há crase.<br><i>Visita à Bahia (voltamos da Bahia). Viagem a Roma (voltar de Roma).</i></p></div>
+        </div>
+        <p><b>Atenção:</b> nome geográfico com adjunto adnominal tem crase: <i>Vou à maravilhosa Manaus.</i></p>
+
+        <h4 class="sub">Quando ocorre</h4>
+        <ul class="plain">
+          <li><b>Locuções femininas</b> (adverbiais, prepositivas, conjuntivas).</li>
+          <li><b>Moda de / maneira de</b> implícita, mesmo com masculino: <i>sapatos à Luís XV</i>, <i>escrevo à Carlos Drummond</i>, <i>bife à parisiense</i>, <i>à milanesa</i>. Já <i>bife a cavalo</i> não tem crase.</li>
+          <li><b>Aquele(s), aquela(s), aquilo</b> quando o termo regente exige <b>a</b>: <i>Entregamos a encomenda àquela menina.</i></li>
+          <li><b>Horas</b> definidas: <i>Os passageiros partirão às dezenove horas.</i></li>
+          <li><b>Senhora, senhorita, madame, dona</b> &mdash; únicos pronomes de tratamento que admitem crase: <i>Dirijo-me à senhora.</i></li>
+          <li><b>Pronome indefinido que admite artigo</b> (outra, própria): <i>Ele se referiu à outra colega.</i></li>
+          <li><b>Casa</b> determinada: <i>Fui à casa de meus avós.</i> <b>Terra</b> especificada ou o planeta: <i>rumo à terra natal; voltaram à Terra.</i></li>
+        </ul>
+        <div class="chips">
+          <span class="chip">às vezes</span><span class="chip">à tarde</span><span class="chip">à noite</span><span class="chip">às pressas</span><span class="chip">à vontade</span>
+          <span class="chip">à frente</span><span class="chip">à espera de</span><span class="chip">à procura de</span>
+          <span class="chip">à proporção que</span><span class="chip">à medida que</span>
+        </div>
+
+        <h4 class="sub">Quando NÃO ocorre</h4>
+        <div class="table-scroll"><table class="data">
+          <thead><tr><th>Antes de</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td class="wine">Palavra masculina</td><td><i>escritas a lápis; pertence a Pedro</i></td></tr>
+            <tr><td class="wine">Verbo no infinitivo</td><td><i>Ele estava a cantar</i></td></tr>
+            <tr><td class="wine">Expressão de palavras repetidas</td><td><i>frente a frente</i></td></tr>
+            <tr><td class="wine">Numeral (não horas)</td><td><i>Chegou a cento e vinte o número de feridos</i></td></tr>
+            <tr><td class="wine">Horas após: após, desde, entre, para, perante, com</td><td><i>Ligue após as 15h30; desde as nove; entre as 9h e as 10h; para as 13h</i></td></tr>
+            <tr><td class="wine">Pronome indefinido que não admite artigo</td><td><i>dirigia-se agora a toda escola</i></td></tr>
+            <tr><td class="wine">Casa indeterminada</td><td><i>Chegamos exaustos a casa</i></td></tr>
+            <tr><td class="wine">Terra (chão firme) não especificada</td><td><i>regressaram a terra</i></td></tr>
+            <tr><td class="wine">Pronomes pessoais e de tratamento (exceto os quatro acima)</td><td><i>Pedi a ela; Deu livros a mim</i> (nunca <s>à ela</s>, <s>à mim</s>)</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="callout warn">
+          <span class="tag"><i data-lucide="triangle-alert" aria-hidden="true"></i>Macete do material</span>
+          <p><b>Singular + plural: não tem crase</b> (<i>entregue a pessoas queridas</i>). <b>Plural + plural: tem crase</b> (<i>entregue às alunas</i>). &ldquo;Singular com plural: crase nem a pau! Plural com plural: a crase é essencial!&rdquo;</p>
+        </div>
+
+        <h4 class="sub">Casos facultativos</h4>
+        <div class="grid-3">
+          <div class="example gold"><span class="tag">Depois de &ldquo;até&rdquo;</span><p><i>Vou até a / à faculdade.</i></p></div>
+          <div class="example gold"><span class="tag">Nome de mulher</span><p><i>Obedeça a / à Joana.</i> (Mnemônico: <b>ATÉ SUA MARIA</b>.)</p></div>
+          <div class="example gold"><span class="tag">Possessivo adjetivo</span><p><i>Não obedeço a / à sua coordenadora.</i></p></div>
+        </div>
+        <p><b>Possessivo substantivo</b> (sem substantivo ao lado): artigo <b>obrigatório</b> &mdash; <i>Não obedeço à sua coordenadora, mas à minha.</i></p>
+
+        <details class="exam">
+          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Exercícios do material &middot; complete com a, à, às ou &ndash;</summary>
+          <div class="q">1) BB: O gerente dirigiu-se ___ sua sala e pôs-se ___ falar ___ todas as pessoas convocadas.<br>2) Banespa: Recorreu ___ irmã e ___ ela se apegou como ___ uma tábua de salvação.<br>3) Cescem: Sentou-se e pôs-se ___ reescrever uma ___ uma as páginas.<br>4) FEI: Todos chegaram ___ tempo ___ reunião.</div>
+          <div class="a"><span class="verdict">Resolução pelas regras</span> (o PDF não imprime gabarito):<ul>
+            <li>1) <b>à</b> (facultativo por possessivo), <b>a</b>, <b>a</b></li>
+            <li>2) <b>à</b>, <b>a</b> (pronome pessoal), <b>a</b> (antes de &ldquo;uma&rdquo;)</li>
+            <li>3) <b>a</b> (antes de verbo), <b>a</b> (palavras repetidas)</li>
+            <li>4) <b>a</b> (tempo), <b>à</b> (reunião)</li>
+          </ul></div>
+        </details>
+        <details class="exam">
+          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025 &middot; FUB</summary>
+          <div class="q">&ldquo;a exclusão digital se soma a outras formas de marginalização.&rdquo; É facultativo o emprego do sinal de crase no &ldquo;a&rdquo; antes de &ldquo;outras formas&rdquo;? Certo ou Errado?</div>
+          <div class="a"><span class="verdict">Sem gabarito no material</span> &mdash; o PDF só traz a regra geral (indefinido que não admite artigo &rarr; sem crase; &ldquo;outra&rdquo; pode admitir) e não resolve este item. Confira o gabarito oficial antes de decorar.</div>
+        </details>
+        <details class="exam">
+          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; FGV 2025 &middot; DPE-RO</summary>
+          <div class="q">Qual frase tem crase em contexto <b>optativo</b>?</div>
+          <ul class="opts" style="list-style:upper-alpha;">
+            <li>A fortuna é uma mulher, e, portanto, favorável às inovações.</li>
+            <li>Quem crê em seu valor deve tudo à sua sorte.</li>
+            <li>A esperança é um empréstimo que pedimos à felicidade.</li>
+            <li>Vós sois a esperança&hellip; que pelo infinito semeiam às mãos cheias.</li>
+            <li>As mentiras são essenciais à humanidade.</li>
+          </ul>
+          <div class="a"><span class="verdict">B (pela regra do material)</span> &mdash; <i>à sua sorte</i>: possessivo adjetivo, artigo facultativo. Em A, C e E a crase é obrigatória (plural+plural; nome feminino com artigo). Gabarito não impresso; confira o oficial, sobretudo quanto à alternativa D.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0;">Mapa mental construído a partir das apostilas <em>Colocação Pronominal</em>, <em>Período Composto</em> e <em>Emprego da Crase</em> &mdash; Língua Portuguesa, prof. Allan Santos, preparatório TJAM.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  var mmLinks = Array.prototype.slice.call(document.querySelectorAll('.mm-link'));
+  function setActive(id){
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+    mmLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){ if(entry.isIntersecting){ setActive(entry.target.id); } });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ observer.observe(s); });
+  }
+})();
+</script>
+
+<button type="button" class="theme-fab" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i></button>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  var mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function saved(){ try{ return localStorage.getItem('mapas-theme'); }catch(e){ return null; } }
+  function current(){ return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
+  function apply(t){ root.setAttribute('data-theme', t); btn.setAttribute('aria-pressed', t==='dark'); }
+  var s=saved(); apply(s==='dark'||s==='light' ? s : current());
+  btn.addEventListener('click', function(){
+    var t=current()==='dark' ? 'light' : 'dark'; apply(t);
+    try{ localStorage.setItem('mapas-theme', t); }catch(e){}
+  });
+})();
+</script>
+<script>lucide.createIcons();</script>

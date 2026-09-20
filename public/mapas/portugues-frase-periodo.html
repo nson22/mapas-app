@@ -1,0 +1,229 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frase e Período</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root{
+    --paper: #eef1f0;
+    --paper-2: #e2e8e4;
+    --paper-3: #d2ddd6;
+    --ink: #17262a;
+    --ink-soft: #47585c;
+    --ink-faint: #7c8b8d;
+    --accent: #2c5f6b;
+    --accent-strong: #163b44;
+    --accent-tint: #d9e6e6;
+    --brass: #a5701c;
+    --brass-tint: #f1e1bd;
+    --wine: #7a3b52;
+    --wine-tint: #efe0e6;
+    --line: #c1cdc6;
+    --line-soft: #dbe3dd;
+    --shadow: 0 1px 2px rgba(23,38,42,.06), 0 8px 24px -14px rgba(23,38,42,.28);
+    --font-display: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #10171a; --paper-2: #161e21; --paper-3: #1f2a2c;
+      --ink: #e6ece9; --ink-soft: #aab8b5; --ink-faint: #7c8b8d;
+      --accent: #7fb8c4; --accent-strong: #a9d3db; --accent-tint: #1c2f33;
+      --brass: #e0b563; --brass-tint: #2f2717;
+      --wine: #d99cb3; --wine-tint: #35232b;
+      --line: #2b3a38; --line-soft: #1a2226;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #10171a; --paper-2: #161e21; --paper-3: #1f2a2c;
+    --ink: #e6ece9; --ink-soft: #aab8b5; --ink-faint: #7c8b8d;
+    --accent: #7fb8c4; --accent-strong: #a9d3db; --accent-tint: #1c2f33;
+    --brass: #e0b563; --brass-tint: #2f2717;
+    --wine: #d99cb3; --wine-tint: #35232b;
+    --line: #2b3a38; --line-soft: #1a2226;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:15.5px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:var(--font-display); color:var(--ink); text-wrap:balance; margin:0;}
+  p{margin:0 0 .9em; max-width:66ch;}
+  a{color:inherit;}
+  ::selection{background:var(--accent-tint); color:var(--accent-strong);}
+  :focus-visible{outline:2.5px solid var(--brass); outline-offset:2px; border-radius:3px;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+
+  .hero{padding:56px 0 28px; border-bottom:1px solid var(--line-soft);}
+  .eyebrow{display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:18px;}
+  .eyebrow::before{content:""; display:inline-block; width:22px; height:1px; background:var(--accent);}
+  h1.title{font-size:clamp(2rem, 4.6vw, 3rem); font-weight:700; letter-spacing:-.01em; line-height:1.08;}
+  h1.title em{font-style:italic; font-weight:500; color:var(--accent-strong);}
+  .dek{font-size:1.08rem; color:var(--ink-soft); margin-top:16px; max-width:58ch;}
+
+  .relevance{margin-top:28px; display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px; padding:16px 20px; background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px;}
+  .relevance .stat{display:flex; flex-direction:column; gap:2px;}
+  .relevance .stat .num{font-family:var(--font-display); font-weight:700; font-size:1.5rem; line-height:1;}
+  .relevance .stat .lbl{font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);}
+  .relevance-note{font-size:.9rem; color:var(--ink-soft); flex:1; min-width:220px;}
+  .relevance-note b{color:var(--ink); font-weight:600;}
+
+  .subnav-shell{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-soft);}
+  .subnav{display:flex; gap:6px; overflow-x:auto; padding:12px 24px; max-width:980px; margin:0 auto; scrollbar-width:thin;}
+  .subnav a{flex:none; font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; padding:7px 12px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); text-decoration:none; white-space:nowrap; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
+  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+  .subnav .sep{flex:none; width:1px; background:var(--line); margin:4px 4px;}
+
+  .diagram-section{padding:44px 0 8px;}
+  .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
+  .diagram-intro h2{font-size:12.5px; font-weight:600; font-family:var(--font-body); color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em;}
+  .diagram-intro p{font-size:.86rem; color:var(--ink-faint); margin:0; max-width:36ch; text-align:right;}
+  .diagram-frame{border:1px solid var(--line-soft); border-radius:16px; background:var(--paper-2); padding:8px; box-shadow:var(--shadow);}
+  svg.mindmap{width:100%; height:auto; display:block;}
+  .mm-link{cursor:pointer;}
+  .mm-node rect.card{fill:var(--paper); stroke:var(--line); stroke-width:1.4; transition:stroke .15s ease, fill .15s ease;}
+  .mm-node .label{font-family:var(--font-display); font-weight:600; fill:var(--ink); font-size:24px;}
+  .mm-node .kicker{font-family:var(--font-mono); fill:var(--ink-faint); font-size:12.5px; letter-spacing:.03em;}
+  .mm-link:hover .mm-node rect.card, .mm-link.active .mm-node rect.card{fill:var(--accent-tint); stroke:var(--accent);}
+  .mm-node.sintaxe .kicker{fill:var(--wine);}
+  .mm-link:hover .mm-node.sintaxe rect.card, .mm-link.active .mm-node.sintaxe rect.card{fill:var(--wine-tint); stroke:var(--wine);}
+  .mm-node.semantica .kicker{fill:var(--brass);}
+  .mm-link:hover .mm-node.semantica rect.card, .mm-link.active .mm-node.semantica rect.card{fill:var(--brass-tint); stroke:var(--brass);}
+  .mm-center rect{fill:var(--accent-strong); stroke:none;}
+  .mm-center .label{fill:var(--paper); font-size:28px;}
+  .mm-lines line{stroke:var(--line); stroke-width:1.6;}
+
+  .grid-section{padding:36px 0 8px;}
+  .class-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:12px; margin-top:16px;}
+  .class-card{display:block; text-decoration:none; padding:14px 16px; border:1px solid var(--line-soft); border-radius:10px; background:var(--paper-2); transition:border-color .15s ease, transform .15s ease;}
+  .class-card:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .class-card .tag{display:inline-block; font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:5px; margin-bottom:8px; font-weight:600;}
+  .class-card.m .tag{background:var(--accent-tint); color:var(--accent-strong);}
+  .class-card.s .tag{background:var(--wine-tint); color:var(--wine);}
+  .class-card.se .tag{background:var(--brass-tint); color:var(--brass);}
+  .class-card h3{font-size:1.05rem; font-weight:700; margin-bottom:4px;}
+  .class-card p{font-size:.83rem; color:var(--ink-soft); margin:0 0 6px;}
+  .class-card .ex{font-family:var(--font-mono); font-size:.78rem; color:var(--ink-faint);}
+
+  .category{padding:56px 0 8px;}
+  .category-head{border-bottom:2px solid var(--ink); padding-bottom:14px; margin-bottom:8px; display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;}
+  .category-head h2{font-size:clamp(1.6rem,3.4vw,2.1rem); font-weight:700;}
+  .category-head .count{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em;}
+
+  .branch{padding:44px 0; border-bottom:1px solid var(--line-soft); scroll-margin-top:64px;}
+  .branch:last-of-type{border-bottom:none;}
+  .branch-head{display:grid; grid-template-columns:auto 1fr; gap:14px 18px; align-items:start; margin-bottom:22px;}
+  .branch-num{font-family:var(--font-mono); font-size:12px; color:var(--brass); border:1px solid var(--line); border-radius:8px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-weight:600;}
+  .branch.sintaxe .branch-num{color:var(--wine);}
+  .branch.semantica .branch-num{color:var(--brass);}
+  .branch-head h3{font-size:clamp(1.3rem,2.6vw,1.6rem); font-weight:700;}
+  .branch-kicker{grid-column:2; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); margin-top:-12px;}
+
+  h4.sub{font-size:1rem; font-weight:700; margin:26px 0 10px; color:var(--accent-strong);}
+  .branch.sintaxe h4.sub{color:var(--wine);}
+  .branch.semantica h4.sub{color:var(--brass);}
+  ul.plain, ol.plain{margin:0 0 1em; padding-left:1.25em;}
+  ul.plain li, ol.plain li{margin-bottom:.4em; max-width:62ch;}
+  ul.plain li::marker{color:var(--brass);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 20px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0 20px;}
+  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:14px 0 20px;}
+  @media (max-width:760px){.grid-4{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:640px){.grid-2, .grid-3{grid-template-columns:1fr;}}
+
+  .example{background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px; padding:14px 16px;}
+  .example .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); font-weight:600; display:block; margin-bottom:6px;}
+  .example.alt .tag{color:var(--wine);}
+  .example.gold .tag{color:var(--brass);}
+  .example p{margin:0; font-size:.92rem;}
+
+  .callout{border-left:3px solid var(--brass); background:var(--brass-tint); padding:14px 18px; border-radius:0 8px 8px 0; margin:20px 0;}
+  .callout .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--brass); font-weight:700; display:block; margin-bottom:4px;}
+  .callout p{margin:0; font-size:.94rem;}
+  .callout p:last-child{margin-bottom:0;}
+
+  .pair{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px; padding:12px 14px; border:1px solid var(--line-soft); border-radius:10px; background:var(--paper-2); margin-bottom:10px;}
+  .pair .side{font-size:.9rem;}
+  .pair .side b{display:block; font-family:var(--font-display); font-size:1.05rem; margin-bottom:2px;}
+  .pair .vs{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); text-transform:uppercase;}
+  @media (max-width:640px){.pair{grid-template-columns:1fr;} .pair .vs{justify-self:start;}}
+
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 18px;}
+  .chip{font-family:var(--font-mono); font-size:.8rem; padding:4px 10px; border-radius:999px; background:var(--paper-2); border:1px solid var(--line-soft); color:var(--ink-soft);}
+  .chip-group{margin-bottom:14px;}
+  .chip-group .gl{font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); display:block; margin-bottom:6px;}
+
+  details.exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  details.exam summary{cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; display:flex; align-items:center; gap:8px;}
+  details.exam summary::-webkit-details-marker{display:none;}
+  details.exam summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:12px;}
+  details.exam[open] summary::before{content:"\2013";}
+  details.exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  details.exam .opts{margin:10px 0 0; padding-left:1.2em; font-size:.88rem; color:var(--ink-soft);}
+  details.exam .opts li{margin-bottom:3px;}
+  details.exam .a{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:.92rem; color:var(--ink-soft);}
+  details.exam .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+  details.exam .a ul{margin:8px 0 0; padding-left:1.1em;}
+  details.exam .a li{margin-bottom:4px;}
+
+  table.data{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.87rem;}
+  table.data th, table.data td{text-align:left; padding:8px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+  table.data th{font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; border-bottom:1.5px solid var(--line);}
+  table.data td.hl{color:var(--accent-strong); font-weight:700;}
+  table.data td.wine{color:var(--wine); font-weight:700;}
+  .table-scroll{overflow-x:auto;}
+
+  footer{padding:44px 0 64px; color:var(--ink-faint); font-size:.85rem;}
+  footer .wrap{border-top:1px solid var(--line-soft); padding-top:24px;}
+
+  @media (prefers-reduced-motion: reduce){ * {transition:none !important;} }
+  .lucide{width:1em; height:1em; stroke-width:2; flex:none; vertical-align:-.14em; margin-right:6px;}
+  .eyebrow .lucide{width:15px; height:15px; margin-right:0;}
+  details.exam summary .lucide{width:15px; height:15px; margin-right:0;}
+  .callout .tag .lucide, .example .tag .lucide{width:13px; height:13px; vertical-align:-2px;}
+  .class-card .tag .lucide{width:11px; height:11px; vertical-align:-1.5px; margin-right:4px;}
+  .branch-num .lucide{width:16px; height:16px; margin:0;}
+  .eyebrow::before{display:none !important;}
+  .eyebrow .back{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:50%; color:var(--accent); text-decoration:none; transition:background .15s ease, border-color .15s ease;}
+  .eyebrow .back:hover{background:var(--accent-tint); border-color:var(--accent);}
+  .eyebrow .back .lucide{width:16px; height:16px; margin:0;}
+  .theme-fab{position:fixed; right:18px; bottom:18px; z-index:50; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow);}
+  .theme-fab:hover{border-color:var(--accent); color:var(--accent);}
+  .theme-fab .lucide{width:19px; height:19px; margin:0;}
+  .theme-fab .i-sun{display:none;}
+  :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
+  :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
+
+  .mm-node .label{font-size:19px;}
+  .mm-node .kicker{font-size:11px;}
+  .note-src{font-size:.85rem; color:var(--ink-faint); margin:0 0 18px;}
+  .badge-comp{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; padding:3px 10px; border-radius:999px; background:var(--brass-tint); color:var(--brass); font-weight:700; margin-top:14px;}
+</style>
+
+<header class="hero"><div class="wrap"><div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a>Língua Portuguesa &middot; Complemento</div><h1 class="title">Frase e <em>Período</em></h1><p class="dek">Como a oração se organiza e se liga: termos, subordinação, pontuação, discurso e a correlação de tempos e modos.</p><div class="relevance"><div class="stat"><span class="num">5</span><span class="lbl">ramos</span></div><div class="stat"><span class="num">5</span><span class="lbl">treinos autorais</span></div><div class="stat"><span class="num">9</span><span class="lbl">adverbiais</span></div><p class="relevance-note">Conteúdo <b>complementar</b>, elaborado a partir da gramática normativa e do edital da <b>ManausPrev</b> (cargo Técnico Previdenciário &ndash; Informática). Não vem das apostilas do prof. Allan Santos. Os exercícios são <b>autorais</b>, sem banca nem ano.</p></div></div></header>
+<nav class="subnav-shell"><div class="subnav" id="subnav"><a href="#termos">Termos</a><a href="#subordinacao">Subordinação</a><a href="#pontuacao">Pontuação</a><a href="#discurso">Discurso</a><a href="#correlacao">Correlação</a></div></nav>
+<main><section class="diagram-section"><div class="wrap"><div class="diagram-intro"><h2>O mapa</h2><p>Cinco tópicos do edital sobre a estrutura da frase e do período.</p></div><div class="diagram-frame"><svg class="mindmap" viewBox="0 0 1000 470" role="img" aria-label="Mapa mental com cinco ramos: termos da oração, subordinação, pontuação, discurso direto e indireto e correlação de tempos e modos verbais."><g class="mm-lines"><line x1="500" y1="104" x2="167" y2="190"/><line x1="500" y1="104" x2="500" y2="190"/><line x1="500" y1="104" x2="833" y2="190"/><line x1="500" y1="104" x2="250" y2="336"/><line x1="500" y1="104" x2="750" y2="336"/></g><g class="mm-center"><rect x="350" y="20" width="300" height="84" rx="18"/><text x="500" y="58" text-anchor="middle" class="label">Frase</text><text x="500" y="86" text-anchor="middle" class="label">e Período</text></g><a href="#termos" class="mm-link" aria-label="Ir para Termos da Oração"><g class="mm-node" transform="translate(167,190)"><rect class="card" x="-140" y="0" width="280" height="100" rx="14"/><text class="label" x="0" y="34" text-anchor="middle">Termos</text><text class="label" x="0" y="58" text-anchor="middle">da Oração</text><text class="kicker" x="0" y="84" text-anchor="middle">SUJEITO · PREDICADO</text></g></a><a href="#subordinacao" class="mm-link" aria-label="Ir para Subordinação"><g class="mm-node sintaxe" transform="translate(500,190)"><rect class="card" x="-140" y="0" width="280" height="100" rx="14"/><text class="label" x="0" y="40" text-anchor="middle">Subordinação</text><text class="kicker" x="0" y="70" text-anchor="middle">SUBSTANTIVAS · ADVERBIAIS</text></g></a><a href="#pontuacao" class="mm-link" aria-label="Ir para Pontuação"><g class="mm-node semantica" transform="translate(833,190)"><rect class="card" x="-140" y="0" width="280" height="100" rx="14"/><text class="label" x="0" y="40" text-anchor="middle">Pontuação</text><text class="kicker" x="0" y="70" text-anchor="middle">VÍRGULA · DOIS-PONTOS</text></g></a><a href="#discurso" class="mm-link" aria-label="Ir para Discurso Direto e Indireto"><g class="mm-node" transform="translate(250,336)"><rect class="card" x="-140" y="0" width="280" height="100" rx="14"/><text class="label" x="0" y="34" text-anchor="middle">Discurso</text><text class="label" x="0" y="58" text-anchor="middle">Direto e Indireto</text><text class="kicker" x="0" y="84" text-anchor="middle">INDIRETO LIVRE</text></g></a><a href="#correlacao" class="mm-link" aria-label="Ir para Correlação de Tempos"><g class="mm-node sintaxe" transform="translate(750,336)"><rect class="card" x="-140" y="0" width="280" height="100" rx="14"/><text class="label" x="0" y="34" text-anchor="middle">Correlação</text><text class="label" x="0" y="58" text-anchor="middle">de Tempos</text><text class="kicker" x="0" y="84" text-anchor="middle">SUBJUNTIVO · FUTURO</text></g></a></svg></div></div></section>
+<section class="category"><div class="wrap"><div id="termos" class="branch"><div class="branch-head"><span class="branch-num">01</span><h3>Termos da Oração</h3><span class="branch-kicker">sujeito, predicado, complementos e acessórios</span></div><p>A oração se organiza em <b>termos essenciais</b> (sujeito e predicado), <b>integrantes</b> (completam o sentido) e <b>acessórios</b> (acrescentam informação). O vocativo fica fora da estrutura.</p><div class="table-scroll"><table class="data"><thead><tr><th>Grupo</th><th>Termo</th><th>Como reconhecer</th><th>Exemplo</th></tr></thead><tbody><tr><td>Essencial</td><td class="hl">Sujeito simples / composto</td><td>Um ou mais núcleos</td><td>Os alunos estudam. / Ana e Bia estudam.</td></tr><tr><td>Essencial</td><td class="hl">Sujeito oculto (desinencial)</td><td>Identificado pela desinência do verbo</td><td>Estudamos muito.</td></tr><tr><td>Essencial</td><td class="hl">Sujeito indeterminado</td><td>Verbo na 3ª pessoa do plural sem referente, ou verbo + se (VI, VTI, VL)</td><td>Bateram à porta. / Precisa-se de técnicos.</td></tr><tr><td>Essencial</td><td class="hl">Oração sem sujeito</td><td>Verbos impessoais (haver, fazer tempo, fenômenos)</td><td>Choveu ontem. / Havia dúvidas.</td></tr><tr><td>Essencial</td><td class="hl">Predicado verbal</td><td>Núcleo é verbo significativo</td><td>O técnico instalou o programa.</td></tr><tr><td>Essencial</td><td class="hl">Predicado nominal</td><td>Verbo de ligação + predicativo do sujeito</td><td>O servidor está ocupado.</td></tr><tr><td>Essencial</td><td class="hl">Predicado verbo-nominal</td><td>Verbo significativo + predicativo</td><td>O aluno chegou cansado.</td></tr><tr><td>Integrante</td><td class="hl">Objeto direto</td><td>Complementa VTD, sem preposição</td><td>Li o edital.</td></tr><tr><td>Integrante</td><td class="hl">Objeto indireto</td><td>Complementa VTI, com preposição</td><td>Obedeço às normas.</td></tr><tr><td>Integrante</td><td class="hl">Complemento nominal</td><td>Completa substantivo, adjetivo ou advérbio abstrato, com preposição</td><td>Tenho medo de cobras. / Necessidade de estudo.</td></tr><tr><td>Integrante</td><td class="hl">Agente da passiva</td><td>Quem pratica a ação na voz passiva (por/de)</td><td>O edital foi publicado pela prefeitura.</td></tr><tr><td>Acessório</td><td class="hl">Adjunto adnominal</td><td>Especifica ou qualifica um substantivo</td><td>Livro de história; aluno dedicado.</td></tr><tr><td>Acessório</td><td class="hl">Adjunto adverbial</td><td>Circunstância (tempo, lugar, modo...)</td><td>Estudou à noite.</td></tr><tr><td>Acessório</td><td class="hl">Aposto</td><td>Explica ou especifica outro termo</td><td>Manaus, capital do Amazonas, cresce.</td></tr><tr><td>Fora</td><td class="hl">Vocativo</td><td>Chamamento, separado por vírgula</td><td>Alunos, atenção!</td></tr></tbody></table></div><div class="callout"><span class="tag">Verbos de ligação</span><p>Ser, estar, ficar, parecer, permanecer, continuar, andar, tornar-se, virar. Ligam o sujeito a um <b>predicativo</b> (característica ou estado).</p></div><div class="callout warn"><span class="tag">Complemento nominal x adjunto adnominal</span><p>Ambos aparecem com "de". Se o termo é o <b>alvo</b> (paciente) da ideia de um nome abstrato: complemento nominal (<i>a leitura de romances</i>). Se é o <b>agente</b>, o possuidor ou a qualidade: adjunto adnominal (<i>a leitura do professor</i>; <i>livro de história</i>).</p></div><details class="exam"><summary>Treino autoral 1</summary><div class="q">Classifique o termo destacado: (a) "Os técnicos, <b>peritos em redes</b>, chegaram." (b) "Tenho <b>confiança nos colegas</b>." (c) "O documento foi assinado <b>pelo diretor</b>."</div><div class="a"><span class="verdict">(a) aposto; (b) complemento nominal; (c) agente da passiva</span> &mdash; Em (a) o trecho explica "técnicos"; em (b) completa o substantivo confiança; em (c) indica quem praticou a ação na voz passiva.</div></details></div></div></section><section class="category"><div class="wrap"><div id="subordinacao" class="branch sintaxe"><div class="branch-head"><span class="branch-num">02</span><h3>Subordinação</h3><span class="branch-kicker">substantivas, adjetivas e adverbiais</span></div><p>No período composto por subordinação, uma oração <b>depende</b> da outra (principal). O material já cobre a <b>coordenação</b> no mapa Colocação Pronominal, Coordenação &amp; Crase; aqui fica o que falta.</p><h4 class="sub">Orações subordinadas substantivas</h4><p>Exercem função de <b>substantivo</b> (sujeito, objeto, complemento etc.). Conjunções integrantes: <b>que</b> e <b>se</b>. Teste: troque a oração por <b>isso</b>.</p><div class="table-scroll"><table class="data"><thead><tr><th>Tipo</th><th>Função</th><th>Exemplo</th></tr></thead><tbody><tr><td class="hl">Subjetiva</td><td>Sujeito da principal</td><td>É certo <b>que ele virá</b>.</td></tr><tr><td class="hl">Objetiva direta</td><td>Objeto direto</td><td>Quero <b>que você venha</b>.</td></tr><tr><td class="hl">Objetiva indireta</td><td>Objeto indireto (com preposição)</td><td>Preciso <b>de que me ajudem</b>.</td></tr><tr><td class="hl">Completiva nominal</td><td>Complemento nominal</td><td>Tenho medo <b>de que chova</b>.</td></tr><tr><td class="hl">Predicativa</td><td>Predicativo do sujeito (após ser)</td><td>O problema é <b>que faltou verba</b>.</td></tr><tr><td class="hl">Apositiva</td><td>Aposto (após dois-pontos)</td><td>Só quero isto: <b>que voltes</b>.</td></tr></tbody></table></div><h4 class="sub">Orações subordinadas adjetivas</h4><p>Funcionam como <b>adjetivo</b>, ligadas por pronome relativo (que, o qual, quem, cujo, onde, quanto).</p><div class="grid-2"><div class="example"><span class="tag">Restritiva</span><p>Sem vírgula: <b>restringe</b> o antecedente. <i>Os alunos que estudaram passaram.</i> (só os que estudaram)</p></div><div class="example alt"><span class="tag">Explicativa</span><p>Entre vírgulas: <b>explica</b> o antecedente, referindo-se a todo o grupo. <i>Os alunos, que estudaram, passaram.</i> (todos estudaram)</p></div></div><h4 class="sub">Orações subordinadas adverbiais</h4><div class="table-scroll"><table class="data"><thead><tr><th>Tipo</th><th>Conjunções</th><th>Exemplo</th></tr></thead><tbody><tr><td class="hl">Causal</td><td>porque, já que, visto que, uma vez que, como</td><td>Como choveu, adiamos o jogo.</td></tr><tr><td class="hl">Consecutiva</td><td>que (após tal, tão, tanto), de modo que</td><td>Estudou tanto que passou.</td></tr><tr><td class="hl">Comparativa</td><td>como, que, do que, tal qual</td><td>Ele fala como escreve.</td></tr><tr><td class="hl">Concessiva</td><td>embora, ainda que, mesmo que, conquanto, se bem que, posto que</td><td>Embora estudasse, não passou.</td></tr><tr><td class="hl">Condicional</td><td>se, caso, desde que, contanto que, a menos que</td><td>Se estudar, passará.</td></tr><tr><td class="hl">Conformativa</td><td>conforme, segundo, consoante, como</td><td>Fiz conforme você pediu.</td></tr><tr><td class="hl">Final</td><td>para que, a fim de que</td><td>Estudei para que passasse.</td></tr><tr><td class="hl">Proporcional</td><td>à medida que, à proporção que, quanto mais... mais</td><td>À medida que estudava, aprendia.</td></tr><tr><td class="hl">Temporal</td><td>quando, enquanto, assim que, logo que, depois que, antes que, sempre que</td><td>Quando chegou, avisou.</td></tr></tbody></table></div><div class="callout warn"><span class="tag">Pegadinha do "que"</span><p><b>Integrante</b>: pode ser trocado por "isso" (<i>Sei que ele virá</i>). <b>Pronome relativo</b>: pode ser trocado por "o qual" (<i>O livro que li</i>). <b>Conjunção consecutiva</b>: vem depois de tal, tão, tanto (<i>Estudou tanto que passou</i>).</p></div><div class="callout"><span class="tag">Orações reduzidas</span><p>Sem conjunção e com verbo no infinitivo, gerúndio ou particípio: <i>Ao chegar, avisou</i> (temporal); <i>Estudando, passará</i> (condicional).</p></div><div class="callout"><span class="tag">O "pois"</span><p>Depois do verbo e entre vírgulas, é conclusivo (<i>Estudou; passará, pois, no concurso</i>). No início da oração, com ideia de motivo, é explicativo (<i>Passará, pois estudou</i>).</p></div><details class="exam"><summary>Treino autoral 2</summary><div class="q">Classifique a oração destacada: (a) "Espero <b>que você chegue cedo</b>." (b) "Embora <b>estivesse cansado</b>, trabalhou." (c) "O técnico <b>que instalou o programa</b> voltou." (d) "Trabalhou tanto <b>que adoeceu</b>."</div><div class="a"><span class="verdict">(a) subordinada substantiva objetiva direta; (b) adverbial concessiva; (c) adjetiva restritiva; (d) adverbial consecutiva</span> &mdash; Em (a) troca por "isso"; (b) embora indica concessão; (c) relativo sem vírgula restringe; (d) que após tanto indica consequência.</div></details></div></div></section><section class="category"><div class="wrap"><div id="pontuacao" class="branch semantica"><div class="branch-head"><span class="branch-num">03</span><h3>Pontuação</h3><span class="branch-kicker">vírgula, ponto e vírgula, dois-pontos</span></div><h4 class="sub">Vírgula: usos</h4><ul class="plain"><li>Separar termos de <b>mesma função</b> em enumeração (menos antes do "e" final).</li><li>Isolar <b>aposto</b>, <b>vocativo</b> e expressões explicativas (isto é, ou seja, por exemplo).</li><li>Isolar <b>adjunto adverbial</b> deslocado ou intercalado.</li><li>Isolar orações <b>adjetivas explicativas</b> e adverbiais antepostas.</li><li>Separar orações <b>coordenadas</b> (assindéticas e antes de mas, porém, logo, pois etc.).</li><li>Marcar <b>elipse do verbo</b>: <i>Eu gosto de café; ela, de chá.</i></li><li>Separar local e data: <i>Manaus, 21 de agosto de 2026.</i></li></ul><h4 class="sub">Vírgula: usos proibidos</h4><ul class="plain"><li>Entre <b>sujeito e verbo</b>: <i>Os candidatos estudaram</i> (sem vírgula).</li><li>Entre <b>verbo e complemento</b>.</li><li>Antes do <b>"que"</b> integrante: <i>Espero que ele venha.</i></li><li>Antes do <b>"e"</b> quando une termos do mesmo sujeito, salvo ênfase (polissíndeto) ou sujeitos diferentes.</li></ul><h4 class="sub">Outros sinais</h4><div class="table-scroll"><table class="data"><thead><tr><th>Sinal</th><th>Uso principal</th></tr></thead><tbody><tr><td class="hl">Ponto e vírgula</td><td>Separa partes de um período já com vírgulas; itens de enumeração; oposição entre orações longas</td></tr><tr><td class="hl">Dois-pontos</td><td>Introduz explicação, enumeração, citação ou fala</td></tr><tr><td class="hl">Travessão</td><td>Marca fala no discurso direto; isola termo com ênfase</td></tr><tr><td class="hl">Parênteses</td><td>Isolam esclarecimento secundário</td></tr><tr><td class="hl">Aspas</td><td>Citação, ironia, estrangeirismo, título</td></tr><tr><td class="hl">Reticências</td><td>Interrupção, hesitação, suspense</td></tr></tbody></table></div><div class="callout warn"><span class="tag">A vírgula muda o sentido</span><p><i>Os funcionários que faltaram serão punidos</i> (só os que faltaram) x <i>Os funcionários, que faltaram, serão punidos</i> (todos faltaram). <i>Vamos comer, crianças</i> x <i>Vamos comer crianças</i>.</p></div><details class="exam"><summary>Treino autoral 3</summary><div class="q">Qual frase está corretamente pontuada? (A) Os candidatos, estudaram muito. (B) Os candidatos que estudaram muito, foram aprovados. (C) Os candidatos, que estudaram muito, foram aprovados. (D) Espero, que você passe. (E) O técnico instalou, o programa.</div><div class="a"><span class="verdict">C</span> &mdash; Em C a oração explicativa está entre vírgulas. Em A, B, D e E há vírgula separando sujeito e verbo, oração e verbo, "que" integrante e verbo e complemento.</div></details></div></div></section><section class="category"><div class="wrap"><div id="discurso" class="branch"><div class="branch-head"><span class="branch-num">04</span><h3>Discurso Direto, Indireto e Indireto Livre</h3><span class="branch-kicker">reprodução da fala</span></div><p>Discurso é a forma de reproduzir a fala de alguém. <b>Direto</b> reproduz literalmente; <b>indireto</b> incorpora a fala à narração; <b>indireto livre</b> mistura narrador e personagem.</p><div class="table-scroll"><table class="data"><thead><tr><th>Discurso</th><th>Marcas</th><th>Exemplo</th></tr></thead><tbody><tr><td class="hl">Direto</td><td>Dois-pontos, travessão ou aspas; verbo de elocução (disse, perguntou)</td><td>Ele disse: "Amanhã eu viajo."</td></tr><tr><td class="hl">Indireto</td><td>Oração subordinada (que, se); sem sinais de fala</td><td>Ele disse que no dia seguinte viajava.</td></tr><tr><td class="hl">Indireto livre</td><td>Sem verbo de elocução; pensamento do personagem inserido na voz do narrador</td><td>Ele olhou o relógio. Como poderia estar atrasado de novo? Dessa vez ninguém o culparia.</td></tr></tbody></table></div><h4 class="sub">Do direto para o indireto: o que muda</h4><div class="table-scroll"><table class="data"><thead><tr><th>Direto</th><th>Indireto</th></tr></thead><tbody><tr><td class="hl">Pronomes: eu, meu, este</td><td>ele, seu (ou dele), aquele</td></tr><tr><td class="hl">Advérbios: aqui, agora, hoje</td><td>ali, naquele momento (então), naquele dia</td></tr><tr><td class="hl">Advérbios: ontem, amanhã</td><td>na véspera (no dia anterior), no dia seguinte</td></tr><tr><td class="hl">Presente do indicativo</td><td>Pretérito imperfeito</td></tr><tr><td class="hl">Pretérito perfeito</td><td>Pretérito mais-que-perfeito</td></tr><tr><td class="hl">Futuro do presente</td><td>Futuro do pretérito</td></tr><tr><td class="hl">Imperativo</td><td>Pretérito imperfeito do subjuntivo</td></tr></tbody></table></div><div class="callout"><span class="tag">Como reconhecer o indireto livre</span><p>O texto está na 3ª pessoa, mas traz perguntas, exclamações ou pensamentos próprios do personagem, sem "disse que" nem aspas.</p></div><details class="exam"><summary>Treino autoral 4</summary><div class="q">Passe para o discurso indireto: Maria falou: "Hoje eu não posso ir aí."</div><div class="a"><span class="verdict">Maria falou que naquele dia ela não podia ir lá.</span> &mdash; Hoje vira naquele dia; eu vira ela; posso (presente) vira podia (imperfeito); aí vira lá.</div></details></div></div></section><section class="category"><div class="wrap"><div id="correlacao" class="branch sintaxe"><div class="branch-head"><span class="branch-num">05</span><h3>Correlação de Tempos e Modos</h3><span class="branch-kicker">subjuntivo, futuro e condição</span></div><p>Correlação é a combinação adequada de <b>tempos e modos</b> entre as orações de um período.</p><div class="table-scroll"><table class="data"><thead><tr><th>Situação</th><th>Combinação</th><th>Exemplo</th></tr></thead><tbody><tr><td class="hl">Condição provável</td><td>Se + futuro do subjuntivo &rarr; futuro do presente</td><td>Se você estudar, passará.</td></tr><tr><td class="hl">Condição improvável</td><td>Se + pretérito imperfeito do subjuntivo &rarr; futuro do pretérito</td><td>Se você estudasse, passaria.</td></tr><tr><td class="hl">Condição irreal no passado</td><td>Se + mais-que-perfeito do subjuntivo &rarr; futuro do pretérito composto</td><td>Se tivesse estudado, teria passado.</td></tr><tr><td class="hl">Tempo futuro</td><td>Quando + futuro do subjuntivo &rarr; futuro do presente</td><td>Quando ele chegar, avisarei.</td></tr><tr><td class="hl">Desejo, dúvida</td><td>Espero que + presente do subjuntivo</td><td>Espero que ele venha.</td></tr><tr><td class="hl">Desejo no passado</td><td>Esperava que + imperfeito do subjuntivo</td><td>Esperava que ele viesse.</td></tr></tbody></table></div><h4 class="sub">Futuro do subjuntivo: formas que caem em prova</h4><div class="table-scroll"><table class="data"><thead><tr><th>Verbo</th><th>Futuro do subjuntivo (eu/ele)</th><th>Frase</th></tr></thead><tbody><tr><td class="hl">ver</td><td>vir</td><td>Se eu <b>vir</b> o edital, aviso.</td></tr><tr><td class="hl">vir</td><td>vier</td><td>Quando ele <b>vier</b>, avise.</td></tr><tr><td class="hl">pôr</td><td>puser</td><td>Se você <b>puser</b> o nome, confirmo.</td></tr><tr><td class="hl">ter / manter / obter</td><td>tiver / mantiver / obtiver</td><td>Se ela <b>tiver</b> tempo, ajuda.</td></tr><tr><td class="hl">haver</td><td>houver</td><td>Se <b>houver</b> vaga, inscrevo-me.</td></tr><tr><td class="hl">fazer / dizer / trazer</td><td>fizer / disser / trouxer</td><td>Se você <b>fizer</b> a prova, entrega.</td></tr><tr><td class="hl">querer</td><td>quiser</td><td>Se você <b>quiser</b>, eu vou.</td></tr></tbody></table></div><div class="callout warn"><span class="tag">Erros de prova</span><p>"Se eu ver" (correto: vir); "se você manter" (correto: mantiver); "se ele ter" (correto: tiver); "se você querer" (correto: quiser). Para a forma, pense na 3ª pessoa do plural do pretérito perfeito: <i>fizeram &rarr; fizer; puseram &rarr; puser</i>.</p></div><details class="exam"><summary>Treino autoral 5</summary><div class="q">Complete com o tempo adequado: "Se eu ___ (ver) o resultado, ___ (avisar) você."</div><div class="a"><span class="verdict">vir / avisarei</span> &mdash; Se + futuro do subjuntivo (vir) pede futuro do presente (avisarei).</div></details></div></div></section></main>
+<footer><div class="wrap"><p style="margin:0;">Mapa complementar de Língua Portuguesa, montado a partir do conteúdo programático do edital. Exercícios autorais no estilo das bancas; confira sempre com sua gramática de referência.</p></div></footer>
+<button type="button" class="theme-fab" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i></button>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  var mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function saved(){ try{ return localStorage.getItem('mapas-theme'); }catch(e){ return null; } }
+  function current(){ return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
+  function apply(t){ root.setAttribute('data-theme', t); btn.setAttribute('aria-pressed', t==='dark'); }
+  var s=saved(); apply(s==='dark'||s==='light' ? s : current());
+  btn.addEventListener('click', function(){
+    var t=current()==='dark' ? 'light' : 'dark'; apply(t);
+    try{ localStorage.setItem('mapas-theme', t); }catch(e){}
+  });
+})();
+</script>
+<script>(function(){var links=[].slice.call(document.querySelectorAll('#subnav a'));var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));}).filter(Boolean);var mm=[].slice.call(document.querySelectorAll('.mm-link'));function on(id){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id);});mm.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id);});}if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){on(e.target.id);}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});secs.forEach(function(s){o.observe(s);});}})();</script>
+<script>lucide.createIcons();</script>

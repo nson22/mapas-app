@@ -1,0 +1,769 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Internet, Intranet &amp; VPN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root{
+    --paper: #eef1f5;
+    --paper-2: #e1e7ed;
+    --paper-3: #cfd9e2;
+    --ink: #16212c;
+    --ink-soft: #47586a;
+    --ink-faint: #7c8b9d;
+    --accent: #1f6f8b;        /* circuit teal — network/protocols */
+    --accent-strong: #123f4f;
+    --accent-tint: #d7e7ec;
+    --brass: #a5701c;         /* amber — bizu / tips */
+    --brass-tint: #f1e1bd;
+    --wine: #a1442c;          /* signal red — security / VPN */
+    --wine-tint: #f1ded6;
+    --line: #c2cdd6;
+    --line-soft: #dde4ea;
+    --shadow: 0 1px 2px rgba(22,33,44,.06), 0 8px 24px -14px rgba(22,33,44,.28);
+    --font-display: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #0e1418; --paper-2: #141b21; --paper-3: #1d262e;
+      --ink: #e6ecf0; --ink-soft: #a9b8c2; --ink-faint: #7c8b9d;
+      --accent: #6fbcd6; --accent-strong: #a4d8e8; --accent-tint: #16323c;
+      --brass: #e0b563; --brass-tint: #2f2717;
+      --wine: #e39178; --wine-tint: #3a251e;
+      --line: #2a363f; --line-soft: #19222a;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #0e1418; --paper-2: #141b21; --paper-3: #1d262e;
+    --ink: #e6ecf0; --ink-soft: #a9b8c2; --ink-faint: #7c8b9d;
+    --accent: #6fbcd6; --accent-strong: #a4d8e8; --accent-tint: #16323c;
+    --brass: #e0b563; --brass-tint: #2f2717;
+    --wine: #e39178; --wine-tint: #3a251e;
+    --line: #2a363f; --line-soft: #19222a;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:15.5px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--font-display); color:var(--ink); text-wrap:balance; margin:0;}
+  p{margin:0 0 .9em; max-width:66ch;}
+  a{color:inherit;}
+  ::selection{background:var(--accent-tint); color:var(--accent-strong);}
+  :focus-visible{outline:2.5px solid var(--brass); outline-offset:2px; border-radius:3px;}
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+
+  .hero{padding:56px 0 28px; border-bottom:1px solid var(--line-soft);}
+  .eyebrow{display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:18px;}
+  .eyebrow::before{content:""; display:inline-block; width:22px; height:1px; background:var(--accent);}
+  h1.title{font-size:clamp(2.1rem, 5vw, 3.2rem); font-weight:700; letter-spacing:-.01em; line-height:1.06;}
+  h1.title em{font-style:italic; font-weight:500; color:var(--accent-strong);}
+  .dek{font-size:1.08rem; color:var(--ink-soft); margin-top:16px; max-width:58ch;}
+
+  .relevance{margin-top:28px; display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px; padding:16px 20px; background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px;}
+  .relevance .stat{display:flex; flex-direction:column; gap:2px;}
+  .relevance .stat .num{font-family:var(--font-display); font-weight:700; font-size:1.5rem; line-height:1;}
+  .relevance .stat .lbl{font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);}
+  .relevance-note{font-size:.9rem; color:var(--ink-soft); flex:1; min-width:220px;}
+  .relevance-note b{color:var(--ink); font-weight:600;}
+
+  .subnav-shell{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-soft);}
+  .subnav{display:flex; gap:6px; overflow-x:auto; padding:12px 24px; max-width:960px; margin:0 auto; scrollbar-width:thin;}
+  .subnav a{flex:none; font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; padding:7px 12px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); text-decoration:none; white-space:nowrap; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
+  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+
+  .diagram-section{padding:44px 0 8px;}
+  .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
+  .diagram-intro h2{font-size:12.5px; font-weight:600; font-family:var(--font-body); color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em;}
+  .diagram-intro p{font-size:.86rem; color:var(--ink-faint); margin:0; max-width:34ch; text-align:right;}
+  .diagram-frame{border:1px solid var(--line-soft); border-radius:16px; background:var(--paper-2); padding:8px; box-shadow:var(--shadow);}
+  svg.mindmap{width:100%; height:auto; display:block;}
+  .mm-link{cursor:pointer;}
+  .mm-node rect{fill:var(--paper); stroke:var(--line); stroke-width:1.3; transition:stroke .15s ease, fill .15s ease;}
+  .mm-node.security rect{stroke:var(--wine);}
+  .mm-node .badge circle{fill:var(--brass);}
+  .mm-node .badge text{fill:var(--paper); font-family:var(--font-mono); font-weight:600;}
+  .mm-node .label{font-family:var(--font-display); font-weight:600; fill:var(--ink); font-size:16.5px;}
+  .mm-node .kicker{font-family:var(--font-mono); fill:var(--ink-faint); font-size:9.6px; letter-spacing:.05em;}
+  .mm-link:hover .mm-node rect, .mm-link.active .mm-node rect{fill:var(--accent-tint); stroke:var(--accent);}
+  .mm-node.security .kicker{fill:var(--wine);}
+  .mm-link:hover .mm-node.security rect, .mm-link.active .mm-node.security rect{fill:var(--wine-tint); stroke:var(--wine);}
+  .mm-center rect{fill:var(--accent-strong); stroke:none;}
+  .mm-center .label{fill:var(--paper); font-size:21px;}
+  .mm-center .kicker{fill:var(--brass-tint); font-size:10.5px;}
+  .mm-lines line{stroke:var(--line); stroke-width:1.4;}
+
+  .branch{padding:52px 0; border-bottom:1px solid var(--line-soft); scroll-margin-top:64px;}
+  .branch:last-of-type{border-bottom:none;}
+  .branch-head{display:grid; grid-template-columns:auto 1fr; gap:16px 20px; align-items:start; margin-bottom:24px;}
+  .branch-num{font-family:var(--font-mono); font-size:13px; color:var(--brass); border:1px solid var(--line); border-radius:8px; width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-weight:600;}
+  .branch.security .branch-num{color:var(--wine); border-color:var(--wine);}
+  .branch-head h2{font-size:clamp(1.5rem,3vw,1.9rem); font-weight:700;}
+  .branch-kicker{grid-column:2; font-family:var(--font-mono); font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); margin-top:-14px;}
+
+  h3.sub{font-size:1.05rem; font-weight:700; margin:28px 0 10px; color:var(--accent-strong);}
+  .branch.security h3.sub{color:var(--wine);}
+  ul.plain, ol.plain{margin:0 0 1em; padding-left:1.25em;}
+  ul.plain li, ol.plain li{margin-bottom:.4em; max-width:62ch;}
+  ul.plain li::marker{color:var(--brass);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 22px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0 22px;}
+  @media (max-width:680px){.grid-2, .grid-3{grid-template-columns:1fr;}}
+
+  .example{background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px; padding:14px 16px;}
+  .example .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); font-weight:600; display:block; margin-bottom:6px;}
+  .example.alt .tag{color:var(--wine);}
+  .example p{margin:0; font-size:.92rem;}
+
+  .callout{border-left:3px solid var(--brass); background:var(--brass-tint); padding:14px 18px; border-radius:0 8px 8px 0; margin:20px 0;}
+  .callout .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--brass); font-weight:700; display:block; margin-bottom:4px;}
+  .callout p{margin:0; font-size:.94rem;}
+  .callout p:last-child{margin-bottom:0;}
+
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 18px;}
+  .chip{font-family:var(--font-mono); font-size:.8rem; padding:4px 10px; border-radius:999px; background:var(--paper-2); border:1px solid var(--line-soft); color:var(--ink-soft);}
+  .chip-group{margin-bottom:14px;}
+  .chip-group .gl{font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); display:block; margin-bottom:6px;}
+
+  details.exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  details.exam summary{cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; display:flex; align-items:center; gap:8px;}
+  details.exam summary::-webkit-details-marker{display:none;}
+  details.exam summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:12px;}
+  details.exam[open] summary::before{content:"\2013";}
+  details.exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  details.exam .opts{margin:10px 0 0; padding-left:1.2em; font-size:.88rem; color:var(--ink-soft);}
+  details.exam .opts li{margin-bottom:3px;}
+  details.exam .a{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:.92rem; color:var(--ink-soft);}
+  details.exam .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+
+  table.data{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.88rem;}
+  table.data th, table.data td{text-align:left; padding:9px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+  table.data th{font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; border-bottom:1.5px solid var(--line);}
+  table.data td.hl{color:var(--accent-strong); font-weight:700;}
+  table.data td.wine{color:var(--wine); font-weight:700;}
+  table.data code{font-family:var(--font-mono); background:var(--paper-3); padding:1px 6px; border-radius:4px; font-size:.85em;}
+  .table-scroll{overflow-x:auto;}
+
+  footer{padding:44px 0 64px; color:var(--ink-faint); font-size:.85rem;}
+  footer .wrap{border-top:1px solid var(--line-soft); padding-top:24px;}
+
+  @media (prefers-reduced-motion: reduce){ * {transition:none !important;} }
+  .lucide{width:1em; height:1em; stroke-width:2; flex:none; vertical-align:-.14em; margin-right:6px;}
+  .eyebrow .lucide{width:15px; height:15px; margin-right:0;}
+  details.exam summary .lucide{width:15px; height:15px; margin-right:0;}
+  .callout .tag .lucide, .example .tag .lucide{width:13px; height:13px; vertical-align:-2px;}
+  .class-card .tag .lucide{width:11px; height:11px; vertical-align:-1.5px; margin-right:4px;}
+  .branch-num .lucide{width:16px; height:16px; margin:0;}
+  .eyebrow::before{display:none !important;}
+  .eyebrow .back{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:50%; color:var(--accent); text-decoration:none; transition:background .15s ease, border-color .15s ease;}
+  .eyebrow .back:hover{background:var(--accent-tint); border-color:var(--accent);}
+  .eyebrow .back .lucide{width:16px; height:16px; margin:0;}
+  .theme-fab{position:fixed; right:18px; bottom:18px; z-index:50; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow);}
+  .theme-fab:hover{border-color:var(--accent); color:var(--accent);}
+  .theme-fab .lucide{width:19px; height:19px; margin:0;}
+  .theme-fab .i-sun{display:none;}
+  :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
+  :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a>Informática &middot; Mapa Mental</div>
+    <h1 class="title">Internet, Intranet &amp; <em>VPN</em></h1>
+    <p class="dek">Da ARPANET ao túnel criptografado &mdash; redes, protocolos, intranet e extranet, navegadores, busca avançada e e-mail, organizados para revisão.</p>
+
+    <div class="relevance">
+      <div class="stat"><span class="num">8</span><span class="lbl">frentes do tema</span></div>
+      <div class="stat"><span class="num">4</span><span class="lbl">questões de banca</span></div>
+      <div class="stat"><span class="num">9</span><span class="lbl">PDFs do curso</span></div>
+      <p class="relevance-note">Material do prof. <b>Matheus Santos</b> (Servidor Público Federal, TI), preparatório para o <b>TJAM</b>. PDF 01 de 9 do cronograma de Informática &mdash; este mapa cobre integralmente "Conceitos relacionados à Internet, Intranet, Extranet e VPN".</p>
+    </div>
+  </div>
+</header>
+
+<nav class="subnav-shell">
+  <div class="subnav" id="subnav">
+    <a href="#redes">Internet &amp; Redes</a>
+    <a href="#protocolos">Protocolos &amp; IP</a>
+    <a href="#intranet">Intranet &amp; Extranet</a>
+    <a href="#vpn">VPN</a>
+    <a href="#servicos">Serviços &amp; Segurança</a>
+    <a href="#navegadores">Navegadores</a>
+    <a href="#pesquisa">Ferramentas de Pesquisa</a>
+    <a href="#email">Correio Eletrônico</a>
+  </div>
+</nav>
+
+<main>
+  <section class="diagram-section">
+    <div class="wrap">
+      <div class="diagram-intro">
+        <h2>O mapa</h2>
+        <p>Toque em qualquer ramo para ir direto ao conteúdo daquele bloco.</p>
+      </div>
+      <div class="diagram-frame">
+        <svg class="mindmap" viewBox="0 0 900 560" role="img" aria-label="Mapa mental sobre Internet, Intranet e VPN, com um núcleo central conectado a oito ramos: Internet e Redes, Protocolos e Endereçamento IP, Intranet e Extranet, VPN, Serviços e Segurança, Navegadores, Ferramentas de Pesquisa e Correio Eletrônico.">
+          <g class="mm-lines">
+            <line x1="450" y1="290" x2="450" y2="100"/>
+            <line x1="450" y1="290" x2="690" y2="156"/>
+            <line x1="450" y1="290" x2="790" y2="290"/>
+            <line x1="450" y1="290" x2="690" y2="424"/>
+            <line x1="450" y1="290" x2="450" y2="480"/>
+            <line x1="450" y1="290" x2="210" y2="424"/>
+            <line x1="450" y1="290" x2="110" y2="290"/>
+            <line x1="450" y1="290" x2="210" y2="156"/>
+          </g>
+
+          <g class="mm-center">
+            <rect x="330" y="245" width="240" height="90" rx="16"/>
+            <text x="450" y="282" text-anchor="middle" class="label">Internet,</text>
+            <text x="450" y="306" text-anchor="middle" class="label">Intranet &amp; VPN</text>
+            <text x="450" y="324" text-anchor="middle" class="kicker">INFORMÁTICA · TJAM</text>
+          </g>
+
+          <a href="#redes" class="mm-link" aria-label="Ir para Internet e Redes">
+            <g class="mm-node" transform="translate(450,100)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">01</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Internet &amp;</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Redes</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">PAN · LAN · MAN · WAN</text>
+            </g>
+          </a>
+
+          <a href="#protocolos" class="mm-link" aria-label="Ir para Protocolos e Endereçamento IP">
+            <g class="mm-node" transform="translate(690,156)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">02</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Protocolos</text>
+              <text class="label" x="0" y="14" text-anchor="middle">&amp; IP</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">TCP/IP · IPV4 · IPV6</text>
+            </g>
+          </a>
+
+          <a href="#intranet" class="mm-link" aria-label="Ir para Intranet e Extranet">
+            <g class="mm-node" transform="translate(790,290)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">03</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Intranet &amp;</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Extranet</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">REDE PRIVADA</text>
+            </g>
+          </a>
+
+          <a href="#vpn" class="mm-link" aria-label="Ir para VPN">
+            <g class="mm-node security" transform="translate(690,424)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">04</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">VPN</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Túnel Seguro</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">CRIPTOGRAFIA</text>
+            </g>
+          </a>
+
+          <a href="#servicos" class="mm-link" aria-label="Ir para Serviços e Segurança">
+            <g class="mm-node security" transform="translate(450,480)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">05</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Serviços &amp;</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Segurança</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">FIREWALL · PHISHING</text>
+            </g>
+          </a>
+
+          <a href="#navegadores" class="mm-link" aria-label="Ir para Navegadores">
+            <g class="mm-node" transform="translate(210,424)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">06</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Navegadores</text>
+              <text class="label" x="0" y="14" text-anchor="middle">de Internet</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">CHROME · FIREFOX · EDGE</text>
+            </g>
+          </a>
+
+          <a href="#pesquisa" class="mm-link" aria-label="Ir para Ferramentas de Pesquisa">
+            <g class="mm-node" transform="translate(110,290)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">07</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Ferramentas</text>
+              <text class="label" x="0" y="14" text-anchor="middle">de Pesquisa</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">OPERADORES DE BUSCA</text>
+            </g>
+          </a>
+
+          <a href="#email" class="mm-link" aria-label="Ir para Correio Eletrônico">
+            <g class="mm-node" transform="translate(210,156)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">08</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Correio</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Eletrônico</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">SMTP · POP3 · IMAP</text>
+            </g>
+          </a>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 INTERNET & REDES -->
+  <section id="redes" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">01</span>
+        <h2>Internet &amp; Redes</h2>
+        <span class="branch-kicker">conceito, origem e classificação por alcance</span>
+      </div>
+      <p>A internet é uma rede de comunicação de milhões de computadores conectados, oferecendo serviços e bilhões de páginas organizadas em websites. Etimologicamente, <strong>INTER</strong> (entre) + <strong>NET</strong> (rede): ela conecta redes menores entre si &mdash; por isso pode ser vista como um conglomerado de redes.</p>
+
+      <h3 class="sub">Origem</h3>
+      <p>Surgiu em contexto militar, nos EUA da Guerra Fria (anos 1960). O Departamento de Defesa queria descentralizar informações estratégicas para que não fossem destruídas se um único servidor fosse bombardeado. A <strong>ARPA</strong> (Advanced Research Projects Agency) criou a <strong>ARPANET</strong>, ligada por um backbone subterrâneo. O acesso era restrito a militares e pesquisadores &mdash; temia-se o mau uso por civis e países não aliados.</p>
+
+      <h3 class="sub">Classificação das redes por alcance</h3>
+      <div class="grid-2">
+        <div class="example"><span class="tag">PAN &middot; Personal</span><p>Dispositivos pessoais próximos, sem acesso externo. Ex.: celular conectado a uma caixa de som ou a um smartwatch.</p></div>
+        <div class="example"><span class="tag">LAN &middot; Local</span><p>Residência, escritório ou empresa &mdash; dispositivos conectados dentro de um mesmo ambiente físico.</p></div>
+        <div class="example"><span class="tag">MAN &middot; Metropolitan</span><p>Interconecta cidades próximas ou uma região metropolitana &mdash; alcance maior que a LAN, custo-benefício melhor que a WAN.</p></div>
+        <div class="example alt"><span class="tag">WAN &middot; Wide Area</span><p>País ou continente &mdash; a própria internet é uma WAN que conecta diversas redes menores.</p></div>
+      </div>
+      <p>Outras classificações que podem cair na prova:</p>
+      <div class="chips">
+        <span class="chip">CAN &ndash; campus universitário</span>
+        <span class="chip">SAN &ndash; armazenamento entre servidores</span>
+        <span class="chip">HAN &ndash; casa inteligente/IoT</span>
+        <span class="chip">BAN &ndash; dispositivos vestíveis (smartwatch)</span>
+      </div>
+
+      <details class="exam">
+        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova</summary>
+        <p class="q">"É um conglomerado de redes locais, interconectadas e espalhadas pelo mundo inteiro, através do protocolo de internet, facilitando o fluxo de informações espalhadas por todo o globo terrestre." A que rede isso se refere?</p>
+        <ol class="opts"><li>Intranet</li><li>LAN</li><li>Internet</li><li>Extranet</li></ol>
+        <div class="a"><span class="verdict">Internet (C).</span> "Conglomerado de redes interconectadas e espalhadas pelo mundo" é a própria definição de internet como uma WAN mundial.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 02 PROTOCOLOS & IP -->
+  <section id="protocolos" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">02</span>
+        <h2>Protocolos &amp; Endereçamento IP</h2>
+        <span class="branch-kicker">as regras de comunicação e identificação na rede</span>
+      </div>
+
+      <h3 class="sub">Protocolos de comunicação</h3>
+      <table class="data">
+        <thead><tr><th>Protocolo</th><th>Função</th></tr></thead>
+        <tbody>
+          <tr><td><code>TCP/IP</code></td><td>Base da comunicação na internet; divide as informações em pacotes.</td></tr>
+          <tr><td><code>HTTP / HTTPS</code></td><td>Navegação web. HTTPS inclui criptografia (SSL/TLS).</td></tr>
+          <tr><td><code>FTP</code></td><td>Transferência de arquivos.</td></tr>
+          <tr><td><code>SMTP / POP3 / IMAP</code></td><td>Envio e recebimento de e-mail (detalhado na seção Correio Eletrônico).</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Bizu</span><p>A diferença entre HTTP e HTTPS, e o uso correto de cada protocolo de e-mail, são cobranças recorrentes.</p></div>
+
+      <h3 class="sub">Endereçamento IP</h3>
+      <table class="data">
+        <thead><tr><th>Item</th><th>Detalhe</th></tr></thead>
+        <tbody>
+          <tr><td class="hl">IPv4</td><td>32 bits, formato decimal. Ex.: <code>192.168.0.1</code></td></tr>
+          <tr><td class="hl">IPv6</td><td>128 bits, formato hexadecimal. Ex.: <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></td></tr>
+          <tr><td>Máscara de sub-rede</td><td>Define o alcance de uma rede.</td></tr>
+          <tr><td>NAT</td><td>Converte endereços IP privados em públicos (Network Address Translation).</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Bizu</span><p>Questões costumam comparar IPv4 x IPv6, e pedir a identificação de classes de IP.</p></div>
+    </div>
+  </section>
+
+  <!-- 03 INTRANET & EXTRANET -->
+  <section id="intranet" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">03</span>
+        <h2>Intranet &amp; Extranet</h2>
+        <span class="branch-kicker">um dos temas mais cobrados pelas bancas</span>
+      </div>
+      <p><strong>Intranet</strong> é uma rede <strong>privada</strong> (exige autenticação), restrita a um grupo predefinido de usuários &mdash; tipicamente o ambiente de uma empresa.</p>
+
+      <h3 class="sub">Características da Intranet</h3>
+      <ol class="plain">
+        <li><strong>Acesso restrito</strong> &mdash; login e senha; é preciso autorização para entrar.</li>
+        <li><strong>Ambiente corporativo</strong> &mdash; não é público; pode ser tanto a infraestrutura de rede local quanto um sistema de colaboração entre funcionários.</li>
+        <li><strong>Usa os mesmos protocolos da internet</strong> &mdash; http, https etc., só que em ambiente controlado e interno.</li>
+      </ol>
+      <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Pegadinha clássica</span><p>Achar que Internet e Intranet usam protocolos diferentes. <strong>Errado</strong>: a Intranet tem a mesma estrutura da Internet, apenas em ambiente fechado.</p></div>
+
+      <details class="exam">
+        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE</summary>
+        <p class="q">"A Internet e a intranet, devido às suas características específicas, operam com protocolos diferentes, adequados a cada situação." Certo ou errado?</p>
+        <div class="a"><span class="verdict">Errado.</span> Os protocolos usados são os mesmos (http, https, TCP/IP...) &mdash; o que muda é o ambiente (público x controlado), não o protocolo.</div>
+      </details>
+
+      <h3 class="sub">Extranet</h3>
+      <p>É uma extensão da Intranet: mesmo funcionamento restrito e autenticado, mas voltado para um público <strong>externo</strong> que tem alguma relação com a empresa &mdash; clientes, fornecedores, parceiros.</p>
+      <div class="chips">
+        <span class="chip">Extensão da intranet</span><span class="chip">Público: fornecedores e clientes</span><span class="chip">Exige autenticação</span><span class="chip">É restrita</span><span class="chip">Usa os mesmos protocolos</span>
+      </div>
+
+      <details class="exam">
+        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE</summary>
+        <p class="q">"A Internet pode ser dividida em intranet, restrita aos serviços da rede interna de uma organização, e extranet, com os demais serviços (ex.: redes sociais e sites de outras organizações)." Certo ou errado?</p>
+        <div class="a"><span class="verdict">Errado.</span> A internet não se "divide" em intranet e extranet &mdash; são três redes com funções distintas: a internet é a rede pública mundial; a intranet, o ambiente interno; a extranet, o ambiente para públicos externos ligados à organização.</div>
+      </details>
+
+      <h3 class="sub">Quadro comparativo</h3>
+      <div class="table-scroll">
+        <table class="data">
+          <thead><tr><th>Parâmetro</th><th>Internet</th><th>Intranet</th><th>Extranet</th></tr></thead>
+          <tbody>
+            <tr><td>Tipo de rede</td><td class="hl">Público</td><td>Privado</td><td class="wine">Privado / VPN</td></tr>
+            <tr><td>Tamanho</td><td>Ilimitado</td><td>Nº limitado de dispositivos</td><td>Nº limitado de dispositivos</td></tr>
+            <tr><td>Segurança</td><td>Depende</td><td>Protegido por firewall</td><td>Firewall separa a internet da extranet</td></tr>
+            <tr><td>Acesso</td><td>Todos</td><td>Pessoas autorizadas</td><td>Pessoas autorizadas</td></tr>
+            <tr><td>Compartilhamento</td><td>Total</td><td>Dentro da organização</td><td>Entre colaboradores e pessoas externas</td></tr>
+            <tr><td>Proprietário</td><td>Não possui</td><td>Organização particular</td><td>1 ou mais organizações</td></tr>
+            <tr><td>Escala típica</td><td>WAN (em geral)</td><td>LAN</td><td>MAN/WAN</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 VPN -->
+  <section id="vpn" class="branch security">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">04</span>
+        <h2>VPN &mdash; Virtual Private Network</h2>
+        <span class="branch-kicker">o túnel criptografado sobre a internet</span>
+      </div>
+      <p>Uma VPN interliga computadores usando a internet como caminho, com a comunicação <strong>criptografada</strong>. Funciona como um "túnel" protegido entre o usuário e uma rede, restrito a quem possui as credenciais necessárias.</p>
+
+      <div class="grid-2">
+        <div class="example"><span class="tag">Finalidade</span><p>Garantir confidencialidade e segurança dos dados.</p></div>
+        <div class="example alt"><span class="tag">Finalidade</span><p>Mascarar o IP do usuário, permitindo acesso a conteúdo restrito.</p></div>
+      </div>
+
+      <h3 class="sub">Como funciona &mdash; 3 etapas</h3>
+      <ol class="plain">
+        <li><strong>Estabelecimento de conexão</strong> &mdash; o dispositivo do usuário se conecta a um servidor VPN.</li>
+        <li><strong>Encapsulamento dos dados</strong> &mdash; os dados são "empacotados" dentro do túnel protegido.</li>
+        <li><strong>Criptografia</strong> &mdash; os dados são criptografados para evitar acesso não autorizado.</li>
+      </ol>
+
+      <h3 class="sub">Protocolos de VPN</h3>
+      <div class="chips">
+        <span class="chip">PPTP &ndash; antigo, menos seguro</span>
+        <span class="chip">L2TP/IPSec &ndash; mais seguro que PPTP</span>
+        <span class="chip">OpenVPN &ndash; seguro e configurável</span>
+        <span class="chip">IKEv2/IPSec &ndash; rápido, ideal para mobile</span>
+        <span class="chip">WireGuard &ndash; moderno e leve</span>
+      </div>
+
+      <h3 class="sub">Tipos de VPN</h3>
+      <div class="grid-3">
+        <div class="example"><span class="tag">Acesso Remoto</span><p>Usuário individual se conecta a uma rede corporativa.</p></div>
+        <div class="example"><span class="tag">Site-to-Site</span><p>Conecta redes de locais diferentes &mdash; ideal para filiais.</p></div>
+        <div class="example alt"><span class="tag">Móvel</span><p>Para dispositivos móveis, segura mesmo em redes públicas.</p></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="example"><span class="tag">Vantagens</span><p>Segurança em redes públicas &middot; privacidade (oculta o IP) &middot; acesso a conteúdo geobloqueado &middot; viabiliza trabalho remoto.</p></div>
+        <div class="example alt"><span class="tag">Desvantagens</span><p>Reduz a velocidade (custo da criptografia) &middot; pode ter custo &middot; algumas plataformas identificam e bloqueiam VPN.</p></div>
+      </div>
+
+      <h3 class="sub">Segurança e criptografia</h3>
+      <div class="chips">
+        <span class="chip">AES &ndash; padrão de criptografia mais usado</span>
+        <span class="chip">Autenticação de dados &ndash; impede alteração de pacotes</span>
+        <span class="chip">Confidencialidade &ndash; só o destinatário acessa os dados</span>
+      </div>
+
+      <details class="exam">
+        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova</summary>
+        <p class="q">"É possível, utilizando-se uma conexão VPN criptografada, acessar os dados da intranet do TCE/RS por meio da Internet." Certo ou errado?</p>
+        <div class="a"><span class="verdict">Certo.</span> É exatamente para isso que serve uma VPN de acesso remoto: usar a internet como caminho para entrar, com segurança, numa rede privada (intranet) de uma instituição.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 05 SERVIÇOS & SEGURANÇA -->
+  <section id="servicos" class="branch security">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">05</span>
+        <h2>Serviços, Segurança &amp; Tendências</h2>
+        <span class="branch-kicker">o que roda por trás da conexão</span>
+      </div>
+
+      <h3 class="sub">Serviços e tecnologias</h3>
+      <div class="grid-2">
+        <div class="example"><span class="tag">Web</span><p>Serviço mais popular da internet, baseado em hipertextos.</p></div>
+        <div class="example"><span class="tag">Cloud Computing</span><p>Armazenamento e processamento em servidores remotos &mdash; SaaS, PaaS, IaaS.</p></div>
+        <div class="example"><span class="tag">DNS</span><p>Traduz nomes de domínio em endereços IP.</p></div>
+        <div class="example alt"><span class="tag">Servidor Proxy</span><p>Intermedia as requisições entre o usuário e a internet.</p></div>
+      </div>
+
+      <h3 class="sub">Segurança na Internet</h3>
+      <div class="chips">
+        <span class="chip">Firewall &ndash; filtra pacotes de dados</span>
+        <span class="chip">Certificado Digital &ndash; garante autenticação</span>
+        <span class="chip">Phishing &ndash; ataque de roubo de informações</span>
+        <span class="chip">Malware &ndash; vírus, worms, ransomware</span>
+        <span class="chip">Autenticação de dois fatores (2FA)</span>
+      </div>
+      <p>Procedimentos de segurança recomendados: firewall, criptografia, autenticação multifator, backup e políticas de acesso definidas.</p>
+
+      <h3 class="sub">Conectividade</h3>
+      <div class="chips">
+        <span class="chip">Banda Larga &ndash; acesso rápido</span>
+        <span class="chip">Wi-Fi &ndash; conexão sem fio</span>
+        <span class="chip">Bluetooth &ndash; sem fio, curto alcance</span>
+        <span class="chip">4G/5G &ndash; tecnologias móveis</span>
+      </div>
+
+      <h3 class="sub">Tendências tecnológicas associadas</h3>
+      <div class="chips">
+        <span class="chip">IoT &ndash; internet das coisas</span>
+        <span class="chip">Big Data &ndash; análise de grandes volumes</span>
+        <span class="chip">Inteligência Artificial</span>
+        <span class="chip">Edge Computing &ndash; processamento na borda da rede</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 NAVEGADORES -->
+  <section id="navegadores" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">06</span>
+        <h2>Navegadores de Internet</h2>
+        <span class="branch-kicker">o cliente que acessa a web</span>
+      </div>
+      <p>Um navegador (browser) é o programa que envia a requisição do usuário (o endereço digitado) e recebe a resposta do servidor &mdash; uma página em HTML.</p>
+
+      <h3 class="sub">Principais navegadores</h3>
+      <div class="chips">
+        <span class="chip">Chrome &ndash; mais popular, extensões</span>
+        <span class="chip">Firefox &ndash; privacidade e personalização</span>
+        <span class="chip">Edge &ndash; sucessor do IE, baseado em Chromium</span>
+        <span class="chip">Safari &ndash; padrão da Apple</span>
+        <span class="chip">Opera &ndash; VPN integrada e bloqueador de anúncios</span>
+      </div>
+
+      <h3 class="sub">Funcionalidades comuns</h3>
+      <table class="data">
+        <thead><tr><th>Recurso</th><th>O que faz</th></tr></thead>
+        <tbody>
+          <tr><td>Navegação privativa</td><td>Não guarda histórico, cookies, buscas ou dados de formulário.</td></tr>
+          <tr><td>Histórico</td><td>Lista páginas visitadas &mdash; exceto as vistas em aba privada.</td></tr>
+          <tr><td>Cache</td><td>Guarda temporariamente dados de páginas para carregar mais rápido.</td></tr>
+          <tr><td>Cookies de sessão</td><td>Temporários; excluídos ao fechar o navegador.</td></tr>
+          <tr><td>Cookies persistentes</td><td>Mantidos por mais tempo; usados em logins automáticos.</td></tr>
+          <tr><td>Plugins</td><td>Componentes externos para recursos não nativos (ex.: multimídia).</td></tr>
+          <tr><td>Extensões</td><td>Pequenos programas que adicionam recursos ao navegador.</td></tr>
+          <tr><td>Complementos</td><td>Termo do Firefox para o conjunto de extensões, temas e plugins.</td></tr>
+          <tr><td>Bloqueador de pop-ups</td><td>Impede janelas indesejadas de abrirem.</td></tr>
+          <tr><td>Do Not Track</td><td>Mecanismo passivo que só solicita ao site que não rastreie &mdash; o site decide se atende.</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub">Diferenciais por navegador</h3>
+      <div class="grid-3">
+        <div class="example"><span class="tag">Internet Explorer</span><p>Filtro SmartScreen (antiphishing, antimalware) e Filtragem ActiveX.</p></div>
+        <div class="example"><span class="tag">Firefox</span><p>Firefox Sync &mdash; sincroniza favoritos, histórico, senhas e abas entre dispositivos.</p></div>
+        <div class="example alt"><span class="tag">Chrome</span><p>Sandbox (cada aba roda isolada &mdash; pioneiro do recurso) e Smart Lock (senhas na Conta Google).</p></div>
+      </div>
+
+      <h3 class="sub">Atalhos mais cobrados</h3>
+      <div class="table-scroll">
+        <table class="data">
+          <thead><tr><th>Atalho</th><th>Ação</th></tr></thead>
+          <tbody>
+            <tr><td><code>Ctrl+T</code></td><td>Nova aba</td></tr>
+            <tr><td><code>Ctrl+W</code> / <code>Ctrl+F4</code></td><td>Fecha a aba atual</td></tr>
+            <tr><td><code>Ctrl+Shift+W</code></td><td>Fecha todas as abas</td></tr>
+            <tr><td><code>Ctrl+Tab</code></td><td>Percorre as abas</td></tr>
+            <tr><td><code>Ctrl+R</code> / <code>F5</code></td><td>Atualiza a aba</td></tr>
+            <tr><td><code>Ctrl+L</code> / <code>F6</code></td><td>Seleciona o endereço</td></tr>
+            <tr><td><code>Ctrl+F</code></td><td>Busca na página</td></tr>
+            <tr><td><code>Ctrl+D</code></td><td>Adiciona aos favoritos</td></tr>
+            <tr><td><code>Ctrl+H</code></td><td>Histórico</td></tr>
+            <tr><td><code>Ctrl+J</code></td><td>Downloads</td></tr>
+            <tr><td class="hl"><code>Ctrl+Shift+Del</code></td><td>Limpa dados de navegação</td></tr>
+            <tr><td><code>Ctrl+Shift+P</code></td><td>Navegação privativa (Firefox/IE)</td></tr>
+            <tr><td><code>Ctrl+Shift+N</code></td><td>Navegação anônima (Chrome)</td></tr>
+            <tr><td><code>F11</code></td><td>Tela cheia</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details class="exam">
+        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Perguntas rápidas de prova</summary>
+        <div class="a">
+          <ul>
+            <li><strong>Qual ícone indica conexão segura?</strong> O cadeado ao lado da URL.</li>
+            <li><strong>O que o modo anônimo impede?</strong> Salvamento de cookies, histórico e dados temporários.</li>
+            <li><strong>Atalho para limpar dados de navegação?</strong> <code>Ctrl+Shift+Del</code>.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 07 FERRAMENTAS DE PESQUISA -->
+  <section id="pesquisa" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">07</span>
+        <h2>Ferramentas de Pesquisa</h2>
+        <span class="branch-kicker">operadores de busca avançada</span>
+      </div>
+      <p>Um mecanismo de busca localiza e lista páginas a partir de palavras-chave. Os principais são Google e Bing &mdash; e os operadores de pesquisa são um dos assuntos mais cobrados.</p>
+
+      <h3 class="sub">Os 10 operadores mais cobrados</h3>
+      <div class="table-scroll">
+        <table class="data">
+          <thead><tr><th>Operador</th><th>Uso</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td><code>site:</code></td><td>Rede social ou site específico</td><td><code>site:instagram concursos</code></td></tr>
+            <tr><td><code>R$</code></td><td>Faixa de preço</td><td><code>smartphone R$1000..R$2000</code></td></tr>
+            <tr><td><code>#</code></td><td>Hashtag</td><td><code>#educação</code></td></tr>
+            <tr><td><code>-</code></td><td>Exclui palavra</td><td><code>curso online -pago</code></td></tr>
+            <tr><td><code>"..."</code></td><td>Correspondência exata</td><td><code>"como passar em concurso"</code></td></tr>
+            <tr><td><code>*</code></td><td>Coringa (palavra desconhecida)</td><td><code>melhor * para concurso</code></td></tr>
+            <tr><td><code>..</code></td><td>Intervalo numérico</td><td><code>concurso 2020..2025</code></td></tr>
+            <tr><td><code>OR</code> / <code>AND</code></td><td>Combina termos</td><td><code>concurso PRF OR PF</code></td></tr>
+            <tr><td><code>info:</code></td><td>Detalhes de um site</td><td><code>info:seraprovado.com.br</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">Operadores adicionais</h3>
+      <div class="table-scroll">
+        <table class="data">
+          <thead><tr><th>Operador</th><th>Uso</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td><code>define:</code></td><td>Definição de palavra</td><td><code>define:resiliência</code></td></tr>
+            <tr><td><code>filetype:</code></td><td>Tipo de arquivo</td><td><code>edital PRF filetype:pdf</code></td></tr>
+            <tr><td><code>inurl:</code></td><td>Palavra na URL</td><td><code>inurl:concurso</code></td></tr>
+            <tr><td><code>intitle:</code></td><td>Palavra no título</td><td><code>intitle:curso concurso</code></td></tr>
+            <tr><td><code>intext:</code></td><td>Palavra no texto</td><td><code>intext:planejamento</code></td></tr>
+            <tr><td><code>related:</code></td><td>Sites semelhantes</td><td><code>related:youtube.com</code></td></tr>
+            <tr><td><code>link:</code></td><td>Páginas que linkam para o site</td><td><code>link:bymatheussantos.com</code></td></tr>
+            <tr><td><code>before:</code> / <code>after:</code></td><td>Intervalo de datas</td><td><code>concurso PF before:2022 after:2020</code></td></tr>
+            <tr><td><code>+</code></td><td>Força termo obrigatório</td><td><code>+curso +concurso público</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 CORREIO ELETRÔNICO -->
+  <section id="email" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">08</span>
+        <h2>Correio Eletrônico</h2>
+        <span class="branch-kicker">mensagens assíncronas por armazenamento e encaminhamento</span>
+      </div>
+      <p>O e-mail funciona em modelo de armazenamento e encaminhamento: servidores de e-mail aceitam, encaminham, entregam e armazenam as mensagens.</p>
+
+      <h3 class="sub">Protocolos de e-mail</h3>
+      <table class="data">
+        <thead><tr><th>Protocolo</th><th>Porta</th><th>Comportamento</th></tr></thead>
+        <tbody>
+          <tr><td class="hl">SMTP</td><td><code>25</code> (BR: <code>587</code>, anti-spam)</td><td>Só <strong>envia</strong> &mdash; não permite baixar mensagens do servidor.</td></tr>
+          <tr><td>POP3</td><td><code>110</code></td><td>Baixa os e-mails para o computador local e marca para deleção no servidor.</td></tr>
+          <tr><td class="wine">IMAP</td><td><code>143</code> ou <code>993</code> (SSL/TLS)</td><td><strong>Não</strong> apaga do servidor &mdash; mensagens ficam armazenadas lá; padrão em webmail, acessível de qualquer dispositivo.</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub">Pastas de e-mail</h3>
+      <div class="chips">
+        <span class="chip">Caixa de Entrada &ndash; recebidos</span>
+        <span class="chip">Itens Enviados</span>
+        <span class="chip">Lixo Eletrônico &ndash; spam</span>
+        <span class="chip">Itens Excluídos &ndash; lixeira</span>
+        <span class="chip">Rascunho &ndash; redigido, não enviado</span>
+      </div>
+
+      <h3 class="sub">Campos de envio</h3>
+      <div class="grid-2">
+        <div class="example"><span class="tag">De / Para / Assunto</span><p>Remetente, destinatário e assunto da mensagem.</p></div>
+        <div class="example alt"><span class="tag">CC / CCO</span><p>Com Cópia (CC): todos veem quem recebeu. Com Cópia Oculta (CCO): recebe a cópia, mas não é visto pelos demais destinatários.</p></div>
+      </div>
+
+      <h3 class="sub">Ações ao receber uma mensagem</h3>
+      <table class="data">
+        <thead><tr><th>Ação</th><th>Para quem vai</th></tr></thead>
+        <tbody>
+          <tr><td class="hl">Responder</td><td>Apenas ao remetente original.</td></tr>
+          <tr><td>Responder a Todos</td><td>Ao remetente e a todos em "Para" e "CC".</td></tr>
+          <tr><td>Encaminhar</td><td>A alguém que não estava em "Para" nem em "CC".</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0;">Mapa mental construído a partir do PDF 01 &mdash; Informática, prof. Matheus Santos, preparatório TJAM. Regra de ouro: Internet, Intranet e Extranet usam os <strong>mesmos protocolos</strong> &mdash; o que muda é o público e o controle de acesso.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  var mmLinks = Array.prototype.slice.call(document.querySelectorAll('.mm-link'));
+
+  function setActive(id){
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+    mmLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ setActive(entry.target.id); }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ observer.observe(s); });
+  }
+})();
+</script>
+
+<button type="button" class="theme-fab" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i></button>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  var mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function saved(){ try{ return localStorage.getItem('mapas-theme'); }catch(e){ return null; } }
+  function current(){ return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
+  function apply(t){ root.setAttribute('data-theme', t); btn.setAttribute('aria-pressed', t==='dark'); }
+  var s=saved(); apply(s==='dark'||s==='light' ? s : current());
+  btn.addEventListener('click', function(){
+    var t=current()==='dark' ? 'light' : 'dark'; apply(t);
+    try{ localStorage.setItem('mapas-theme', t); }catch(e){}
+  });
+})();
+</script>
+<script>lucide.createIcons();</script>

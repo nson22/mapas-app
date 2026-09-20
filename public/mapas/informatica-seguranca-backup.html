@@ -1,0 +1,201 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conectividade, Segurança e Backup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root{
+    --paper: #eef1f5;
+    --paper-2: #e1e7ed;
+    --paper-3: #cfd9e2;
+    --ink: #16212c;
+    --ink-soft: #47586a;
+    --ink-faint: #7c8b9d;
+    --accent: #1f6f8b;        /* circuit teal — network/protocols */
+    --accent-strong: #123f4f;
+    --accent-tint: #d7e7ec;
+    --brass: #a5701c;         /* amber — bizu / tips */
+    --brass-tint: #f1e1bd;
+    --wine: #a1442c;          /* signal red — security / VPN */
+    --wine-tint: #f1ded6;
+    --line: #c2cdd6;
+    --line-soft: #dde4ea;
+    --shadow: 0 1px 2px rgba(22,33,44,.06), 0 8px 24px -14px rgba(22,33,44,.28);
+    --font-display: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #0e1418; --paper-2: #141b21; --paper-3: #1d262e;
+      --ink: #e6ecf0; --ink-soft: #a9b8c2; --ink-faint: #7c8b9d;
+      --accent: #6fbcd6; --accent-strong: #a4d8e8; --accent-tint: #16323c;
+      --brass: #e0b563; --brass-tint: #2f2717;
+      --wine: #e39178; --wine-tint: #3a251e;
+      --line: #2a363f; --line-soft: #19222a;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #0e1418; --paper-2: #141b21; --paper-3: #1d262e;
+    --ink: #e6ecf0; --ink-soft: #a9b8c2; --ink-faint: #7c8b9d;
+    --accent: #6fbcd6; --accent-strong: #a4d8e8; --accent-tint: #16323c;
+    --brass: #e0b563; --brass-tint: #2f2717;
+    --wine: #e39178; --wine-tint: #3a251e;
+    --line: #2a363f; --line-soft: #19222a;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:15.5px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--font-display); color:var(--ink); text-wrap:balance; margin:0;}
+  p{margin:0 0 .9em; max-width:66ch;}
+  a{color:inherit;}
+  ::selection{background:var(--accent-tint); color:var(--accent-strong);}
+  :focus-visible{outline:2.5px solid var(--brass); outline-offset:2px; border-radius:3px;}
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+
+  .hero{padding:56px 0 28px; border-bottom:1px solid var(--line-soft);}
+  .eyebrow{display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:12.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:18px;}
+  .eyebrow::before{content:""; display:inline-block; width:22px; height:1px; background:var(--accent);}
+  h1.title{font-size:clamp(2.1rem, 5vw, 3.2rem); font-weight:700; letter-spacing:-.01em; line-height:1.06;}
+  h1.title em{font-style:italic; font-weight:500; color:var(--accent-strong);}
+  .dek{font-size:1.08rem; color:var(--ink-soft); margin-top:16px; max-width:58ch;}
+
+  .relevance{margin-top:28px; display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px; padding:16px 20px; background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px;}
+  .relevance .stat{display:flex; flex-direction:column; gap:2px;}
+  .relevance .stat .num{font-family:var(--font-display); font-weight:700; font-size:1.5rem; line-height:1;}
+  .relevance .stat .lbl{font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);}
+  .relevance-note{font-size:.9rem; color:var(--ink-soft); flex:1; min-width:220px;}
+  .relevance-note b{color:var(--ink); font-weight:600;}
+
+  .subnav-shell{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-soft);}
+  .subnav{display:flex; gap:6px; overflow-x:auto; padding:12px 24px; max-width:960px; margin:0 auto; scrollbar-width:thin;}
+  .subnav a{flex:none; font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; padding:7px 12px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); text-decoration:none; white-space:nowrap; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
+  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+
+  .diagram-section{padding:44px 0 8px;}
+  .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
+  .diagram-intro h2{font-size:12.5px; font-weight:600; font-family:var(--font-body); color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em;}
+  .diagram-intro p{font-size:.86rem; color:var(--ink-faint); margin:0; max-width:34ch; text-align:right;}
+  .diagram-frame{border:1px solid var(--line-soft); border-radius:16px; background:var(--paper-2); padding:8px; box-shadow:var(--shadow);}
+  svg.mindmap{width:100%; height:auto; display:block;}
+  .mm-link{cursor:pointer;}
+  .mm-node rect{fill:var(--paper); stroke:var(--line); stroke-width:1.3; transition:stroke .15s ease, fill .15s ease;}
+  .mm-node.security rect{stroke:var(--wine);}
+  .mm-node .badge circle{fill:var(--brass);}
+  .mm-node .badge text{fill:var(--paper); font-family:var(--font-mono); font-weight:600;}
+  .mm-node .label{font-family:var(--font-display); font-weight:600; fill:var(--ink); font-size:16.5px;}
+  .mm-node .kicker{font-family:var(--font-mono); fill:var(--ink-faint); font-size:9.6px; letter-spacing:.05em;}
+  .mm-link:hover .mm-node rect, .mm-link.active .mm-node rect{fill:var(--accent-tint); stroke:var(--accent);}
+  .mm-node.security .kicker{fill:var(--wine);}
+  .mm-link:hover .mm-node.security rect, .mm-link.active .mm-node.security rect{fill:var(--wine-tint); stroke:var(--wine);}
+  .mm-center rect{fill:var(--accent-strong); stroke:none;}
+  .mm-center .label{fill:var(--paper); font-size:21px;}
+  .mm-center .kicker{fill:var(--brass-tint); font-size:10.5px;}
+  .mm-lines line{stroke:var(--line); stroke-width:1.4;}
+
+  .branch{padding:52px 0; border-bottom:1px solid var(--line-soft); scroll-margin-top:64px;}
+  .branch:last-of-type{border-bottom:none;}
+  .branch-head{display:grid; grid-template-columns:auto 1fr; gap:16px 20px; align-items:start; margin-bottom:24px;}
+  .branch-num{font-family:var(--font-mono); font-size:13px; color:var(--brass); border:1px solid var(--line); border-radius:8px; width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-weight:600;}
+  .branch.security .branch-num{color:var(--wine); border-color:var(--wine);}
+  .branch-head h2{font-size:clamp(1.5rem,3vw,1.9rem); font-weight:700;}
+  .branch-kicker{grid-column:2; font-family:var(--font-mono); font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); margin-top:-14px;}
+
+  h3.sub{font-size:1.05rem; font-weight:700; margin:28px 0 10px; color:var(--accent-strong);}
+  .branch.security h3.sub{color:var(--wine);}
+  ul.plain, ol.plain{margin:0 0 1em; padding-left:1.25em;}
+  ul.plain li, ol.plain li{margin-bottom:.4em; max-width:62ch;}
+  ul.plain li::marker{color:var(--brass);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 22px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0 22px;}
+  @media (max-width:680px){.grid-2, .grid-3{grid-template-columns:1fr;}}
+
+  .example{background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px; padding:14px 16px;}
+  .example .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); font-weight:600; display:block; margin-bottom:6px;}
+  .example.alt .tag{color:var(--wine);}
+  .example p{margin:0; font-size:.92rem;}
+
+  .callout{border-left:3px solid var(--brass); background:var(--brass-tint); padding:14px 18px; border-radius:0 8px 8px 0; margin:20px 0;}
+  .callout .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--brass); font-weight:700; display:block; margin-bottom:4px;}
+  .callout p{margin:0; font-size:.94rem;}
+  .callout p:last-child{margin-bottom:0;}
+
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 18px;}
+  .chip{font-family:var(--font-mono); font-size:.8rem; padding:4px 10px; border-radius:999px; background:var(--paper-2); border:1px solid var(--line-soft); color:var(--ink-soft);}
+  .chip-group{margin-bottom:14px;}
+  .chip-group .gl{font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); display:block; margin-bottom:6px;}
+
+  details.exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  details.exam summary{cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; display:flex; align-items:center; gap:8px;}
+  details.exam summary::-webkit-details-marker{display:none;}
+  details.exam summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:12px;}
+  details.exam[open] summary::before{content:"\2013";}
+  details.exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  details.exam .opts{margin:10px 0 0; padding-left:1.2em; font-size:.88rem; color:var(--ink-soft);}
+  details.exam .opts li{margin-bottom:3px;}
+  details.exam .a{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:.92rem; color:var(--ink-soft);}
+  details.exam .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+
+  table.data{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.88rem;}
+  table.data th, table.data td{text-align:left; padding:9px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+  table.data th{font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; border-bottom:1.5px solid var(--line);}
+  table.data td.hl{color:var(--accent-strong); font-weight:700;}
+  table.data td.wine{color:var(--wine); font-weight:700;}
+  table.data code{font-family:var(--font-mono); background:var(--paper-3); padding:1px 6px; border-radius:4px; font-size:.85em;}
+  .table-scroll{overflow-x:auto;}
+
+  footer{padding:44px 0 64px; color:var(--ink-faint); font-size:.85rem;}
+  footer .wrap{border-top:1px solid var(--line-soft); padding-top:24px;}
+
+  @media (prefers-reduced-motion: reduce){ * {transition:none !important;} }
+  .lucide{width:1em; height:1em; stroke-width:2; flex:none; vertical-align:-.14em; margin-right:6px;}
+  .eyebrow .lucide{width:15px; height:15px; margin-right:0;}
+  details.exam summary .lucide{width:15px; height:15px; margin-right:0;}
+  .callout .tag .lucide, .example .tag .lucide{width:13px; height:13px; vertical-align:-2px;}
+  .class-card .tag .lucide{width:11px; height:11px; vertical-align:-1.5px; margin-right:4px;}
+  .branch-num .lucide{width:16px; height:16px; margin:0;}
+  .eyebrow::before{display:none !important;}
+  .eyebrow .back{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:50%; color:var(--accent); text-decoration:none; transition:background .15s ease, border-color .15s ease;}
+  .eyebrow .back:hover{background:var(--accent-tint); border-color:var(--accent);}
+  .eyebrow .back .lucide{width:16px; height:16px; margin:0;}
+  .theme-fab{position:fixed; right:18px; bottom:18px; z-index:50; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow);}
+  .theme-fab:hover{border-color:var(--accent); color:var(--accent);}
+  .theme-fab .lucide{width:19px; height:19px; margin:0;}
+  .theme-fab .i-sun{display:none;}
+  :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
+  :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
+
+  .mm-node .label{font-size:19px;}
+  .mm-node .kicker{font-size:11px;}
+  .note-src{font-size:.85rem; color:var(--ink-faint); margin:0 0 18px;}
+  .badge-comp{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; padding:3px 10px; border-radius:999px; background:var(--brass-tint); color:var(--brass); font-weight:700; margin-top:14px;}
+</style>
+
+<header class="hero"><div class="wrap"><div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a>Informática &middot; Complemento</div><h1 class="title">Conectividade, Segurança e <em>Backup</em></h1><p class="dek">Da configuração de rede à proteção dos dados: comandos de teste, contas, defesas, ameaças e recuperação.</p><div class="relevance"><div class="stat"><span class="num">3</span><span class="lbl">ramos</span></div><div class="stat"><span class="num">5</span><span class="lbl">treinos autorais</span></div><div class="stat"><span class="num">3</span><span class="lbl">tipos de backup</span></div><p class="relevance-note">Conteúdo <b>complementar</b>, elaborado a partir do edital da <b>ManausPrev</b> (Técnico Previdenciário &ndash; Informática) e de conhecimento geral de TI. Não vem das apostilas do curso. Os exercícios são <b>autorais</b>, sem banca nem ano.</p></div></div></header>
+<nav class="subnav-shell"><div class="subnav" id="subnav"><a href="#conectividade">Conectividade</a><a href="#seguranca">Segurança</a><a href="#backup">Backup</a></div></nav>
+<main><section class="diagram-section"><div class="wrap"><div class="diagram-intro"><h2>O mapa</h2><p>Três tópicos do edital sobre rede, proteção e recuperação.</p></div><div class="diagram-frame"><svg class="mindmap" viewBox="0 0 1000 360" role="img" aria-label="Mapa mental com três ramos: suporte e conectividade de redes, contas, acessos e segurança, e backup e recuperação de dados."><g class="mm-lines"><line x1="500" y1="104" x2="167" y2="220"/><line x1="500" y1="104" x2="500" y2="220"/><line x1="500" y1="104" x2="833" y2="220"/></g><g class="mm-center"><rect x="350" y="20" width="300" height="84" rx="18"/><text x="500" y="58" text-anchor="middle" class="label">Rede, Segurança</text><text x="500" y="86" text-anchor="middle" class="label">e Backup</text></g><a href="#conectividade" class="mm-link" aria-label="Ir para Suporte de Conectividade"><g class="mm-node" transform="translate(167,220)"><rect class="card" x="-140" y="0" width="280" height="100" rx="14"/><text class="label" x="0" y="34" text-anchor="middle">Suporte</text><text class="label" x="0" y="58" text-anchor="middle">de Conectividade</text><text class="kicker" x="0" y="84" text-anchor="middle">IP · DNS · PING</text></g></a><a href="#seguranca" class="mm-link" aria-label="Ir para Contas e Segurança"><g class="mm-node sintaxe" transform="translate(500,220)"><rect class="card" x="-140" y="0" width="280" height="100" rx="14"/><text class="label" x="0" y="34" text-anchor="middle">Contas</text><text class="label" x="0" y="58" text-anchor="middle">e Segurança</text><text class="kicker" x="0" y="84" text-anchor="middle">MFA · AD · MALWARE</text></g></a><a href="#backup" class="mm-link" aria-label="Ir para Backup e Recuperação"><g class="mm-node semantica" transform="translate(833,220)"><rect class="card" x="-140" y="0" width="280" height="100" rx="14"/><text class="label" x="0" y="34" text-anchor="middle">Backup</text><text class="label" x="0" y="58" text-anchor="middle">e Recuperação</text><text class="kicker" x="0" y="84" text-anchor="middle">FULL · INCR. · DIF.</text></g></a></svg></div></div></section>
+<section class="category"><div class="wrap"><div id="conectividade" class="branch"><div class="branch-head"><span class="branch-num">01</span><h3>Suporte e Conectividade de Redes</h3><span class="branch-kicker">IP, gateway, DNS e comandos de teste</span></div><p>Mapa de apoio ao <b>Redes e Nuvem</b>: aqui entra a parte prática de suporte, com configuração e testes.</p><h4 class="sub">Configuração básica de interface</h4><div class="table-scroll"><table class="data"><thead><tr><th>Item</th><th>Para quê</th><th>Como chega</th></tr></thead><tbody><tr><td class="hl">Endereço IP</td><td>Identifica a máquina na rede</td><td>Automático (DHCP) ou fixo</td></tr><tr><td class="hl">Máscara de sub-rede</td><td>Define a parte de rede e a de máquina do endereço</td><td>Junto com o IP</td></tr><tr><td class="hl">Gateway padrão</td><td>Roteador que leva o tráfego para fora da rede local</td><td>Junto com o IP</td></tr><tr><td class="hl">Servidor DNS</td><td>Traduz nomes em endereços IP</td><td>DHCP ou manual</td></tr></tbody></table></div><div class="callout warn"><span class="tag">Endereço 169.254.x.x</span><p>É um IP de configuração automática privada (APIPA): o computador <b>não conseguiu</b> um endereço do DHCP. Verifique cabo, Wi-Fi e servidor DHCP.</p></div><h4 class="sub">Comandos de teste</h4><div class="table-scroll"><table class="data"><thead><tr><th>Comando</th><th>O que revela</th></tr></thead><tbody><tr><td class="hl">ipconfig (Windows) / ip a (Linux)</td><td>IP, máscara e gateway da máquina</td></tr><tr><td class="hl">ipconfig /all</td><td>Detalhes: MAC, DHCP, DNS</td></tr><tr><td class="hl">ipconfig /release e /renew</td><td>Devolve e pede novo endereço ao DHCP</td></tr><tr><td class="hl">ipconfig /flushdns</td><td>Limpa o cache de DNS</td></tr><tr><td class="hl">ping</td><td>Testa se um destino responde (ICMP) e o tempo de resposta</td></tr><tr><td class="hl">tracert (Windows) / traceroute (Linux)</td><td>Mostra os roteadores no caminho até o destino</td></tr><tr><td class="hl">nslookup</td><td>Consulta o DNS (nome para IP)</td></tr><tr><td class="hl">netstat</td><td>Conexões e portas em uso</td></tr></tbody></table></div><h4 class="sub">Roteiro de diagnóstico de conectividade</h4><div class="table-scroll"><table class="data"><thead><tr><th>Teste</th><th>Se falhar, o problema está em...</th></tr></thead><tbody><tr><td class="hl">1. Ping 127.0.0.1</td><td>Configuração de rede do próprio computador</td></tr><tr><td class="hl">2. Ping no IP da própria máquina</td><td>Placa de rede ou driver</td></tr><tr><td class="hl">3. Ping no gateway</td><td>Cabo, Wi-Fi, switch ou rede local</td></tr><tr><td class="hl">4. Ping em um IP externo (por exemplo 8.8.8.8)</td><td>Saída para a internet (roteador ou operadora)</td></tr><tr><td class="hl">5. Ping em um nome (site)</td><td>Resolução de nomes: <b>DNS</b></td></tr></tbody></table></div><ul class="plain"><li><b>Wi-Fi</b>: conferir rede correta, senha, sinal, e se o roteador ou ponto de acesso está ligado.</li><li><b>Mapear unidade</b>: associa uma letra a uma pasta de rede (caminho \\servidor\pasta), exige permissão.</li><li><b>Impressora em rede</b>: instalar por IP ou nome, com o driver correto, e testar a impressão.</li><li><b>Acesso a sistemas</b>: se outros sites abrem, mas o sistema não, suspeite de proxy, VPN, permissão ou do próprio servidor.</li></ul><details class="exam"><summary>Treino autoral 1</summary><div class="q">O usuário abre sites pelo endereço IP, mas não pelo nome. Onde está o problema mais provável?</div><div class="a"><span class="verdict">DNS</span> &mdash; A rede e a saída para a internet funcionam; falha a tradução de nomes em IP.</div></details></div></div></section><section class="category"><div class="wrap"><div id="seguranca" class="branch sintaxe"><div class="branch-head"><span class="branch-num">02</span><h3>Contas, Acessos e Segurança</h3><span class="branch-kicker">AD, MFA, antivírus, firewall e ameaças</span></div><h4 class="sub">Princípios</h4><div class="grid-3"><div class="example"><span class="tag">Confidencialidade</span><p>Só acessa quem está autorizado.</p></div><div class="example alt"><span class="tag">Integridade</span><p>A informação não é alterada indevidamente.</p></div><div class="example gold"><span class="tag">Disponibilidade</span><p>A informação está acessível quando necessária.</p></div></div><h4 class="sub">Contas e acessos</h4><ul class="plain"><li><b>Criar, alterar, bloquear e desbloquear contas</b> conforme solicitação autorizada.</li><li><b>Redefinir senha</b>: confirme a identidade do usuário antes; a senha temporária deve ser trocada no primeiro acesso.</li><li><b>Desligamento de servidor</b>: prefira <b>desativar</b> a conta (e remover acessos) a excluir, para preservar histórico.</li><li><b>Princípio do menor privilégio</b>: dar só o acesso necessário para a função.</li><li><b>Grupos</b>: dê permissão ao grupo e coloque usuários nele, em vez de conceder usuário a usuário.</li></ul><h4 class="sub">Autenticação</h4><div class="table-scroll"><table class="data"><thead><tr><th>Fator</th><th>Exemplo</th></tr></thead><tbody><tr><td class="hl">Algo que você <b>sabe</b></td><td>Senha, PIN</td></tr><tr><td class="hl">Algo que você <b>tem</b></td><td>Celular com aplicativo autenticador, token, cartão</td></tr><tr><td class="hl">Algo que você <b>é</b></td><td>Digital, rosto</td></tr></tbody></table></div><div class="callout warn"><span class="tag">MFA</span><p>Autenticação multifator combina <b>dois ou mais fatores de tipos diferentes</b>. Senha + PIN são dois fatores do mesmo tipo (algo que se sabe), então não é MFA.</p></div><h4 class="sub">Active Directory (AD), em nível básico</h4><ul class="plain"><li>Serviço de diretório da Microsoft: guarda <b>usuários, grupos, computadores</b> e políticas.</li><li><b>Domínio</b> e <b>controlador de domínio</b> autenticam os usuários.</li><li><b>Unidades organizacionais (OU)</b> organizam objetos; <b>GPO</b> (política de grupo) aplica configurações às máquinas e usuários.</li><li>Usa protocolos como <b>Kerberos</b> e <b>LDAP</b>.</li></ul><h4 class="sub">Proteções</h4><div class="table-scroll"><table class="data"><thead><tr><th>Item</th><th>Função</th></tr></thead><tbody><tr><td class="hl">Antivírus</td><td>Detecta e remove malware por assinaturas e comportamento; isola em quarentena</td></tr><tr><td class="hl">Firewall</td><td>Filtra o tráfego de rede por regras</td></tr><tr><td class="hl">Atualizações</td><td>Corrigem vulnerabilidades: aplicar sistema, navegador e aplicativos</td></tr><tr><td class="hl">Criptografia</td><td>Protege dados em disco e em trânsito</td></tr><tr><td class="hl">Política de senhas</td><td>Tamanho, complexidade, troca e proibição de reuso</td></tr></tbody></table></div><h4 class="sub">Ameaças</h4><div class="table-scroll"><table class="data"><thead><tr><th>Ameaça</th><th>Característica</th></tr></thead><tbody><tr><td class="hl">Vírus</td><td>Infecta arquivos e precisa de um hospedeiro para se espalhar</td></tr><tr><td class="hl">Worm</td><td>Se propaga sozinho pela rede</td></tr><tr><td class="hl">Trojan (cavalo de troia)</td><td>Parece legítimo, mas traz função maliciosa</td></tr><tr><td class="hl">Ransomware</td><td><b>Sequestra</b> dados (criptografa) e exige resgate</td></tr><tr><td class="hl">Spyware / keylogger</td><td>Espiona; o keylogger registra o que é digitado</td></tr><tr><td class="hl">Backdoor</td><td>Abre acesso remoto escondido</td></tr><tr><td class="hl">Botnet</td><td>Rede de máquinas infectadas controladas à distância</td></tr><tr><td class="hl">Phishing</td><td>Mensagem falsa que induz o usuário a entregar dados ou clicar</td></tr><tr><td class="hl">Engenharia social</td><td>Manipula a pessoa (telefonema, falso suporte) em vez de atacar a máquina</td></tr></tbody></table></div><div class="callout warn"><span class="tag">Como se proteger de ransomware</span><p>Não abrir anexos e links suspeitos, manter tudo atualizado, usar o menor privilégio e, principalmente, ter <b>backup fora da rede</b> (offline) e testado. O resgate não garante a devolução dos dados.</p></div><div class="callout"><span class="tag">Dado pessoal</span><p>Proteger informações inclui respeitar a LGPD (Lei nº 13.709/2018): coletar e compartilhar dados pessoais só com finalidade e permissão adequadas.</p></div><details class="exam"><summary>Treino autoral 2</summary><div class="q">Um usuário liga pedindo a redefinição da senha de outra pessoa "porque ela está de férias". O que fazer?</div><div class="a"><span class="verdict">Não atender sem autorização formal e sem confirmar a identidade do titular</span> &mdash; É um caso típico de engenharia social; a redefinição exige validação e autorização.</div></details><details class="exam"><summary>Treino autoral 3</summary><div class="q">Um e-mail diz "sua conta será bloqueada" e pede que o usuário clique em um link e informe a senha. Trata-se de:</div><div class="a"><span class="verdict">Phishing</span> &mdash; Mensagem enganosa que usa urgência para roubar credenciais.</div></details></div></div></section><section class="category"><div class="wrap"><div id="backup" class="branch semantica"><div class="branch-head"><span class="branch-num">03</span><h3>Backup e Recuperação de Dados</h3><span class="branch-kicker">tipos, regra 3-2-1 e testes</span></div><p>Backup é a <b>cópia dos dados</b> em outro local para permitir a recuperação. Backup sem <b>teste de restauração</b> é apenas esperança.</p><div class="table-scroll"><table class="data"><thead><tr><th>Tipo</th><th>O que copia</th><th>Para restaurar</th></tr></thead><tbody><tr><td class="hl">Completo (full)</td><td>Tudo</td><td>Só o backup completo</td></tr><tr><td class="hl">Incremental</td><td>O que mudou desde o <b>último backup</b> (de qualquer tipo)</td><td>Completo + <b>todos</b> os incrementais, em ordem</td></tr><tr><td class="hl">Diferencial</td><td>O que mudou desde o <b>último completo</b></td><td>Completo + o <b>último</b> diferencial</td></tr></tbody></table></div><ul class="plain"><li><b>Incremental</b>: backup mais rápido e leve, restauração mais trabalhosa.</li><li><b>Diferencial</b>: cresce a cada dia, mas a restauração usa só dois conjuntos.</li><li>Completo e incremental costumam <b>marcar</b> os arquivos como copiados; o diferencial não.</li></ul><h4 class="sub">Boas práticas</h4><div class="table-scroll"><table class="data"><thead><tr><th>Prática</th><th>Detalhe</th></tr></thead><tbody><tr><td class="hl">Regra 3-2-1</td><td>3 cópias, em 2 tipos de mídia diferentes, com 1 delas fora do local (ou na nuvem)</td></tr><tr><td class="hl">Armazenamento</td><td>Local (rápido), externo (fita, disco removível) e em nuvem (fora do local)</td></tr><tr><td class="hl">Rotina e monitoramento</td><td>Agendar, verificar os <b>logs</b> e tratar falhas de execução</td></tr><tr><td class="hl">Catalogação e retenção</td><td>Identificar mídias, definir quanto tempo guardar e quando descartar</td></tr><tr><td class="hl">Testes de recuperação</td><td>Restaurar periodicamente arquivos e sistemas para provar que funciona</td></tr><tr><td class="hl">Proteção e descarte</td><td>Criptografar, controlar acesso; destruir ou apagar com segurança as mídias fora de uso</td></tr></tbody></table></div><div class="grid-2"><div class="example"><span class="tag">RPO</span><p>Quanto de dado, em tempo, a organização aceita perder (define a frequência do backup).</p></div><div class="example alt"><span class="tag">RTO</span><p>Quanto tempo a organização aceita levar para restaurar o serviço.</p></div></div><div class="callout warn"><span class="tag">Pegadinhas</span><p>Cópia em outra pasta do mesmo disco <b>não é</b> backup seguro. <b>Sincronização</b> (como pasta em nuvem) não substitui backup: apagar um arquivo pode apagá-lo das duas pontas.</p></div><details class="exam"><summary>Treino autoral 4</summary><div class="q">Na segunda foi feito um backup completo. De terça a quinta, backups incrementais. Na sexta, o disco falha. O que é preciso restaurar?</div><div class="a"><span class="verdict">O completo de segunda e os incrementais de terça, quarta e quinta</span> &mdash; No incremental, cada backup guarda só a mudança em relação ao anterior; todos são necessários, em ordem.</div></details><details class="exam"><summary>Treino autoral 5</summary><div class="q">No mesmo cenário, mas com backups diferenciais de terça a quinta, o que restaurar?</div><div class="a"><span class="verdict">O completo de segunda e o diferencial de quinta</span> &mdash; O diferencial guarda tudo que mudou desde o último completo; o mais recente basta.</div></details></div></div></section></main>
+<footer><div class="wrap"><p style="margin:0;">Mapa complementar de Informática, montado a partir do conteúdo programático do edital. Exercícios autorais no estilo das bancas; confira nomes de comandos e telas na versão do sistema que você usa.</p></div></footer>
+<button type="button" class="theme-fab" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i></button>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  var mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function saved(){ try{ return localStorage.getItem('mapas-theme'); }catch(e){ return null; } }
+  function current(){ return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
+  function apply(t){ root.setAttribute('data-theme', t); btn.setAttribute('aria-pressed', t==='dark'); }
+  var s=saved(); apply(s==='dark'||s==='light' ? s : current());
+  btn.addEventListener('click', function(){
+    var t=current()==='dark' ? 'light' : 'dark'; apply(t);
+    try{ localStorage.setItem('mapas-theme', t); }catch(e){}
+  });
+})();
+</script>
+<script>(function(){var links=[].slice.call(document.querySelectorAll('#subnav a'));var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));}).filter(Boolean);var mm=[].slice.call(document.querySelectorAll('.mm-link'));function on(id){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id);});mm.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id);});}if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){on(e.target.id);}});},{rootMargin:'-45% 0px -50% 0px',threshold:0});secs.forEach(function(s){o.observe(s);});}})();</script>
+<script>lucide.createIcons();</script>

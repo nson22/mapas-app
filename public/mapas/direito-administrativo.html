@@ -1,0 +1,933 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Responsabilidade Civil do Estado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --paper: #f4f1e4;
+    --paper-2: #eae4cf;
+    --paper-3: #ddd5b8;
+    --ink: #1c2318;
+    --ink-soft: #52573f;
+    --ink-faint: #7d7d63;
+    --accent: #2f5233;       /* verdigris green — core doctrine */
+    --accent-strong: #1f3a24;
+    --accent-tint: #dfe6d4;
+    --brass: #a5791f;        /* brass — citations, ratings, exception marker text */
+    --brass-tint: #f1e3bd;
+    --wine: #7d2f2c;         /* wine red — risco integral / exceção */
+    --wine-tint: #f1ddd4;
+    --line: #cdc3a0;
+    --line-soft: #e1d9bd;
+    --shadow: 0 1px 2px rgba(28,35,24,.06), 0 8px 24px -14px rgba(28,35,24,.28);
+    --font-display: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #14170e;
+      --paper-2: #1b1f13;
+      --paper-3: #262b19;
+      --ink: #ece7d6;
+      --ink-soft: #b8b295;
+      --ink-faint: #85806a;
+      --accent: #8fbf8a;
+      --accent-strong: #b7dcae;
+      --accent-tint: #223022;
+      --brass: #dfb45c;
+      --brass-tint: #332a15;
+      --wine: #e0968a;
+      --wine-tint: #3a2320;
+      --line: #3a4028;
+      --line-soft: #262b19;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #14170e;
+    --paper-2: #1b1f13;
+    --paper-3: #262b19;
+    --ink: #ece7d6;
+    --ink-soft: #b8b295;
+    --ink-faint: #85806a;
+    --accent: #8fbf8a;
+    --accent-strong: #b7dcae;
+    --accent-tint: #223022;
+    --brass: #dfb45c;
+    --brass-tint: #332a15;
+    --wine: #e0968a;
+    --wine-tint: #3a2320;
+    --line: #3a4028;
+    --line-soft: #262b19;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+  }
+
+  /* ============ BASE ============ */
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:15.5px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:var(--font-display); color:var(--ink); text-wrap:balance; margin:0;}
+  p{margin:0 0 .9em; max-width:66ch;}
+  a{color:inherit;}
+  ::selection{background:var(--accent-tint); color:var(--accent-strong);}
+  :focus-visible{outline:2.5px solid var(--brass); outline-offset:2px; border-radius:3px;}
+
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  .measure{max-width:66ch;}
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:56px 0 28px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:""; display:inline-block; width:22px; height:1px; background:var(--accent);
+  }
+  h1.title{
+    font-size:clamp(2.1rem, 5vw, 3.2rem);
+    font-weight:700;
+    letter-spacing:-.01em;
+    line-height:1.06;
+  }
+  h1.title em{
+    font-style:italic; font-weight:500; color:var(--accent-strong);
+  }
+  .dek{
+    font-size:1.08rem; color:var(--ink-soft); margin-top:16px; max-width:56ch;
+  }
+
+  .relevance{
+    margin-top:28px;
+    display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px;
+    padding:16px 20px;
+    background:var(--paper-2);
+    border:1px solid var(--line-soft);
+    border-radius:10px;
+  }
+  .relevance .stat{display:flex; flex-direction:column; gap:2px;}
+  .relevance .stat .num{font-family:var(--font-display); font-weight:700; font-size:1.5rem; line-height:1;}
+  .relevance .stat .lbl{font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);}
+  .stars{color:var(--brass); letter-spacing:1px; font-size:1.05rem;}
+  .stars .dim{color:var(--line);}
+  .relevance-note{font-size:.9rem; color:var(--ink-soft); flex:1; min-width:220px;}
+  .relevance-note b{color:var(--ink); font-weight:600;}
+
+  /* ============ SUBNAV ============ */
+  .subnav-shell{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .subnav{
+    display:flex; gap:6px; overflow-x:auto;
+    padding:12px 24px; max-width:960px; margin:0 auto;
+    scrollbar-width:thin;
+  }
+  .subnav a{
+    flex:none;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.03em;
+    padding:7px 12px; border-radius:999px; border:1px solid var(--line);
+    color:var(--ink-soft); text-decoration:none; white-space:nowrap;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
+  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+
+  /* ============ DIAGRAM ============ */
+  .diagram-section{padding:44px 0 8px;}
+  .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
+  .diagram-intro h2{font-size:1.05rem; font-weight:600; font-family:var(--font-body); color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em; font-size:12.5px;}
+  .diagram-intro p{font-size:.86rem; color:var(--ink-faint); margin:0; max-width:34ch; text-align:right;}
+  .diagram-frame{
+    border:1px solid var(--line-soft);
+    border-radius:16px;
+    background:var(--paper-2);
+    padding:8px;
+    box-shadow:var(--shadow);
+  }
+  svg.mindmap{width:100%; height:auto; display:block;}
+  .mm-link{cursor:pointer;}
+  .mm-node rect{
+    fill:var(--paper); stroke:var(--line); stroke-width:1.3;
+    transition:stroke .15s ease, fill .15s ease;
+  }
+  .mm-node.exception rect{stroke:var(--wine);}
+  .mm-node .badge circle{fill:var(--brass);}
+  .mm-node .badge text{fill:var(--paper); font-family:var(--font-mono); font-weight:600;}
+  .mm-node .label{font-family:var(--font-display); font-weight:600; fill:var(--ink); font-size:16.5px;}
+  .mm-node .kicker{font-family:var(--font-mono); fill:var(--ink-faint); font-size:9.6px; letter-spacing:.05em;}
+  .mm-link:hover .mm-node rect, .mm-link.active .mm-node rect{fill:var(--accent-tint); stroke:var(--accent);}
+  .mm-node.exception .kicker{fill:var(--wine);}
+  .mm-center rect{fill:var(--accent-strong); stroke:none;}
+  .mm-center .label{fill:var(--paper); font-size:21px;}
+  .mm-center .kicker{fill:var(--brass-tint); font-size:10.5px;}
+  .mm-lines line{stroke:var(--line); stroke-width:1.4;}
+
+  /* ============ SECTIONS ============ */
+  .branch{padding:58px 0; border-bottom:1px solid var(--line-soft); scroll-margin-top:64px;}
+  .branch:last-of-type{border-bottom:none;}
+  .branch-head{
+    display:grid; grid-template-columns:auto 1fr; gap:16px 20px; align-items:start;
+    margin-bottom:26px;
+  }
+  .branch-num{
+    font-family:var(--font-mono); font-size:13px; color:var(--brass);
+    border:1px solid var(--line); border-radius:8px; width:40px; height:40px;
+    display:flex; align-items:center; justify-content:center; font-weight:600;
+  }
+  .branch-head h2{font-size:clamp(1.5rem,3vw,1.9rem); font-weight:700;}
+  .branch-kicker{
+    grid-column:2; font-family:var(--font-mono); font-size:12px; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--ink-faint); margin-top:-14px;
+  }
+  .branch.exception .branch-num{color:var(--wine); border-color:var(--wine);}
+
+  h3.sub{font-size:1.05rem; font-weight:700; margin:30px 0 10px; color:var(--accent-strong);}
+  .branch.exception h3.sub{color:var(--wine);}
+  ul.plain, ol.plain{margin:0 0 1em; padding-left:1.25em;}
+  ul.plain li, ol.plain li{margin-bottom:.4em; max-width:62ch;}
+  ul.plain li::marker{color:var(--brass);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:14px 0 22px;}
+  @media (max-width:640px){.grid-2{grid-template-columns:1fr;}}
+
+  .example{
+    background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px;
+    padding:16px 18px;
+  }
+  .example .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); font-weight:600; display:block; margin-bottom:6px;}
+  .example.illicit .tag{color:var(--wine);}
+  .example p{margin:0; font-size:.94rem;}
+
+  .callout{
+    border-left:3px solid var(--brass);
+    background:var(--brass-tint);
+    padding:14px 18px; border-radius:0 8px 8px 0; margin:20px 0;
+  }
+  .callout .tag{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--brass); font-weight:700; display:block; margin-bottom:4px;}
+  .callout p{margin:0; font-size:.94rem;}
+  .callout p:last-child{margin-bottom:0;}
+
+  .case{
+    border-left:3px solid var(--accent);
+    padding:10px 0 10px 16px; margin:16px 0;
+  }
+  .branch.exception .case{border-left-color:var(--wine);}
+  .case .cite{font-family:var(--font-mono); font-size:12px; color:var(--brass); font-weight:600; display:block; margin-bottom:3px;}
+  .case .tese{font-weight:700; display:block; margin-bottom:3px; font-size:.97rem;}
+  .case p{margin:0; font-size:.92rem; color:var(--ink-soft);}
+
+  details.exam{
+    border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0;
+    background:var(--paper-2);
+  }
+  details.exam summary{
+    cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:12px;
+    text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;
+    display:flex; align-items:center; gap:8px;
+  }
+  details.exam summary::-webkit-details-marker{display:none;}
+  details.exam summary::before{
+    content:"+"; display:inline-flex; align-items:center; justify-content:center;
+    width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:12px;
+    transition:transform .15s ease;
+  }
+  details.exam[open] summary::before{content:"–";}
+  details.exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  details.exam .a{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:.92rem; color:var(--ink-soft);}
+  details.exam .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+
+  .timeline{display:flex; gap:0; overflow-x:auto; margin:22px 0 8px; padding-bottom:6px;}
+  .tl-stage{flex:1 0 210px; position:relative; padding:0 18px 0 0;}
+  .tl-stage:not(:last-child)::after{
+    content:""; position:absolute; top:9px; right:0; width:18px; height:1px; background:var(--line);
+  }
+  .tl-dot{width:18px; height:18px; border-radius:50%; background:var(--paper); border:2.5px solid var(--accent); margin-bottom:10px;}
+  .tl-stage.dead .tl-dot{border-color:var(--ink-faint);}
+  .tl-stage h4{font-size:.98rem; font-weight:700; margin-bottom:4px;}
+  .tl-stage p{font-size:.84rem; color:var(--ink-soft); margin:0;}
+
+  table.data{
+    width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.9rem;
+  }
+  table.data th, table.data td{
+    text-align:left; padding:10px 12px; border-bottom:1px solid var(--line-soft); vertical-align:top;
+  }
+  table.data th{
+    font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--ink-faint); font-weight:600; border-bottom:1.5px solid var(--line);
+  }
+  table.data td.hl{color:var(--accent-strong); font-weight:700;}
+  table.data td.wine{color:var(--wine); font-weight:700;}
+  .table-scroll{overflow-x:auto;}
+
+  .kv{display:grid; grid-template-columns:max-content 1fr; gap:6px 16px; margin:16px 0 22px; font-size:.92rem;}
+  .kv dt{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); padding-top:2px;}
+  .kv dd{margin:0; color:var(--ink-soft);}
+
+  .lawquote{
+    font-family:var(--font-mono); font-size:.86rem; line-height:1.65; color:var(--ink-soft);
+    border-left:3px solid var(--line); padding-left:16px; margin:16px 0; max-width:60ch;
+  }
+  .lawquote cite{display:block; margin-top:6px; font-style:normal; color:var(--brass);}
+
+  footer{padding:44px 0 64px; color:var(--ink-faint); font-size:.85rem;}
+  footer .wrap{border-top:1px solid var(--line-soft); padding-top:24px;}
+
+  @media (prefers-reduced-motion: reduce){
+    * {transition:none !important;}
+  }
+  .lucide{width:1em; height:1em; stroke-width:2; flex:none; vertical-align:-.14em; margin-right:6px;}
+  .eyebrow .lucide{width:15px; height:15px; margin-right:0;}
+  details.exam summary .lucide{width:15px; height:15px; margin-right:0;}
+  .callout .tag .lucide, .example .tag .lucide{width:13px; height:13px; vertical-align:-2px;}
+  .class-card .tag .lucide{width:11px; height:11px; vertical-align:-1.5px; margin-right:4px;}
+  .branch-num .lucide{width:16px; height:16px; margin:0;}
+  .eyebrow::before{display:none !important;}
+  .eyebrow .back{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:50%; color:var(--accent); text-decoration:none; transition:background .15s ease, border-color .15s ease;}
+  .eyebrow .back:hover{background:var(--accent-tint); border-color:var(--accent);}
+  .eyebrow .back .lucide{width:16px; height:16px; margin:0;}
+  .theme-fab{position:fixed; right:18px; bottom:18px; z-index:50; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow);}
+  .theme-fab:hover{border-color:var(--accent); color:var(--accent);}
+  .theme-fab .lucide{width:19px; height:19px; margin:0;}
+  .theme-fab .i-sun{display:none;}
+  :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
+  :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a>Direito Administrativo &middot; Mapa Mental</div>
+    <h1 class="title">Responsabilidade <em>Civil</em> do Estado</h1>
+    <p class="dek">Do "o rei não erra" ao risco administrativo do art. 37, § 6º &mdash; as teorias, excludentes, exceções e a jurisprudência do STF/STJ organizadas para revisão.</p>
+
+    <div class="relevance">
+      <div class="stat">
+        <span class="num">6º</span>
+        <span class="lbl">de 11 temas</span>
+      </div>
+      <div class="stat">
+        <span class="num stars">★★★★<span class="dim">★</span></span>
+        <span class="lbl">nível de cobrança</span>
+      </div>
+      <p class="relevance-note">Segundo o mapa de relevância do curso, este tema fica atrás apenas de <b>Licitações e Contratos</b>, <b>Atos Administrativos</b>, <b>Organização Administrativa</b>, <b>Improbidade</b> e <b>Poderes Administrativos</b> &mdash; e à frente de Serviços Públicos e Processo Administrativo.</p>
+    </div>
+  </div>
+</header>
+
+<nav class="subnav-shell">
+  <div class="subnav" id="subnav">
+    <a href="#conceito">01 Conceito</a>
+    <a href="#evolucao">02 Evolução</a>
+    <a href="#risco-administrativo">03 Risco Administrativo</a>
+    <a href="#risco-integral">04 Risco Integral</a>
+    <a href="#nexo-causal">05 Nexo Causal</a>
+    <a href="#situacoes">06 Situações Especiais</a>
+    <a href="#custodia">07 Custódia</a>
+    <a href="#prescricao">08 Prescrição</a>
+    <a href="#outras">09 Outras Frentes</a>
+  </div>
+</nav>
+
+<main>
+  <section class="diagram-section">
+    <div class="wrap">
+      <div class="diagram-intro">
+        <h2>O mapa</h2>
+        <p>Toque em qualquer ramo para ir direto ao conteúdo daquele bloco.</p>
+      </div>
+      <div class="diagram-frame">
+        <svg class="mindmap" viewBox="0 0 900 560" role="img" aria-label="Mapa mental da responsabilidade civil do Estado, com um núcleo central conectado a nove ramos: conceito, evolução histórica, risco administrativo, risco integral, nexo causal, situações especiais, relações de custódia, prescrição e outras frentes de responsabilidade.">
+          <g class="mm-lines">
+            <line x1="450" y1="290" x2="450" y2="90"/>
+            <line x1="450" y1="290" x2="690" y2="146"/>
+            <line x1="450" y1="290" x2="795" y2="255"/>
+            <line x1="450" y1="290" x2="753" y2="390"/>
+            <line x1="450" y1="290" x2="570" y2="478"/>
+            <line x1="450" y1="290" x2="330" y2="478"/>
+            <line x1="450" y1="290" x2="147" y2="390"/>
+            <line x1="450" y1="290" x2="105" y2="255"/>
+            <line x1="450" y1="290" x2="225" y2="146"/>
+          </g>
+
+          <g class="mm-center">
+            <rect x="330" y="245" width="240" height="90" rx="16"/>
+            <text x="450" y="282" text-anchor="middle" class="label">Responsabilidade</text>
+            <text x="450" y="306" text-anchor="middle" class="label">Civil do Estado</text>
+            <text x="450" y="324" text-anchor="middle" class="kicker">CF, ART. 37, § 6º</text>
+          </g>
+
+          <a href="#conceito" class="mm-link" aria-label="Ir para Conceito e elementos">
+            <g class="mm-node" transform="translate(450,90)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">01</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Conceito</text>
+              <text class="label" x="0" y="14" text-anchor="middle">&amp; Elementos</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">AÇÕES · OMISSÕES · ATOS</text>
+            </g>
+          </a>
+
+          <a href="#evolucao" class="mm-link" aria-label="Ir para Evolução histórica">
+            <g class="mm-node" transform="translate(690,146)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">02</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Evolução</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Histórica</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">4 TEORIAS</text>
+            </g>
+          </a>
+
+          <a href="#risco-administrativo" class="mm-link" aria-label="Ir para Teoria do Risco Administrativo">
+            <g class="mm-node" transform="translate(795,255)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">03</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Risco</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Administrativo</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">A REGRA NO BRASIL</text>
+            </g>
+          </a>
+
+          <a href="#risco-integral" class="mm-link" aria-label="Ir para Teoria do Risco Integral">
+            <g class="mm-node exception" transform="translate(753,390)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">04</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Risco</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Integral</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">A EXCEÇÃO</text>
+            </g>
+          </a>
+
+          <a href="#nexo-causal" class="mm-link" aria-label="Ir para Interrupção do nexo causal">
+            <g class="mm-node" transform="translate(570,478)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">05</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Nexo</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Causal</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">CAUSA DIRETA E IMEDIATA</text>
+            </g>
+          </a>
+
+          <a href="#situacoes" class="mm-link" aria-label="Ir para Situações especiais">
+            <g class="mm-node" transform="translate(330,478)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">06</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Situações</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Especiais</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">OBRAS · MULTIDÕES</text>
+            </g>
+          </a>
+
+          <a href="#custodia" class="mm-link" aria-label="Ir para Relações de custódia">
+            <g class="mm-node" transform="translate(147,390)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">07</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Relações de</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Custódia</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">PRESOS · ESCOLAS</text>
+            </g>
+          </a>
+
+          <a href="#prescricao" class="mm-link" aria-label="Ir para Prescrição">
+            <g class="mm-node" transform="translate(105,255)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">08</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Prescrição</text>
+              <text class="label" x="0" y="14" text-anchor="middle">5 Anos</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">REGRESSO · INDENIZAÇÃO</text>
+            </g>
+          </a>
+
+          <a href="#outras" class="mm-link" aria-label="Ir para Outras frentes de responsabilidade">
+            <g class="mm-node" transform="translate(225,146)">
+              <circle class="badge" cx="-84" cy="-24" r="12"/>
+              <text class="badge" x="-84" y="-20" text-anchor="middle" font-size="10">09</text>
+              <rect x="-98" y="-34" width="196" height="68" rx="14"/>
+              <text class="label" x="0" y="-8" text-anchor="middle">Outras</text>
+              <text class="label" x="0" y="14" text-anchor="middle">Frentes</text>
+              <text class="kicker" x="0" y="30" text-anchor="middle">LEGISLATIVO · JUDICIÁRIO</text>
+            </g>
+          </a>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 CONCEITO -->
+  <section id="conceito" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">01</span>
+        <h2>Conceito &amp; Elementos</h2>
+        <span class="branch-kicker">responsabilidade extracontratual</span>
+      </div>
+      <p>É a obrigação que o Estado tem de indenizar terceiros por danos causados pela atuação de seus agentes públicos. Não decorre de um contrato &mdash; por isso "extracontratual". O dano pode nascer de:</p>
+      <ul class="plain">
+        <li><strong>Ações</strong> (condutas comissivas) &mdash; o agente pratica um ato que gera prejuízo;</li>
+        <li><strong>Omissões</strong> (condutas omissivas) &mdash; o Estado deixa de agir quando tinha o dever legal de atuar;</li>
+        <li><strong>Atos materiais</strong> &mdash; comportamentos concretos, como uma operação policial;</li>
+        <li><strong>Atos jurídicos</strong> &mdash; atos administrativos ou decisões estatais com efeitos jurídicos;</li>
+        <li><strong>Atos lícitos ou ilícitos</strong> &mdash; mesmo um ato praticado dentro da lei pode gerar dever de indenizar, se causar prejuízo a alguém.</li>
+      </ul>
+      <p>Regra de ouro: havendo <strong>dano</strong> + <strong>vínculo com a atuação estatal</strong>, pode nascer o dever de indenizar &mdash; independentemente de o ato ser lícito ou ilícito.</p>
+      <div class="grid-2">
+        <div class="example illicit">
+          <span class="tag">Exemplo &middot; ato ilícito</span>
+          <p>Viatura policial dirigida com imprudência colide com um veículo particular. O Estado responde pelos prejuízos materiais causados.</p>
+        </div>
+        <div class="example">
+          <span class="tag">Exemplo &middot; ato lícito</span>
+          <p>Obra pública regular e necessária causa rachaduras em imóvel vizinho durante a execução. Mesmo lícita, o proprietário tem direito à indenização.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 EVOLUÇÃO -->
+  <section id="evolucao" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">02</span>
+        <h2>Evolução Histórica</h2>
+        <span class="branch-kicker">4 teorias, em ordem</span>
+      </div>
+      <p>Não existe uma teoria única aplicada em todos os países e momentos históricos. Sistemas de tradição anglo-saxã (EUA, Reino Unido) seguiram o Direito Privado; o sistema continental europeu &mdash; sobretudo a França &mdash; desenvolveu um Direito Público próprio, que influenciou diretamente o Brasil.</p>
+
+      <div class="timeline table-scroll">
+        <div class="tl-stage dead">
+          <div class="tl-dot"></div>
+          <h4>Irresponsabilidade</h4>
+          <p>Estados absolutistas. "The king can do no wrong." Nunca vigorou no Brasil.</p>
+        </div>
+        <div class="tl-stage">
+          <div class="tl-dot"></div>
+          <h4>Teorias civilistas</h4>
+          <p>Critérios do Direito Civil. Responsabilidade subjetiva, com prova de culpa.</p>
+        </div>
+        <div class="tl-stage">
+          <div class="tl-dot"></div>
+          <h4>Teorias publicistas</h4>
+          <p>Caso Blanco (1873). Nasce um Direito Público autônomo sobre o tema.</p>
+        </div>
+        <div class="tl-stage">
+          <div class="tl-dot"></div>
+          <h4>Responsabilidade objetiva</h4>
+          <p>Regime atual &mdash; CF, art. 37, § 6º. Não exige prova de culpa ou dolo.</p>
+        </div>
+      </div>
+
+      <h3 class="sub">1&#41; Teoria da Irresponsabilidade do Estado</h3>
+      <p>Predominante nos Estados Absolutistas: o Estado era soberano e superior aos súditos, logo não podia ser responsabilizado. Baseava-se em máximas como <em>"The king can do no wrong"</em> e <em>"Quod principi placuit habet legis vigorem"</em> (o que agrada ao príncipe tem força de lei). Foi considerada extremamente injusta e perdeu espaço com as Revoluções Liberais &mdash; sobretudo a Revolução Francesa de 1789, que trouxe o Estado de Direito, a legalidade e a separação de poderes.</p>
+      <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Atenção</span><p>Essa teoria <strong>nunca foi aplicada</strong> ao Direito brasileiro.</p></div>
+
+      <h3 class="sub">2&#41; Teorias Civilistas (subjetivas)</h3>
+      <p>Passou-se a admitir a responsabilidade, mas com os mesmos critérios do Direito Civil aplicados aos particulares &mdash; era preciso provar culpa. Duas fases:</p>
+      <ul class="plain">
+        <li><strong>Atos de Império x Atos de Gestão</strong> &mdash; nos atos de império (multa, interdição, desapropriação), praticados com prerrogativas de autoridade, o Estado não respondia; nos atos de gestão (contratos, administração do patrimônio), em situação de igualdade com o particular, o Estado respondia. Abandonada: era difícil distinguir os dois na prática, e o Estado tem personalidade jurídica única, não divisível.</li>
+        <li><strong>Teoria da Culpa Civil</strong> &mdash; o Estado era comparado a um empregador que responde pelos atos de seus prepostos. A vítima precisava provar dano, culpa do agente e nexo causal. Inspirou o art. 15 do Código Civil de 1916.</li>
+      </ul>
+
+      <h3 class="sub">3&#41; Teorias Publicistas</h3>
+      <p>Marco: o <strong>Caso Blanco</strong> (França, 1873) &mdash; o Tribunal de Conflitos francês decidiu que a responsabilidade do Estado não deveria seguir as regras do Direito Civil, mas normas próprias de Direito Público.</p>
+      <p><strong>Teoria da Culpa Administrativa</strong> (Faute du Service, também chamada culpa ou falta do serviço): o Estado responde independentemente de identificar o agente causador, bastando provar que o serviço <strong>não funcionou</strong>, <strong>funcionou mal</strong> ou <strong>funcionou tardiamente</strong>. É subjetiva &mdash; mas o ônus da prova é do Estado, que deve provar que o serviço funcionou. Hoje ainda se aplica à responsabilidade por <strong>omissão</strong>.</p>
+      <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Como cai em prova</span><p>O STF distingue omissão <strong>genérica</strong> (responsabilidade subjetiva, culpa do serviço) de omissão <strong>específica</strong> &mdash; quando há dever de agir certo e determinado no caso concreto &mdash; que gera responsabilidade <strong>objetiva</strong>. Exemplo: juiz determina reforço policial em uma fazenda, a polícia não cumpre e a fazenda é invadida &rarr; responsabilidade objetiva do Poder Público.</p></div>
+
+      <details class="exam">
+        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Questão &middot; culpa administrativa</summary>
+        <p class="q">"De acordo com a teoria da culpa administrativa, o dever de o Estado indenizar dano sofrido por particular pode ocorrer de três formas: inexistência do serviço, mau funcionamento do serviço ou retardamento do serviço." Certo ou errado?</p>
+        <div class="a"><span class="verdict">Certo.</span> As três hipóteses clássicas da culpa do serviço são exatamente essas. Cuidado para não confundir com a teoria objetiva atual (art. 37, § 6º), que dispensa a prova de culpa &mdash; a questão pergunta especificamente pela culpa administrativa, fase histórica anterior.</div>
+      </details>
+
+      <h3 class="sub">4&#41; Teoria da Responsabilidade Objetiva</h3>
+      <p>É a teoria adotada hoje pela Constituição Federal (art. 37, § 6º) e desenvolvida em detalhe nos dois ramos seguintes deste mapa &mdash; risco administrativo (a regra) e risco integral (a exceção).</p>
+    </div>
+  </section>
+
+  <!-- 03 RISCO ADMINISTRATIVO -->
+  <section id="risco-administrativo" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">03</span>
+        <h2>Teoria do Risco Administrativo</h2>
+        <span class="branch-kicker">a regra no ordenamento brasileiro</span>
+      </div>
+      <p>O Estado responde <strong>objetivamente</strong> pelos danos que seus agentes causarem a terceiros no exercício de suas funções &mdash; não é necessário provar dolo ou culpa do agente.</p>
+
+      <div class="lawquote">
+        "As pessoas jurídicas de direito público e as de direito privado prestadoras de serviços públicos responderão pelos danos que seus agentes, nessa qualidade, causarem a terceiros, assegurado o direito de regresso contra o responsável nos casos de dolo ou culpa."
+        <cite>Constituição Federal, art. 37, § 6º &middot; ver também Código Civil, art. 43</cite>
+      </div>
+
+      <p>Fundamento doutrinário (Celso Antônio Bandeira de Mello): o <strong>princípio da igualdade</strong>. Quando o Estado age no interesse de toda a coletividade, os benefícios se distribuem para todos &mdash; então, se essa mesma atuação causa um prejuízo específico a alguém, é justo que a coletividade (via Estado) assuma esse ônus, em vez de deixá-lo só com a vítima.</p>
+
+      <h3 class="sub">O que a vítima precisa provar</h3>
+      <div class="grid-2">
+        <div class="example">
+          <span class="tag">Precisa provar</span>
+          <p>Conduta administrativa &middot; dano &middot; nexo causal entre os dois.</p>
+        </div>
+        <div class="example illicit">
+          <span class="tag">Não precisa provar</span>
+          <p>Culpa ou dolo do agente público.</p>
+        </div>
+      </div>
+
+      <h3 class="sub">Excludentes de responsabilidade</h3>
+      <p>Objetiva não é sinônimo de automática: há causas que rompem o nexo causal e afastam (ou reduzem) o dever de indenizar.</p>
+      <div class="table-scroll">
+        <table class="data">
+          <thead><tr><th>Excludente</th><th>Efeito</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td>Caso fortuito ou força maior</td><td class="hl">Afasta</td><td>Terremoto destrói uma ponte e danifica veículos.</td></tr>
+            <tr><td>Culpa exclusiva de terceiro</td><td class="hl">Afasta</td><td>Criminoso invade repartição pública e agride um cidadão.</td></tr>
+            <tr><td>Culpa exclusiva da vítima</td><td class="hl">Afasta</td><td>Pessoa ignora sinalização e invade área interditada de obra.</td></tr>
+            <tr><td>Culpa concorrente</td><td>Reduz proporcionalmente</td><td>Motorista em excesso de velocidade é atingido por viatura que avançou o sinal.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">"Na qualidade de agente público"</h3>
+      <p>O agente não precisa estar formalmente em serviço ou dentro do horário de expediente &mdash; basta que o dano tenha relação com a função pública exercida.</p>
+      <div class="case">
+        <span class="cite">STF &middot; RE 135.310</span>
+        <span class="tese">Uso de arma funcional fora do serviço</span>
+        <p>Servidor mata um menor com arma do Estado fora do horário de trabalho &mdash; Estado responde, pois o dano decorreu da condição funcional do agente.</p>
+      </div>
+      <div class="case">
+        <span class="cite">STF &middot; ARE 644.395 AgR</span>
+        <span class="tese">Assalto praticado por policial fardado, fora de serviço</span>
+        <p>A farda transmite autoridade estatal &mdash; há responsabilidade porque a conduta foi praticada na qualidade de agente público.</p>
+      </div>
+
+      <h3 class="sub">Jurisprudência que costuma cair</h3>
+      <div class="case">
+        <span class="cite">STJ &middot; REsp 1.749.941/PR</span>
+        <span class="tese">Roubo e sequestro armado em rodovia concedida</span>
+        <p>Não se aplica a teoria do risco integral às concessionárias. Roubo com arma de fogo é fortuito externo suficiente para romper o nexo causal.</p>
+      </div>
+      <div class="case">
+        <span class="cite">STJ &middot; REsp 1.837.378/RO</span>
+        <span class="tese">Fogos de artifício deixados sem proteção em via pública</span>
+        <p>Não há culpa concorrente dos pais por deixar o filho brincar em via pública &mdash; o município deveria ter isolado a área.</p>
+      </div>
+      <div class="case">
+        <span class="cite">STJ &middot; REsp 1.908.738/SP &middot; Tema 1.122</span>
+        <span class="tese">Animais domésticos na pista de rodovia concedida</span>
+        <p>Concessionária responde objetivamente, independentemente de culpa, aplicando-se o Código de Defesa do Consumidor &mdash; inaplicável a teoria da culpa administrativa.</p>
+      </div>
+      <div class="case">
+        <span class="cite">STF &middot; ARE 1.385.315/RJ &middot; Info 1132/2024</span>
+        <span class="tese">Bala perdida durante operação policial</span>
+        <p>Presume-se o nexo causal; cabe ao Estado provar causa excludente. Perícia inconclusiva sobre a arma é apenas um indício, não afasta a responsabilidade.</p>
+      </div>
+      <div class="case">
+        <span class="cite">STF &middot; RE 580.252</span>
+        <span class="tese">Presos em condições degradantes</span>
+        <p>Presídio superlotado, sem higiene e sem atendimento médico gera dever estatal de indenizar.</p>
+      </div>
+      <div class="case">
+        <span class="cite">Art. 927, parágrafo único, Código Civil</span>
+        <span class="tese">Atividades naturalmente perigosas</span>
+        <p>Presídios, delegacias, manicômios, fóruns e locais com revista pessoal geram responsabilidade objetiva pelo simples risco da atividade &mdash; comissiva ou omissiva.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 RISCO INTEGRAL -->
+  <section id="risco-integral" class="branch exception">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">04</span>
+        <h2>Teoria do Risco Integral</h2>
+        <span class="branch-kicker">a exceção &mdash; não a regra</span>
+      </div>
+      <p>Nesta teoria o Estado se comporta como um verdadeiro <strong>"segurador universal"</strong>: o dever de indenizar nasce da simples ocorrência do dano, e as excludentes tradicionais &mdash; culpa da vítima, de terceiro, caso fortuito, força maior &mdash; <strong>não</strong> rompem o nexo causal.</p>
+      <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Pegadinha clássica</span><p>"Responsabilidade objetiva significa que o Estado sempre responde" &mdash; <strong>falso</strong>. Isso só vale para o risco integral, que é excepcional. Na regra geral (risco administrativo), existem excludentes.</p></div>
+
+      <h3 class="sub">Onde ela se aplica no Brasil</h3>
+      <div class="case">
+        <span class="cite">CF, art. 21, XXIII, "d"</span>
+        <span class="tese">Danos nucleares</span>
+        <p>"A responsabilidade civil por danos nucleares independe da existência de culpa." Risco extremo justifica o regime mais rigoroso.</p>
+      </div>
+      <div class="case">
+        <span class="cite">CF, art. 225, § 3º &middot; jurisprudência do STJ</span>
+        <span class="tese">Danos ambientais</span>
+        <p>Responsabilidade objetiva fundada no risco integral. Nem placas de advertência afastam a responsabilidade de quem gera o dano.</p>
+      </div>
+
+      <h3 class="sub">Teoria do Risco Social</h3>
+      <p>Um desdobramento do risco integral: o foco deixa de ser "quem causou o dano" e passa a ser "garantir que a vítima não fique sem reparação" &mdash; a coletividade, via Estado, socializa o risco.</p>
+      <div class="case">
+        <span class="cite">Lei nº 14.125/2021</span>
+        <span class="tese">Eventos adversos de vacinação contra a Covid-19</span>
+        <p>União, Estados, DF e Municípios assumiram os riscos de eventos adversos pós-vacinação &mdash; sem discutir quem causou o efeito colateral.</p>
+      </div>
+      <div class="case">
+        <span class="cite">Lei nº 12.663/2012, art. 23 &middot; STF, ADI 4.976</span>
+        <span class="tese">Copa do Mundo FIFA de 2014</span>
+        <p>A União assumiu, por lei, a responsabilidade civil perante a FIFA por incidentes de segurança. O STF considerou constitucional: o art. 37, § 6º não esgota as hipóteses de responsabilidade estatal, e lei ordinária pode ampliá-la diante de relevante interesse público ou risco extraordinário.</p>
+      </div>
+
+      <details class="exam">
+        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Questão &middot; risco integral</summary>
+        <p class="q">"A teoria do risco integral obriga o Estado a reparar todo e qualquer dano, independentemente de a vítima ter concorrido para o seu aperfeiçoamento." Certo ou errado?</p>
+        <div class="a"><span class="verdict">Certo.</span> No risco integral, que não é a regra no Brasil, basta o evento danoso e o nexo de causalidade &mdash; mesmo que o dano decorra de culpa exclusiva da vítima. A regra brasileira é o risco administrativo (CF, art. 37, § 6º c/c CC, art. 43), que admite redução ou exclusão da indenização por culpa do particular.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 05 NEXO CAUSAL -->
+  <section id="nexo-causal" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">05</span>
+        <h2>Interrupção do Nexo Causal</h2>
+        <span class="branch-kicker">teoria da causalidade direta e imediata</span>
+      </div>
+      <p>Adotada pelo STF: o Estado só responde pelos danos que forem <strong>consequência direta e imediata</strong> de sua conduta ou omissão. Quando surge um fato novo, autônomo e relevante o bastante para produzir o dano, o nexo causal se rompe.</p>
+
+      <div class="case">
+        <span class="cite">Tese de repercussão geral &middot; STF</span>
+        <span class="tese">Fuga de preso e crime posterior</span>
+        <p>Preso foge; quatro meses depois, em outra cidade, comete um roubo. O Estado não responde: a fuga não é causa direta e imediata do crime praticado meses depois &mdash; não há responsabilidade objetiva automática por danos de foragido sem nexo causal direto demonstrado.</p>
+      </div>
+      <div class="case">
+        <span class="cite">STJ</span>
+        <span class="tese">Bala perdida disparada por menor evadido</span>
+        <p>Adolescente foge de regime de semiliberdade; oito dias depois, envolve-se em tiroteio que mata um terceiro por bala perdida. O STJ afastou a responsabilidade: a fuga foi causa <em>remota</em>, o tiroteio foi a causa <em>direta</em>.</p>
+      </div>
+
+      <h3 class="sub">Morte de detento &amp; rompimento do nexo</h3>
+      <p>O Estado tem dever especial de proteção sobre os presos (CF, art. 5º, XLIX). Regra: se o preso morre por omissão estatal, o Estado responde. Exceção: se ficar provado que não havia meios razoáveis de evitar o resultado &mdash; por exemplo, um suicídio sem qualquer sinal prévio &mdash; o nexo se rompe.</p>
+      <div class="case">
+        <span class="cite">STF &middot; RE 841.526/RS</span>
+        <span class="tese">Responsabilidade objetiva, mas não automática</span>
+        <p>O dever de proteção dos presos tem base constitucional e a responsabilidade é objetiva. Mas admitir responsabilidade em <em>qualquer</em> hipótese equivaleria a adotar o risco integral, que não é a regra no Brasil &mdash; é preciso verificar se havia possibilidade concreta de a Administração impedir o resultado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 SITUAÇÕES ESPECIAIS -->
+  <section id="situacoes" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">06</span>
+        <h2>Situações Especiais</h2>
+        <span class="branch-kicker">obras &middot; multidões &middot; concessionárias &middot; dupla garantia</span>
+      </div>
+
+      <h3 class="sub">Danos decorrentes de obras públicas</h3>
+      <ol class="plain">
+        <li><strong>Pelo simples fato da obra</strong> &mdash; mesmo regular e legal, se causa prejuízo especial e anormal (ex.: obra bloqueia acesso a um comércio por meses), o Estado indeniza. Não é preciso provar irregularidade na execução.</li>
+        <li><strong>Conduta dolosa ou culposa da empresa contratada</strong> &mdash; pelo art. 120 da Lei nº 14.133/2021, a contratada responde diretamente; o Estado responde apenas <strong>subsidiariamente</strong> (cobra-se primeiro da empresa).</li>
+        <li><strong>Conduta conjunta</strong> &mdash; se Estado e empresa contribuíram para o dano, cada um responde proporcionalmente à sua participação.</li>
+      </ol>
+
+      <h3 class="sub">Danos causados por multidões</h3>
+      <p><strong>Regra:</strong> o Estado não responde &mdash; a multidão é considerada terceiro, caracterizando culpa exclusiva de terceiro. <strong>Exceção:</strong> responde quando há omissão específica e culposa, isto é, quando sabia do risco e nada fez.</p>
+
+      <h3 class="sub">Prestadoras de serviço público</h3>
+      <p>O STF já não diferencia usuário de terceiro não usuário: em ambos os casos aplica-se a responsabilidade objetiva do art. 37, § 6º &mdash; seja um passageiro lesado dentro do ônibus, seja um pedestre atropelado por ele.</p>
+
+      <h3 class="sub">Teoria da Dupla Garantia</h3>
+      <p>Construída pelo STF a partir do art. 37, § 6º, protegendo simultaneamente dois lados:</p>
+      <div class="grid-2">
+        <div class="example">
+          <span class="tag">1ª garantia &middot; a vítima</span>
+          <p>Pode demandar diretamente o Estado, sem precisar provar culpa ou dolo do agente &mdash; basta dano, atuação estatal e nexo causal.</p>
+        </div>
+        <div class="example illicit">
+          <span class="tag">2ª garantia &middot; o agente</span>
+          <p>Não pode ser acionado diretamente pela vítima. Só responde perante o Estado, em ação regressiva, se agiu com dolo ou culpa.</p>
+        </div>
+      </div>
+      <div class="case">
+        <span class="cite">STF &middot; RE 1.027.633</span>
+        <span class="tese">Ilegitimidade de ação direta contra o agente</span>
+        <p>A ação de indenização deve ser proposta contra o Estado (ou a pessoa jurídica prestadora do serviço), nunca diretamente contra o agente público causador.</p>
+      </div>
+      <p><strong>Denunciação à lide do agente:</strong> a doutrina majoritária rejeita &mdash; traria discussão de culpa, aumentaria a prova exigida e esvaziaria a dupla garantia. O STJ, por outro lado, admite de forma <strong>facultativa</strong>, cabendo ao juiz avaliar cada caso.</p>
+    </div>
+  </section>
+
+  <!-- 07 CUSTÓDIA -->
+  <section id="custodia" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">07</span>
+        <h2>Relações de Custódia</h2>
+        <span class="branch-kicker">supremacia especial do Estado sobre a pessoa</span>
+      </div>
+      <p>Nas relações de <strong>sujeição geral</strong> (fiscalização, policiamento sobre toda a coletividade), o Estado exerce sua supremacia sobre todos. Já nas relações de <strong>supremacia especial</strong> &mdash; ou de custódia &mdash; determinadas pessoas ficam sob guarda direta do Estado, que assume um dever de cuidado mais rigoroso: presos, alunos de escola pública, pacientes de hospital público, bens apreendidos.</p>
+
+      <h3 class="sub">Dever especial de proteção</h3>
+      <p>A responsabilidade é, em regra, <strong>objetiva</strong>: basta provar dano, a relação de custódia e o nexo entre os dois &mdash; mesmo que o dano não tenha sido causado diretamente por um agente público.</p>
+      <ul class="plain">
+        <li>Preso assassinado por outro detento dentro do presídio;</li>
+        <li>Criança agredida por colega dentro de escola pública;</li>
+        <li>Bem apreendido que se deteriora sob guarda estatal;</li>
+        <li>Paciente que sofre dano por falta de vigilância no hospital público.</li>
+      </ul>
+
+      <h3 class="sub">Atos de terceiros não afastam a responsabilidade</h3>
+      <p>Nas relações comuns, o fato exclusivo de terceiro normalmente rompe o nexo causal. Na custódia, não &mdash; o Estado assumiu voluntariamente proteger quem está sob sua guarda. Um preso morto por outro detento em rebelião: o Estado responde, mesmo o autor direto sendo um terceiro.</p>
+
+      <h3 class="sub">Suicídio de preso</h3>
+      <p>Presume-se, a princípio, falha do dever de vigilância. O Estado pode afastar a responsabilidade se provar que adotou todas as medidas exigíveis e não havia sinais que permitissem prever ou impedir o ato.</p>
+      <div class="case">
+        <span class="cite">STF &middot; RE 841.526/RS</span>
+        <span class="tese">Morte de detento</span>
+        <p>Aplica-se a teoria do risco administrativo, não a do risco integral &mdash; é preciso verificar se havia possibilidade concreta de a Administração evitar o resultado.</p>
+      </div>
+
+      <h3 class="sub">Omissão nas relações de custódia</h3>
+      <p>Quando o Estado é avisado do risco e nada faz &mdash; por exemplo, uma escola comunicada sobre ameaças reiteradas a uma professora que nada providencia, e a agressão acontece &mdash; a omissão contribui diretamente para o dano, e o Estado responde, mesmo a agressão tendo sido praticada por um terceiro (o aluno).</p>
+    </div>
+  </section>
+
+  <!-- 08 PRESCRIÇÃO -->
+  <section id="prescricao" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">08</span>
+        <h2>Prescrição</h2>
+        <span class="branch-kicker">prazos e teses do STF/STJ</span>
+      </div>
+
+      <div class="table-scroll">
+        <table class="data">
+          <thead><tr><th>Ação</th><th>Prazo</th><th>Base</th></tr></thead>
+          <tbody>
+            <tr><td>Regra geral &mdash; indenizatória contra o Estado ou de regresso</td><td class="hl">5 anos</td><td>Decreto nº 20.910/1932, art. 1º</td></tr>
+            <tr><td>Ressarcimento ao erário por ilícito civil (ação de regresso)</td><td class="hl">Prescritível</td><td>STF, RE 669.069 &middot; Tema 666</td></tr>
+            <tr><td>Ato doloso de improbidade administrativa</td><td class="wine">Imprescritível</td><td>STF, Tema 897</td></tr>
+            <tr><td>Indenização por perseguição política no regime militar</td><td class="wine">Imprescritível</td><td>Súmula 647/STJ</td></tr>
+            <tr><td>Ressarcimento fundado em decisão de Tribunal de Contas</td><td class="hl">Prescritível</td><td>STF, Tema 899</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <dl class="kv">
+        <dt>Termo inicial</dt>
+        <dd>Na ação regressiva do Estado contra o agente, o prazo começa a correr do trânsito em julgado da condenação imposta ao ente público &mdash; só aí nasce a pretensão regressiva.</dd>
+        <dt>Contra particulares</dt>
+        <dd>O prazo de 5 anos também vale quando é a Fazenda Pública que aciona um particular, em respeito ao princípio da isonomia.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 09 OUTRAS FRENTES -->
+  <section id="outras" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">09</span>
+        <h2>Outras Frentes de Responsabilidade</h2>
+        <span class="branch-kicker">legislativo &middot; judiciário &middot; notarial</span>
+      </div>
+
+      <h3 class="sub">Atos legislativos</h3>
+      <p>Em regra, a atividade legislativa não gera responsabilidade civil. Três exceções:</p>
+      <ul class="plain">
+        <li><strong>Leis de efeitos concretos</strong> &mdash; têm forma de lei, mas conteúdo de ato administrativo, atingindo pessoas ou grupos determinados. Se causam dano especial e anormal, podem gerar dever de indenizar.</li>
+        <li><strong>Leis inconstitucionais</strong> &mdash; a mera declaração de inconstitucionalidade não basta; é preciso demonstrar dano e nexo causal com a lei declarada inconstitucional pelo STF.</li>
+        <li><strong>Omissão legislativa inconstitucional</strong> &mdash; nem toda demora do legislador gera responsabilidade, mas, se ultrapassa os limites da razoabilidade e causa prejuízo concreto, pode surgir o dever de indenizar.</li>
+      </ul>
+
+      <h3 class="sub">Atos do Poder Judiciário</h3>
+      <div class="grid-2">
+        <div class="example">
+          <span class="tag">Atividade judiciária</span>
+          <p>Atos administrativos do Judiciário &mdash; secretaria, servidores, transporte, guarda de processos. Aplica-se normalmente o art. 37, § 6º.</p>
+        </div>
+        <div class="example illicit">
+          <span class="tag">Atividade jurisdicional</span>
+          <p>Despachos, decisões, sentenças. O juiz tem independência funcional &mdash; decisão reformada não é, por si só, erro indenizável.</p>
+        </div>
+      </div>
+      <ul class="plain">
+        <li>Se o juiz agir com <strong>dolo</strong>, há responsabilidade estatal e responsabilidade pessoal do magistrado (CPC, art. 143);</li>
+        <li>Erro judiciário e prisão além do tempo fixado na sentença geram indenização obrigatória (CF, art. 5º, LXXV);</li>
+        <li>Atos funcionais &mdash; atraso injustificado, perda de autos, falhas de cartório &mdash; geram responsabilidade; a interpretação divergente da lei, em regra, não gera.</li>
+      </ul>
+      <div class="case">
+        <span class="cite">STF</span>
+        <span class="tese">Prisão cautelar indevida</span>
+        <p>Pessoa presa cautelarmente sem qualquer envolvimento com o fato investigado perde o emprego em razão da prisão &mdash; dano indenizável, responsabilidade objetiva reconhecida.</p>
+      </div>
+
+      <h3 class="sub">Notários e registradores</h3>
+      <p>Serviços delegados a particulares. O STF entende que o <strong>Estado</strong> tem responsabilidade direta, primária e <strong>objetiva</strong> perante a vítima, cabendo depois ação de regresso contra o tabelião ou registrador. Já a Lei nº 8.935/1994 (art. 22) fixa que o notário ou registrador responde pessoalmente perante terceiros de forma <strong>subjetiva</strong> &mdash; exigindo prova de dolo ou culpa.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0;">Mapa mental construído a partir do material "Responsabilidade Civil do Estado &mdash; Direito Administrativo". Regra geral do sistema brasileiro: <strong>Teoria do Risco Administrativo</strong> (art. 37, § 6º, CF), objetiva mas com excludentes &mdash; o <strong>Risco Integral</strong> é sempre exceção expressa.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  var mmLinks = Array.prototype.slice.call(document.querySelectorAll('.mm-link'));
+
+  function setActive(id){
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+    mmLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ setActive(entry.target.id); }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ observer.observe(s); });
+  }
+})();
+</script>
+
+<button type="button" class="theme-fab" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i></button>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  var mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function saved(){ try{ return localStorage.getItem('mapas-theme'); }catch(e){ return null; } }
+  function current(){ return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
+  function apply(t){ root.setAttribute('data-theme', t); btn.setAttribute('aria-pressed', t==='dark'); }
+  var s=saved(); apply(s==='dark'||s==='light' ? s : current());
+  btn.addEventListener('click', function(){
+    var t=current()==='dark' ? 'light' : 'dark'; apply(t);
+    try{ localStorage.setItem('mapas-theme', t); }catch(e){}
+  });
+})();
+</script>
+<script>lucide.createIcons();</script>
