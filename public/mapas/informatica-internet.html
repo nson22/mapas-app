@@ -172,6 +172,21 @@
   :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
 
   html{font-size:calc(100% * var(--fs,1));}
+
+  .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
+  .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  .exam .opts{margin:10px 0 0; padding-left:1.4em; font-size:.9rem; color:var(--ink-soft);}
+  .exam .opts li{margin-bottom:3px;}
+  details.ans{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
+  details.ans summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--accent); font-weight:700;}
+  details.ans summary::-webkit-details-marker{display:none;}
+  details.ans summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border:1px solid var(--accent); border-radius:50%; font-size:calc(13px * var(--fs,1)); line-height:1;}
+  details.ans[open] summary::before{content:"\2013";}
+  details.ans .a{margin-top:12px; font-size:.92rem; color:var(--ink-soft);}
+  details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+  details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
+  details.ans .a li{margin-bottom:4px;}
 </style>
 <!--fs-ready--><script>try{var f=parseFloat(localStorage.getItem("mapas-font-scale"));if(f>0.5&&f<3)document.documentElement.style.setProperty("--fs",String(f));}catch(e){}</script>
 
@@ -185,7 +200,7 @@
       <div class="stat"><span class="num">8</span><span class="lbl">frentes do tema</span></div>
       <div class="stat"><span class="num">4</span><span class="lbl">questões de banca</span></div>
       <div class="stat"><span class="num">9</span><span class="lbl">PDFs do curso</span></div>
-      <p class="relevance-note">Material do prof. <b>Matheus Santos</b> (Servidor Público Federal, TI), preparatório para o <b>TJAM</b>. PDF 01 de 9 do cronograma de Informática &mdash; este mapa cobre integralmente "Conceitos relacionados à Internet, Intranet, Extranet e VPN".</p>
+      <p class="relevance-note">Preparatório para o <b>TJAM</b>. Este mapa cobre integralmente "Conceitos relacionados à Internet, Intranet, Extranet e VPN".</p>
     </div>
   </div>
 </header>
@@ -350,12 +365,11 @@
         <span class="chip">BAN &ndash; dispositivos vestíveis (smartwatch)</span>
       </div>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova</div>
         <p class="q">"É um conglomerado de redes locais, interconectadas e espalhadas pelo mundo inteiro, através do protocolo de internet, facilitando o fluxo de informações espalhadas por todo o globo terrestre." A que rede isso se refere?</p>
         <ol class="opts"><li>Intranet</li><li>LAN</li><li>Internet</li><li>Extranet</li></ol>
-        <div class="a"><span class="verdict">Internet (C).</span> "Conglomerado de redes interconectadas e espalhadas pelo mundo" é a própria definição de internet como uma WAN mundial.</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Internet (C).</span> "Conglomerado de redes interconectadas e espalhadas pelo mundo" é a própria definição de internet como uma WAN mundial.</div>
+      </details></div>
     </div>
   </section>
 
@@ -412,11 +426,10 @@
       </ol>
       <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Pegadinha clássica</span><p>Achar que Internet e Intranet usam protocolos diferentes. <strong>Errado</strong>: a Intranet tem a mesma estrutura da Internet, apenas em ambiente fechado.</p></div>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE</div>
         <p class="q">"A Internet e a intranet, devido às suas características específicas, operam com protocolos diferentes, adequados a cada situação." Certo ou errado?</p>
-        <div class="a"><span class="verdict">Errado.</span> Os protocolos usados são os mesmos (http, https, TCP/IP...) &mdash; o que muda é o ambiente (público x controlado), não o protocolo.</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Errado.</span> Os protocolos usados são os mesmos (http, https, TCP/IP...) &mdash; o que muda é o ambiente (público x controlado), não o protocolo.</div>
+      </details></div>
 
       <h3 class="sub">Extranet</h3>
       <p>É uma extensão da Intranet: mesmo funcionamento restrito e autenticado, mas voltado para um público <strong>externo</strong> que tem alguma relação com a empresa &mdash; clientes, fornecedores, parceiros.</p>
@@ -424,11 +437,10 @@
         <span class="chip">Extensão da intranet</span><span class="chip">Público: fornecedores e clientes</span><span class="chip">Exige autenticação</span><span class="chip">É restrita</span><span class="chip">Usa os mesmos protocolos</span>
       </div>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE</div>
         <p class="q">"A Internet pode ser dividida em intranet, restrita aos serviços da rede interna de uma organização, e extranet, com os demais serviços (ex.: redes sociais e sites de outras organizações)." Certo ou errado?</p>
-        <div class="a"><span class="verdict">Errado.</span> A internet não se "divide" em intranet e extranet &mdash; são três redes com funções distintas: a internet é a rede pública mundial; a intranet, o ambiente interno; a extranet, o ambiente para públicos externos ligados à organização.</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Errado.</span> A internet não se "divide" em intranet e extranet &mdash; são três redes com funções distintas: a internet é a rede pública mundial; a intranet, o ambiente interno; a extranet, o ambiente para públicos externos ligados à organização.</div>
+      </details></div>
 
       <h3 class="sub">Quadro comparativo</h3>
       <div class="table-scroll">
@@ -498,11 +510,10 @@
         <span class="chip">Confidencialidade &ndash; só o destinatário acessa os dados</span>
       </div>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova</div>
         <p class="q">"É possível, utilizando-se uma conexão VPN criptografada, acessar os dados da intranet do TCE/RS por meio da Internet." Certo ou errado?</p>
-        <div class="a"><span class="verdict">Certo.</span> É exatamente para isso que serve uma VPN de acesso remoto: usar a internet como caminho para entrar, com segurança, numa rede privada (intranet) de uma instituição.</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Certo.</span> É exatamente para isso que serve uma VPN de acesso remoto: usar a internet como caminho para entrar, com segurança, numa rede privada (intranet) de uma instituição.</div>
+      </details></div>
     </div>
   </section>
 
@@ -617,16 +628,15 @@
         </table>
       </div>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Perguntas rápidas de prova</summary>
-        <div class="a">
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Perguntas rápidas de prova</div>
+        <details class="ans"><summary>Ver resposta</summary><div class="a">
           <ul>
             <li><strong>Qual ícone indica conexão segura?</strong> O cadeado ao lado da URL.</li>
             <li><strong>O que o modo anônimo impede?</strong> Salvamento de cookies, histórico e dados temporários.</li>
             <li><strong>Atalho para limpar dados de navegação?</strong> <code>Ctrl+Shift+Del</code>.</li>
           </ul>
         </div>
-      </details>
+      </details></div>
     </div>
   </section>
 
@@ -669,7 +679,7 @@
             <tr><td><code>intitle:</code></td><td>Palavra no título</td><td><code>intitle:curso concurso</code></td></tr>
             <tr><td><code>intext:</code></td><td>Palavra no texto</td><td><code>intext:planejamento</code></td></tr>
             <tr><td><code>related:</code></td><td>Sites semelhantes</td><td><code>related:youtube.com</code></td></tr>
-            <tr><td><code>link:</code></td><td>Páginas que linkam para o site</td><td><code>link:bymatheussantos.com</code></td></tr>
+            <tr><td><code>link:</code></td><td>Páginas que linkam para o site</td><td><code>link:exemplo.com.br</code></td></tr>
             <tr><td><code>before:</code> / <code>after:</code></td><td>Intervalo de datas</td><td><code>concurso PF before:2022 after:2020</code></td></tr>
             <tr><td><code>+</code></td><td>Força termo obrigatório</td><td><code>+curso +concurso público</code></td></tr>
           </tbody>
@@ -728,7 +738,7 @@
 
 <footer>
   <div class="wrap">
-    <p style="margin:0;">Mapa mental construído a partir do PDF 01 &mdash; Informática, prof. Matheus Santos, preparatório TJAM. Regra de ouro: Internet, Intranet e Extranet usam os <strong>mesmos protocolos</strong> &mdash; o que muda é o público e o controle de acesso.</p>
+    <p style="margin:0;">Mapa mental de Informática, preparatório TJAM. Regra de ouro: Internet, Intranet e Extranet usam os <strong>mesmos protocolos</strong> &mdash; o que muda é o público e o controle de acesso.</p>
   </div>
 </footer>
 

@@ -313,6 +313,21 @@
   :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
 
   html{font-size:calc(100% * var(--fs,1));}
+
+  .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
+  .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  .exam .opts{margin:10px 0 0; padding-left:1.4em; font-size:.9rem; color:var(--ink-soft);}
+  .exam .opts li{margin-bottom:3px;}
+  details.ans{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
+  details.ans summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--accent); font-weight:700;}
+  details.ans summary::-webkit-details-marker{display:none;}
+  details.ans summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border:1px solid var(--accent); border-radius:50%; font-size:calc(13px * var(--fs,1)); line-height:1;}
+  details.ans[open] summary::before{content:"\2013";}
+  details.ans .a{margin-top:12px; font-size:.92rem; color:var(--ink-soft);}
+  details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+  details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
+  details.ans .a li{margin-bottom:4px;}
 </style>
 <!--fs-ready--><script>try{var f=parseFloat(localStorage.getItem("mapas-font-scale"));if(f>0.5&&f<3)document.documentElement.style.setProperty("--fs",String(f));}catch(e){}</script>
 
@@ -560,11 +575,10 @@
       <p><strong>Teoria da Culpa Administrativa</strong> (Faute du Service, também chamada culpa ou falta do serviço): o Estado responde independentemente de identificar o agente causador, bastando provar que o serviço <strong>não funcionou</strong>, <strong>funcionou mal</strong> ou <strong>funcionou tardiamente</strong>. É subjetiva &mdash; mas o ônus da prova é do Estado, que deve provar que o serviço funcionou. Hoje ainda se aplica à responsabilidade por <strong>omissão</strong>.</p>
       <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Como cai em prova</span><p>O STF distingue omissão <strong>genérica</strong> (responsabilidade subjetiva, culpa do serviço) de omissão <strong>específica</strong> &mdash; quando há dever de agir certo e determinado no caso concreto &mdash; que gera responsabilidade <strong>objetiva</strong>. Exemplo: juiz determina reforço policial em uma fazenda, a polícia não cumpre e a fazenda é invadida &rarr; responsabilidade objetiva do Poder Público.</p></div>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Questão &middot; culpa administrativa</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Questão &middot; culpa administrativa</div>
         <p class="q">"De acordo com a teoria da culpa administrativa, o dever de o Estado indenizar dano sofrido por particular pode ocorrer de três formas: inexistência do serviço, mau funcionamento do serviço ou retardamento do serviço." Certo ou errado?</p>
-        <div class="a"><span class="verdict">Certo.</span> As três hipóteses clássicas da culpa do serviço são exatamente essas. Cuidado para não confundir com a teoria objetiva atual (art. 37, § 6º), que dispensa a prova de culpa &mdash; a questão pergunta especificamente pela culpa administrativa, fase histórica anterior.</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Certo.</span> As três hipóteses clássicas da culpa do serviço são exatamente essas. Cuidado para não confundir com a teoria objetiva atual (art. 37, § 6º), que dispensa a prova de culpa &mdash; a questão pergunta especificamente pela culpa administrativa, fase histórica anterior.</div>
+      </details></div>
 
       <h3 class="sub">4&#41; Teoria da Responsabilidade Objetiva</h3>
       <p>É a teoria adotada hoje pela Constituição Federal (art. 37, § 6º) e desenvolvida em detalhe nos dois ramos seguintes deste mapa &mdash; risco administrativo (a regra) e risco integral (a exceção).</p>
@@ -697,11 +711,10 @@
         <p>A União assumiu, por lei, a responsabilidade civil perante a FIFA por incidentes de segurança. O STF considerou constitucional: o art. 37, § 6º não esgota as hipóteses de responsabilidade estatal, e lei ordinária pode ampliá-la diante de relevante interesse público ou risco extraordinário.</p>
       </div>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Questão &middot; risco integral</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Questão &middot; risco integral</div>
         <p class="q">"A teoria do risco integral obriga o Estado a reparar todo e qualquer dano, independentemente de a vítima ter concorrido para o seu aperfeiçoamento." Certo ou errado?</p>
-        <div class="a"><span class="verdict">Certo.</span> No risco integral, que não é a regra no Brasil, basta o evento danoso e o nexo de causalidade &mdash; mesmo que o dano decorra de culpa exclusiva da vítima. A regra brasileira é o risco administrativo (CF, art. 37, § 6º c/c CC, art. 43), que admite redução ou exclusão da indenização por culpa do particular.</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Certo.</span> No risco integral, que não é a regra no Brasil, basta o evento danoso e o nexo de causalidade &mdash; mesmo que o dano decorra de culpa exclusiva da vítima. A regra brasileira é o risco administrativo (CF, art. 37, § 6º c/c CC, art. 43), que admite redução ou exclusão da indenização por culpa do particular.</div>
+      </details></div>
     </div>
   </section>
 

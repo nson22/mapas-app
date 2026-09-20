@@ -221,6 +221,21 @@
   :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
 
   html{font-size:calc(100% * var(--fs,1));}
+
+  .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
+  .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  .exam .opts{margin:10px 0 0; padding-left:1.4em; font-size:.9rem; color:var(--ink-soft);}
+  .exam .opts li{margin-bottom:3px;}
+  details.ans{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
+  details.ans summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--accent); font-weight:700;}
+  details.ans summary::-webkit-details-marker{display:none;}
+  details.ans summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border:1px solid var(--accent); border-radius:50%; font-size:calc(13px * var(--fs,1)); line-height:1;}
+  details.ans[open] summary::before{content:"\2013";}
+  details.ans .a{margin-top:12px; font-size:.92rem; color:var(--ink-soft);}
+  details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+  details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
+  details.ans .a li{margin-bottom:4px;}
 </style>
 <!--fs-ready--><script>try{var f=parseFloat(localStorage.getItem("mapas-font-scale"));if(f>0.5&&f<3)document.documentElement.style.setProperty("--fs",String(f));}catch(e){}</script>
 
@@ -234,7 +249,7 @@
       <div class="stat"><span class="num">10</span><span class="lbl">classes gramaticais</span></div>
       <div class="stat"><span class="num">6+4</span><span class="lbl">variáveis · invariáveis</span></div>
       <div class="stat"><span class="num">9</span><span class="lbl">apostilas reunidas</span></div>
-      <p class="relevance-note">Material do prof. <b>Allan Santos</b> (Letras &ndash; UFAM), preparatório para o <b>TJAM</b>. Este mapa reúne as partes 1 a 9 &mdash; substantivo, adjetivo, numeral, artigo, advérbio, conjunção, preposição, pronome, interjeição, verbo e acentuação gráfica &mdash; em uma única visão.</p>
+      <p class="relevance-note">Preparatório para o <b>TJAM</b>. Este mapa reúne as partes 1 a 9 &mdash; substantivo, adjetivo, numeral, artigo, advérbio, conjunção, preposição, pronome, interjeição, verbo e acentuação gráfica &mdash; em uma única visão.</p>
     </div>
   </div>
 </header>
@@ -418,8 +433,7 @@
         <h4 class="sub">Flexão dos adjetivos compostos</h4>
         <p>Em regra, só o segundo termo varia: meninos afro-brasileiros. Exceção: se o composto tem um substantivo na formação (adjetivo + substantivo), nada varia &mdash; camisas amarelo-ouro, sapatos verde-abacate. Alguns são sempre invariáveis: azul-marinho, cor-de-rosa, zero-quilômetro.</p>
 
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Questão FGV &middot; posição do adjetivo</summary>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Questão FGV &middot; posição do adjetivo</div>
           <p class="q">Em qual opção a troca de posição entre substantivo e adjetivo mudou o sentido?</p>
           <ol class="opts">
             <li>caminho extenso / extenso caminho</li>
@@ -428,8 +442,8 @@
             <li>casa bonita / bonita casa</li>
             <li>livro interessante / interessante livro</li>
           </ol>
-          <div class="a"><span class="verdict">Homem pobre / pobre homem.</span> É o exemplo clássico de posição que altera o sentido: "homem pobre" (sem dinheiro, sentido objetivo) x "pobre homem" (coitado, digno de pena, sentido figurado/subjetivo). Nas demais opções, o adjetivo é puramente descritivo e a ordem não muda o significado.</div>
-        </details>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Homem pobre / pobre homem.</span> É o exemplo clássico de posição que altera o sentido: "homem pobre" (sem dinheiro, sentido objetivo) x "pobre homem" (coitado, digno de pena, sentido figurado/subjetivo). Nas demais opções, o adjetivo é puramente descritivo e a ordem não muda o significado.</div>
+        </details></div>
       </div>
 
       <!-- NUMERAL -->
@@ -533,8 +547,7 @@
         </div>
         <p>Exemplo de enumeração: "Paulo e Renato são vizinhos. <strong>Este</strong> conserta carros e <strong>aquele</strong> vende peças." (este = último citado, Renato; aquele = primeiro citado, Paulo)</p>
 
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Questão FGV &middot; TRF &middot; pronome demonstrativo</summary>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Questão FGV &middot; TRF &middot; pronome demonstrativo</div>
           <p class="q">Em qual frase o pronome demonstrativo sublinhado está empregado corretamente?</p>
           <ol class="opts">
             <li>"...que somos capazes de operar <u>nessa</u> vida" (referindo-se à própria vida do falante, agora)</li>
@@ -543,8 +556,8 @@
             <li>"João e Maria vieram: <u>este</u> de táxi e <u>aquele</u> de ônibus"</li>
             <li>"...nesta época, a Igreja era muito poderosa" (falando da Idade Média)</li>
           </ol>
-          <div class="a"><span class="verdict">João e Maria vieram: este de táxi e aquele de ônibus.</span> Aplica exatamente a regra de enumeração: "este" retoma o último elemento citado (Maria) e "aquele" retoma o primeiro (João). As demais falham: em (1) e (5), o "nessa/nesta" trocado ignora a distância temporal correta (vida presente pede "nesta"; Idade Média, distante, pede "naquela"); em (3), "essa" aponta para trás quando deveria apontar para o que vem depois dos dois-pontos, pedindo "esta" (catafórico).</div>
-        </details>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">João e Maria vieram: este de táxi e aquele de ônibus.</span> Aplica exatamente a regra de enumeração: "este" retoma o último elemento citado (Maria) e "aquele" retoma o primeiro (João). As demais falham: em (1) e (5), o "nessa/nesta" trocado ignora a distância temporal correta (vida presente pede "nesta"; Idade Média, distante, pede "naquela"); em (3), "essa" aponta para trás quando deveria apontar para o que vem depois dos dois-pontos, pedindo "esta" (catafórico).</div>
+        </details></div>
       </div>
 
       <!-- VERBO -->
@@ -771,7 +784,7 @@
 
 <footer>
   <div class="wrap">
-    <p style="margin:0;">Mapa mental construído a partir das 9 apostilas de "Formação" &mdash; Língua Portuguesa, prof. Allan Santos, preparatório TJAM. Estrutura de referência: <strong>10 classes gramaticais</strong> (6 variáveis, 4 invariáveis) + <strong>acentuação gráfica</strong>.</p>
+    <p style="margin:0;">Mapa mental construído a partir das 9 apostilas de "Formação" &mdash; Língua Portuguesa, preparatório TJAM. Estrutura de referência: <strong>10 classes gramaticais</strong> (6 variáveis, 4 invariáveis) + <strong>acentuação gráfica</strong>.</p>
   </div>
 </footer>
 

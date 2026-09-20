@@ -200,6 +200,21 @@
   :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
 
   html{font-size:calc(100% * var(--fs,1));}
+
+  .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
+  .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  .exam .opts{margin:10px 0 0; padding-left:1.4em; font-size:.9rem; color:var(--ink-soft);}
+  .exam .opts li{margin-bottom:3px;}
+  details.ans{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
+  details.ans summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--accent); font-weight:700;}
+  details.ans summary::-webkit-details-marker{display:none;}
+  details.ans summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border:1px solid var(--accent); border-radius:50%; font-size:calc(13px * var(--fs,1)); line-height:1;}
+  details.ans[open] summary::before{content:"\2013";}
+  details.ans .a{margin-top:12px; font-size:.92rem; color:var(--ink-soft);}
+  details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+  details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
+  details.ans .a li{margin-bottom:4px;}
 </style>
 <!--fs-ready--><script>try{var f=parseFloat(localStorage.getItem("mapas-font-scale"));if(f>0.5&&f<3)document.documentElement.style.setProperty("--fs",String(f));}catch(e){}</script>
 
@@ -213,7 +228,7 @@
       <div class="stat"><span class="num">3</span><span class="lbl">níveis da língua</span></div>
       <div class="stat"><span class="num">5</span><span class="lbl">apostilas reunidas</span></div>
       <div class="stat"><span class="num">32</span><span class="lbl">verbos de regência</span></div>
-      <p class="relevance-note">Material do prof. <b>Allan Santos</b> (Letras &ndash; UFAM), preparatório para o <b>TJAM</b>. Este mapa reúne as apostilas de expansão: estrutura das palavras, acentuação gráfica, transitividade verbal, regência verbal e nominal, e semântica (sinônimos, antônimos, parônimos e homônimos).</p>
+      <p class="relevance-note">Preparatório para o <b>TJAM</b>. Este mapa reúne as apostilas de expansão: estrutura das palavras, acentuação gráfica, transitividade verbal, regência verbal e nominal, e semântica (sinônimos, antônimos, parônimos e homônimos).</p>
     </div>
   </div>
 </header>
@@ -498,14 +513,12 @@
         <div class="chip-group"><span class="gl">EM / PARA</span><div class="chips"><span class="chip">bacharel em</span><span class="chip">hábil em</span><span class="chip">indeciso em</span><span class="chip">inepto para</span><span class="chip">propenso para</span><span class="chip">capacidade para</span></div></div>
         <p class="example gold" style="display:block; padding:14px 16px; border-radius:10px;"><span class="tag" style="display:block; margin-bottom:6px;">Satisfeito</span>com, de, em, por &mdash; o único termo do quadro com quatro preposições possíveis.</p>
 
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Questão CESPE/CEBRASPE &middot; IBAMA 2025 &middot; regência nominal</summary>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Questão CESPE/CEBRASPE &middot; IBAMA 2025 &middot; regência nominal</div>
           <p class="q">Texto: "A capacidade de tecer teias [...] não depende de receber a educação adequada ou de ter aptidão para arquitetura [...]." Afirmação: o emprego da preposição "de" em "de ter aptidão" deve-se à regência do termo "capacidade". Certo ou errado?</p>
-          <div class="a"><span class="verdict">Certo.</span> "Capacidade" é um dos termos de regência nominal fixa com "de" (capacidade <strong>de</strong>) &mdash; é essa palavra que exige a preposição que introduz "de ter aptidão", exatamente como no quadro de regência nominal acima.</div>
-        </details>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Certo.</span> "Capacidade" é um dos termos de regência nominal fixa com "de" (capacidade <strong>de</strong>) &mdash; é essa palavra que exige a preposição que introduz "de ter aptidão", exatamente como no quadro de regência nominal acima.</div>
+        </details></div>
 
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Questão FGV &middot; DATAPREV 2024 &middot; regência verbal</summary>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Questão FGV &middot; DATAPREV 2024 &middot; regência verbal</div>
           <p class="q">Assinale a opção que apresenta corretamente a regência dos verbos.</p>
           <ol class="opts">
             <li>Não faz sentido obedecer a leis absurdas.</li>
@@ -514,14 +527,14 @@
             <li>Possuía uma dívida com o açougueiro, paguei-o assim que pude.</li>
             <li>Vovó sempre lembra do aniversário de todos os seus netos.</li>
           </ol>
-          <div class="a"><span class="verdict">Gabarito: A.</span> "Obedecer" é transitivo indireto e exige "a" &mdash; quem obedece, obedece <em>a</em> alguém ou algo. Os erros mais comuns nas demais opções:
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Gabarito: A.</span> "Obedecer" é transitivo indireto e exige "a" &mdash; quem obedece, obedece <em>a</em> alguém ou algo. Os erros mais comuns nas demais opções:
             <ul>
               <li><strong>C</strong> &mdash; "residir" exige "em", não "à": o certo é "residem na rua das Laranjeiras".</li>
               <li><strong>D</strong> &mdash; "pagar" a uma pessoa é transitivo indireto: o certo é "paguei-lhe", nunca "paguei-o" quando o complemento é uma pessoa.</li>
               <li><strong>E</strong> &mdash; sem o pronome "se", "lembrar" é transitivo direto e dispensa preposição: o certo é "lembra o aniversário" (sem "se") ou "se lembra do aniversário" (com "se" e "de").</li>
             </ul>
           </div>
-        </details>
+        </details></div>
       </div>
     </div>
   </section>
@@ -600,11 +613,10 @@
         </div>
         <div class="chip-group"><span class="gl">Homófonos clássicos</span><div class="chips"><span class="chip">apreçar (perguntar o preço)</span><span class="chip">apressar (acelerar)</span><span class="chip">seção (segmento)</span><span class="chip">sessão (reunião)</span><span class="chip">cessão (ceder)</span></div></div>
 
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Questão CESPE/CEBRASPE 2025 &middot; paronímia</summary>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Questão CESPE/CEBRASPE 2025 &middot; paronímia</div>
           <p class="q">Existe uma relação de paronímia entre as expressões "LIBRAS" e "língua brasileira de sinais"? Certo ou errado?</p>
-          <div class="a"><span class="verdict">Errado.</span> "LIBRAS" é apenas a sigla de "língua brasileira de sinais" &mdash; as duas expressões designam exatamente a mesma coisa, uma por extenso e outra abreviada. Paronímia exige palavras diferentes, foneticamente parecidas, mas com sentidos distintos; aqui não há dois sentidos, e sim um único referente nomeado de duas formas.</div>
-        </details>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Errado.</span> "LIBRAS" é apenas a sigla de "língua brasileira de sinais" &mdash; as duas expressões designam exatamente a mesma coisa, uma por extenso e outra abreviada. Paronímia exige palavras diferentes, foneticamente parecidas, mas com sentidos distintos; aqui não há dois sentidos, e sim um único referente nomeado de duas formas.</div>
+        </details></div>
       </div>
     </div>
   </section>
@@ -612,7 +624,7 @@
 
 <footer>
   <div class="wrap">
-    <p style="margin:0;">Mapa mental construído a partir das apostilas de expansão &mdash; Língua Portuguesa, prof. Allan Santos, preparatório TJAM. Três níveis de análise: <strong>morfologia</strong> (forma), <strong>sintaxe</strong> (conexão) e <strong>semântica</strong> (sentido).</p>
+    <p style="margin:0;">Mapa mental construído a partir das apostilas de expansão &mdash; Língua Portuguesa, preparatório TJAM. Três níveis de análise: <strong>morfologia</strong> (forma), <strong>sintaxe</strong> (conexão) e <strong>semântica</strong> (sentido).</p>
   </div>
 </footer>
 

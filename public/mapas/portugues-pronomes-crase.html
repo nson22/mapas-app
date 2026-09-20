@@ -200,6 +200,21 @@
   :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
 
   html{font-size:calc(100% * var(--fs,1));}
+
+  .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
+  .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  .exam .opts{margin:10px 0 0; padding-left:1.4em; font-size:.9rem; color:var(--ink-soft);}
+  .exam .opts li{margin-bottom:3px;}
+  details.ans{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
+  details.ans summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--accent); font-weight:700;}
+  details.ans summary::-webkit-details-marker{display:none;}
+  details.ans summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border:1px solid var(--accent); border-radius:50%; font-size:calc(13px * var(--fs,1)); line-height:1;}
+  details.ans[open] summary::before{content:"\2013";}
+  details.ans .a{margin-top:12px; font-size:.92rem; color:var(--ink-soft);}
+  details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+  details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
+  details.ans .a li{margin-bottom:4px;}
 </style>
 <!--fs-ready--><script>try{var f=parseFloat(localStorage.getItem("mapas-font-scale"));if(f>0.5&&f<3)document.documentElement.style.setProperty("--fs",String(f));}catch(e){}</script>
 
@@ -213,7 +228,7 @@
       <div class="stat"><span class="num">3</span><span class="lbl">apostilas reunidas</span></div>
       <div class="stat"><span class="num">3</span><span class="lbl">posições do pronome</span></div>
       <div class="stat"><span class="num">5</span><span class="lbl">tipos de coordenada</span></div>
-      <p class="relevance-note">Material do prof. <b>Allan Santos</b> (Letras &ndash; UFAM), preparatório para o <b>TJAM</b>. Este mapa reúne <b>Colocação Pronominal</b>, <b>Período Composto</b> (apenas por coordenação, único tipo presente no PDF) e <b>Emprego da Crase</b>.</p>
+      <p class="relevance-note">Preparatório para o <b>TJAM</b>. Este mapa reúne <b>Colocação Pronominal</b>, <b>Período Composto</b> (apenas por coordenação, único tipo presente no PDF) e <b>Emprego da Crase</b>.</p>
     </div>
   </div>
 </header>
@@ -375,13 +390,11 @@
           <div class="example alt"><span class="tag">Com atrativo</span><p>Antes do auxiliar <b>ou</b> depois do principal: <i>Não lhe posso esclarecer / Não posso esclarecer-lhe.</i></p></div>
         </div>
 
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025 &middot; FUB</summary>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025 &middot; FUB</div>
           <div class="q">&ldquo;A produção abrange histórias de mulheres que se destacam em áreas como ciências exatas&hellip;&rdquo; No trecho &ldquo;se destacam&rdquo;, a próclise é obrigatória. Certo ou Errado?</div>
-          <div class="a"><span class="verdict">CERTO</span> &mdash; o pronome relativo <b>que</b> é palavra atrativa. <i>(Gabarito não impresso no PDF; resolvido pela regra da alínea d.)</i></div>
-        </details>
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; FGV 2025 &middot; SEEC-RN</summary>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">CERTO</span> &mdash; o pronome relativo <b>que</b> é palavra atrativa. <i>(Gabarito não impresso no PDF; resolvido pela regra da alínea d.)</i></div>
+        </details></div>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; FGV 2025 &middot; SEEC-RN</div>
           <div class="q">Assinale a frase em que <b>não</b> foi respeitada a norma padrão de colocação pronominal.</div>
           <ul class="opts" style="list-style:upper-alpha;">
             <li>A derrota não é amarga se você não a engolir.</li>
@@ -390,13 +403,12 @@
             <li>Todos me odeiam porque sou popular.</li>
             <li>Me indigno, logo existo.</li>
           </ul>
-          <div class="a"><span class="verdict">E</span> &mdash; ênclise obrigatória quando o verbo inicia a oração: <i>Indigno-me, logo existo.</i> As demais têm atrativo (negação, indefinido) ou infinitivo facultativo. <i>(Resolvido pelas regras do material.)</i></div>
-        </details>
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025 &middot; IBAMA</summary>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">E</span> &mdash; ênclise obrigatória quando o verbo inicia a oração: <i>Indigno-me, logo existo.</i> As demais têm atrativo (negação, indefinido) ou infinitivo facultativo. <i>(Resolvido pelas regras do material.)</i></div>
+        </details></div>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025 &middot; IBAMA</div>
           <div class="q">Em &ldquo;agora elas já se defrontam com um futuro ecológico&rdquo;, o advérbio &ldquo;já&rdquo; é fator que justifica a próclise de &ldquo;se&rdquo;. Certo ou Errado?</div>
-          <div class="a"><span class="verdict">CERTO</span> &mdash; advérbios são palavras atrativas (regra b), e não há vírgula separando. <i>(Gabarito não impresso; resolvido pela regra.)</i></div>
-        </details>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">CERTO</span> &mdash; advérbios são palavras atrativas (regra b), e não há vírgula separando. <i>(Gabarito não impresso; resolvido pela regra.)</i></div>
+        </details></div>
       </div>
     </div>
   </section>
@@ -447,11 +459,10 @@
           <li><i>Está cansado, <b>pois</b> trabalhou o dia inteiro.</i> &rarr; explicativa</li>
         </ul>
 
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025</summary>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025</div>
           <div class="q">&ldquo;Então, por que não alugar o carro em vez de comprar?&rdquo; No texto sobre consumo compartilhado, o vocábulo &ldquo;Então&rdquo; introduz uma conclusão. Certo ou Errado?</div>
-          <div class="a"><span class="verdict">Gabarito não impresso</span> &mdash; o material destaca: <b>&ldquo;Então&rdquo; só pode introduzir tempo ou conclusão. NUNCA explicação.</b> A anotação sugere que a afirmação de conclusão é a leitura esperada, mas o PDF não traz o gabarito oficial.</div>
-        </details>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Gabarito não impresso</span> &mdash; o material destaca: <b>&ldquo;Então&rdquo; só pode introduzir tempo ou conclusão. NUNCA explicação.</b> A anotação sugere que a afirmação de conclusão é a leitura esperada, mas o PDF não traz o gabarito oficial.</div>
+        </details></div>
       </div>
     </div>
   </section>
@@ -520,23 +531,20 @@
         </div>
         <p><b>Possessivo substantivo</b> (sem substantivo ao lado): artigo <b>obrigatório</b> &mdash; <i>Não obedeço à sua coordenadora, mas à minha.</i></p>
 
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Exercícios do material &middot; complete com a, à, às ou &ndash;</summary>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Exercícios do material &middot; complete com a, à, às ou &ndash;</div>
           <div class="q">1) BB: O gerente dirigiu-se ___ sua sala e pôs-se ___ falar ___ todas as pessoas convocadas.<br>2) Banespa: Recorreu ___ irmã e ___ ela se apegou como ___ uma tábua de salvação.<br>3) Cescem: Sentou-se e pôs-se ___ reescrever uma ___ uma as páginas.<br>4) FEI: Todos chegaram ___ tempo ___ reunião.</div>
-          <div class="a"><span class="verdict">Resolução pelas regras</span> (o PDF não imprime gabarito):<ul>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Resolução pelas regras</span> (o PDF não imprime gabarito):<ul>
             <li>1) <b>à</b> (facultativo por possessivo), <b>a</b>, <b>a</b></li>
             <li>2) <b>à</b>, <b>a</b> (pronome pessoal), <b>a</b> (antes de &ldquo;uma&rdquo;)</li>
             <li>3) <b>a</b> (antes de verbo), <b>a</b> (palavras repetidas)</li>
             <li>4) <b>a</b> (tempo), <b>à</b> (reunião)</li>
           </ul></div>
-        </details>
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025 &middot; FUB</summary>
+        </details></div>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE/CEBRASPE 2025 &middot; FUB</div>
           <div class="q">&ldquo;a exclusão digital se soma a outras formas de marginalização.&rdquo; É facultativo o emprego do sinal de crase no &ldquo;a&rdquo; antes de &ldquo;outras formas&rdquo;? Certo ou Errado?</div>
-          <div class="a"><span class="verdict">Sem gabarito no material</span> &mdash; o PDF só traz a regra geral (indefinido que não admite artigo &rarr; sem crase; &ldquo;outra&rdquo; pode admitir) e não resolve este item. Confira o gabarito oficial antes de decorar.</div>
-        </details>
-        <details class="exam">
-          <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; FGV 2025 &middot; DPE-RO</summary>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Sem gabarito no material</span> &mdash; o PDF só traz a regra geral (indefinido que não admite artigo &rarr; sem crase; &ldquo;outra&rdquo; pode admitir) e não resolve este item. Confira o gabarito oficial antes de decorar.</div>
+        </details></div>
+        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; FGV 2025 &middot; DPE-RO</div>
           <div class="q">Qual frase tem crase em contexto <b>optativo</b>?</div>
           <ul class="opts" style="list-style:upper-alpha;">
             <li>A fortuna é uma mulher, e, portanto, favorável às inovações.</li>
@@ -545,8 +553,8 @@
             <li>Vós sois a esperança&hellip; que pelo infinito semeiam às mãos cheias.</li>
             <li>As mentiras são essenciais à humanidade.</li>
           </ul>
-          <div class="a"><span class="verdict">B (pela regra do material)</span> &mdash; <i>à sua sorte</i>: possessivo adjetivo, artigo facultativo. Em A, C e E a crase é obrigatória (plural+plural; nome feminino com artigo). Gabarito não impresso; confira o oficial, sobretudo quanto à alternativa D.</div>
-        </details>
+          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">B (pela regra do material)</span> &mdash; <i>à sua sorte</i>: possessivo adjetivo, artigo facultativo. Em A, C e E a crase é obrigatória (plural+plural; nome feminino com artigo). Gabarito não impresso; confira o oficial, sobretudo quanto à alternativa D.</div>
+        </details></div>
       </div>
     </div>
   </section>
@@ -554,7 +562,7 @@
 
 <footer>
   <div class="wrap">
-    <p style="margin:0;">Mapa mental construído a partir das apostilas <em>Colocação Pronominal</em>, <em>Período Composto</em> e <em>Emprego da Crase</em> &mdash; Língua Portuguesa, prof. Allan Santos, preparatório TJAM.</p>
+    <p style="margin:0;">Mapa mental construído a partir das apostilas <em>Colocação Pronominal</em>, <em>Período Composto</em> e <em>Emprego da Crase</em> &mdash; Língua Portuguesa, preparatório TJAM.</p>
   </div>
 </footer>
 

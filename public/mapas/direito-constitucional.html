@@ -182,6 +182,21 @@
   :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
 
   html{font-size:calc(100% * var(--fs,1));}
+
+  .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
+  .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  .exam .opts{margin:10px 0 0; padding-left:1.4em; font-size:.9rem; color:var(--ink-soft);}
+  .exam .opts li{margin-bottom:3px;}
+  details.ans{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
+  details.ans summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--accent); font-weight:700;}
+  details.ans summary::-webkit-details-marker{display:none;}
+  details.ans summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border:1px solid var(--accent); border-radius:50%; font-size:calc(13px * var(--fs,1)); line-height:1;}
+  details.ans[open] summary::before{content:"\2013";}
+  details.ans .a{margin-top:12px; font-size:.92rem; color:var(--ink-soft);}
+  details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+  details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
+  details.ans .a li{margin-bottom:4px;}
 </style>
 <!--fs-ready--><script>try{var f=parseFloat(localStorage.getItem("mapas-font-scale"));if(f>0.5&&f<3)document.documentElement.style.setProperty("--fs",String(f));}catch(e){}</script>
 
@@ -367,11 +382,10 @@
       </div>
       <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Macete</span><p><strong>Asilo = Política</strong> (perseguição política, decisão política) <strong>x Refúgio = Humanidade</strong> (grave violação de DH, decisão humanitária) &mdash; distinção muito cobrada. Racismo é inafiançável e imprescritível; terrorismo é inafiançável e insuscetível de graça/anistia (art. 5º, XLII e XLIII).</p></div>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; FGV/TJ-RS</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; FGV/TJ-RS</div>
         <p class="q">Com base no preâmbulo, qual das opções é fundamento (não princípio internacional) da RFB: cooperação entre os povos, solução pacífica dos conflitos, não intervenção, defesa da paz, ou soberania?</p>
-        <div class="a"><span class="verdict">Soberania (E).</span> As outras quatro são princípios das relações internacionais (art. 4º, IX, VII, IV e VI) &mdash; só soberania é fundamento da República (art. 1º, I).</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Soberania (E).</span> As outras quatro são princípios das relações internacionais (art. 4º, IX, VII, IV e VI) &mdash; só soberania é fundamento da República (art. 1º, I).</div>
+      </details></div>
     </div>
   </section>
 
@@ -512,11 +526,10 @@
       <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Súmula 444 STJ</span><p>Investigação ou ação penal em andamento, isoladamente, não caracteriza maus antecedentes &mdash; exige-se trânsito em julgado.</p></div>
       <p><strong>Presunção de inocência</strong> (art. 5º, LVII): ninguém é culpado antes do trânsito em julgado. Nas ADCs 43, 44 e 54 (2019, 6x5), o STF considerou <strong>inconstitucional a execução provisória da pena</strong> antes do trânsito em julgado.</p>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; direito ao esquecimento</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; direito ao esquecimento</div>
         <p class="q">Empresa jornalística que publica entrevista com imputação falsa de crime a terceiro: quando responde civilmente?</p>
-        <div class="a"><span class="verdict">Só com má-fé.</span> RE 1.075.412 (Tema 995/1069): responsabilidade exige dolo (sabia da falsidade) ou culpa grave (negligência evidente na apuração, sem contraditório) &mdash; simples erro não gera responsabilização, sob pena de censura indireta.</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Só com má-fé.</span> RE 1.075.412 (Tema 995/1069): responsabilidade exige dolo (sabia da falsidade) ou culpa grave (negligência evidente na apuração, sem contraditório) &mdash; simples erro não gera responsabilização, sob pena de censura indireta.</div>
+      </details></div>
     </div>
   </section>
 
@@ -558,11 +571,10 @@
       <h3 class="sub">Ação Popular</h3>
       <p>Art. 5º, LXXIII: qualquer <strong>cidadão</strong> pode anular ato lesivo ao patrimônio público, à moralidade administrativa, ao meio ambiente ou ao patrimônio histórico-cultural. Isento de custas e sucumbência, salvo má-fé. Prescreve em <strong>5 anos</strong>. Legitimidade exclusiva do cidadão &mdash; pessoa jurídica não pode propor.</p>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; qual remédio cabe?</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; qual remédio cabe?</div>
         <p class="q">Poluição do ar por empresa sem fiscalização adequada, afetando um município inteiro: que ação(ões) cabe(m)?</p>
-        <div class="a"><span class="verdict">Ação popular OU ação civil pública (D).</span> Ambas protegem o meio ambiente (art. 5º, LXXIII e art. 129, III, CF); a Lei 7.347/1985 rege a ACP "sem prejuízo da ação popular" &mdash; não há exclusividade entre as duas.</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Ação popular OU ação civil pública (D).</span> Ambas protegem o meio ambiente (art. 5º, LXXIII e art. 129, III, CF); a Lei 7.347/1985 rege a ACP "sem prejuízo da ação popular" &mdash; não há exclusividade entre as duas.</div>
+      </details></div>
     </div>
   </section>
 
@@ -597,11 +609,10 @@
       <h3 class="sub">Segurança Viária (§10, EC 82/2014)</h3>
       <p>Três pilares: <strong>educação</strong>, <strong>engenharia</strong> e <strong>fiscalização</strong> de trânsito, a cargo de agentes de trânsito <strong>estruturados em carreira</strong> (concurso público, vedado desvio de função).</p>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova</div>
         <p class="q">Subordinam-se ao Governador: Polícia Militar, Corpo de Bombeiros, Polícias Civis e Penais estaduais/distritais. Certo ou errado?</p>
-        <div class="a"><span class="verdict">Certo.</span> Art. 144, §6º. A Polícia Federal <strong>não</strong> se subordina a governador algum &mdash; é organizada e mantida pela União.</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Certo.</span> Art. 144, §6º. A Polícia Federal <strong>não</strong> se subordina a governador algum &mdash; é organizada e mantida pela União.</div>
+      </details></div>
     </div>
   </section>
 
@@ -642,11 +653,10 @@
       <div class="case"><span class="cite">STF &middot; ADI 6.453</span><span class="tese">Simetria no quórum de emenda estadual</span><p>Inconstitucional Constituição estadual exigir quórum de 2/3 para suas próprias emendas &mdash; deve seguir os 3/5 do modelo federal.</p></div>
       <div class="case"><span class="cite">STF &middot; RE 147.776</span><span class="tese">Inconstitucionalidade progressiva</span><p>Norma incompatível com o desenho ideal (MP com legitimidade para ação civil ex delicto) mantida "ainda constitucional" enquanto a Defensoria não se estrutura plenamente.</p></div>
 
-      <details class="exam">
-        <summary><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; dupla revisão</summary>
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; dupla revisão</div>
         <p class="q">Entre as limitações ao poder constituinte derivado reformador há limitações materiais implícitas, como a vedação à dupla revisão das cláusulas pétreas. Certo ou errado?</p>
-        <div class="a"><span class="verdict">Certo.</span> Emendar primeiro o art. 60, §4º para esvaziar as cláusulas pétreas, e só depois abolir o conteúdo antes protegido, seria fraude em dois tempos &mdash; vedação implícita, sem texto expresso.</div>
-      </details>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Certo.</span> Emendar primeiro o art. 60, §4º para esvaziar as cláusulas pétreas, e só depois abolir o conteúdo antes protegido, seria fraude em dois tempos &mdash; vedação implícita, sem texto expresso.</div>
+      </details></div>
     </div>
   </section>
 

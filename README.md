@@ -23,5 +23,5 @@ Requer Node 20 ou superior e internet no build (a fonte Montserrat vem do Google
 
 ## Adicionar um mapa
 
-1. Copie o HTML para `public/mapas/<slug>.html` e rode `node scripts/prepare-map.mjs public/mapas/<slug>.html`. O script liga o botão de voltar ao app e faz o texto respeitar o seletor de fonte (pode ser rodado mais de uma vez).
+1. Copie o HTML para `public/mapas/<slug>.html` e rode `node scripts/prepare-map.mjs public/mapas/<slug>.html`. O script liga o botão de voltar ao app e faz o texto respeitar o seletor de fonte (pode ser rodado mais de uma vez). Se o mapa tiver questões no formato antigo (`<details class="exam">`), rode também `python scripts/spoiler-exams.py public/mapas/<slug>.html`: a questão fica visível e só a resposta fica atrás de "+ Ver resposta".
 2. Adicione um item em `data/maps.ts` com o mesmo `slug`.
