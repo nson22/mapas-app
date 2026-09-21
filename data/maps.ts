@@ -131,9 +131,9 @@ export const maps: MapItem[] = [
   {
     slug: 'direito-constitucional',
     title: 'Direito Constitucional',
-    kicker: '7 apostilas',
-    description: 'Princípios fundamentais, direitos fundamentais (art. 5º), remédios constitucionais, segurança pública, poder constituinte e hermenêutica.',
-    tags: ['7 ramos', 'art. 5º', 'jurisprudência STF'],
+    kicker: '16 arquivos de formação',
+    description: 'Princípios, teoria dos direitos fundamentais, aplicabilidade das normas, direitos fundamentais (art. 5º), remédios, segurança pública, poder constituinte e hermenêutica.',
+    tags: ['8 ramos', 'art. 5º', 'jurisprudência STF'],
     subject: 'constitucional',
     origin: 'curso',
     online: claude('XdT8cGxNwDUNhUpxbbxB2L'),
