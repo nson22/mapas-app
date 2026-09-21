@@ -151,6 +151,16 @@ export const maps: MapItem[] = [
     online: claude('NjULfstmhEK46C2zAf92e7'),
   },
 
+  {
+    slug: 'direito-administrativo-formacao',
+    title: 'Direito Administrativo — Formação',
+    kicker: 'Formação',
+    description: 'Regime jurídico e princípios, órgãos e entidades, terceiro setor e consórcios, poderes administrativos e poder de polícia.',
+    tags: ['10 ramos', '25 questões'],
+    subject: 'administrativo',
+    origin: 'curso',
+  },
+
   // Informática
   {
     slug: 'informatica-internet',
