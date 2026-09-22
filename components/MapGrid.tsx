@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calculator, ExternalLink, Landmark, Languages, Map as MapIcon, Network, Scale, Search } from 'lucide-react';
-import { maps, subjects, type Subject } from '@/data/maps';
+import { ArrowRight, Calculator, ExternalLink, Landmark, Languages, Map as MapIcon, Network, Scale, Search, FileText } from 'lucide-react';
+import { maps, subjects, type MapItem, type Subject } from '@/data/maps';
 
 const icons: Record<Subject['icon'], typeof Languages> = {
   languages: Languages,
@@ -16,6 +16,16 @@ const icons: Record<Subject['icon'], typeof Languages> = {
 type Filter = 'todos' | 'curso' | 'complemento';
 
 const normalize = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+function groupBySource(list: MapItem[]) {
+  const out: { source?: string; items: MapItem[] }[] = [];
+  for (const m of list) {
+    let g = out.find((x) => x.source === m.source);
+    if (!g) out.push((g = { source: m.source, items: [] }));
+    g.items.push(m);
+  }
+  return out;
+}
 
 export default function MapGrid() {
   const [query, setQuery] = useState('');
@@ -90,37 +100,47 @@ export default function MapGrid() {
               </h2>
               <span className="n">{list.length} {list.length === 1 ? 'mapa' : 'mapas'}</span>
             </div>
-            <div className="grid">
-              {list.map((m) => (
-                <article key={m.slug} className="card">
-                  <div className="kicker">
-                    <MapIcon size={14} aria-hidden />
-                    {m.kicker}
-                  </div>
-                  <h3>
-                    <Link href={`/mapas/${m.slug}`}>{m.title}</Link>
+            {groupBySource(list).map((g) => (
+              <div key={g.source ?? 'all'}>
+                {g.source && (
+                  <h3 className="source-head">
+                    <FileText size={16} aria-hidden />
+                    {g.source}
                   </h3>
-                  <p>{m.description}</p>
-                  <div className="tags">
-                    {m.tags.map((t) => (
-                      <span key={t}>{t}</span>
-                    ))}
-                  </div>
-                  <div className="foot">
-                    <span className="open">
-                      Abrir mapa <ArrowRight size={15} aria-hidden />
-                    </span>
-                    {m.online ? (
-                      <a className="online" href={m.online} target="_blank" rel="noopener noreferrer">
-                        versão online <ExternalLink size={13} aria-hidden />
-                      </a>
-                    ) : (
-                      <span />
-                    )}
-                  </div>
-                </article>
-              ))}
-            </div>
+                )}
+                <div className="grid">
+                  {g.items.map((m) => (
+                    <article key={m.slug} className="card">
+                      <div className="kicker">
+                        <MapIcon size={14} aria-hidden />
+                        {m.kicker}
+                      </div>
+                      <h3>
+                        <Link href={`/mapas/${m.slug}`}>{m.title}</Link>
+                      </h3>
+                      <p>{m.description}</p>
+                      <div className="tags">
+                        {m.tags.map((t) => (
+                          <span key={t}>{t}</span>
+                        ))}
+                      </div>
+                      <div className="foot">
+                        <span className="open">
+                          Abrir mapa <ArrowRight size={15} aria-hidden />
+                        </span>
+                        {m.online ? (
+                          <a className="online" href={m.online} target="_blank" rel="noopener noreferrer">
+                            versão online <ExternalLink size={13} aria-hidden />
+                          </a>
+                        ) : (
+                          <span />
+                        )}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            ))}
           </section>
         );
       })}

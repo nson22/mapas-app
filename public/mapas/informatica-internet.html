@@ -49,6 +49,7 @@
   }
 
   *{box-sizing:border-box;}
+  html{font-size:calc(100% * var(--fs,1));}
   body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:calc(15.5px * var(--fs,1)); line-height:1.6; -webkit-font-smoothing:antialiased;}
   h1,h2,h3{font-family:var(--font-display); color:var(--ink); text-wrap:balance; margin:0;}
   p{margin:0 0 .9em; max-width:66ch;}
@@ -171,8 +172,6 @@
   :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
   :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
 
-  html{font-size:calc(100% * var(--fs,1));}
-
   .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
   .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
   .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
@@ -187,12 +186,38 @@
   details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
   details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
   details.ans .a li{margin-bottom:4px;}
+  .eyebrow{flex-wrap:wrap; row-gap:10px;}
+  .crumb{display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-weight:600;}
+  .crumb-sep{opacity:.5;}
+  .crumb b{color:var(--ink);}
+  .hdr-actions{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-left:auto;}
+  .icon-btn{display:inline-flex; align-items:center; gap:6px; height:30px; padding:0 12px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink-soft); cursor:pointer; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:none; letter-spacing:normal; text-decoration:none;}
+  .icon-btn:hover{border-color:var(--accent); color:var(--accent); background:var(--accent-tint);}
+  .icon-btn .lucide{width:14px; height:14px;}
+  .icon-btn .i-sun{display:none;}
+  :root[data-theme="dark"] .icon-btn .i-sun{display:inline-flex;}
+  :root[data-theme="dark"] .icon-btn .i-moon{display:none;}
+  .icon-btn .i-exit-fs{display:none;}
+  html[data-fullscreen="true"] .icon-btn .i-exit-fs{display:inline-flex;}
+  html[data-fullscreen="true"] .icon-btn .i-enter-fs{display:none;}
+  .font-ctl{display:inline-flex; align-items:center; gap:2px; padding:2px 4px 2px 10px; border:1px solid var(--line); border-radius:999px; color:var(--ink-soft);}
+  .font-ctl button{display:inline-flex; align-items:center; justify-content:center; min-width:26px; height:26px; border:0; background:transparent; color:inherit; border-radius:999px; cursor:pointer; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); font-weight:600;}
+  .font-ctl button:hover:not(:disabled){background:var(--paper-2); color:var(--ink);}
+  .font-ctl button:disabled{opacity:.35; cursor:default;}
+  .font-ctl .pct{min-width:42px;}
+  .font-ctl svg{width:14px; height:14px;}
+  .embedded .eyebrow{display:none}
+  @media (max-width:760px){ .crumb-brand{display:none;} .icon-btn span{display:none;} .icon-btn{padding:0 9px;} .font-ctl > svg:first-child{display:none;} }
+
+  html{font-size:calc(100% * var(--fs,1));}
 </style>
 <!--fs-ready--><script>try{var f=parseFloat(localStorage.getItem("mapas-font-scale"));if(f>0.5&&f<3)document.documentElement.style.setProperty("--fs",String(f));}catch(e){}</script>
+<script>try{if(window.self!==window.top){document.documentElement.classList.add('embedded');}}catch(e){}</script>
+
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a>Informática &middot; Mapa Mental</div>
+    <div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Informática<span class="crumb-sep">/</span><b>Internet, Intranet & VPN</b></span><div class="hdr-actions"><button type="button" class="icon-btn" id="fsBtn" aria-pressed="false" aria-label="Ativar tela cheia" title="Tela cheia"><i data-lucide="maximize" class="i-enter-fs" aria-hidden="true"></i><i data-lucide="minimize" class="i-exit-fs" aria-hidden="true"></i><span>Tela cheia</span></button><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div>
     <h1 class="title">Internet, Intranet &amp; <em>VPN</em></h1>
     <p class="dek">Da ARPANET ao túnel criptografado &mdash; redes, protocolos, intranet e extranet, navegadores, busca avançada e e-mail, organizados para revisão.</p>
 
@@ -214,8 +239,7 @@
     <a href="#servicos">Serviços &amp; Segurança</a>
     <a href="#navegadores">Navegadores</a>
     <a href="#pesquisa">Ferramentas de Pesquisa</a>
-    <a href="#email">Correio Eletrônico</a>
-  <a href="#mnemonicos">Mnemônicos</a></div>
+    <a href="#email">Correio Eletrônico</a><a href="#mnemonicos">Mnemônicos</a></div>
 </nav>
 
 <main>
@@ -735,6 +759,10 @@
     </div>
   </section>
 
+
+
+
+
 <!--mnemonicos--><section id="mnemonicos" class="branch"><div class="wrap"><div class="branch-head"><span class="branch-num"><i data-lucide="lightbulb" aria-hidden="true"></i></span><h2>Mnemônicos de concurso</h2><span class="branch-kicker">macetes para fixar</span></div><p style="font-size:.92rem;">Mnemônicos e macetes que circulam em cursos preparatórios. Alguns variam de professor para professor; use os que funcionarem para você e confira sempre com o conteúdo do mapa.</p><div class="grid-2"><div class="example"><span class="tag">Internet × intranet × extranet</span><p><strong>Internet = pública; Intranet = privada; Extranet = intranet aberta a parceiros.</strong> Os três usam os <em>mesmos protocolos</em>; muda o público e o controle de acesso.</p></div><div class="example"><span class="tag">DNS</span><p><strong>DNS = a agenda telefônica da internet</strong>: traduz nome (site) em número (IP).</p></div><div class="example"><span class="tag">HTTP × HTTPS</span><p><strong>HTTPS = HTTP + S de Seguro (Secure)</strong>: usa criptografia (SSL/TLS).</p></div><div class="example"><span class="tag">E-mail</span><p><strong>SMTP = Send</strong> (envia); <strong>POP3 e IMAP</strong> recebem. POP3 baixa (em geral tira do servidor); IMAP mantém no servidor e sincroniza vários dispositivos.</p></div><div class="example"><span class="tag">VPN</span><p><strong>VPN = túnel criptografado</strong> dentro da internet pública: cria uma rede privada &ldquo;virtual&rdquo;.</p></div></div></div></section><!--/mnemonicos-->
 </main>
 
@@ -766,7 +794,50 @@
 })();
 </script>
 
-<button type="button" class="theme-fab" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i></button>
+<script>
+(function(){
+  var STEPS=[0.85,1,1.15,1.3,1.5], root=document.documentElement;
+  var down=document.getElementById('fontDown'), up=document.getElementById('fontUp'), reset=document.getElementById('fontReset');
+  function idxOf(v){ var i=STEPS.indexOf(v); return i===-1 ? 1 : i; }
+  function readStored(){ try{ return idxOf(parseFloat(localStorage.getItem('mapas-font-scale'))); }catch(e){ return 1; } }
+  var index=readStored();
+  function applyFont(i){
+    index=Math.min(STEPS.length-1, Math.max(0, i));
+    var v=STEPS[index];
+    root.style.setProperty('--fs', String(v));
+    reset.textContent=Math.round(v*100)+'%';
+    down.disabled=index===0; up.disabled=index===STEPS.length-1;
+    try{ localStorage.setItem('mapas-font-scale', String(v)); }catch(e){}
+  }
+  applyFont(index);
+  down.addEventListener('click', function(){ applyFont(index-1); });
+  up.addEventListener('click', function(){ applyFont(index+1); });
+  reset.addEventListener('click', function(){ applyFont(1); });
+})();
+</script>
+<script>
+(function(){
+  var btn=document.getElementById('fsBtn');
+  function sync(){
+    var fs=Boolean(document.fullscreenElement||document.webkitFullscreenElement);
+    document.documentElement.setAttribute('data-fullscreen', fs ? 'true' : 'false');
+    btn.setAttribute('aria-pressed', String(fs));
+  }
+  btn.addEventListener('click', function(){
+    var p;
+    if(document.fullscreenElement||document.webkitFullscreenElement){
+      p=(document.exitFullscreen||document.webkitExitFullscreen).call(document);
+    } else {
+      var el=document.documentElement;
+      p=(el.requestFullscreen||el.webkitRequestFullscreen).call(el);
+    }
+    if(p && p.catch){ p.catch(function(){}); }
+  });
+  document.addEventListener('fullscreenchange', sync);
+  document.addEventListener('webkitfullscreenchange', sync);
+  sync();
+})();
+</script>
 <script>
 (function(){
   var root=document.documentElement, btn=document.getElementById('themeBtn');

@@ -11,6 +11,8 @@ export type MapItem = {
   origin: 'curso' | 'complemento';
   /** link do artefato publicado no Claude (exige login), quando existir */
   online?: string;
+  /** PDF de origem: agrupa os mapas em um gridview por PDF */
+  source?: string;
 };
 
 export type Subject = {
@@ -129,14 +131,76 @@ export const maps: MapItem[] = [
 
   // Direito Constitucional
   {
-    slug: 'direito-constitucional',
-    title: 'Direito Constitucional',
-    kicker: '16 arquivos de formação',
-    description: 'Princípios, teoria dos direitos fundamentais, aplicabilidade das normas, direitos fundamentais (art. 5º), remédios, segurança pública, poder constituinte e hermenêutica.',
-    tags: ['8 ramos', 'art. 5º', 'jurisprudência STF'],
+    slug: 'direito-constitucional-principios',
+    title: 'Princípios Fundamentais',
+    kicker: 'Formação',
+    description: 'Título I da CF/88 &mdash; arts. 1º a 4º.',
+    tags: ['1 questões'],
     subject: 'constitucional',
     origin: 'curso',
-    online: claude('XdT8cGxNwDUNhUpxbbxB2L'),
+  },
+  {
+    slug: 'direito-constitucional-teoria-geral',
+    title: 'Teoria Geral dos Direitos Fundamentais',
+    kicker: 'Formação',
+    description: 'Evolução, conceito, dimensões, características, eficácia e limites.',
+    tags: ['conceitos e quadros'],
+    subject: 'constitucional',
+    origin: 'curso',
+  },
+  {
+    slug: 'direito-constitucional-aplicabilidade',
+    title: 'Aplicabilidade das Normas Constitucionais',
+    kicker: 'Formação',
+    description: 'Eficácia plena, contida e limitada; classificação da CF/88.',
+    tags: ['conceitos e quadros'],
+    subject: 'constitucional',
+    origin: 'curso',
+  },
+  {
+    slug: 'direito-constitucional-direitos-fundamentais',
+    title: 'Direitos Fundamentais',
+    kicker: 'Formação',
+    description: 'Art. 5º da CF/88 &mdash; o tema nº1 do Direito Constitucional.',
+    tags: ['1 questões'],
+    subject: 'constitucional',
+    origin: 'curso',
+  },
+  {
+    slug: 'direito-constitucional-remedios',
+    title: 'Remédios Constitucionais',
+    kicker: 'Formação',
+    description: 'Instrumentos processuais de proteção aos direitos fundamentais.',
+    tags: ['1 questões'],
+    subject: 'constitucional',
+    origin: 'curso',
+  },
+  {
+    slug: 'direito-constitucional-seguranca-publica',
+    title: 'Segurança Pública',
+    kicker: 'Formação',
+    description: 'Art. 144 da CF/88.',
+    tags: ['1 questões'],
+    subject: 'constitucional',
+    origin: 'curso',
+  },
+  {
+    slug: 'direito-constitucional-poder-constituinte',
+    title: 'Poder Constituinte',
+    kicker: 'Formação',
+    description: 'Poder originário e derivado, titularidade, recepção e direito intertemporal.',
+    tags: ['6 questões'],
+    subject: 'constitucional',
+    origin: 'curso',
+  },
+  {
+    slug: 'direito-constitucional-hermeneutica',
+    title: 'Hermenêutica Constitucional',
+    kicker: 'Formação',
+    description: 'Métodos, correntes, critérios, escolas e questões resolvidas.',
+    tags: ['49 questões'],
+    subject: 'constitucional',
+    origin: 'curso',
   },
 
   // Direito Administrativo
@@ -152,11 +216,29 @@ export const maps: MapItem[] = [
   },
 
   {
-    slug: 'direito-administrativo-formacao',
-    title: 'Direito Administrativo — Formação',
+    slug: 'direito-administrativo-regime',
+    title: 'Regime Jurídico e Princípios',
     kicker: 'Formação',
-    description: 'Regime jurídico e princípios, órgãos e entidades, terceiro setor e consórcios, poderes administrativos e poder de polícia.',
-    tags: ['10 ramos', '25 questões'],
+    description: 'Origem, sistemas de controle, fontes, prerrogativas e sujeições, princípios expressos (LIMPE) e implícitos, com as súmulas e artigos que a prova cobra.',
+    tags: ['3 ramos', '12 questões'],
+    subject: 'administrativo',
+    origin: 'curso',
+  },
+  {
+    slug: 'direito-administrativo-organizacao',
+    title: 'Organização Administrativa',
+    kicker: 'Formação',
+    description: 'Órgãos, descentralização e desconcentração, autarquias, agências, fundações, empresas estatais, terceiro setor e consórcios públicos.',
+    tags: ['4 ramos', '7 questões'],
+    subject: 'administrativo',
+    origin: 'curso',
+  },
+  {
+    slug: 'direito-administrativo-poderes',
+    title: 'Poderes Administrativos',
+    kicker: 'Formação',
+    description: 'Poderes hierárquico e disciplinar, poder-dever e abuso de poder, poder normativo e regulamentar, reserva de administração e poder de polícia.',
+    tags: ['3 ramos', '6 questões'],
     subject: 'administrativo',
     origin: 'curso',
   },

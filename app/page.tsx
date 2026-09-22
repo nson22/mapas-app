@@ -7,15 +7,14 @@ export default function HomePage() {
     <>
       <header className="site-header">
         <div className="wrap bar">
-          <span className="brand">Mapas Mentais</span>
+          <span className="brand">Mapas Mentais - Para Concrusos</span>
           <ThemeToggle />
         </div>
       </header>
 
       <main className="wrap">
         <section className="hero">
-          <div className="eyebrow">Concursos · TJAM &amp; ManausPrev</div>
-          <h1>Meus Mapas Mentais</h1>
+          <h1 className='eyebrow'>Meus Mapas Mentais</h1>
           <p className="dek">
             {maps.length} mapas divididos por matéria, com acesso rápido. Use a busca ou o filtro para
             separar o que veio das apostilas do curso do que é conteúdo complementar.

@@ -1,0 +1,345 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Princípios Fundamentais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root{
+    --paper: #eef0f4;
+    --paper-2: #e1e5ec;
+    --paper-3: #ccd3de;
+    --ink: #1a2340;
+    --ink-soft: #4a5578;
+    --ink-faint: #7d87a3;
+    --accent: #2d3f8f;        /* constitutional blue */
+    --accent-strong: #1a2662;
+    --accent-tint: #dde1f3;
+    --brass: #a37a1f;         /* gold — citations, stars, highlight */
+    --brass-tint: #f0e2c0;
+    --wine: #7a2f45;          /* burgundy — exceções, atenção */
+    --wine-tint: #f0dde3;
+    --line: #c5cbdb;
+    --line-soft: #dee2ec;
+    --shadow: 0 1px 2px rgba(26,35,64,.06), 0 8px 24px -14px rgba(26,35,64,.28);
+    --font-display: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #0f1220; --paper-2: #161a2c; --paper-3: #1f2438;
+      --ink: #e7e9f5; --ink-soft: #aab0cc; --ink-faint: #7d87a3;
+      --accent: #8b9ae8; --accent-strong: #c0c9f5; --accent-tint: #1e2545;
+      --brass: #e0b563; --brass-tint: #2f2717;
+      --wine: #e0a1b6; --wine-tint: #3a2130;
+      --line: #2c3350; --line-soft: #1a1f34;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #0f1220; --paper-2: #161a2c; --paper-3: #1f2438;
+    --ink: #e7e9f5; --ink-soft: #aab0cc; --ink-faint: #7d87a3;
+    --accent: #8b9ae8; --accent-strong: #c0c9f5; --accent-tint: #1e2545;
+    --brass: #e0b563; --brass-tint: #2f2717;
+    --wine: #e0a1b6; --wine-tint: #3a2130;
+    --line: #2c3350; --line-soft: #1a1f34;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  html{font-size:calc(100% * var(--fs,1));}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:calc(15.5px * var(--fs,1)); line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--font-display); color:var(--ink); text-wrap:balance; margin:0;}
+  p{margin:0 0 .9em; max-width:66ch;}
+  a{color:inherit;}
+  ::selection{background:var(--accent-tint); color:var(--accent-strong);}
+  :focus-visible{outline:2.5px solid var(--brass); outline-offset:2px; border-radius:3px;}
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+
+  .hero{padding:56px 0 28px; border-bottom:1px solid var(--line-soft);}
+  .eyebrow{display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:calc(12.5px * var(--fs,1)); letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:18px;}
+  .eyebrow::before{content:""; display:inline-block; width:22px; height:1px; background:var(--accent);}
+  h1.title{font-size:clamp(2.1rem, 5vw, 3.2rem); font-weight:700; letter-spacing:-.01em; line-height:1.06;}
+  h1.title em{font-style:italic; font-weight:500; color:var(--accent-strong);}
+  .dek{font-size:1.08rem; color:var(--ink-soft); margin-top:16px; max-width:60ch;}
+
+  .relevance{margin-top:28px; display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px; padding:16px 20px; background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px;}
+  .relevance .stat{display:flex; flex-direction:column; gap:2px;}
+  .relevance .stat .num{font-family:var(--font-display); font-weight:700; font-size:1.5rem; line-height:1;}
+  .relevance .stat .lbl{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);}
+  .stars{color:var(--brass); letter-spacing:1px; font-size:1.05rem;}
+  .relevance-note{font-size:.88rem; color:var(--ink-soft); flex:1; min-width:260px;}
+  .relevance-note b{color:var(--ink); font-weight:600;}
+
+  .subnav-shell{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-soft);}
+  .subnav{display:flex; gap:6px; overflow-x:auto; padding:12px 24px; max-width:960px; margin:0 auto; scrollbar-width:thin;}
+  .subnav a{flex:none; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.03em; padding:7px 12px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); text-decoration:none; white-space:nowrap; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
+  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+
+  .diagram-section{padding:44px 0 8px;}
+  .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
+  .diagram-intro h2{font-size:calc(12.5px * var(--fs,1)); font-weight:600; font-family:var(--font-body); color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em;}
+  .diagram-intro p{font-size:.86rem; color:var(--ink-faint); margin:0; max-width:34ch; text-align:right;}
+  .diagram-frame{border:1px solid var(--line-soft); border-radius:16px; background:var(--paper-2); padding:8px; box-shadow:var(--shadow);}
+  svg.mindmap{width:100%; height:auto; display:block;}
+  .mm-link{cursor:pointer;}
+  .mm-node rect{fill:var(--paper); stroke:var(--line); stroke-width:1.3; transition:stroke .15s ease, fill .15s ease;}
+  .mm-node.big rect{stroke-width:1.6;}
+  .mm-node .badge circle{fill:var(--brass);}
+  .mm-node .badge text{fill:var(--paper); font-family:var(--font-mono); font-weight:600;}
+  .mm-node .label{font-family:var(--font-display); font-weight:600; fill:var(--ink); font-size:16.5px;}
+  .mm-node .kicker{font-family:var(--font-mono); fill:var(--ink-faint); font-size:9.6px; letter-spacing:.05em;}
+  .mm-link:hover .mm-node rect, .mm-link.active .mm-node rect{fill:var(--accent-tint); stroke:var(--accent);}
+  .mm-node.big .kicker{fill:var(--wine);}
+  .mm-link:hover .mm-node.big rect, .mm-link.active .mm-node.big rect{fill:var(--wine-tint); stroke:var(--wine);}
+  .mm-center rect{fill:var(--accent-strong); stroke:none;}
+  .mm-center .label{fill:var(--paper); font-size:20px;}
+  .mm-center .kicker{fill:var(--brass-tint); font-size:10.5px;}
+  .mm-lines line{stroke:var(--line); stroke-width:1.4;}
+
+  .branch{padding:52px 0; border-bottom:1px solid var(--line-soft); scroll-margin-top:64px;}
+  .branch:last-of-type{border-bottom:none;}
+  .branch-head{display:grid; grid-template-columns:auto 1fr; gap:16px 20px; align-items:start; margin-bottom:24px;}
+  .branch-num{font-family:var(--font-mono); font-size:calc(13px * var(--fs,1)); color:var(--brass); border:1px solid var(--line); border-radius:8px; width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-weight:600;}
+  .branch-head h2{font-size:clamp(1.5rem,3vw,1.9rem); font-weight:700;}
+  .branch-kicker{grid-column:2; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); margin-top:-14px;}
+
+  h3.sub{font-size:1.08rem; font-weight:700; margin:32px 0 10px; color:var(--accent-strong); padding-top:14px; border-top:1px solid var(--line-soft);}
+  h3.sub:first-of-type{border-top:none; padding-top:0; margin-top:6px;}
+  h4.minor{font-size:.96rem; font-weight:700; margin:20px 0 8px; color:var(--ink);}
+  ul.plain, ol.plain{margin:0 0 1em; padding-left:1.25em;}
+  ul.plain li, ol.plain li{margin-bottom:.4em; max-width:64ch;}
+  ul.plain li::marker{color:var(--brass);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 20px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0 20px;}
+  @media (max-width:680px){.grid-2, .grid-3{grid-template-columns:1fr;}}
+
+  .example{background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px; padding:14px 16px;}
+  .example .tag{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); text-transform:uppercase; letter-spacing:.06em; color:var(--accent); font-weight:600; display:block; margin-bottom:6px;}
+  .example.alt .tag{color:var(--wine);}
+  .example p{margin:0; font-size:.92rem;}
+
+  .callout{border-left:3px solid var(--brass); background:var(--brass-tint); padding:14px 18px; border-radius:0 8px 8px 0; margin:20px 0;}
+  .callout .tag{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); text-transform:uppercase; letter-spacing:.07em; color:var(--brass); font-weight:700; display:block; margin-bottom:4px;}
+  .callout p{margin:0; font-size:.94rem;}
+  .callout p:last-child{margin-bottom:0;}
+  .callout.warn{border-left-color:var(--wine); background:var(--wine-tint);}
+  .callout.warn .tag{color:var(--wine);}
+
+  .case{border-left:3px solid var(--accent); padding:10px 0 10px 16px; margin:14px 0;}
+  .case .cite{font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); color:var(--brass); font-weight:600; display:block; margin-bottom:3px;}
+  .case .tese{font-weight:700; display:block; margin-bottom:3px; font-size:.97rem;}
+  .case p{margin:0; font-size:.9rem; color:var(--ink-soft);}
+
+  details.exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  details.exam summary{cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; display:flex; align-items:center; gap:8px;}
+  details.exam summary::-webkit-details-marker{display:none;}
+  details.exam summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:calc(12px * var(--fs,1));}
+  details.exam[open] summary::before{content:"\2013";}
+  details.exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  details.exam .opts{margin:10px 0 0; padding-left:1.2em; font-size:.88rem; color:var(--ink-soft);}
+  details.exam .opts li{margin-bottom:3px;}
+  details.exam .a{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:.92rem; color:var(--ink-soft);}
+  details.exam .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+
+  table.data{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.87rem;}
+  table.data th, table.data td{text-align:left; padding:8px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+  table.data th{font-family:var(--font-mono); font-size:calc(10px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; border-bottom:1.5px solid var(--line);}
+  table.data td.hl{color:var(--accent-strong); font-weight:700;}
+  table.data td.wine{color:var(--wine); font-weight:700;}
+  .table-scroll{overflow-x:auto;}
+
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 18px;}
+  .chip{font-family:var(--font-mono); font-size:.8rem; padding:4px 10px; border-radius:999px; background:var(--paper-2); border:1px solid var(--line-soft); color:var(--ink-soft);}
+  .chip-group{margin-bottom:14px;}
+  .chip-group .gl{font-family:var(--font-mono); font-size:calc(10.5px * var(--fs,1)); text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); display:block; margin-bottom:6px;}
+
+  .lawquote{font-family:var(--font-mono); font-size:.85rem; line-height:1.65; color:var(--ink-soft); border-left:3px solid var(--line); padding-left:16px; margin:16px 0; max-width:62ch;}
+  .lawquote cite{display:block; margin-top:6px; font-style:normal; color:var(--brass);}
+
+  footer{padding:44px 0 64px; color:var(--ink-faint); font-size:.85rem;}
+  footer .wrap{border-top:1px solid var(--line-soft); padding-top:24px;}
+
+  @media (prefers-reduced-motion: reduce){ * {transition:none !important;} }
+  .lucide{width:1em; height:1em; stroke-width:2; flex:none; vertical-align:-.14em; margin-right:6px;}
+  .eyebrow .lucide{width:15px; height:15px; margin-right:0;}
+  details.exam summary .lucide{width:15px; height:15px; margin-right:0;}
+  .callout .tag .lucide, .example .tag .lucide{width:13px; height:13px; vertical-align:-2px;}
+  .class-card .tag .lucide{width:11px; height:11px; vertical-align:-1.5px; margin-right:4px;}
+  .branch-num .lucide{width:16px; height:16px; margin:0;}
+  .eyebrow::before{display:none !important;}
+  .eyebrow .back{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:50%; color:var(--accent); text-decoration:none; transition:background .15s ease, border-color .15s ease;}
+  .eyebrow .back:hover{background:var(--accent-tint); border-color:var(--accent);}
+  .eyebrow .back .lucide{width:16px; height:16px; margin:0;}
+  .theme-fab{position:fixed; right:18px; bottom:18px; z-index:50; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow);}
+  .theme-fab:hover{border-color:var(--accent); color:var(--accent);}
+  .theme-fab .lucide{width:19px; height:19px; margin:0;}
+  .theme-fab .i-sun{display:none;}
+  :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
+  :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
+
+  .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
+  .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
+  .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
+  .exam .opts{margin:10px 0 0; padding-left:1.4em; font-size:.9rem; color:var(--ink-soft);}
+  .exam .opts li{margin-bottom:3px;}
+  details.ans{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
+  details.ans summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--accent); font-weight:700;}
+  details.ans summary::-webkit-details-marker{display:none;}
+  details.ans summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border:1px solid var(--accent); border-radius:50%; font-size:calc(13px * var(--fs,1)); line-height:1;}
+  details.ans[open] summary::before{content:"\2013";}
+  details.ans .a{margin-top:12px; font-size:.92rem; color:var(--ink-soft);}
+  details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
+  details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
+  details.ans .a li{margin-bottom:4px;}
+  .eyebrow{flex-wrap:wrap; row-gap:10px;}
+  .crumb{display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-weight:600;}
+  .crumb-sep{opacity:.5;}
+  .crumb b{color:var(--ink);}
+  .hdr-actions{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-left:auto;}
+  .icon-btn{display:inline-flex; align-items:center; gap:6px; height:30px; padding:0 12px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink-soft); cursor:pointer; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:none; letter-spacing:normal; text-decoration:none;}
+  .icon-btn:hover{border-color:var(--accent); color:var(--accent); background:var(--accent-tint);}
+  .icon-btn .lucide{width:14px; height:14px;}
+  .icon-btn .i-sun{display:none;}
+  :root[data-theme="dark"] .icon-btn .i-sun{display:inline-flex;}
+  :root[data-theme="dark"] .icon-btn .i-moon{display:none;}
+  .icon-btn .i-exit-fs{display:none;}
+  html[data-fullscreen="true"] .icon-btn .i-exit-fs{display:inline-flex;}
+  html[data-fullscreen="true"] .icon-btn .i-enter-fs{display:none;}
+  .font-ctl{display:inline-flex; align-items:center; gap:2px; padding:2px 4px 2px 10px; border:1px solid var(--line); border-radius:999px; color:var(--ink-soft);}
+  .font-ctl button{display:inline-flex; align-items:center; justify-content:center; min-width:26px; height:26px; border:0; background:transparent; color:inherit; border-radius:999px; cursor:pointer; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); font-weight:600;}
+  .font-ctl button:hover:not(:disabled){background:var(--paper-2); color:var(--ink);}
+  .font-ctl button:disabled{opacity:.35; cursor:default;}
+  .font-ctl .pct{min-width:42px;}
+  .font-ctl svg{width:14px; height:14px;}
+  .embedded .eyebrow{display:none}
+  @media (max-width:760px){ .crumb-brand{display:none;} .icon-btn span{display:none;} .icon-btn{padding:0 9px;} .font-ctl > svg:first-child{display:none;} }
+
+  html{font-size:calc(100% * var(--fs,1));}
+</style>
+<!--fs-ready--><script>try{var f=parseFloat(localStorage.getItem("mapas-font-scale"));if(f>0.5&&f<3)document.documentElement.style.setProperty("--fs",String(f));}catch(e){}</script>
+<script>try{if(window.self!==window.top){document.documentElement.classList.add('embedded');}}catch(e){}</script>
+
+
+<header class="hero"><div class="wrap"><div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Direito Constitucional<span class="crumb-sep">/</span><b>Princípios Fundamentais</b></span><div class="hdr-actions"><button type="button" class="icon-btn" id="fsBtn" aria-pressed="false" aria-label="Ativar tela cheia" title="Tela cheia"><i data-lucide="maximize" class="i-enter-fs" aria-hidden="true"></i><i data-lucide="minimize" class="i-exit-fs" aria-hidden="true"></i><span>Tela cheia</span></button><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div><h1 class="title">Princípios Fundamentais</h1><p class="dek">Título I da CF/88 &mdash; arts. 1º a 4º.</p><div class="relevance"><div class="stat"><span class="num">1</span><span class="lbl">questões</span></div><p class="relevance-note">Gabaritos conforme o material; onde não havia gabarito impresso, isso está indicado.</p></div></div></header>
+<main>
+<section id="principios" class="branch">
+    <div class="wrap">
+      <div class="branch-head">
+        <span class="branch-num">01</span>
+        <h2>Princípios Fundamentais</h2>
+        <span class="branch-kicker">Título I da CF/88 &mdash; arts. 1º a 4º</span>
+      </div>
+      <p>Os quatro artigos que abrem a Constituição são o "DNA" do Estado brasileiro: art. 1º define forma e fundamentos; art. 2º, a separação dos Poderes; art. 3º, os objetivos; art. 4º, as diretrizes internacionais.</p>
+
+      <h3 class="sub">Forma de Estado, de Governo e Regime Político</h3>
+      <div class="grid-3">
+        <div class="example"><span class="tag">Federalismo &middot; forma de Estado</span><p>Poder repartido entre União, Estados, DF e Municípios &mdash; todos com <strong>autonomia</strong> (auto-organização, autolegislação, autogoverno, autoadministração), nunca soberania.</p></div>
+        <div class="example"><span class="tag">República &middot; forma de governo</span><p>Eletividade, temporariedade e responsabilidade dos governantes &mdash; opõe-se à monarquia (hereditariedade, vitaliciedade, irresponsabilidade).</p></div>
+        <div class="example alt"><span class="tag">Democracia &middot; regime político</span><p>O Brasil adota a democracia <strong>semidireta</strong> (representativa + plebiscito, referendo, iniciativa popular) &mdash; nunca apenas a indireta.</p></div>
+      </div>
+      <div class="callout warn"><span class="tag"><i data-lucide="triangle-alert" aria-hidden="true"></i>Pegadinha clássica</span><p>A <strong>RFB é soberana</strong>; os <strong>entes federativos têm autonomia</strong> &mdash; a banca adora inverter esses dois atributos. A <strong>Federação é cláusula pétrea expressa</strong> (art. 60, §4º, I) e não admite secessão; a <strong>forma republicana não é cláusula pétrea expressa</strong> (só é discutida como implícita, em razão do plebiscito de 1993).</p></div>
+
+      <h3 class="sub">Separação dos Poderes (art. 2º)</h3>
+      <p>"São Poderes da União, independentes e harmônicos entre si, o Legislativo, o Executivo e o Judiciário." Formulação clássica de <strong>Montesquieu</strong> (freios e contrapesos), a partir de Locke e Aristóteles. Cláusula pétrea expressa (art. 60, §4º, III). <strong>O Poder é uno e indivisível</strong> &mdash; o que se separa são as <em>funções</em>.</p>
+
+      <h3 class="sub">Fundamentos da República (art. 1º, I a V)</h3>
+      <table class="data">
+        <thead><tr><th>Inciso</th><th>Fundamento</th><th>Essência</th></tr></thead>
+        <tbody>
+          <tr><td>I</td><td>Soberania</td><td>Poder supremo, interno e externo &mdash; una, indivisível, inalienável, imprescritível.</td></tr>
+          <tr><td>II</td><td>Cidadania</td><td>Participação política (votar/ser votado) + participação social (fiscalizar o Estado).</td></tr>
+          <tr><td class="hl">III</td><td>Dignidade da pessoa humana</td><td>Metaprincípio: valor intrínseco, autonomia, valor comunitário (Barroso); não instrumentalização, mínimo existencial, reconhecimento (Honneth).</td></tr>
+          <tr><td>IV</td><td>Valores sociais do trabalho e livre iniciativa</td><td>Concilia Estado Social e Estado Liberal.</td></tr>
+          <tr><td>V</td><td>Pluralismo político</td><td>Aceitação da diversidade de ideias &mdash; gênero, do qual o pluripartidarismo é espécie.</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.88rem; color:var(--ink-faint);">Distinção-chave: <strong>fundamentos</strong> (art. 1º) = o que o Brasil <em>é</em>; <strong>objetivos</strong> (art. 3º) = onde pretende chegar.</p>
+
+      <h3 class="sub">Objetivos Fundamentais (art. 3º, I a IV)</h3>
+      <ul class="plain">
+        <li><strong>I</strong> &mdash; construir sociedade livre, justa e solidária (a <em>solidariedade</em> aqui é princípio expresso, não implícito);</li>
+        <li><strong>II</strong> &mdash; garantir o desenvolvimento nacional;</li>
+        <li><strong>III</strong> &mdash; erradicar a pobreza e reduzir desigualdades sociais e regionais (ex.: Zona Franca de Manaus; <strong>FNDR</strong>, art. 159-A, criado pela EC 132/2023);</li>
+        <li><strong>IV</strong> &mdash; promover o bem de todos, sem preconceitos.</li>
+      </ul>
+
+      <h3 class="sub">Princípios das Relações Internacionais (art. 4º, I a X)</h3>
+      <div class="chips">
+        <span class="chip">I independência nacional</span><span class="chip">II prevalência dos direitos humanos</span><span class="chip">III autodeterminação dos povos</span><span class="chip">IV não intervenção</span><span class="chip">V igualdade entre Estados</span><span class="chip">VI defesa da paz</span><span class="chip">VII solução pacífica dos conflitos</span><span class="chip">VIII repúdio ao terrorismo e ao racismo</span><span class="chip">IX cooperação entre os povos</span><span class="chip">X concessão de asilo político</span>
+      </div>
+      <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Macete</span><p><strong>Asilo = Política</strong> (perseguição política, decisão política) <strong>x Refúgio = Humanidade</strong> (grave violação de DH, decisão humanitária) &mdash; distinção muito cobrada. Racismo é inafiançável e imprescritível; terrorismo é inafiançável e insuscetível de graça/anistia (art. 5º, XLII e XLIII).</p></div>
+
+      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; FGV/TJ-RS</div>
+        <p class="q">Com base no preâmbulo, qual das opções é fundamento (não princípio internacional) da RFB: cooperação entre os povos, solução pacífica dos conflitos, não intervenção, defesa da paz, ou soberania?</p>
+        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Soberania (E).</span> As outras quatro são princípios das relações internacionais (art. 4º, IX, VII, IV e VI) &mdash; só soberania é fundamento da República (art. 1º, I).</div>
+      </details></div>
+    </div>
+  </section>
+<!--mnemonicos--><section id="mnemonicos" class="branch"><div class="wrap"><div class="branch-head"><span class="branch-num"><i data-lucide="lightbulb" aria-hidden="true"></i></span><h2>Mnemônicos de concurso</h2><span class="branch-kicker">macetes para fixar</span></div><p style="font-size:.92rem;">Mnemônicos e macetes que circulam em cursos preparatórios. Alguns variam de professor para professor; use os que funcionarem para você e confira sempre com o conteúdo do mapa.</p><div class="grid-2"><div class="example"><span class="tag">Fundamentos da República (art. 1º)</span><p><strong>SO-CI-DI-VA-PLU</strong>: <strong>So</strong>berania, <strong>Ci</strong>dadania, <strong>Di</strong>gnidade da pessoa humana, <strong>Va</strong>lores sociais do trabalho e da livre iniciativa, <strong>Plu</strong>ralismo político.</p></div><div class="example"><span class="tag">Objetivos (art. 3º)</span><p><strong>CO-GA-ER-PRO</strong>: <strong>Co</strong>nstruir uma sociedade livre, justa e solidária; <strong>Ga</strong>rantir o desenvolvimento nacional; <strong>Er</strong>radicar a pobreza (e reduzir as desigualdades); <strong>Pro</strong>mover o bem de todos. Dica: os objetivos começam por <em>verbos</em>; os fundamentos, por <em>substantivos</em>.</p></div></div></div></section><!--/mnemonicos-->
+
+</main>
+<footer><div class="wrap"><p style="margin:0;">Direito Constitucional (formação), preparatório TJAM. Confira sempre a redação atual do texto constitucional.</p></div></footer>
+<script>
+(function(){
+  var STEPS=[0.85,1,1.15,1.3,1.5], root=document.documentElement;
+  var down=document.getElementById('fontDown'), up=document.getElementById('fontUp'), reset=document.getElementById('fontReset');
+  function idxOf(v){ var i=STEPS.indexOf(v); return i===-1 ? 1 : i; }
+  function readStored(){ try{ return idxOf(parseFloat(localStorage.getItem('mapas-font-scale'))); }catch(e){ return 1; } }
+  var index=readStored();
+  function applyFont(i){
+    index=Math.min(STEPS.length-1, Math.max(0, i));
+    var v=STEPS[index];
+    root.style.setProperty('--fs', String(v));
+    reset.textContent=Math.round(v*100)+'%';
+    down.disabled=index===0; up.disabled=index===STEPS.length-1;
+    try{ localStorage.setItem('mapas-font-scale', String(v)); }catch(e){}
+  }
+  applyFont(index);
+  down.addEventListener('click', function(){ applyFont(index-1); });
+  up.addEventListener('click', function(){ applyFont(index+1); });
+  reset.addEventListener('click', function(){ applyFont(1); });
+})();
+</script>
+<script>
+(function(){
+  var btn=document.getElementById('fsBtn');
+  function sync(){
+    var fs=Boolean(document.fullscreenElement||document.webkitFullscreenElement);
+    document.documentElement.setAttribute('data-fullscreen', fs ? 'true' : 'false');
+    btn.setAttribute('aria-pressed', String(fs));
+  }
+  btn.addEventListener('click', function(){
+    var p;
+    if(document.fullscreenElement||document.webkitFullscreenElement){
+      p=(document.exitFullscreen||document.webkitExitFullscreen).call(document);
+    } else {
+      var el=document.documentElement;
+      p=(el.requestFullscreen||el.webkitRequestFullscreen).call(el);
+    }
+    if(p && p.catch){ p.catch(function(){}); }
+  });
+  document.addEventListener('fullscreenchange', sync);
+  document.addEventListener('webkitfullscreenchange', sync);
+  sync();
+})();
+</script>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeBtn');
+  var mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function saved(){ try{ return localStorage.getItem('mapas-theme'); }catch(e){ return null; } }
+  function current(){ return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
+  function apply(t){ root.setAttribute('data-theme', t); btn.setAttribute('aria-pressed', t==='dark'); }
+  var s=saved(); apply(s==='dark'||s==='light' ? s : current());
+  btn.addEventListener('click', function(){
+    var t=current()==='dark' ? 'light' : 'dark'; apply(t);
+    try{ localStorage.setItem('mapas-theme', t); }catch(e){}
+  });
+})();
+</script>
+<script>lucide.createIcons();</script>
