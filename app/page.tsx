@@ -18,7 +18,7 @@ export default function HomePage() {
 
       <main className="wrap">
         <section className="page-hero">
-          <h1 className='eyebrow'>Meus Mapas Mentais</h1>
+          <h1 className='eyebrow'>Conteúdo programático</h1>
           <p className="dek">
             {maps.length} mapas divididos por matéria, com acesso rápido. Use a busca ou o filtro para
             separar o conteúdo principal do complementar.
