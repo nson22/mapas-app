@@ -56,7 +56,7 @@ export default function MapGrid() {
         <div className="filters" role="group" aria-label="Filtrar por origem">
           {([
             ['todos', 'Todos'],
-            ['curso', 'Do curso'],
+            ['curso', 'Principal'],
             ['complemento', 'Complementares'],
           ] as [Filter, string][]).map(([id, label]) => (
             <button
