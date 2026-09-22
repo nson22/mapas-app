@@ -40,10 +40,15 @@ export default function FontSizeControl() {
   const percent = Math.round(FONT_STEPS[index] * 100);
 
   return (
-    <div className="font-ctl" role="group" aria-label="Tamanho da fonte do mapa">
-      <Type size={14} aria-hidden />
+    <div
+      className="join items-center rounded-full border border-base-300 pl-2"
+      role="group"
+      aria-label="Tamanho da fonte do mapa"
+    >
+      <Type size={14} className="mx-1.5 shrink-0" aria-hidden />
       <button
         type="button"
+        className="join-item btn btn-sm btn-ghost btn-square"
         onClick={() => apply(index - 1)}
         disabled={index === 0}
         aria-label="Diminuir a fonte"
@@ -53,7 +58,7 @@ export default function FontSizeControl() {
       </button>
       <button
         type="button"
-        className="pct"
+        className="join-item btn btn-sm btn-ghost min-w-12"
         onClick={() => apply(DEFAULT_INDEX)}
         aria-label={`Fonte a ${percent}%. Clique para voltar a 100%`}
         title="Voltar a 100%"
@@ -62,6 +67,7 @@ export default function FontSizeControl() {
       </button>
       <button
         type="button"
+        className="join-item btn btn-sm btn-ghost btn-square"
         onClick={() => apply(index + 1)}
         disabled={index === FONT_STEPS.length - 1}
         aria-label="Aumentar a fonte"

@@ -43,17 +43,18 @@ export default function MapGrid() {
   return (
     <>
       <div className="toolbar">
-        <label className="search">
-          <Search size={16} aria-hidden />
+        <label className="input input-bordered rounded-full flex-1 min-w-[260px] flex items-center gap-2">
+          <Search size={16} className="opacity-60 shrink-0" aria-hidden />
           <input
             type="search"
             placeholder="Buscar mapa ou assunto"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             aria-label="Buscar mapa ou assunto"
+            className="grow"
           />
         </label>
-        <div className="filters" role="group" aria-label="Filtrar por origem">
+        <div className="join" role="group" aria-label="Filtrar por origem">
           {([
             ['todos', 'Todos'],
             ['curso', 'Principal'],
@@ -62,7 +63,7 @@ export default function MapGrid() {
             <button
               key={id}
               type="button"
-              className={filter === id ? 'chip-btn active' : 'chip-btn'}
+              className={`join-item btn btn-sm ${filter === id ? 'btn-neutral' : 'btn-outline'}`}
               onClick={() => setFilter(id)}
               aria-pressed={filter === id}
             >
@@ -110,31 +111,47 @@ export default function MapGrid() {
                 )}
                 <div className="grid">
                   {g.items.map((m) => (
-                    <article key={m.slug} className="card">
-                      <div className="kicker">
-                        <MapIcon size={14} aria-hidden />
-                        {m.kicker}
-                      </div>
-                      <h3>
-                        <Link href={`/mapas/${m.slug}`}>{m.title}</Link>
-                      </h3>
-                      <p>{m.description}</p>
-                      <div className="tags">
-                        {m.tags.map((t) => (
-                          <span key={t}>{t}</span>
-                        ))}
-                      </div>
-                      <div className="foot">
-                        <span className="open">
-                          Abrir mapa <ArrowRight size={15} aria-hidden />
-                        </span>
-                        {m.online ? (
-                          <a className="online" href={m.online} target="_blank" rel="noopener noreferrer">
-                            versão online <ExternalLink size={13} aria-hidden />
-                          </a>
-                        ) : (
-                          <span />
-                        )}
+                    <article
+                      key={m.slug}
+                      className="map-card card relative bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition-shadow"
+                    >
+                      <div className="card-body p-[18px] pb-3.5 gap-0">
+                        <div className="kicker flex items-center gap-1.5 text-[11px] uppercase tracking-wide font-semibold mb-2">
+                          <MapIcon size={14} aria-hidden />
+                          {m.kicker}
+                        </div>
+                        <h3 className="text-[1.15rem] font-bold leading-tight mb-2">
+                          <Link href={`/mapas/${m.slug}`}>{m.title}</Link>
+                        </h3>
+                        <p className="text-sm text-base-content/70 mb-3.5 grow">{m.description}</p>
+                        <div className="flex flex-wrap gap-1.5 mb-3.5">
+                          {m.tags.map((t) => (
+                            <span
+                              key={t}
+                              className="badge badge-sm badge-outline"
+                              style={{ color: 'var(--accent)', borderColor: 'var(--accent)' }}
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="flex justify-between items-center text-[0.82rem] border-t border-base-300 pt-2.5 relative z-[2]">
+                          <span className="inline-flex items-center gap-1.5 font-bold pointer-events-none" style={{ color: 'var(--accent)' }}>
+                            Abrir mapa <ArrowRight size={15} aria-hidden />
+                          </span>
+                          {m.online ? (
+                            <a
+                              className="inline-flex items-center gap-1 text-[11.5px] text-base-content/60 hover:text-base-content no-underline"
+                              href={m.online}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              versão online <ExternalLink size={13} aria-hidden />
+                            </a>
+                          ) : (
+                            <span />
+                          )}
+                        </div>
                       </div>
                     </article>
                   ))}

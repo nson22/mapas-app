@@ -27,7 +27,7 @@ export default function ThemeToggle() {
   return (
     <button
       type="button"
-      className="theme-btn"
+      className="btn btn-sm btn-outline rounded-full gap-1.5"
       onClick={toggle}
       aria-label="Alternar tema claro/escuro"
       aria-pressed={theme === 'dark'}

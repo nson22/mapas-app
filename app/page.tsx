@@ -13,7 +13,7 @@ export default function HomePage() {
       </header>
 
       <main className="wrap">
-        <section className="hero">
+        <section className="page-hero">
           <h1 className='eyebrow'>Meus Mapas Mentais</h1>
           <p className="dek">
             {maps.length} mapas divididos por matéria, com acesso rápido. Use a busca ou o filtro para
