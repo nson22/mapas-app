@@ -131,26 +131,27 @@
   .relevance-note b{color:var(--ink); font-weight:600;}
 
   /* ============ SUBNAV ============ */
-  .subnav-shell{
-    position:sticky; top:0; z-index:20;
-    background:color-mix(in srgb, var(--paper) 92%, transparent);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line-soft);
+  .subnav-toggle{display:inline-flex; align-items:center; gap:8px; position:fixed; right:18px; bottom:18px; z-index:45; height:42px; padding:0 16px; border-radius:999px; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; box-shadow:var(--shadow); font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); font-weight:600; letter-spacing:.03em;}
+  .subnav-toggle:hover{border-color:var(--accent); color:var(--accent);}
+  .subnav-toggle .lucide{width:17px; height:17px;}
+  .subnav-backdrop{position:fixed; inset:0; z-index:39; background:rgba(10,14,13,.45); opacity:0; pointer-events:none; transition:opacity .2s ease;}
+  .subnav-backdrop.show{opacity:1; pointer-events:auto;}
+  .subnav-panel{position:fixed; top:0; right:0; z-index:40; height:100dvh; width:min(82vw, 300px); background:var(--paper); border-left:1px solid var(--line-soft); box-shadow:var(--shadow); display:flex; flex-direction:column; transform:translateX(100%); transition:transform .25s ease;}
+  .subnav-panel.open{transform:translateX(0);}
+  .subnav-panel-head{display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid var(--line-soft); flex:none;}
+  .subnav-panel-head span{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); font-weight:700;}
+  .subnav-close{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink-soft); cursor:pointer;}
+  .subnav-close:hover{border-color:var(--accent); color:var(--accent);}
+  .subnav-close .lucide{width:15px; height:15px;}
+  .subnav{display:flex; flex-direction:column; flex:1 1 auto; gap:2px; padding:10px 12px; overflow-y:auto; scrollbar-width:thin;}
+  .subnav a{font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.03em; line-height:1.3; padding:8px 12px; border-radius:8px; border:1px solid transparent; color:var(--ink-soft); text-decoration:none; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong); background:var(--paper-2);}
+  .subnav a.active{background:var(--accent-tint); border-color:var(--accent); color:var(--accent-strong); font-weight:700;}
+  .subnav .sep{height:1px; background:var(--line); margin:6px 6px;}
+  @media (min-width:1420px){
+    .subnav-toggle, .subnav-backdrop, .subnav-panel-head{display:none;}
+    .subnav-panel{top:104px; right:auto; left:calc(50% + 480px + 28px); height:auto; max-height:calc(100vh - 128px); width:200px; transform:none; border:1px solid var(--line-soft); border-radius:14px; box-shadow:none;}
   }
-  .subnav{
-    display:flex; gap:6px; overflow-x:auto;
-    padding:12px 24px; max-width:960px; margin:0 auto;
-    scrollbar-width:thin;
-  }
-  .subnav a{
-    flex:none;
-    font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.03em;
-    padding:7px 12px; border-radius:999px; border:1px solid var(--line);
-    color:var(--ink-soft); text-decoration:none; white-space:nowrap;
-    transition:background .15s ease, color .15s ease, border-color .15s ease;
-  }
-  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
-  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
 
   /* ============ DIAGRAM ============ */
   .diagram-section{padding:44px 0 8px;}
@@ -362,8 +363,12 @@
   </div>
 </header>
 
-<nav class="subnav-shell">
-  <div class="subnav" id="subnav">
+<nav class="subnav-dock" aria-label="Seções do mapa">
+  <button type="button" class="subnav-toggle" id="subnavToggle" aria-expanded="false" aria-controls="subnavPanel"><i data-lucide="list" aria-hidden="true"></i><span>Seções</span></button>
+  <div class="subnav-backdrop" id="subnavBackdrop"></div>
+  <div class="subnav-panel" id="subnavPanel">
+    <div class="subnav-panel-head"><span>Seções</span><button type="button" class="subnav-close" id="subnavClose" aria-label="Fechar sumário de seções"><i data-lucide="x" aria-hidden="true"></i></button></div>
+    <div class="subnav" id="subnav">
     <a href="#conceito">01 Conceito</a>
     <a href="#evolucao">02 Evolução</a>
     <a href="#risco-administrativo">03 Risco Administrativo</a>
@@ -373,6 +378,7 @@
     <a href="#custodia">07 Custódia</a>
     <a href="#prescricao">08 Prescrição</a>
     <a href="#outras">09 Outras Frentes</a><a href="#mnemonicos">Mnemônicos</a></div>
+  </div>
 </nav>
 
 <main>
@@ -939,6 +945,20 @@
     }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
     sections.forEach(function(s){ observer.observe(s); });
   }
+})();
+</script>
+<script>
+(function(){
+  var toggle=document.getElementById('subnavToggle'), closeBtn=document.getElementById('subnavClose');
+  var panel=document.getElementById('subnavPanel'), backdrop=document.getElementById('subnavBackdrop');
+  if(!toggle || !panel) return;
+  function openPanel(){ panel.classList.add('open'); if(backdrop) backdrop.classList.add('show'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closePanel(){ panel.classList.remove('open'); if(backdrop) backdrop.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  toggle.addEventListener('click', function(){ panel.classList.contains('open') ? closePanel() : openPanel(); });
+  if(closeBtn) closeBtn.addEventListener('click', closePanel);
+  if(backdrop) backdrop.addEventListener('click', closePanel);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePanel(); });
+  Array.prototype.slice.call(panel.querySelectorAll('#subnav a')).forEach(function(a){ a.addEventListener('click', closePanel); });
 })();
 </script>
 
