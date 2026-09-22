@@ -116,7 +116,7 @@ export default function MapGrid() {
                       className="map-card card relative bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition-shadow"
                     >
                       <div className="card-body p-[18px] pb-3.5 gap-0">
-                        <div className="kicker flex items-center gap-1.5 text-[11px] uppercase tracking-wide font-semibold mb-2">
+                        <div className="kicker flex items-center gap-1.5 text-[0.6875rem] uppercase tracking-wide font-semibold mb-2">
                           <MapIcon size={14} aria-hidden />
                           {m.kicker}
                         </div>
@@ -141,7 +141,7 @@ export default function MapGrid() {
                           </span>
                           {m.online ? (
                             <a
-                              className="inline-flex items-center gap-1 text-[11.5px] text-base-content/60 hover:text-base-content no-underline"
+                              className="inline-flex items-center gap-1 text-[0.71875rem] text-base-content/60 hover:text-base-content no-underline"
                               href={m.online}
                               target="_blank"
                               rel="noopener noreferrer"

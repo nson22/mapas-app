@@ -23,12 +23,15 @@ export default function FontSizeControl() {
   const [index, setIndex] = useState(DEFAULT_INDEX);
 
   useEffect(() => {
-    setIndex(readStored());
+    const i = readStored();
+    setIndex(i);
+    document.documentElement.style.setProperty('--fs', String(FONT_STEPS[i]));
   }, []);
 
   function apply(next: number) {
     const i = Math.min(FONT_STEPS.length - 1, Math.max(0, next));
     setIndex(i);
+    document.documentElement.style.setProperty('--fs', String(FONT_STEPS[i]));
     try {
       localStorage.setItem(FONT_KEY, String(FONT_STEPS[i]));
     } catch {
@@ -43,7 +46,7 @@ export default function FontSizeControl() {
     <div
       className="join items-center rounded-full border border-base-300 pl-2"
       role="group"
-      aria-label="Tamanho da fonte do mapa"
+      aria-label="Tamanho da fonte"
     >
       <Type size={14} className="mx-1.5 shrink-0" aria-hidden />
       <button

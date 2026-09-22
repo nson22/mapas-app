@@ -1,3 +1,4 @@
+import FontSizeControl from '@/components/FontSizeControl';
 import MapGrid from '@/components/MapGrid';
 import ThemeToggle from '@/components/ThemeToggle';
 import { maps } from '@/data/maps';
@@ -8,7 +9,10 @@ export default function HomePage() {
       <header className="site-header">
         <div className="wrap bar">
           <span className="brand">Mapas Mentais - Para Concursos</span>
-          <ThemeToggle />
+          <div className="actions">
+            <FontSizeControl />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 

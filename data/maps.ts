@@ -23,10 +23,10 @@ export type Subject = {
 
 export const subjects: Subject[] = [
   { id: 'portugues', name: 'Língua Portuguesa', icon: 'languages' },
+  { id: 'informatica', name: 'Informática', icon: 'network' },
   { id: 'raciocinio', name: 'Raciocínio Lógico-Matemático', icon: 'calculator' },
   { id: 'constitucional', name: 'Direito Constitucional', icon: 'landmark' },
   { id: 'administrativo', name: 'Direito Administrativo', icon: 'scale' },
-  { id: 'informatica', name: 'Informática', icon: 'network' },
 ];
 
 const claude = (id: string) => `https://claude.ai/artifact/${id}`;
