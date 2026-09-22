@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calculator, Landmark, Languages, Map as MapIcon, Network, Scale, Search, FileText } from 'lucide-react';
+import { ArrowRight, Calculator, Landmark, Languages, Network, Scale, Search, FileText } from 'lucide-react';
 import { maps, subjects, type MapItem, type Subject } from '@/data/maps';
 
 const icons: Record<Subject['icon'], typeof Languages> = {
@@ -101,23 +101,15 @@ export default function MapGrid() {
                     <article
                       key={m.slug}
                       className="card relative border border-base-300 bg-base-200 shadow-sm transition-transform hover:-translate-y-[3px] hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-                      style={{ borderTopWidth: 4, borderTopColor: 'var(--accent)' }}
                     >
                       <div className="card-body gap-0 p-[18px] pb-3.5">
-                        <div
-                          className="mb-2 flex items-center gap-1.5 text-[0.6875rem] font-semibold uppercase tracking-wide"
-                          style={{ color: 'var(--accent)' }}
-                        >
-                          <MapIcon size={14} aria-hidden />
-                          {m.kicker}
-                        </div>
-                        <h3 className="mb-2 text-[1.15rem] font-bold leading-tight">
+                        <h3 className="card-title mb-2 text-[1.15rem] font-bold leading-tight">
                           <Link href={`/mapas/${m.slug}`} className="after:absolute after:inset-0">
                             {m.title}
                           </Link>
                         </h3>
                         <p className="mb-3.5 grow text-sm text-base-content/70">{m.description}</p>
-                        <div className="mb-3.5 flex flex-wrap gap-1.5">
+                        <div className="card-actions mb-3.5">
                           {m.tags.map((t) => (
                             <span
                               key={t}
