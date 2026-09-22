@@ -23,8 +23,6 @@ const accentVars: Record<Subject['id'], { accent: string; tint: string }> = {
   informatica: { accent: 'var(--c-informatica)', tint: 'var(--c-informatica-t)' },
 };
 
-type Filter = 'todos' | 'curso' | 'complemento';
-
 const normalize = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 function groupBySource(list: MapItem[]) {
@@ -39,16 +37,12 @@ function groupBySource(list: MapItem[]) {
 
 export default function MapGrid() {
   const [query, setQuery] = useState('');
-  const [filter, setFilter] = useState<Filter>('todos');
 
   const visible = useMemo(() => {
     const q = normalize(query.trim());
-    return maps.filter((m) => {
-      if (filter !== 'todos' && m.origin !== filter) return false;
-      if (!q) return true;
-      return normalize([m.title, m.description, m.kicker, ...m.tags].join(' ')).includes(q);
-    });
-  }, [query, filter]);
+    if (!q) return maps;
+    return maps.filter((m) => normalize([m.title, m.description, m.kicker, ...m.tags].join(' ')).includes(q));
+  }, [query]);
 
   return (
     <>
@@ -64,41 +58,7 @@ export default function MapGrid() {
             className="grow"
           />
         </label>
-        <div className="join" role="group" aria-label="Filtrar por origem">
-          {([
-            ['todos', 'Todos'],
-            ['curso', 'Principal'],
-            ['complemento', 'Complementares'],
-          ] as [Filter, string][]).map(([id, label]) => (
-            <button
-              key={id}
-              type="button"
-              className={`join-item btn btn-sm ${filter === id ? 'btn-neutral' : 'btn-outline'}`}
-              onClick={() => setFilter(id)}
-              aria-pressed={filter === id}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
       </div>
-
-      <nav className="flex gap-2 overflow-x-auto pt-1 pb-2" aria-label="Matérias">
-        {subjects.map((s) => {
-          const Icon = icons[s.icon];
-          const n = visible.filter((m) => m.subject === s.id).length;
-          if (n === 0) return null;
-          return (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              className="flex flex-none items-center gap-1.5 whitespace-nowrap rounded-full border border-[color:var(--line)] px-3 py-1.5 text-[calc(12px*var(--fs,1))] font-medium text-[color:var(--ink-soft)] no-underline hover:border-[color:var(--ink-soft)] hover:text-[color:var(--ink)]"
-            >
-              <Icon size={13} aria-hidden /> {s.name} · {n}
-            </a>
-          );
-        })}
-      </nav>
 
       {visible.length === 0 && (
         <p className="py-8 text-[color:var(--ink-faint)]">Nenhum mapa encontrado para essa busca.</p>

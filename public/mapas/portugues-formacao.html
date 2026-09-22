@@ -197,16 +197,10 @@
   .chip-group{margin-bottom:14px;}
   .chip-group .gl{font-family:var(--font-mono); font-size:calc(10.5px * var(--fs,1)); text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); display:block; margin-bottom:6px;}
 
-  details.exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
   details.exam summary{cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; display:flex; align-items:center; gap:8px;}
   details.exam summary::-webkit-details-marker{display:none;}
   details.exam summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:calc(12px * var(--fs,1));}
   details.exam[open] summary::before{content:"\2013";}
-  details.exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
-  details.exam .opts{margin:10px 0 0; padding-left:1.2em; font-size:.88rem; color:var(--ink-soft);}
-  details.exam .opts li{margin-bottom:3px;}
-  details.exam .a{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:.92rem; color:var(--ink-soft);}
-  details.exam .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
 
   table.data{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.88rem;}
   table.data th, table.data td{text-align:left; padding:9px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
@@ -236,20 +230,6 @@
   :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
   :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
 
-  .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
-  .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
-  .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
-  .exam .opts{margin:10px 0 0; padding-left:1.4em; font-size:.9rem; color:var(--ink-soft);}
-  .exam .opts li{margin-bottom:3px;}
-  details.ans{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
-  details.ans summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--accent); font-weight:700;}
-  details.ans summary::-webkit-details-marker{display:none;}
-  details.ans summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border:1px solid var(--accent); border-radius:50%; font-size:calc(13px * var(--fs,1)); line-height:1;}
-  details.ans[open] summary::before{content:"\2013";}
-  details.ans .a{margin-top:12px; font-size:.92rem; color:var(--ink-soft);}
-  details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
-  details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
-  details.ans .a li{margin-bottom:4px;}
   .eyebrow{flex-wrap:wrap; row-gap:10px;}
   .crumb{display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-weight:600;}
   .crumb-sep{opacity:.5;}
@@ -280,7 +260,7 @@
   <div class="wrap">
     <div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Língua Portuguesa<span class="crumb-sep">/</span><b>Classes de Palavras</b></span><div class="hdr-actions"><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div>
     <h1 class="title">Classes de <em>Palavras</em></h1>
-    <p class="dek">Do substantivo ao acento gráfico &mdash; as dez classes gramaticais, organizadas em variáveis e invariáveis, com tabelas, exemplos e questões de banca para revisão.</p>
+    <p class="dek">Do substantivo ao acento gráfico &mdash; as dez classes gramaticais, organizadas em variáveis e invariáveis, com tabelas e exemplos para revisão.</p>
 
   </div>
 </header>
@@ -498,17 +478,6 @@
         <h4 class="sub">Flexão dos adjetivos compostos</h4>
         <p>Em regra, só o segundo termo varia: meninos afro-brasileiros. Exceção: se o composto tem um substantivo na formação (adjetivo + substantivo), nada varia &mdash; camisas amarelo-ouro, sapatos verde-abacate. Alguns são sempre invariáveis: azul-marinho, cor-de-rosa, zero-quilômetro.</p>
 
-        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Questão FGV &middot; posição do adjetivo</div>
-          <p class="q">Em qual opção a troca de posição entre substantivo e adjetivo mudou o sentido?</p>
-          <ol class="opts">
-            <li>caminho extenso / extenso caminho</li>
-            <li>folhas verdes / verdes folhas</li>
-            <li>homem pobre / pobre homem</li>
-            <li>casa bonita / bonita casa</li>
-            <li>livro interessante / interessante livro</li>
-          </ol>
-          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Homem pobre / pobre homem.</span> É o exemplo clássico de posição que altera o sentido: "homem pobre" (sem dinheiro, sentido objetivo) x "pobre homem" (coitado, digno de pena, sentido figurado/subjetivo). Nas demais opções, o adjetivo é puramente descritivo e a ordem não muda o significado.</div>
-        </details></div>
       </div>
 
       <!-- NUMERAL -->
@@ -615,17 +584,6 @@
         <p>Exemplo de enumeração: "Paulo e Renato são vizinhos. <strong>Este</strong> conserta carros e <strong>aquele</strong> vende peças." (este = último citado, Renato; aquele = primeiro citado, Paulo)</p>
         <div class="chip-group"><span class="gl">Também são demonstrativos</span><div class="chips"><span class="chip">mesmo(s), mesma(s) &ndash; as mesmas roupas</span><span class="chip">próprio(s), própria(s) &ndash; os próprios meninos</span><span class="chip">semelhante(s) &ndash; não diga semelhante coisa</span><span class="chip">tal, tais &ndash; não viva com tal preocupação</span><span class="chip">o(s), a(s) &ndash; quando equivalem a isto/aquele(s): quero a da direita</span></div></div>
 
-        <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Questão FGV &middot; TRF &middot; pronome demonstrativo</div>
-          <p class="q">Em qual frase o pronome demonstrativo sublinhado está empregado corretamente?</p>
-          <ol class="opts">
-            <li>"...que somos capazes de operar <u>nessa</u> vida" (referindo-se à própria vida do falante, agora)</li>
-            <li>"O meu cão não fala e é graças a <u>isso</u> que eu o compreendo"</li>
-            <li>"A verdade é <u>essa</u>: todos devemos trabalhar"</li>
-            <li>"João e Maria vieram: <u>este</u> de táxi e <u>aquele</u> de ônibus"</li>
-            <li>"...nesta época, a Igreja era muito poderosa" (falando da Idade Média)</li>
-          </ol>
-          <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">João e Maria vieram: este de táxi e aquele de ônibus.</span> Aplica exatamente a regra de enumeração: "este" retoma o último elemento citado (Maria) e "aquele" retoma o primeiro (João). As demais falham: em (1) e (5), o "nessa/nesta" trocado ignora a distância temporal correta (vida presente pede "nesta"; Idade Média, distante, pede "naquela"); em (3), "essa" aponta para trás quando deveria apontar para o que vem depois dos dois-pontos, pedindo "esta" (catafórico).</div>
-        </details></div>
       </div>
 
       <!-- VERBO -->

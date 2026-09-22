@@ -148,16 +148,10 @@
   .chip-group{margin-bottom:14px;}
   .chip-group .gl{font-family:var(--font-mono); font-size:calc(10.5px * var(--fs,1)); text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); display:block; margin-bottom:6px;}
 
-  details.exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
   details.exam summary{cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; display:flex; align-items:center; gap:8px;}
   details.exam summary::-webkit-details-marker{display:none;}
   details.exam summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:calc(12px * var(--fs,1));}
   details.exam[open] summary::before{content:"\2013";}
-  details.exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
-  details.exam .opts{margin:10px 0 0; padding-left:1.2em; font-size:.88rem; color:var(--ink-soft);}
-  details.exam .opts li{margin-bottom:3px;}
-  details.exam .a{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:.92rem; color:var(--ink-soft);}
-  details.exam .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
 
   table.data{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.88rem;}
   table.data th, table.data td{text-align:left; padding:9px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
@@ -188,20 +182,6 @@
   :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
   :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
 
-  .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
-  .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
-  .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
-  .exam .opts{margin:10px 0 0; padding-left:1.4em; font-size:.9rem; color:var(--ink-soft);}
-  .exam .opts li{margin-bottom:3px;}
-  details.ans{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
-  details.ans summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--accent); font-weight:700;}
-  details.ans summary::-webkit-details-marker{display:none;}
-  details.ans summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border:1px solid var(--accent); border-radius:50%; font-size:calc(13px * var(--fs,1)); line-height:1;}
-  details.ans[open] summary::before{content:"\2013";}
-  details.ans .a{margin-top:12px; font-size:.92rem; color:var(--ink-soft);}
-  details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
-  details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
-  details.ans .a li{margin-bottom:4px;}
   .eyebrow{flex-wrap:wrap; row-gap:10px;}
   .crumb{display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-weight:600;}
   .crumb-sep{opacity:.5;}
@@ -401,11 +381,6 @@
         <span class="chip">BAN &ndash; dispositivos vestíveis (smartwatch)</span>
       </div>
 
-      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova</div>
-        <p class="q">"É um conglomerado de redes locais, interconectadas e espalhadas pelo mundo inteiro, através do protocolo de internet, facilitando o fluxo de informações espalhadas por todo o globo terrestre." A que rede isso se refere?</p>
-        <ol class="opts"><li>Intranet</li><li>LAN</li><li>Internet</li><li>Extranet</li></ol>
-        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Internet (C).</span> "Conglomerado de redes interconectadas e espalhadas pelo mundo" é a própria definição de internet como uma WAN mundial.</div>
-      </details></div>
     </div>
   </section>
 
@@ -462,10 +437,6 @@
       </ol>
       <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Pegadinha clássica</span><p>Achar que Internet e Intranet usam protocolos diferentes. <strong>Errado</strong>: a Intranet tem a mesma estrutura da Internet, apenas em ambiente fechado.</p></div>
 
-      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE</div>
-        <p class="q">"A Internet e a intranet, devido às suas características específicas, operam com protocolos diferentes, adequados a cada situação." Certo ou errado?</p>
-        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Errado.</span> Os protocolos usados são os mesmos (http, https, TCP/IP...) &mdash; o que muda é o ambiente (público x controlado), não o protocolo.</div>
-      </details></div>
 
       <h3 class="sub">Extranet</h3>
       <p>É uma extensão da Intranet: mesmo funcionamento restrito e autenticado, mas voltado para um público <strong>externo</strong> que tem alguma relação com a empresa &mdash; clientes, fornecedores, parceiros.</p>
@@ -473,10 +444,6 @@
         <span class="chip">Extensão da intranet</span><span class="chip">Público: fornecedores e clientes</span><span class="chip">Exige autenticação</span><span class="chip">É restrita</span><span class="chip">Usa os mesmos protocolos</span>
       </div>
 
-      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; CESPE</div>
-        <p class="q">"A Internet pode ser dividida em intranet, restrita aos serviços da rede interna de uma organização, e extranet, com os demais serviços (ex.: redes sociais e sites de outras organizações)." Certo ou errado?</p>
-        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Errado.</span> A internet não se "divide" em intranet e extranet &mdash; são três redes com funções distintas: a internet é a rede pública mundial; a intranet, o ambiente interno; a extranet, o ambiente para públicos externos ligados à organização.</div>
-      </details></div>
 
       <h3 class="sub">Quadro comparativo</h3>
       <div class="table-scroll">
@@ -546,10 +513,6 @@
         <span class="chip">Confidencialidade &ndash; só o destinatário acessa os dados</span>
       </div>
 
-      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova</div>
-        <p class="q">"É possível, utilizando-se uma conexão VPN criptografada, acessar os dados da intranet do TCE/RS por meio da Internet." Certo ou errado?</p>
-        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Certo.</span> É exatamente para isso que serve uma VPN de acesso remoto: usar a internet como caminho para entrar, com segurança, numa rede privada (intranet) de uma instituição.</div>
-      </details></div>
     </div>
   </section>
 
@@ -664,15 +627,6 @@
         </table>
       </div>
 
-      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Perguntas rápidas de prova</div>
-        <details class="ans"><summary>Ver resposta</summary><div class="a">
-          <ul>
-            <li><strong>Qual ícone indica conexão segura?</strong> O cadeado ao lado da URL.</li>
-            <li><strong>O que o modo anônimo impede?</strong> Salvamento de cookies, histórico e dados temporários.</li>
-            <li><strong>Atalho para limpar dados de navegação?</strong> <code>Ctrl+Shift+Del</code>.</li>
-          </ul>
-        </div>
-      </details></div>
     </div>
   </section>
 

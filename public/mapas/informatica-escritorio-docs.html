@@ -547,13 +547,6 @@
     margin-bottom: 6px;
   }
 
-  details.exam {
-    border: 1px dashed var(--line);
-    border-radius: 10px;
-    padding: 16px 18px;
-    margin: 20px 0;
-    background: var(--paper-2);
-  }
 
   details.exam summary {
     cursor: pointer;
@@ -589,36 +582,10 @@
     content: "\2013";
   }
 
-  details.exam .q {
-    margin-top: 12px;
-    font-size: .96rem;
-    font-weight: 600;
-  }
 
-  details.exam .opts {
-    margin: 10px 0 0;
-    padding-left: 1.2em;
-    font-size: .88rem;
-    color: var(--ink-soft);
-  }
 
-  details.exam .opts li {
-    margin-bottom: 3px;
-  }
 
-  details.exam .a {
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid var(--line-soft);
-    font-size: .92rem;
-    color: var(--ink-soft);
-  }
 
-  details.exam .a .verdict {
-    font-family: var(--font-mono);
-    color: var(--accent);
-    font-weight: 700;
-  }
 
   table.data {
     width: 100%;
@@ -824,104 +791,19 @@
     margin-top: 14px;
   }
 
-  .exam {
-    border: 1px dashed var(--line);
-    border-radius: 10px;
-    padding: 16px 18px;
-    margin: 20px 0;
-    background: var(--paper-2);
-  }
 
-  .exam .exam-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-mono);
-    font-size: calc(12px * var(--fs, 1));
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    color: var(--ink-faint);
-    font-weight: 600;
-  }
 
-  .exam .q {
-    margin-top: 12px;
-    font-size: .96rem;
-    font-weight: 600;
-  }
 
-  .exam .opts {
-    margin: 10px 0 0;
-    padding-left: 1.4em;
-    font-size: .9rem;
-    color: var(--ink-soft);
-  }
 
-  .exam .opts li {
-    margin-bottom: 3px;
-  }
 
-  details.ans {
-    margin-top: 14px;
-    padding-top: 12px;
-    border-top: 1px solid var(--line-soft);
-  }
 
-  details.ans summary {
-    cursor: pointer;
-    list-style: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-mono);
-    font-size: calc(12px * var(--fs, 1));
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    color: var(--accent);
-    font-weight: 700;
-  }
 
-  details.ans summary::-webkit-details-marker {
-    display: none;
-  }
 
-  details.ans summary::before {
-    content: "+";
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--accent);
-    border-radius: 50%;
-    font-size: calc(13px * var(--fs, 1));
-    line-height: 1;
-  }
 
-  details.ans[open] summary::before {
-    content: "\2013";
-  }
 
-  details.ans .a {
-    margin-top: 12px;
-    font-size: .92rem;
-    color: var(--ink-soft);
-  }
 
-  details.ans .a .verdict {
-    font-family: var(--font-mono);
-    color: var(--accent);
-    font-weight: 700;
-  }
 
-  details.ans .a ul {
-    margin: 8px 0 0;
-    padding-left: 1.1em;
-  }
 
-  details.ans .a li {
-    margin-bottom: 4px;
-  }
 
   .eyebrow {
     flex-wrap: wrap;
@@ -1269,25 +1151,6 @@
           <p>Prefira <b>links com permissão</b> (somente leitura ou edição) a enviar cópias por e-mail. Assim há uma
             versão única e o acesso pode ser retirado depois.</p>
         </div>
-        <div class="exam">
-          <div class="exam-label">Treino autoral 1</div>
-          <div class="q">Na célula B2 está =A2*$C$1. Ao copiar essa fórmula para a célula B3, qual será a fórmula?</div>
-          <details class="ans">
-            <summary>Ver resposta</summary>
-            <div class="a"><span class="verdict">=A3*$C$1</span> &mdash; A referência relativa A2 vira A3; $C$1 é
-              absoluta e permanece.</div>
-          </details>
-        </div>
-        <div class="exam">
-          <div class="exam-label">Treino autoral 2</div>
-          <div class="q">Qual função exibe "Aprovado" se a nota em B2 for maior ou igual a 7, e "Reprovado" caso
-            contrário?</div>
-          <details class="ans">
-            <summary>Ver resposta</summary>
-            <div class="a"><span class="verdict">=SE(B2>=7;"Aprovado";"Reprovado")</span> &mdash; Função SE com teste
-              lógico, resultado verdadeiro e resultado falso.</div>
-          </details>
-        </div>
       </div>
     </div>
   </section>
@@ -1342,17 +1205,6 @@
           <li><b>Registrar e encaminhar</b> a falha ao responsável pelo sistema, com as evidências.</li>
           <li><b>Documentar</b> o procedimento na base de conhecimento.</li>
         </ul>
-        <div class="exam">
-          <div class="exam-label">Treino autoral 3</div>
-          <div class="q">Um usuário informa que "o sistema não funciona". Qual é a primeira providência de um bom
-            atendimento?</div>
-          <details class="ans">
-            <summary>Ver resposta</summary>
-            <div class="a"><span class="verdict">Coletar detalhes: mensagem de erro, o que ele tentava fazer, quando
-                começou e se acontece com outros</span> &mdash; Sem evidências não é possível diferenciar erro de uso,
-              permissão, rede ou defeito.</div>
-          </details>
-        </div>
       </div>
     </div>
   </section>
@@ -1441,16 +1293,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="exam">
-          <div class="exam-label">Treino autoral 4</div>
-          <div class="q">Depois de resolver um problema recorrente de impressão, o que fazer para que o próximo
-            atendente resolva mais rápido?</div>
-          <details class="ans">
-            <summary>Ver resposta</summary>
-            <div class="a"><span class="verdict">Registrar causa e solução na base de conhecimento</span> &mdash; A
-              documentação evita retrabalho e reduz a reincidência.</div>
-          </details>
         </div>
       </div>
     </div>
@@ -1554,24 +1396,6 @@
         <div class="callout warn"><span class="tag">Falsos amigos</span>
           <p><i>Actually</i> = na verdade (não "atualmente"); <i>Attend</i> = comparecer; <i>Pretend</i> = fingir;
             <i>Library</i> = biblioteca. Em TI, <i>application</i> é aplicativo (programa).</p>
-        </div>
-        <div class="exam">
-          <div class="exam-label">Treino autoral 5</div>
-          <div class="q">A mensagem "Access denied. You do not have permission to open this folder." indica:</div>
-          <details class="ans">
-            <summary>Ver resposta</summary>
-            <div class="a"><span class="verdict">Falta de permissão para abrir a pasta</span> &mdash; Access denied é
-              acesso negado; o texto explica que o usuário não tem permissão.</div>
-          </details>
-        </div>
-        <div class="exam">
-          <div class="exam-label">Treino autoral 6</div>
-          <div class="q">O que significa "Please restart your computer to complete the installation"?</div>
-          <details class="ans">
-            <summary>Ver resposta</summary>
-            <div class="a"><span class="verdict">Reinicie o computador para concluir a instalação</span> &mdash; Restart
-              é reiniciar; complete the installation é concluir a instalação.</div>
-          </details>
         </div>
       </div>
     </div>

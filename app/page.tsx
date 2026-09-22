@@ -22,8 +22,7 @@ export default function HomePage() {
             Conteúdo programático
           </h1>
           <p className="max-w-[62ch] text-[1.06rem] text-[color:var(--ink-soft)]">
-            {maps.length} mapas divididos por matéria, com acesso rápido. Use a busca ou o filtro para
-            separar o conteúdo principal do complementar.
+            {maps.length} mapas divididos por matéria. Use a busca para encontrar rapidamente um assunto.
           </p>
         </section>
         <MapGrid />

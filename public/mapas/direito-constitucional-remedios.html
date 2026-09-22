@@ -151,16 +151,10 @@
   .case .tese{font-weight:700; display:block; margin-bottom:3px; font-size:.97rem;}
   .case p{margin:0; font-size:.9rem; color:var(--ink-soft);}
 
-  details.exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
   details.exam summary{cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; display:flex; align-items:center; gap:8px;}
   details.exam summary::-webkit-details-marker{display:none;}
   details.exam summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:calc(12px * var(--fs,1));}
   details.exam[open] summary::before{content:"\2013";}
-  details.exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
-  details.exam .opts{margin:10px 0 0; padding-left:1.2em; font-size:.88rem; color:var(--ink-soft);}
-  details.exam .opts li{margin-bottom:3px;}
-  details.exam .a{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:.92rem; color:var(--ink-soft);}
-  details.exam .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
 
   table.data{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.87rem;}
   table.data th, table.data td{text-align:left; padding:8px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
@@ -198,20 +192,6 @@
   :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
   :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
 
-  .exam{border:1px dashed var(--line); border-radius:10px; padding:16px 18px; margin:20px 0; background:var(--paper-2);}
-  .exam .exam-label{display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600;}
-  .exam .q{margin-top:12px; font-size:.96rem; font-weight:600;}
-  .exam .opts{margin:10px 0 0; padding-left:1.4em; font-size:.9rem; color:var(--ink-soft);}
-  .exam .opts li{margin-bottom:3px;}
-  details.ans{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
-  details.ans summary{cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--accent); font-weight:700;}
-  details.ans summary::-webkit-details-marker{display:none;}
-  details.ans summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border:1px solid var(--accent); border-radius:50%; font-size:calc(13px * var(--fs,1)); line-height:1;}
-  details.ans[open] summary::before{content:"\2013";}
-  details.ans .a{margin-top:12px; font-size:.92rem; color:var(--ink-soft);}
-  details.ans .a .verdict{font-family:var(--font-mono); color:var(--accent); font-weight:700;}
-  details.ans .a ul{margin:8px 0 0; padding-left:1.1em;}
-  details.ans .a li{margin-bottom:4px;}
   .eyebrow{flex-wrap:wrap; row-gap:10px;}
   .crumb{display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-weight:600;}
   .crumb-sep{opacity:.5;}
@@ -292,10 +272,6 @@
       <h3 class="sub" id="acao-popular">Ação Popular</h3>
       <p>Art. 5º, LXXIII: qualquer <strong>cidadão</strong> pode anular ato lesivo ao patrimônio público, à moralidade administrativa, ao meio ambiente ou ao patrimônio histórico-cultural. Isento de custas e sucumbência, salvo má-fé. Prescreve em <strong>5 anos</strong>. Legitimidade exclusiva do cidadão &mdash; pessoa jurídica não pode propor.</p>
 
-      <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; qual remédio cabe?</div>
-        <p class="q">Poluição do ar por empresa sem fiscalização adequada, afetando um município inteiro: que ação(ões) cabe(m)?</p>
-        <details class="ans"><summary>Ver resposta</summary><div class="a"><span class="verdict">Ação popular OU ação civil pública (D).</span> Ambas protegem o meio ambiente (art. 5º, LXXIII e art. 129, III, CF); a Lei 7.347/1985 rege a ACP "sem prejuízo da ação popular" &mdash; não há exclusividade entre as duas.</div>
-      </details></div>
     </div>
   </section>
 <!--mnemonicos--><section id="mnemonicos" class="branch"><div class="wrap"><div class="branch-head"><span class="branch-num"><i data-lucide="lightbulb" aria-hidden="true"></i></span><h2>Mnemônicos de concurso</h2><span class="branch-kicker">macetes para fixar</span></div><p style="font-size:.92rem;">Mnemônicos e macetes de memorização. Alguns variam de uma fonte para outra; use os que funcionarem para você e confira sempre com o conteúdo do mapa.</p><div class="grid-2"><div class="example"><span class="tag">Remédios constitucionais</span><p><strong>HC = ir e vir</strong>; <strong>HD = dados</strong> (conhecer e retificar informações pessoais); <strong>MS = líquido e certo</strong> (o que HC e HD não cobrem); <strong>MI = falta de norma</strong>; <strong>Ação popular = patrimônio público</strong> (ação do cidadão).</p></div></div></div></section><!--/mnemonicos-->
