@@ -73,11 +73,27 @@
   .relevance-note{font-size:.88rem; color:var(--ink-soft); flex:1; min-width:260px;}
   .relevance-note b{color:var(--ink); font-weight:600;}
 
-  .subnav-shell{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-soft);}
-  .subnav{display:flex; gap:6px; overflow-x:auto; padding:12px 24px; max-width:960px; margin:0 auto; scrollbar-width:thin;}
-  .subnav a{flex:none; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.03em; padding:7px 12px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); text-decoration:none; white-space:nowrap; transition:background .15s ease, color .15s ease, border-color .15s ease;}
-  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
-  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+  .subnav-toggle{display:inline-flex; align-items:center; gap:8px; position:fixed; right:18px; bottom:18px; z-index:45; height:42px; padding:0 16px; border-radius:999px; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; box-shadow:var(--shadow); font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); font-weight:600; letter-spacing:.03em;}
+  .subnav-toggle:hover{border-color:var(--accent); color:var(--accent);}
+  .subnav-toggle .lucide{width:17px; height:17px;}
+  .subnav-backdrop{position:fixed; inset:0; z-index:39; background:rgba(10,14,13,.45); opacity:0; pointer-events:none; transition:opacity .2s ease;}
+  .subnav-backdrop.show{opacity:1; pointer-events:auto;}
+  .subnav-panel{position:fixed; top:0; right:0; z-index:40; height:100dvh; width:min(82vw, 300px); background:var(--paper); border-left:1px solid var(--line-soft); box-shadow:var(--shadow); display:flex; flex-direction:column; transform:translateX(100%); transition:transform .25s ease;}
+  .subnav-panel.open{transform:translateX(0);}
+  .subnav-panel-head{display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid var(--line-soft); flex:none;}
+  .subnav-panel-head span{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); font-weight:700;}
+  .subnav-close{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink-soft); cursor:pointer;}
+  .subnav-close:hover{border-color:var(--accent); color:var(--accent);}
+  .subnav-close .lucide{width:15px; height:15px;}
+  .subnav{display:flex; flex-direction:column; flex:1 1 auto; gap:2px; padding:10px 12px; overflow-y:auto; scrollbar-width:thin;}
+  .subnav a{font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.03em; line-height:1.3; padding:8px 12px; border-radius:8px; border:1px solid transparent; color:var(--ink-soft); text-decoration:none; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong); background:var(--paper-2);}
+  .subnav a.active{background:var(--accent-tint); border-color:var(--accent); color:var(--accent-strong); font-weight:700;}
+  .subnav .sep{height:1px; background:var(--line); margin:6px 6px;}
+  @media (min-width:1420px){
+    .subnav-toggle, .subnav-backdrop, .subnav-panel-head{display:none;}
+    .subnav-panel{top:104px; right:auto; left:calc(50% + 480px + 28px); height:auto; max-height:calc(100vh - 128px); width:200px; transform:none; border:1px solid var(--line-soft); border-radius:14px; box-shadow:none;}
+  }
 
   .diagram-section{padding:44px 0 8px;}
   .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
@@ -223,6 +239,21 @@
 
 
 <header class="hero"><div class="wrap"><div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Direito Constitucional<span class="crumb-sep">/</span><b>Princípios Fundamentais</b></span><div class="hdr-actions"><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div><h1 class="title">Princípios Fundamentais</h1><p class="dek">Título I da CF/88 &mdash; arts. 1º a 4º.</p></div></header>
+<nav class="subnav-dock" aria-label="Seções do mapa">
+  <button type="button" class="subnav-toggle" id="subnavToggle" aria-expanded="false" aria-controls="subnavPanel"><i data-lucide="list" aria-hidden="true"></i><span>Seções</span></button>
+  <div class="subnav-backdrop" id="subnavBackdrop"></div>
+  <div class="subnav-panel" id="subnavPanel">
+    <div class="subnav-panel-head"><span>Seções</span><button type="button" class="subnav-close" id="subnavClose" aria-label="Fechar sumário de seções"><i data-lucide="x" aria-hidden="true"></i></button></div>
+    <div class="subnav" id="subnav">
+    <a href="#forma-de-estado-de-governo-e-regime-politico">Forma de Estado, de Governo e Regime Político</a>
+    <a href="#separacao-dos-poderes-art-2o">Separação dos Poderes (art. 2º)</a>
+    <a href="#fundamentos-da-republica-art-1o-i-a-v">Fundamentos da República (art. 1º, I a V)</a>
+    <a href="#objetivos-fundamentais-art-3o-i-a-iv">Objetivos Fundamentais (art. 3º, I a IV)</a>
+    <a href="#principios-das-relacoes-internacionais-art-4o-i-a-x">Princípios das Relações Internacionais (art. 4º, I a X)</a>
+    <span class="sep"></span>
+    <a href="#mnemonicos">Mnemônicos</a></div>
+  </div>
+</nav>
 <main>
 <section id="principios" class="branch">
     <div class="wrap">
@@ -233,7 +264,7 @@
       </div>
       <p>Os quatro artigos que abrem a Constituição são o "DNA" do Estado brasileiro: art. 1º define forma e fundamentos; art. 2º, a separação dos Poderes; art. 3º, os objetivos; art. 4º, as diretrizes internacionais.</p>
 
-      <h3 class="sub">Forma de Estado, de Governo e Regime Político</h3>
+      <h3 class="sub" id="forma-de-estado-de-governo-e-regime-politico">Forma de Estado, de Governo e Regime Político</h3>
       <div class="grid-3">
         <div class="example"><span class="tag">Federalismo &middot; forma de Estado</span><p>Poder repartido entre União, Estados, DF e Municípios &mdash; todos com <strong>autonomia</strong> (auto-organização, autolegislação, autogoverno, autoadministração), nunca soberania.</p></div>
         <div class="example"><span class="tag">República &middot; forma de governo</span><p>Eletividade, temporariedade e responsabilidade dos governantes &mdash; opõe-se à monarquia (hereditariedade, vitaliciedade, irresponsabilidade).</p></div>
@@ -241,10 +272,10 @@
       </div>
       <div class="callout warn"><span class="tag"><i data-lucide="triangle-alert" aria-hidden="true"></i>Pegadinha clássica</span><p>A <strong>RFB é soberana</strong>; os <strong>entes federativos têm autonomia</strong> &mdash; a banca adora inverter esses dois atributos. A <strong>Federação é cláusula pétrea expressa</strong> (art. 60, §4º, I) e não admite secessão; a <strong>forma republicana não é cláusula pétrea expressa</strong> (só é discutida como implícita, em razão do plebiscito de 1993).</p></div>
 
-      <h3 class="sub">Separação dos Poderes (art. 2º)</h3>
+      <h3 class="sub" id="separacao-dos-poderes-art-2o">Separação dos Poderes (art. 2º)</h3>
       <p>"São Poderes da União, independentes e harmônicos entre si, o Legislativo, o Executivo e o Judiciário." Formulação clássica de <strong>Montesquieu</strong> (freios e contrapesos), a partir de Locke e Aristóteles. Cláusula pétrea expressa (art. 60, §4º, III). <strong>O Poder é uno e indivisível</strong> &mdash; o que se separa são as <em>funções</em>.</p>
 
-      <h3 class="sub">Fundamentos da República (art. 1º, I a V)</h3>
+      <h3 class="sub" id="fundamentos-da-republica-art-1o-i-a-v">Fundamentos da República (art. 1º, I a V)</h3>
       <table class="data">
         <thead><tr><th>Inciso</th><th>Fundamento</th><th>Essência</th></tr></thead>
         <tbody>
@@ -257,7 +288,7 @@
       </table>
       <p style="font-size:.88rem; color:var(--ink-faint);">Distinção-chave: <strong>fundamentos</strong> (art. 1º) = o que o Brasil <em>é</em>; <strong>objetivos</strong> (art. 3º) = onde pretende chegar.</p>
 
-      <h3 class="sub">Objetivos Fundamentais (art. 3º, I a IV)</h3>
+      <h3 class="sub" id="objetivos-fundamentais-art-3o-i-a-iv">Objetivos Fundamentais (art. 3º, I a IV)</h3>
       <ul class="plain">
         <li><strong>I</strong> &mdash; construir sociedade livre, justa e solidária (a <em>solidariedade</em> aqui é princípio expresso, não implícito);</li>
         <li><strong>II</strong> &mdash; garantir o desenvolvimento nacional;</li>
@@ -265,7 +296,7 @@
         <li><strong>IV</strong> &mdash; promover o bem de todos, sem preconceitos.</li>
       </ul>
 
-      <h3 class="sub">Princípios das Relações Internacionais (art. 4º, I a X)</h3>
+      <h3 class="sub" id="principios-das-relacoes-internacionais-art-4o-i-a-x">Princípios das Relações Internacionais (art. 4º, I a X)</h3>
       <div class="chips">
         <span class="chip">I independência nacional</span><span class="chip">II prevalência dos direitos humanos</span><span class="chip">III autodeterminação dos povos</span><span class="chip">IV não intervenção</span><span class="chip">V igualdade entre Estados</span><span class="chip">VI defesa da paz</span><span class="chip">VII solução pacífica dos conflitos</span><span class="chip">VIII repúdio ao terrorismo e ao racismo</span><span class="chip">IX cooperação entre os povos</span><span class="chip">X concessão de asilo político</span>
       </div>
@@ -280,6 +311,37 @@
 <!--mnemonicos--><section id="mnemonicos" class="branch"><div class="wrap"><div class="branch-head"><span class="branch-num"><i data-lucide="lightbulb" aria-hidden="true"></i></span><h2>Mnemônicos de concurso</h2><span class="branch-kicker">macetes para fixar</span></div><p style="font-size:.92rem;">Mnemônicos e macetes de memorização. Alguns variam de uma fonte para outra; use os que funcionarem para você e confira sempre com o conteúdo do mapa.</p><div class="grid-2"><div class="example"><span class="tag">Fundamentos da República (art. 1º)</span><p><strong>SO-CI-DI-VA-PLU</strong>: <strong>So</strong>berania, <strong>Ci</strong>dadania, <strong>Di</strong>gnidade da pessoa humana, <strong>Va</strong>lores sociais do trabalho e da livre iniciativa, <strong>Plu</strong>ralismo político.</p></div><div class="example"><span class="tag">Objetivos (art. 3º)</span><p><strong>COn-GArra-ERra-PROuco</strong>: <strong>Co</strong>nstruir uma sociedade livre, justa e solidária; <strong>Ga</strong>rantir o desenvolvimento nacional; <strong>Er</strong>radicar a pobreza (e reduzir as desigualdades); <strong>Pro</strong>mover o bem de todos. Dica: os objetivos começam por <em>verbos</em>; os fundamentos, por <em>substantivos</em>.</p></div></div></div></section><!--/mnemonicos-->
 
 </main>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  function setActive(id){
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ setActive(entry.target.id); }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ observer.observe(s); });
+  }
+})();
+</script>
+<script>
+(function(){
+  var toggle=document.getElementById('subnavToggle'), closeBtn=document.getElementById('subnavClose');
+  var panel=document.getElementById('subnavPanel'), backdrop=document.getElementById('subnavBackdrop');
+  if(!toggle || !panel) return;
+  function openPanel(){ panel.classList.add('open'); if(backdrop) backdrop.classList.add('show'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closePanel(){ panel.classList.remove('open'); if(backdrop) backdrop.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  toggle.addEventListener('click', function(){ panel.classList.contains('open') ? closePanel() : openPanel(); });
+  if(closeBtn) closeBtn.addEventListener('click', closePanel);
+  if(backdrop) backdrop.addEventListener('click', closePanel);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePanel(); });
+  Array.prototype.slice.call(panel.querySelectorAll('#subnav a')).forEach(function(a){ a.addEventListener('click', closePanel); });
+})();
+</script>
 <script>
 (function(){
   var STEPS=[0.85,1,1.15,1.3,1.5], root=document.documentElement;

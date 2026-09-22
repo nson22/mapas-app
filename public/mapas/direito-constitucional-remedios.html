@@ -73,11 +73,27 @@
   .relevance-note{font-size:.88rem; color:var(--ink-soft); flex:1; min-width:260px;}
   .relevance-note b{color:var(--ink); font-weight:600;}
 
-  .subnav-shell{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-soft);}
-  .subnav{display:flex; gap:6px; overflow-x:auto; padding:12px 24px; max-width:960px; margin:0 auto; scrollbar-width:thin;}
-  .subnav a{flex:none; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.03em; padding:7px 12px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); text-decoration:none; white-space:nowrap; transition:background .15s ease, color .15s ease, border-color .15s ease;}
-  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
-  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+  .subnav-toggle{display:inline-flex; align-items:center; gap:8px; position:fixed; right:18px; bottom:18px; z-index:45; height:42px; padding:0 16px; border-radius:999px; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; box-shadow:var(--shadow); font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); font-weight:600; letter-spacing:.03em;}
+  .subnav-toggle:hover{border-color:var(--accent); color:var(--accent);}
+  .subnav-toggle .lucide{width:17px; height:17px;}
+  .subnav-backdrop{position:fixed; inset:0; z-index:39; background:rgba(10,14,13,.45); opacity:0; pointer-events:none; transition:opacity .2s ease;}
+  .subnav-backdrop.show{opacity:1; pointer-events:auto;}
+  .subnav-panel{position:fixed; top:0; right:0; z-index:40; height:100dvh; width:min(82vw, 300px); background:var(--paper); border-left:1px solid var(--line-soft); box-shadow:var(--shadow); display:flex; flex-direction:column; transform:translateX(100%); transition:transform .25s ease;}
+  .subnav-panel.open{transform:translateX(0);}
+  .subnav-panel-head{display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid var(--line-soft); flex:none;}
+  .subnav-panel-head span{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); font-weight:700;}
+  .subnav-close{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink-soft); cursor:pointer;}
+  .subnav-close:hover{border-color:var(--accent); color:var(--accent);}
+  .subnav-close .lucide{width:15px; height:15px;}
+  .subnav{display:flex; flex-direction:column; flex:1 1 auto; gap:2px; padding:10px 12px; overflow-y:auto; scrollbar-width:thin;}
+  .subnav a{font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.03em; line-height:1.3; padding:8px 12px; border-radius:8px; border:1px solid transparent; color:var(--ink-soft); text-decoration:none; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong); background:var(--paper-2);}
+  .subnav a.active{background:var(--accent-tint); border-color:var(--accent); color:var(--accent-strong); font-weight:700;}
+  .subnav .sep{height:1px; background:var(--line); margin:6px 6px;}
+  @media (min-width:1420px){
+    .subnav-toggle, .subnav-backdrop, .subnav-panel-head{display:none;}
+    .subnav-panel{top:104px; right:auto; left:calc(50% + 480px + 28px); height:auto; max-height:calc(100vh - 128px); width:200px; transform:none; border:1px solid var(--line-soft); border-radius:14px; box-shadow:none;}
+  }
 
   .diagram-section{padding:44px 0 8px;}
   .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
@@ -223,6 +239,21 @@
 
 
 <header class="hero"><div class="wrap"><div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Direito Constitucional<span class="crumb-sep">/</span><b>Remédios Constitucionais</b></span><div class="hdr-actions"><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div><h1 class="title">Remédios Constitucionais</h1><p class="dek">Instrumentos processuais de proteção aos direitos fundamentais.</p></div></header>
+<nav class="subnav-dock" aria-label="Seções do mapa">
+  <button type="button" class="subnav-toggle" id="subnavToggle" aria-expanded="false" aria-controls="subnavPanel"><i data-lucide="list" aria-hidden="true"></i><span>Seções</span></button>
+  <div class="subnav-backdrop" id="subnavBackdrop"></div>
+  <div class="subnav-panel" id="subnavPanel">
+    <div class="subnav-panel-head"><span>Seções</span><button type="button" class="subnav-close" id="subnavClose" aria-label="Fechar sumário de seções"><i data-lucide="x" aria-hidden="true"></i></button></div>
+    <div class="subnav" id="subnav">
+    <a href="#habeas-corpus">Habeas Corpus</a>
+    <a href="#habeas-data">Habeas Data</a>
+    <a href="#mandado-de-seguranca">Mandado de Segurança</a>
+    <a href="#mandado-de-injuncao">Mandado de Injunção</a>
+    <a href="#acao-popular">Ação Popular</a>
+    <span class="sep"></span>
+    <a href="#mnemonicos">Mnemônicos</a></div>
+  </div>
+</nav>
 <main>
 <section id="remedios" class="branch">
     <div class="wrap">
@@ -233,7 +264,7 @@
       </div>
       <p>Cinco ações: habeas corpus, habeas data, mandado de segurança, mandado de injunção e ação popular. Cada uma protege um bem jurídico específico &mdash; a primeira pergunta de prova é sempre "qual remédio cabe aqui?".</p>
 
-      <h3 class="sub">Habeas Corpus</h3>
+      <h3 class="sub" id="habeas-corpus">Habeas Corpus</h3>
       <p>Art. 5º, LXVIII: protege a <strong>liberdade de locomoção</strong> contra ilegalidade ou abuso de poder. Ação constitucional <strong>mandamental</strong>, gratuita, sem exigir advogado. Espécies: <strong>preventivo</strong> (&rarr; salvo-conduto), <strong>repressivo/liberatório</strong> (&rarr; alvará de soltura), <strong>suspensivo</strong> (prisão ainda não cumprida) e <strong>profilático</strong> (trancamento de ação penal manifestamente abusiva).</p>
       <div class="chips">
         <span class="chip">Súmula 693 STF &ndash; não cabe contra pena só de multa</span>
@@ -241,11 +272,11 @@
         <span class="chip">HC 143.641 &ndash; HC coletivo admitido para gestantes/mães presas preventivamente</span>
       </div>
 
-      <h3 class="sub">Habeas Data</h3>
+      <h3 class="sub" id="habeas-data">Habeas Data</h3>
       <p>Art. 5º, LXXII: ação de natureza <strong>cível</strong>, personalíssima, para <strong>conhecer, retificar ou anotar</strong> dados pessoais em banco de dados governamental ou de caráter público (ex.: SPC/Serasa).</p>
       <div class="callout warn"><span class="tag"><i data-lucide="triangle-alert" aria-hidden="true"></i>Súmula 2 STJ</span><p>Não cabe habeas data se não houve prévia recusa de informações pela autoridade administrativa &mdash; exige-se esgotamento (ou omissão) da via administrativa como condição de interesse de agir.</p></div>
 
-      <h3 class="sub">Mandado de Segurança</h3>
+      <h3 class="sub" id="mandado-de-seguranca">Mandado de Segurança</h3>
       <p>Art. 5º, LXIX/LXX: protege <strong>direito líquido e certo</strong> não amparado por HC/HD, contra ato de autoridade pública. Prova pré-constituída (sem dilação probatória); prazo decadencial de <strong>120 dias</strong> (Súmula 632 STF: constitucional).</p>
       <div class="grid-2">
         <div class="example"><span class="tag">Não cabe MS</span><p>Contra lei em tese (Súmula 266); como substituto de ação de cobrança (Súmula 269) ou de ação popular (Súmula 101); contra decisão judicial transitada em julgado; contra ato de gestão comercial de estatal.</p></div>
@@ -254,11 +285,11 @@
       <p><strong>MS coletivo</strong>: impetrado por partido com representação no Congresso, sindicato, entidade de classe ou associação (1 ano+) &mdash; por <strong>substituição processual</strong>, dispensando autorização dos associados (Súmula 629 STF).</p>
       <div class="case"><span class="cite">STF &middot; ADI 4.296</span><span class="tese">Liminar em MS</span><p>Inconstitucionais as vedações amplas a liminar em MS; caução/fiança pode ser exigida, mas nunca de forma automática.</p></div>
 
-      <h3 class="sub">Mandado de Injunção</h3>
+      <h3 class="sub" id="mandado-de-injuncao">Mandado de Injunção</h3>
       <p>Art. 5º, LXXI: combate a <strong>omissão normativa</strong> que inviabiliza direito, liberdade ou prerrogativa constitucional (síndrome da inefetividade). Diferente da ADI por omissão: MI é controle <strong>concreto</strong>; ADO é controle <strong>abstrato</strong>.</p>
       <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Evolução jurisprudencial (muito cobrada)</span><p><strong>Tese não concretista</strong> (só declara a mora) &rarr; <strong>tese concretista</strong> (Lei 13.300/2016 consagrou): o juiz fixa prazo para o órgão legislar e, se a mora persistir, estabelece as condições de exercício do direito &mdash; caso clássico: direito de greve do servidor público (MI 670, 708 e 712, aplicando a Lei de Greve por analogia).</p></div>
 
-      <h3 class="sub">Ação Popular</h3>
+      <h3 class="sub" id="acao-popular">Ação Popular</h3>
       <p>Art. 5º, LXXIII: qualquer <strong>cidadão</strong> pode anular ato lesivo ao patrimônio público, à moralidade administrativa, ao meio ambiente ou ao patrimônio histórico-cultural. Isento de custas e sucumbência, salvo má-fé. Prescreve em <strong>5 anos</strong>. Legitimidade exclusiva do cidadão &mdash; pessoa jurídica não pode propor.</p>
 
       <div class="exam"><div class="exam-label"><i data-lucide="circle-help" aria-hidden="true"></i>Caiu na prova &middot; qual remédio cabe?</div>
@@ -270,6 +301,37 @@
 <!--mnemonicos--><section id="mnemonicos" class="branch"><div class="wrap"><div class="branch-head"><span class="branch-num"><i data-lucide="lightbulb" aria-hidden="true"></i></span><h2>Mnemônicos de concurso</h2><span class="branch-kicker">macetes para fixar</span></div><p style="font-size:.92rem;">Mnemônicos e macetes de memorização. Alguns variam de uma fonte para outra; use os que funcionarem para você e confira sempre com o conteúdo do mapa.</p><div class="grid-2"><div class="example"><span class="tag">Remédios constitucionais</span><p><strong>HC = ir e vir</strong>; <strong>HD = dados</strong> (conhecer e retificar informações pessoais); <strong>MS = líquido e certo</strong> (o que HC e HD não cobrem); <strong>MI = falta de norma</strong>; <strong>Ação popular = patrimônio público</strong> (ação do cidadão).</p></div></div></div></section><!--/mnemonicos-->
 
 </main>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  function setActive(id){
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ setActive(entry.target.id); }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ observer.observe(s); });
+  }
+})();
+</script>
+<script>
+(function(){
+  var toggle=document.getElementById('subnavToggle'), closeBtn=document.getElementById('subnavClose');
+  var panel=document.getElementById('subnavPanel'), backdrop=document.getElementById('subnavBackdrop');
+  if(!toggle || !panel) return;
+  function openPanel(){ panel.classList.add('open'); if(backdrop) backdrop.classList.add('show'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closePanel(){ panel.classList.remove('open'); if(backdrop) backdrop.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  toggle.addEventListener('click', function(){ panel.classList.contains('open') ? closePanel() : openPanel(); });
+  if(closeBtn) closeBtn.addEventListener('click', closePanel);
+  if(backdrop) backdrop.addEventListener('click', closePanel);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePanel(); });
+  Array.prototype.slice.call(panel.querySelectorAll('#subnav a')).forEach(function(a){ a.addEventListener('click', closePanel); });
+})();
+</script>
 <script>
 (function(){
   var STEPS=[0.85,1,1.15,1.3,1.5], root=document.documentElement;

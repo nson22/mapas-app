@@ -73,11 +73,27 @@
   .relevance-note{font-size:.88rem; color:var(--ink-soft); flex:1; min-width:260px;}
   .relevance-note b{color:var(--ink); font-weight:600;}
 
-  .subnav-shell{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--line-soft);}
-  .subnav{display:flex; gap:6px; overflow-x:auto; padding:12px 24px; max-width:960px; margin:0 auto; scrollbar-width:thin;}
-  .subnav a{flex:none; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.03em; padding:7px 12px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft); text-decoration:none; white-space:nowrap; transition:background .15s ease, color .15s ease, border-color .15s ease;}
-  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong);}
-  .subnav a.active{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+  .subnav-toggle{display:inline-flex; align-items:center; gap:8px; position:fixed; right:18px; bottom:18px; z-index:45; height:42px; padding:0 16px; border-radius:999px; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; box-shadow:var(--shadow); font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); font-weight:600; letter-spacing:.03em;}
+  .subnav-toggle:hover{border-color:var(--accent); color:var(--accent);}
+  .subnav-toggle .lucide{width:17px; height:17px;}
+  .subnav-backdrop{position:fixed; inset:0; z-index:39; background:rgba(10,14,13,.45); opacity:0; pointer-events:none; transition:opacity .2s ease;}
+  .subnav-backdrop.show{opacity:1; pointer-events:auto;}
+  .subnav-panel{position:fixed; top:0; right:0; z-index:40; height:100dvh; width:min(82vw, 300px); background:var(--paper); border-left:1px solid var(--line-soft); box-shadow:var(--shadow); display:flex; flex-direction:column; transform:translateX(100%); transition:transform .25s ease;}
+  .subnav-panel.open{transform:translateX(0);}
+  .subnav-panel-head{display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid var(--line-soft); flex:none;}
+  .subnav-panel-head span{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); font-weight:700;}
+  .subnav-close{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink-soft); cursor:pointer;}
+  .subnav-close:hover{border-color:var(--accent); color:var(--accent);}
+  .subnav-close .lucide{width:15px; height:15px;}
+  .subnav{display:flex; flex-direction:column; flex:1 1 auto; gap:2px; padding:10px 12px; overflow-y:auto; scrollbar-width:thin;}
+  .subnav a{font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.03em; line-height:1.3; padding:8px 12px; border-radius:8px; border:1px solid transparent; color:var(--ink-soft); text-decoration:none; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong); background:var(--paper-2);}
+  .subnav a.active{background:var(--accent-tint); border-color:var(--accent); color:var(--accent-strong); font-weight:700;}
+  .subnav .sep{height:1px; background:var(--line); margin:6px 6px;}
+  @media (min-width:1420px){
+    .subnav-toggle, .subnav-backdrop, .subnav-panel-head{display:none;}
+    .subnav-panel{top:104px; right:auto; left:calc(50% + 480px + 28px); height:auto; max-height:calc(100vh - 128px); width:200px; transform:none; border:1px solid var(--line-soft); border-radius:14px; box-shadow:none;}
+  }
 
   .diagram-section{padding:44px 0 8px;}
   .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
@@ -223,6 +239,24 @@
 
 
 <header class="hero"><div class="wrap"><div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Direito Constitucional<span class="crumb-sep">/</span><b>Direitos Fundamentais</b></span><div class="hdr-actions"><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div><h1 class="title">Direitos Fundamentais</h1><p class="dek">Art. 5º da CF/88 &mdash; o tema nº1 do Direito Constitucional.</p></div></header>
+<nav class="subnav-dock" aria-label="Seções do mapa">
+  <button type="button" class="subnav-toggle" id="subnavToggle" aria-expanded="false" aria-controls="subnavPanel"><i data-lucide="list" aria-hidden="true"></i><span>Seções</span></button>
+  <div class="subnav-backdrop" id="subnavBackdrop"></div>
+  <div class="subnav-panel" id="subnavPanel">
+    <div class="subnav-panel-head"><span>Seções</span><button type="button" class="subnav-close" id="subnavClose" aria-label="Fechar sumário de seções"><i data-lucide="x" aria-hidden="true"></i></button></div>
+    <div class="subnav" id="subnav">
+    <a href="#direito-a-vida">Direito à vida</a>
+    <a href="#privacidade-honra-imagem-e-sigilos">Privacidade, honra, imagem e sigilos</a>
+    <a href="#direito-a-igualdade">Direito à igualdade</a>
+    <a href="#direito-a-liberdade-sete-facetas">Direito à liberdade &mdash; sete facetas</a>
+    <a href="#propriedade-informacao-e-inafastabilidade">Propriedade, informação e inafastabilidade</a>
+    <a href="#seguranca-juridica-juiz-natural-e-garantias-penais">Segurança jurídica, juiz natural e garantias penais</a>
+    <a href="#extradicao">Extradição</a>
+    <a href="#devido-processo-legal-provas-e-presuncao-de-inocencia">Devido processo legal, provas e presunção de inocência</a>
+    <span class="sep"></span>
+    <a href="#mnemonicos">Mnemônicos</a></div>
+  </div>
+</nav>
 <main>
 <section id="direitos-fundamentais" class="branch">
     <div class="wrap">
@@ -233,7 +267,7 @@
       </div>
       <p>Direito individual mais cobrado em concursos. A lógica dominante é sempre <strong>regra x exceção</strong> &mdash; cada direito abaixo tem seu limite, e é o limite que a banca cobra.</p>
 
-      <h3 class="sub">Direito à vida</h3>
+      <h3 class="sub" id="direito-a-vida">Direito à vida</h3>
       <p>Duas dimensões: <strong>negativa</strong> (não ser morto) e <strong>positiva</strong> (viver com dignidade &mdash; saúde, alimentação, proteção contra tortura). A CF <strong>não define</strong> o início da vida. Pena de morte é proibida, exceto em <strong>guerra declarada</strong> (art. 84, XIX) &mdash; nem por emenda constitucional pode ser instituída fora dessa hipótese (cláusula pétrea).</p>
       <div class="grid-3">
         <div class="example"><span class="tag">ADI 3.510</span><p>Pesquisa com células-tronco embrionárias é constitucional, respeitados os requisitos da Lei de Biossegurança.</p></div>
@@ -241,13 +275,13 @@
         <div class="example alt"><span class="tag">HC 124.306</span><p>1ª Turma: tipificação do aborto no 1º trimestre seria inconstitucional &mdash; decisão <strong>incidental</strong>, sem efeito vinculante geral.</p></div>
       </div>
 
-      <h3 class="sub">Privacidade, honra, imagem e sigilos</h3>
+      <h3 class="sub" id="privacidade-honra-imagem-e-sigilos">Privacidade, honra, imagem e sigilos</h3>
       <p>Art. 5º, X: intimidade, vida privada, honra e imagem são invioláveis, com indenização por dano material <strong>ou</strong> moral. Privacidade é gênero; intimidade (núcleo), vida privada, honra (subjetiva/objetiva) e imagem (retrato/atributo/voz) são espécies.</p>
       <div class="case"><span class="cite">STF &middot; RE 1.010.606</span><span class="tese">Não existe "direito ao esquecimento" genérico</span><p>Incompatível com a CF impedir a divulgação de fatos verdadeiros e licitamente obtidos só pela passagem do tempo &mdash; abusos são analisados caso a caso.</p></div>
       <p><strong>Interceptação telefônica</strong> (capta o conteúdo, por terceiro, exige ordem judicial + Lei 9.296/96) &ne; <strong>quebra de sigilo de dados telefônicos</strong> (só os registros: números, hora, duração) &ne; <strong>gravação clandestina</strong> (um dos próprios interlocutores grava, sem avisar o outro &mdash; lícita, em regra).</p>
       <p>Inviolabilidade domiciliar (art. 5º, XI): entrada sem consentimento só em <strong>flagrante</strong>, <strong>desastre</strong>, <strong>socorro</strong> (qualquer hora) ou <strong>ordem judicial</strong> (só de dia).</p>
 
-      <h3 class="sub">Direito à igualdade</h3>
+      <h3 class="sub" id="direito-a-igualdade">Direito à igualdade</h3>
       <p>Igualdade <strong>formal</strong> (perante a lei) x <strong>material</strong> (na vida real) &mdash; "tratar igualmente os iguais e desigualmente os desiguais" (Aristóteles). <strong>Discriminação positiva</strong> (cotas, ações afirmativas) é legítima quando atende a critérios de necessidade, temporariedade e coerência sistêmica.</p>
       <div class="chips">
         <span class="chip">Súmula 683 STF &ndash; limite de idade só se justificado pela natureza do cargo</span>
@@ -257,7 +291,7 @@
         <span class="chip">ADO 26/MI 4.733 &ndash; homofobia/transfobia enquadradas como racismo até lei específica</span>
       </div>
 
-      <h3 class="sub">Direito à liberdade &mdash; sete facetas</h3>
+      <h3 class="sub" id="direito-a-liberdade-sete-facetas">Direito à liberdade &mdash; sete facetas</h3>
       <table class="data">
         <thead><tr><th>Liberdade</th><th>Base</th><th>Núcleo</th></tr></thead>
         <tbody>
@@ -272,12 +306,12 @@
       </table>
       <div class="callout warn"><span class="tag"><i data-lucide="triangle-alert" aria-hidden="true"></i>Pegadinha</span><p><strong>Denúncia anônima/bilhete apócrifo, sozinhos, NÃO fundamentam</strong> inquérito, interceptação ou busca (HC 106.152) &mdash; servem só como notícia a apurar. <strong>Representação processual</strong> por associação exige autorização expressa individual (RE 573.232); já o <strong>MS coletivo</strong> dispensa autorização, por ser substituição processual (Súmula 629 STF).</p></div>
 
-      <h3 class="sub">Propriedade, informação e inafastabilidade</h3>
+      <h3 class="sub" id="propriedade-informacao-e-inafastabilidade">Propriedade, informação e inafastabilidade</h3>
       <p><strong>Propriedade</strong> (art. 5º, XXII-XXXI): deve cumprir função social; <strong>desapropriação</strong> = supressiva, indenização prévia/justa/em dinheiro; <strong>requisição administrativa</strong> = restritiva, indenização só posterior e se houver dano; <strong>desapropriação-confisco</strong> (art. 243, drogas/trabalho escravo) = sem indenização.</p>
       <p><strong>Informação</strong>: direito de informar (art. 220) + de se informar (art. 5º, XIV, sigilo da fonte) + de ser informado (art. 5º, XXXIII, ressalvado sigilo de Estado). LAI: ultrassecreto 25 anos, secreto 15, reservado 5.</p>
       <p><strong>Inafastabilidade do Judiciário</strong> (art. 5º, XXXV): Brasil não exige esgotar via administrativa, salvo 4 exceções &mdash; justiça desportiva, ato contrário a súmula vinculante, habeas data (exige recusa/omissão prévia) e benefícios do INSS.</p>
 
-      <h3 class="sub">Segurança jurídica, juiz natural e garantias penais</h3>
+      <h3 class="sub" id="seguranca-juridica-juiz-natural-e-garantias-penais">Segurança jurídica, juiz natural e garantias penais</h3>
       <p><strong>Direito adquirido, ato jurídico perfeito e coisa julgada</strong> (art. 5º, XXXVI): protegidos contra lei nova. Emenda constitucional pode, em tese, ser oposta a direito adquirido (2ª corrente, majoritária) &mdash; já normas constitucionais <em>originárias</em> não se submetem a ele.</p>
       <p><strong>Juiz natural</strong> (art. 5º, XXXVII): veda tribunal de exceção. <strong>Tribunal do Júri</strong> (art. 5º, XXXVIII): plenitude de defesa (mais ampla que a ampla defesa), sigilo das votações, soberania dos veredictos (mitigável só se a decisão for manifestamente contrária às provas &mdash; CPP, art. 593, III, "d").</p>
       <div class="grid-2">
@@ -285,10 +319,10 @@
         <div class="example alt"><span class="tag">Direitos dos presos</span><p>Estabelecimentos distintos por natureza/idade/sexo; integridade física e moral (art. 5º, XLIX); ADPF 347 reconheceu <strong>Estado de Coisas Inconstitucional</strong> no sistema penitenciário.</p></div>
       </div>
 
-      <h3 class="sub">Extradição</h3>
+      <h3 class="sub" id="extradicao">Extradição</h3>
       <p><strong>Brasileiro nato nunca é extraditado.</strong> Naturalizado só em 2 exceções: crime comum antes da naturalização, ou tráfico de entorpecentes a qualquer tempo. Estrangeiro não é extraditado por crime político ou de opinião. Competência: julgamento pelo <strong>STF</strong>; entrega, decisão discricionária do <strong>Presidente da República</strong>.</p>
 
-      <h3 class="sub">Devido processo legal, provas e presunção de inocência</h3>
+      <h3 class="sub" id="devido-processo-legal-provas-e-presuncao-de-inocencia">Devido processo legal, provas e presunção de inocência</h3>
       <p><strong>Devido processo legal</strong> (art. 5º, LIV): aspecto formal (procedimento) + material (proporcionalidade). <strong>Contraditório e ampla defesa</strong> (art. 5º, LV) alcançam processo judicial e administrativo.</p>
       <p><strong>Provas ilícitas</strong> (violam direito material) x <strong>ilegítimas</strong> (violam direito processual) &mdash; ambas são "provas ilegais", inadmissíveis. <strong>Teoria dos frutos da árvore envenenada</strong>: provas derivadas de prova ilícita também caem, salvo descoberta inevitável ou fonte independente.</p>
       <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Súmula 444 STJ</span><p>Investigação ou ação penal em andamento, isoladamente, não caracteriza maus antecedentes &mdash; exige-se trânsito em julgado.</p></div>
@@ -303,6 +337,37 @@
 <!--mnemonicos--><section id="mnemonicos" class="branch"><div class="wrap"><div class="branch-head"><span class="branch-num"><i data-lucide="lightbulb" aria-hidden="true"></i></span><h2>Mnemônicos de concurso</h2><span class="branch-kicker">macetes para fixar</span></div><p style="font-size:.92rem;">Mnemônicos e macetes de memorização. Alguns variam de uma fonte para outra; use os que funcionarem para você e confira sempre com o conteúdo do mapa.</p><div class="grid-2"><div class="example"><span class="tag">Direitos fundamentais (arts. 5º a 17)</span><p><strong>INDI + SOCI + NACI + POLI + PARTI</strong>: individuais e coletivos (art. 5º), sociais (6º a 11), nacionalidade (12 e 13), políticos (14 a 16), partidos políticos (17).</p></div></div></div></section><!--/mnemonicos-->
 
 </main>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  function setActive(id){
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ setActive(entry.target.id); }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ observer.observe(s); });
+  }
+})();
+</script>
+<script>
+(function(){
+  var toggle=document.getElementById('subnavToggle'), closeBtn=document.getElementById('subnavClose');
+  var panel=document.getElementById('subnavPanel'), backdrop=document.getElementById('subnavBackdrop');
+  if(!toggle || !panel) return;
+  function openPanel(){ panel.classList.add('open'); if(backdrop) backdrop.classList.add('show'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closePanel(){ panel.classList.remove('open'); if(backdrop) backdrop.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  toggle.addEventListener('click', function(){ panel.classList.contains('open') ? closePanel() : openPanel(); });
+  if(closeBtn) closeBtn.addEventListener('click', closePanel);
+  if(backdrop) backdrop.addEventListener('click', closePanel);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePanel(); });
+  Array.prototype.slice.call(panel.querySelectorAll('#subnav a')).forEach(function(a){ a.addEventListener('click', closePanel); });
+})();
+</script>
 <script>
 (function(){
   var STEPS=[0.85,1,1.15,1.3,1.5], root=document.documentElement;
