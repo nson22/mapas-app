@@ -140,7 +140,7 @@ export default function MapGrid() {
                   {g.items.map((m) => (
                     <article
                       key={m.slug}
-                      className="card relative border border-base-300 bg-base-200 shadow-sm transition-transform hover:-translate-y-[3px] hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0 after:absolute after:inset-0 after:content-['']"
+                      className="card relative border border-base-300 bg-base-200 shadow-sm transition-transform hover:-translate-y-[3px] hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                       style={{ borderTopWidth: 4, borderTopColor: 'var(--accent)' }}
                     >
                       <div className="card-body gap-0 p-[18px] pb-3.5">
@@ -151,7 +151,7 @@ export default function MapGrid() {
                           <MapIcon size={14} aria-hidden />
                           {m.kicker}
                         </div>
-                        <h3 className="relative z-[3] mb-2 text-[1.15rem] font-bold leading-tight">
+                        <h3 className="mb-2 text-[1.15rem] font-bold leading-tight">
                           <Link href={`/mapas/${m.slug}`} className="after:absolute after:inset-0">
                             {m.title}
                           </Link>
@@ -168,7 +168,7 @@ export default function MapGrid() {
                             </span>
                           ))}
                         </div>
-                        <div className="relative z-[2] flex items-center border-t border-base-300 pt-2.5 text-[0.82rem]">
+                        <div className="flex items-center border-t border-base-300 pt-2.5 text-[0.82rem]">
                           <span
                             className="pointer-events-none inline-flex items-center gap-1.5 font-bold"
                             style={{ color: 'var(--accent)' }}
