@@ -6,7 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
-  :root{
+  :root {
     --paper: #eef1f0;
     --paper-2: #e2e8e4;
     --paper-3: #d2ddd6;
@@ -22,244 +22,1227 @@
     --wine-tint: #efe0e6;
     --line: #c1cdc6;
     --line-soft: #dbe3dd;
-    --shadow: 0 1px 2px rgba(23,38,42,.06), 0 8px 24px -14px rgba(23,38,42,.28);
+    --shadow: 0 1px 2px rgba(23, 38, 42, .06), 0 8px 24px -14px rgba(23, 38, 42, .28);
     --font-display: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
     --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
     --font-mono: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --paper: #10171a; --paper-2: #161e21; --paper-3: #1f2a2c;
-      --ink: #e6ece9; --ink-soft: #aab8b5; --ink-faint: #7c8b8d;
-      --accent: #7fb8c4; --accent-strong: #a9d3db; --accent-tint: #1c2f33;
-      --brass: #e0b563; --brass-tint: #2f2717;
-      --wine: #d99cb3; --wine-tint: #35232b;
-      --line: #2b3a38; --line-soft: #1a2226;
-      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #10171a;
+      --paper-2: #161e21;
+      --paper-3: #1f2a2c;
+      --ink: #e6ece9;
+      --ink-soft: #aab8b5;
+      --ink-faint: #7c8b8d;
+      --accent: #7fb8c4;
+      --accent-strong: #a9d3db;
+      --accent-tint: #1c2f33;
+      --brass: #e0b563;
+      --brass-tint: #2f2717;
+      --wine: #d99cb3;
+      --wine-tint: #35232b;
+      --line: #2b3a38;
+      --line-soft: #1a2226;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 10px 28px -16px rgba(0, 0, 0, .6);
     }
   }
-  :root[data-theme="dark"]{
-    --paper: #10171a; --paper-2: #161e21; --paper-3: #1f2a2c;
-    --ink: #e6ece9; --ink-soft: #aab8b5; --ink-faint: #7c8b8d;
-    --accent: #7fb8c4; --accent-strong: #a9d3db; --accent-tint: #1c2f33;
-    --brass: #e0b563; --brass-tint: #2f2717;
-    --wine: #d99cb3; --wine-tint: #35232b;
-    --line: #2b3a38; --line-soft: #1a2226;
-    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px -16px rgba(0,0,0,.6);
+
+  :root[data-theme="dark"] {
+    --paper: #10171a;
+    --paper-2: #161e21;
+    --paper-3: #1f2a2c;
+    --ink: #e6ece9;
+    --ink-soft: #aab8b5;
+    --ink-faint: #7c8b8d;
+    --accent: #7fb8c4;
+    --accent-strong: #a9d3db;
+    --accent-tint: #1c2f33;
+    --brass: #e0b563;
+    --brass-tint: #2f2717;
+    --wine: #d99cb3;
+    --wine-tint: #35232b;
+    --line: #2b3a38;
+    --line-soft: #1a2226;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 10px 28px -16px rgba(0, 0, 0, .6);
   }
 
-  *{box-sizing:border-box;}
-  html{font-size:calc(100% * var(--fs,1));}
-  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:calc(15.5px * var(--fs,1)); line-height:1.6; -webkit-font-smoothing:antialiased;}
-  h1,h2,h3,h4{font-family:var(--font-display); color:var(--ink); text-wrap:balance; margin:0;}
-  p{margin:0 0 .9em; max-width:66ch;}
-  a{color:inherit;}
-  ::selection{background:var(--accent-tint); color:var(--accent-strong);}
-  :focus-visible{outline:2.5px solid var(--brass); outline-offset:2px; border-radius:3px;}
-  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
-
-  .hero{padding:56px 0 28px; border-bottom:1px solid var(--line-soft);}
-  .eyebrow{display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:calc(12.5px * var(--fs,1)); letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:18px;}
-  .eyebrow::before{content:""; display:inline-block; width:22px; height:1px; background:var(--accent);}
-  h1.title{font-size:clamp(2rem, 4.6vw, 3rem); font-weight:700; letter-spacing:-.01em; line-height:1.08;}
-  h1.title em{font-style:italic; font-weight:500; color:var(--accent-strong);}
-  .dek{font-size:1.08rem; color:var(--ink-soft); margin-top:16px; max-width:58ch;}
-
-  .relevance{margin-top:28px; display:flex; flex-wrap:wrap; align-items:center; gap:18px 28px; padding:16px 20px; background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px;}
-  .relevance .stat{display:flex; flex-direction:column; gap:2px;}
-  .relevance .stat .num{font-family:var(--font-display); font-weight:700; font-size:1.5rem; line-height:1;}
-  .relevance .stat .lbl{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);}
-  .relevance-note{font-size:.9rem; color:var(--ink-soft); flex:1; min-width:220px;}
-  .relevance-note b{color:var(--ink); font-weight:600;}
-
-  .subnav-toggle{display:inline-flex; align-items:center; gap:8px; position:fixed; right:18px; bottom:18px; z-index:45; height:42px; padding:0 16px; border-radius:999px; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; box-shadow:var(--shadow); font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); font-weight:600; letter-spacing:.03em;}
-  .subnav-toggle:hover{border-color:var(--accent); color:var(--accent);}
-  .subnav-toggle .lucide{width:17px; height:17px;}
-  .subnav-backdrop{position:fixed; inset:0; z-index:39; background:rgba(10,14,13,.45); opacity:0; pointer-events:none; transition:opacity .2s ease;}
-  .subnav-backdrop.show{opacity:1; pointer-events:auto;}
-  .subnav-panel{position:fixed; top:0; right:0; z-index:40; height:100dvh; width:min(82vw, 300px); background:var(--paper); border-left:1px solid var(--line-soft); box-shadow:var(--shadow); display:flex; flex-direction:column; transform:translateX(100%); transition:transform .25s ease;}
-  .subnav-panel.open{transform:translateX(0);}
-  .subnav-panel-head{display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid var(--line-soft); flex:none;}
-  .subnav-panel-head span{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); font-weight:700;}
-  .subnav-close{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink-soft); cursor:pointer;}
-  .subnav-close:hover{border-color:var(--accent); color:var(--accent);}
-  .subnav-close .lucide{width:15px; height:15px;}
-  .subnav{display:flex; flex-direction:column; flex:1 1 auto; gap:2px; padding:10px 12px; overflow-y:auto; scrollbar-width:thin;}
-  .subnav a{font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); letter-spacing:.03em; line-height:1.3; padding:8px 12px; border-radius:8px; border:1px solid transparent; color:var(--ink-soft); text-decoration:none; transition:background .15s ease, color .15s ease, border-color .15s ease;}
-  .subnav a:hover{border-color:var(--accent); color:var(--accent-strong); background:var(--paper-2);}
-  .subnav a.active{background:var(--accent-tint); border-color:var(--accent); color:var(--accent-strong); font-weight:700;}
-  .subnav .sep{height:1px; background:var(--line); margin:6px 6px;}
-  @media (min-width:1440px){
-    .subnav-toggle, .subnav-backdrop, .subnav-panel-head{display:none;}
-    .subnav-panel{top:104px; right:auto; left:calc(50% + 490px + 28px); height:auto; max-height:calc(100vh - 128px); width:200px; transform:none; border:1px solid var(--line-soft); border-radius:14px; box-shadow:none;}
+  * {
+    box-sizing: border-box;
   }
 
-  .diagram-section{padding:44px 0 8px;}
-  .diagram-intro{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
-  .diagram-intro h2{font-size:calc(12.5px * var(--fs,1)); font-weight:600; font-family:var(--font-body); color:var(--ink-faint); text-transform:uppercase; letter-spacing:.07em;}
-  .diagram-intro p{font-size:.86rem; color:var(--ink-faint); margin:0; max-width:36ch; text-align:right;}
-  .diagram-frame{border:1px solid var(--line-soft); border-radius:16px; background:var(--paper-2); padding:8px; box-shadow:var(--shadow);}
-  svg.mindmap{width:100%; height:auto; display:block;}
-  .mm-link{cursor:pointer;}
-  .mm-node rect.card{fill:var(--paper); stroke:var(--line); stroke-width:1.4; transition:stroke .15s ease, fill .15s ease;}
-  .mm-node .label{font-family:var(--font-display); font-weight:600; fill:var(--ink); font-size:24px;}
-  .mm-node .kicker{font-family:var(--font-mono); fill:var(--ink-faint); font-size:12.5px; letter-spacing:.03em;}
-  .mm-link:hover .mm-node rect.card, .mm-link.active .mm-node rect.card{fill:var(--accent-tint); stroke:var(--accent);}
-  .mm-node.sintaxe .kicker{fill:var(--wine);}
-  .mm-link:hover .mm-node.sintaxe rect.card, .mm-link.active .mm-node.sintaxe rect.card{fill:var(--wine-tint); stroke:var(--wine);}
-  .mm-node.semantica .kicker{fill:var(--brass);}
-  .mm-link:hover .mm-node.semantica rect.card, .mm-link.active .mm-node.semantica rect.card{fill:var(--brass-tint); stroke:var(--brass);}
-  .mm-center rect{fill:var(--accent-strong); stroke:none;}
-  .mm-center .label{fill:var(--paper); font-size:28px;}
-  .mm-lines line{stroke:var(--line); stroke-width:1.6;}
+  html {
+    font-size: calc(100% * var(--fs, 1));
+  }
 
-  .grid-section{padding:36px 0 8px;}
-  .class-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:12px; margin-top:16px;}
-  .class-card{display:block; text-decoration:none; padding:14px 16px; border:1px solid var(--line-soft); border-radius:10px; background:var(--paper-2); transition:border-color .15s ease, transform .15s ease;}
-  .class-card:hover{border-color:var(--accent); transform:translateY(-2px);}
-  .class-card .tag{display:inline-block; font-family:var(--font-mono); font-size:calc(10px * var(--fs,1)); letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:5px; margin-bottom:8px; font-weight:600;}
-  .class-card.m .tag{background:var(--accent-tint); color:var(--accent-strong);}
-  .class-card.s .tag{background:var(--wine-tint); color:var(--wine);}
-  .class-card.se .tag{background:var(--brass-tint); color:var(--brass);}
-  .class-card h3{font-size:1.05rem; font-weight:700; margin-bottom:4px;}
-  .class-card p{font-size:.83rem; color:var(--ink-soft); margin:0 0 6px;}
-  .class-card .ex{font-family:var(--font-mono); font-size:.78rem; color:var(--ink-faint);}
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: calc(15.5px * var(--fs, 1));
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
 
-  .category{padding:56px 0 8px;}
-  .category-head{border-bottom:2px solid var(--ink); padding-bottom:14px; margin-bottom:8px; display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;}
-  .category-head h2{font-size:clamp(1.6rem,3.4vw,2.1rem); font-weight:700;}
-  .category-head .count{font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em;}
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--ink);
+    text-wrap: balance;
+    margin: 0;
+  }
 
-  .branch{padding:44px 0; border-bottom:1px solid var(--line-soft); scroll-margin-top:64px;}
-  .branch:last-of-type{border-bottom:none;}
-  .branch-head{display:grid; grid-template-columns:auto 1fr; gap:14px 18px; align-items:start; margin-bottom:22px;}
-  .branch-num{font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); color:var(--brass); border:1px solid var(--line); border-radius:8px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-weight:600;}
-  .branch.sintaxe .branch-num{color:var(--wine);}
-  .branch.semantica .branch-num{color:var(--brass);}
-  .branch-head h3{font-size:clamp(1.3rem,2.6vw,1.6rem); font-weight:700;}
-  .branch-kicker{grid-column:2; font-family:var(--font-mono); font-size:calc(11.5px * var(--fs,1)); letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); margin-top:-12px;}
+  p {
+    margin: 0 0 .9em;
+    max-width: 66ch;
+  }
 
-  h4.sub{font-size:1rem; font-weight:700; margin:26px 0 10px; color:var(--accent-strong);}
-  .branch.sintaxe h4.sub{color:var(--wine);}
-  .branch.semantica h4.sub{color:var(--brass);}
-  ul.plain, ol.plain{margin:0 0 1em; padding-left:1.25em;}
-  ul.plain li, ol.plain li{margin-bottom:.4em; max-width:62ch;}
-  ul.plain li::marker{color:var(--brass);}
+  a {
+    color: inherit;
+  }
 
-  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 20px;}
-  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0 20px;}
-  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:14px 0 20px;}
-  @media (max-width:760px){.grid-4{grid-template-columns:repeat(2,1fr);}}
-  @media (max-width:640px){.grid-2, .grid-3{grid-template-columns:1fr;}}
+  ::selection {
+    background: var(--accent-tint);
+    color: var(--accent-strong);
+  }
 
-  .example{background:var(--paper-2); border:1px solid var(--line-soft); border-radius:10px; padding:14px 16px;}
-  .example .tag{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); text-transform:uppercase; letter-spacing:.06em; color:var(--accent); font-weight:600; display:block; margin-bottom:6px;}
-  .example.alt .tag{color:var(--wine);}
-  .example.gold .tag{color:var(--brass);}
-  .example p{margin:0; font-size:.92rem;}
+  :focus-visible {
+    outline: 2.5px solid var(--brass);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
 
-  .callout{border-left:3px solid var(--brass); background:var(--brass-tint); padding:14px 18px; border-radius:0 8px 8px 0; margin:20px 0;}
-  .callout .tag{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); text-transform:uppercase; letter-spacing:.07em; color:var(--brass); font-weight:700; display:block; margin-bottom:4px;}
-  .callout p{margin:0; font-size:.94rem;}
-  .callout p:last-child{margin-bottom:0;}
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
 
-  .pair{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px; padding:12px 14px; border:1px solid var(--line-soft); border-radius:10px; background:var(--paper-2); margin-bottom:10px;}
-  .pair .side{font-size:.9rem;}
-  .pair .side b{display:block; font-family:var(--font-display); font-size:1.05rem; margin-bottom:2px;}
-  .pair .vs{font-family:var(--font-mono); font-size:calc(11px * var(--fs,1)); color:var(--ink-faint); text-transform:uppercase;}
-  @media (max-width:640px){.pair{grid-template-columns:1fr;} .pair .vs{justify-self:start;}}
+  .hero {
+    padding: 56px 0 28px;
+    border-bottom: 1px solid var(--line-soft);
+  }
 
-  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 18px;}
-  .chip{font-family:var(--font-mono); font-size:.8rem; padding:4px 10px; border-radius:999px; background:var(--paper-2); border:1px solid var(--line-soft); color:var(--ink-soft);}
-  .chip-group{margin-bottom:14px;}
-  .chip-group .gl{font-family:var(--font-mono); font-size:calc(10.5px * var(--fs,1)); text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); display:block; margin-bottom:6px;}
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: calc(12.5px * var(--fs, 1));
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
 
-  details.exam summary{cursor:pointer; list-style:none; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; display:flex; align-items:center; gap:8px;}
-  details.exam summary::-webkit-details-marker{display:none;}
-  details.exam summary::before{content:"+"; display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border:1px solid var(--line); border-radius:50%; font-size:calc(12px * var(--fs,1));}
-  details.exam[open] summary::before{content:"\2013";}
-  details.exam .a ul{margin:8px 0 0; padding-left:1.1em;}
-  details.exam .a li{margin-bottom:4px;}
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 22px;
+    height: 1px;
+    background: var(--accent);
+  }
 
-  table.data{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:.87rem;}
-  table.data th, table.data td{text-align:left; padding:8px 11px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
-  table.data th{font-family:var(--font-mono); font-size:calc(10px * var(--fs,1)); text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); font-weight:600; border-bottom:1.5px solid var(--line);}
-  table.data td.hl{color:var(--accent-strong); font-weight:700;}
-  table.data td.wine{color:var(--wine); font-weight:700;}
-  .table-scroll{overflow-x:auto;}
+  h1.title {
+    font-size: clamp(2rem, 4.6vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -.01em;
+    line-height: 1.08;
+  }
 
-  footer{padding:44px 0 64px; color:var(--ink-faint); font-size:.85rem;}
-  footer .wrap{border-top:1px solid var(--line-soft); padding-top:24px;}
+  h1.title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent-strong);
+  }
 
-  @media (prefers-reduced-motion: reduce){ * {transition:none !important;} }
-  .lucide{width:1em; height:1em; stroke-width:2; flex:none; vertical-align:-.14em; margin-right:6px;}
-  .eyebrow .lucide{width:15px; height:15px; margin-right:0;}
-  details.exam summary .lucide{width:15px; height:15px; margin-right:0;}
-  .callout .tag .lucide, .example .tag .lucide{width:13px; height:13px; vertical-align:-2px;}
-  .class-card .tag .lucide{width:11px; height:11px; vertical-align:-1.5px; margin-right:4px;}
-  .branch-num .lucide{width:16px; height:16px; margin:0;}
-  .eyebrow::before{display:none !important;}
-  .eyebrow .back{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1px solid var(--line); border-radius:50%; color:var(--accent); text-decoration:none; transition:background .15s ease, border-color .15s ease;}
-  .eyebrow .back:hover{background:var(--accent-tint); border-color:var(--accent);}
-  .eyebrow .back .lucide{width:16px; height:16px; margin:0;}
-  .theme-fab{position:fixed; right:18px; bottom:18px; z-index:50; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow);}
-  .theme-fab:hover{border-color:var(--accent); color:var(--accent);}
-  .theme-fab .lucide{width:19px; height:19px; margin:0;}
-  .theme-fab .i-sun{display:none;}
-  :root[data-theme="dark"] .theme-fab .i-sun{display:block;}
-  :root[data-theme="dark"] .theme-fab .i-moon{display:none;}
+  .dek {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    margin-top: 16px;
+    max-width: 58ch;
+  }
 
-  .eyebrow{flex-wrap:wrap; row-gap:10px;}
-  .crumb{display:flex; align-items:center; gap:6px; flex-wrap:wrap; font-weight:600;}
-  .crumb-sep{opacity:.5;}
-  .crumb b{color:var(--ink);}
-  .hdr-actions{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-left:auto;}
-  .icon-btn{display:inline-flex; align-items:center; gap:6px; height:30px; padding:0 12px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--ink-soft); cursor:pointer; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); text-transform:none; letter-spacing:normal; text-decoration:none;}
-  .icon-btn:hover{border-color:var(--accent); color:var(--accent); background:var(--accent-tint);}
-  .icon-btn .lucide{width:14px; height:14px;}
-  .icon-btn .i-sun{display:none;}
-  :root[data-theme="dark"] .icon-btn .i-sun{display:inline-flex;}
-  :root[data-theme="dark"] .icon-btn .i-moon{display:none;}
-  .font-ctl{display:inline-flex; align-items:center; gap:2px; padding:2px 4px 2px 10px; border:1px solid var(--line); border-radius:999px; color:var(--ink-soft);}
-  .font-ctl button{display:inline-flex; align-items:center; justify-content:center; min-width:26px; height:26px; border:0; background:transparent; color:inherit; border-radius:999px; cursor:pointer; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); font-weight:600;}
-  .font-ctl button:hover:not(:disabled){background:var(--paper-2); color:var(--ink);}
-  .font-ctl button:disabled{opacity:.35; cursor:default;}
-  .font-ctl .pct{min-width:42px;}
-  .font-ctl svg{width:14px; height:14px;}
-  .embedded .eyebrow{display:none}
-  @media (max-width:760px){ .crumb-brand{display:none;} .icon-btn span{display:none;} .icon-btn{padding:0 9px;} .font-ctl > svg:first-child{display:none;} }
+  .relevance {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px 28px;
+    padding: 16px 20px;
+    background: var(--paper-2);
+    border: 1px solid var(--line-soft);
+    border-radius: 10px;
+  }
 
-  html{font-size:calc(100% * var(--fs,1));}
+  .relevance .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .relevance .stat .num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .relevance .stat .lbl {
+    font-family: var(--font-mono);
+    font-size: calc(11px * var(--fs, 1));
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .relevance-note {
+    font-size: .9rem;
+    color: var(--ink-soft);
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .relevance-note b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .subnav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 45;
+    height: 42px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    color: var(--ink);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    font-family: var(--font-mono);
+    font-size: calc(12px * var(--fs, 1));
+    font-weight: 600;
+    letter-spacing: .03em;
+  }
+
+  .subnav-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .subnav-toggle .lucide {
+    width: 17px;
+    height: 17px;
+  }
+
+  .subnav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    background: rgba(10, 14, 13, .45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+
+  .subnav-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .subnav-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 40;
+    height: 100dvh;
+    width: min(82vw, 300px);
+    background: var(--paper);
+    border-left: 1px solid var(--line-soft);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform .25s ease;
+  }
+
+  .subnav-panel.open {
+    transform: translateX(0);
+  }
+
+  .subnav-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line-soft);
+    flex: none;
+  }
+
+  .subnav-panel-head span {
+    font-family: var(--font-mono);
+    font-size: calc(11px * var(--fs, 1));
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--ink-faint);
+    font-weight: 700;
+  }
+
+  .subnav-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+
+  .subnav-close:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .subnav-close .lucide {
+    width: 15px;
+    height: 15px;
+  }
+
+  .subnav {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: 2px;
+    padding: 10px 12px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .subnav a {
+    font-family: var(--font-mono);
+    font-size: calc(12px * var(--fs, 1));
+    letter-spacing: .03em;
+    line-height: 1.3;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+  }
+
+  .subnav a:hover {
+    border-color: var(--accent);
+    color: var(--accent-strong);
+    background: var(--paper-2);
+  }
+
+  .subnav a.active {
+    background: var(--accent-tint);
+    border-color: var(--accent);
+    color: var(--accent-strong);
+    font-weight: 700;
+  }
+
+  .subnav .sep {
+    height: 1px;
+    background: var(--line);
+    margin: 6px 6px;
+  }
+
+  @media (min-width:1440px) {
+
+    .subnav-toggle,
+    .subnav-backdrop,
+    .subnav-panel-head {
+      display: none;
+    }
+
+    .subnav-panel {
+      top: 104px;
+      right: auto;
+      left: calc(50% + 490px + 28px);
+      height: auto;
+      max-height: calc(100vh - 128px);
+      width: 200px;
+      transform: none;
+      border: 1px solid var(--line-soft);
+      border-radius: 14px;
+      box-shadow: none;
+    }
+  }
+
+  .diagram-section {
+    padding: 44px 0 8px;
+  }
+
+  .diagram-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .diagram-intro h2 {
+    font-size: calc(12.5px * var(--fs, 1));
+    font-weight: 600;
+    font-family: var(--font-body);
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: .07em;
+  }
+
+  .diagram-intro p {
+    font-size: .86rem;
+    color: var(--ink-faint);
+    margin: 0;
+    max-width: 36ch;
+    text-align: right;
+  }
+
+  .diagram-frame {
+    border: 1px solid var(--line-soft);
+    border-radius: 16px;
+    background: var(--paper-2);
+    padding: 8px;
+    box-shadow: var(--shadow);
+  }
+
+  svg.mindmap {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .mm-link {
+    cursor: pointer;
+  }
+
+  .mm-node rect.card {
+    fill: var(--paper);
+    stroke: var(--line);
+    stroke-width: 1.4;
+    transition: stroke .15s ease, fill .15s ease;
+  }
+
+  .mm-node .label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    fill: var(--ink);
+    font-size: 24px;
+  }
+
+  .mm-node .kicker {
+    font-family: var(--font-mono);
+    fill: var(--ink-faint);
+    font-size: 12.5px;
+    letter-spacing: .03em;
+  }
+
+  .mm-link:hover .mm-node rect.card,
+  .mm-link.active .mm-node rect.card {
+    fill: var(--accent-tint);
+    stroke: var(--accent);
+  }
+
+  .mm-node.sintaxe .kicker {
+    fill: var(--wine);
+  }
+
+  .mm-link:hover .mm-node.sintaxe rect.card,
+  .mm-link.active .mm-node.sintaxe rect.card {
+    fill: var(--wine-tint);
+    stroke: var(--wine);
+  }
+
+  .mm-node.semantica .kicker {
+    fill: var(--brass);
+  }
+
+  .mm-link:hover .mm-node.semantica rect.card,
+  .mm-link.active .mm-node.semantica rect.card {
+    fill: var(--brass-tint);
+    stroke: var(--brass);
+  }
+
+  .mm-center rect {
+    fill: var(--accent-strong);
+    stroke: none;
+  }
+
+  .mm-center .label {
+    fill: var(--paper);
+    font-size: 28px;
+  }
+
+  .mm-lines line {
+    stroke: var(--line);
+    stroke-width: 1.6;
+  }
+
+  .grid-section {
+    padding: 36px 0 8px;
+  }
+
+  .class-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .class-card {
+    display: block;
+    text-decoration: none;
+    padding: 14px 16px;
+    border: 1px solid var(--line-soft);
+    border-radius: 10px;
+    background: var(--paper-2);
+    transition: border-color .15s ease, transform .15s ease;
+  }
+
+  .class-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .class-card .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: calc(10px * var(--fs, 1));
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .class-card.m .tag {
+    background: var(--accent-tint);
+    color: var(--accent-strong);
+  }
+
+  .class-card.s .tag {
+    background: var(--wine-tint);
+    color: var(--wine);
+  }
+
+  .class-card.se .tag {
+    background: var(--brass-tint);
+    color: var(--brass);
+  }
+
+  .class-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .class-card p {
+    font-size: .83rem;
+    color: var(--ink-soft);
+    margin: 0 0 6px;
+  }
+
+  .class-card .ex {
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    color: var(--ink-faint);
+  }
+
+  .category {
+    padding: 56px 0 8px;
+  }
+
+  .category-head {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .category-head h2 {
+    font-size: clamp(1.6rem, 3.4vw, 2.1rem);
+    font-weight: 700;
+  }
+
+  .category-head .count {
+    font-family: var(--font-mono);
+    font-size: calc(12px * var(--fs, 1));
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  .branch {
+    padding: 44px 0;
+    border-bottom: 1px solid var(--line-soft);
+    scroll-margin-top: 64px;
+  }
+
+  .branch:last-of-type {
+    border-bottom: none;
+  }
+
+  .branch-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px 18px;
+    align-items: start;
+    margin-bottom: 22px;
+  }
+
+  .branch-num {
+    font-family: var(--font-mono);
+    font-size: calc(12px * var(--fs, 1));
+    color: var(--brass);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .branch.sintaxe .branch-num {
+    color: var(--wine);
+  }
+
+  .branch.semantica .branch-num {
+    color: var(--brass);
+  }
+
+  .branch-head h3 {
+    font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+    font-weight: 700;
+  }
+
+  .branch-kicker {
+    grid-column: 2;
+    font-family: var(--font-mono);
+    font-size: calc(11.5px * var(--fs, 1));
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: -12px;
+  }
+
+  h4.sub {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 26px 0 10px;
+    color: var(--accent-strong);
+  }
+
+  .branch.sintaxe h4.sub {
+    color: var(--wine);
+  }
+
+  .branch.semantica h4.sub {
+    color: var(--brass);
+  }
+
+  ul.plain,
+  ol.plain {
+    margin: 0 0 1em;
+    padding-left: 1.25em;
+  }
+
+  ul.plain li,
+  ol.plain li {
+    margin-bottom: .4em;
+    max-width: 62ch;
+  }
+
+  ul.plain li::marker {
+    color: var(--brass);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0 20px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 14px 0 20px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 14px 0 20px;
+  }
+
+  @media (max-width:760px) {
+    .grid-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width:640px) {
+
+    .grid-2,
+    .grid-3 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .example {
+    background: var(--paper-2);
+    border: 1px solid var(--line-soft);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .example .tag {
+    font-family: var(--font-mono);
+    font-size: calc(11px * var(--fs, 1));
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--accent);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .example.alt .tag {
+    color: var(--wine);
+  }
+
+  .example.gold .tag {
+    color: var(--brass);
+  }
+
+  .example p {
+    margin: 0;
+    font-size: .92rem;
+  }
+
+  .callout {
+    border-left: 3px solid var(--brass);
+    background: var(--brass-tint);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+  }
+
+  .callout .tag {
+    font-family: var(--font-mono);
+    font-size: calc(11px * var(--fs, 1));
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--brass);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .callout p {
+    margin: 0;
+    font-size: .94rem;
+  }
+
+  .callout p:last-child {
+    margin-bottom: 0;
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--line-soft);
+    border-radius: 10px;
+    background: var(--paper-2);
+    margin-bottom: 10px;
+  }
+
+  .pair .side {
+    font-size: .9rem;
+  }
+
+  .pair .side b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 2px;
+  }
+
+  .pair .vs {
+    font-family: var(--font-mono);
+    font-size: calc(11px * var(--fs, 1));
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  @media (max-width:640px) {
+    .pair {
+      grid-template-columns: 1fr;
+    }
+
+    .pair .vs {
+      justify-self: start;
+    }
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0 18px;
+  }
+
+  .chip {
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--paper-2);
+    border: 1px solid var(--line-soft);
+    color: var(--ink-soft);
+  }
+
+  .chip-group {
+    margin-bottom: 14px;
+  }
+
+  .chip-group .gl {
+    font-family: var(--font-mono);
+    font-size: calc(10.5px * var(--fs, 1));
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  details.exam summary {
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-mono);
+    font-size: calc(12px * var(--fs, 1));
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--ink-faint);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  details.exam summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details.exam summary::before {
+    content: "+";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    font-size: calc(12px * var(--fs, 1));
+  }
+
+  details.exam[open] summary::before {
+    content: "\2013";
+  }
+
+  details.exam .a ul {
+    margin: 8px 0 0;
+    padding-left: 1.1em;
+  }
+
+  details.exam .a li {
+    margin-bottom: 4px;
+  }
+
+  table.data {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 22px;
+    font-size: .87rem;
+  }
+
+  table.data th,
+  table.data td {
+    text-align: left;
+    padding: 8px 11px;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+
+  table.data th {
+    font-family: var(--font-mono);
+    font-size: calc(10px * var(--fs, 1));
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--ink-faint);
+    font-weight: 600;
+    border-bottom: 1.5px solid var(--line);
+  }
+
+  table.data td.hl {
+    color: var(--accent-strong);
+    font-weight: 700;
+  }
+
+  table.data td.wine {
+    color: var(--wine);
+    font-weight: 700;
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+  }
+
+  footer {
+    padding: 44px 0 64px;
+    color: var(--ink-faint);
+    font-size: .85rem;
+  }
+
+  footer .wrap {
+    border-top: 1px solid var(--line-soft);
+    padding-top: 24px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+    }
+  }
+
+  .lucide {
+    width: 1em;
+    height: 1em;
+    stroke-width: 2;
+    flex: none;
+    vertical-align: -.14em;
+    margin-right: 6px;
+  }
+
+  .eyebrow .lucide {
+    width: 15px;
+    height: 15px;
+    margin-right: 0;
+  }
+
+  details.exam summary .lucide {
+    width: 15px;
+    height: 15px;
+    margin-right: 0;
+  }
+
+  .callout .tag .lucide,
+  .example .tag .lucide {
+    width: 13px;
+    height: 13px;
+    vertical-align: -2px;
+  }
+
+  .class-card .tag .lucide {
+    width: 11px;
+    height: 11px;
+    vertical-align: -1.5px;
+    margin-right: 4px;
+  }
+
+  .branch-num .lucide {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+  }
+
+  .eyebrow::before {
+    display: none !important;
+  }
+
+  .eyebrow .back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--accent);
+    text-decoration: none;
+    transition: background .15s ease, border-color .15s ease;
+  }
+
+  .eyebrow .back:hover {
+    background: var(--accent-tint);
+    border-color: var(--accent);
+  }
+
+  .eyebrow .back .lucide {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+  }
+
+  .theme-fab {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 50;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--paper-2);
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+  }
+
+  .theme-fab:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .theme-fab .lucide {
+    width: 19px;
+    height: 19px;
+    margin: 0;
+  }
+
+  .theme-fab .i-sun {
+    display: none;
+  }
+
+  :root[data-theme="dark"] .theme-fab .i-sun {
+    display: block;
+  }
+
+  :root[data-theme="dark"] .theme-fab .i-moon {
+    display: none;
+  }
+
+  .eyebrow {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  .crumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-weight: 600;
+  }
+
+  .crumb-sep {
+    opacity: .5;
+  }
+
+  .crumb b {
+    color: var(--ink);
+  }
+
+  .hdr-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-left: auto;
+  }
+
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 30px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: calc(12px * var(--fs, 1));
+    text-transform: none;
+    letter-spacing: normal;
+    text-decoration: none;
+  }
+
+  .icon-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-tint);
+  }
+
+  .icon-btn .lucide {
+    width: 14px;
+    height: 14px;
+  }
+
+  .icon-btn .i-sun {
+    display: none;
+  }
+
+  :root[data-theme="dark"] .icon-btn .i-sun {
+    display: inline-flex;
+  }
+
+  :root[data-theme="dark"] .icon-btn .i-moon {
+    display: none;
+  }
+
+  .font-ctl {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px 4px 2px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+
+  .font-ctl button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 26px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: calc(12px * var(--fs, 1));
+    font-weight: 600;
+  }
+
+  .font-ctl button:hover:not(:disabled) {
+    background: var(--paper-2);
+    color: var(--ink);
+  }
+
+  .font-ctl button:disabled {
+    opacity: .35;
+    cursor: default;
+  }
+
+  .font-ctl .pct {
+    min-width: 42px;
+  }
+
+  .font-ctl svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .embedded .eyebrow {
+    display: none
+  }
+
+  @media (max-width:760px) {
+    .crumb-brand {
+      display: none;
+    }
+
+    .icon-btn span {
+      display: none;
+    }
+
+    .icon-btn {
+      padding: 0 9px;
+    }
+
+    .font-ctl>svg:first-child {
+      display: none;
+    }
+  }
+
+  html {
+    font-size: calc(100% * var(--fs, 1));
+  }
 </style>
-<!--fs-ready--><script>try{var f=parseFloat(localStorage.getItem("mapas-font-scale"));if(f>0.5&&f<3)document.documentElement.style.setProperty("--fs",String(f));}catch(e){}</script>
-<script>try{if(window.self!==window.top){document.documentElement.classList.add('embedded');}}catch(e){}</script>
+<!--fs-ready-->
+<script>try { var f = parseFloat(localStorage.getItem("mapas-font-scale")); if (f > 0.5 && f < 3) document.documentElement.style.setProperty("--fs", String(f)); } catch (e) { }</script>
+<script>try { if (window.self !== window.top) { document.documentElement.classList.add('embedded'); } } catch (e) { }</script>
 
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Língua Portuguesa<span class="crumb-sep">/</span><b>Morfologia, Sintaxe & Semântica</b></span><div class="hdr-actions"><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div>
+    <div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice"
+        title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span
+          class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Língua
+        Portuguesa<span class="crumb-sep">/</span><b>Morfologia, Sintaxe & Semântica</b></span>
+      <div class="hdr-actions">
+        <div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive"
+            aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte"
+            title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button"
+            class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão"
+            title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte"
+            title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button"
+          class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i
+            data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun"
+            aria-hidden="true"></i><span id="themeLbl">Tema</span></button>
+      </div>
+    </div>
     <h1 class="title">Morfologia, Sintaxe &amp; <em>Semântica</em></h1>
-    <p class="dek">Como a palavra se forma, como ela se conecta na frase e como ela significa &mdash; estrutura das palavras, acentuação, transitividade, regência e as relações de sentido, reunidas para revisão.</p>
+    <p class="dek">Como a palavra se forma, como ela se conecta na frase e como ela significa &mdash; estrutura das
+      palavras, acentuação, transitividade, regência e as relações de sentido, reunidas para revisão.</p>
 
   </div>
 </header>
 
 <nav class="subnav-dock" aria-label="Seções do mapa">
-  <button type="button" class="subnav-toggle" id="subnavToggle" aria-expanded="false" aria-controls="subnavPanel"><i data-lucide="list" aria-hidden="true"></i><span>Seções</span></button>
+  <button type="button" class="subnav-toggle" id="subnavToggle" aria-expanded="false" aria-controls="subnavPanel"><i
+      data-lucide="list" aria-hidden="true"></i><span>Seções</span></button>
   <div class="subnav-backdrop" id="subnavBackdrop"></div>
   <div class="subnav-panel" id="subnavPanel">
-    <div class="subnav-panel-head"><span>Seções</span><button type="button" class="subnav-close" id="subnavClose" aria-label="Fechar sumário de seções"><i data-lucide="x" aria-hidden="true"></i></button></div>
+    <div class="subnav-panel-head"><span>Seções</span><button type="button" class="subnav-close" id="subnavClose"
+        aria-label="Fechar sumário de seções"><i data-lucide="x" aria-hidden="true"></i></button></div>
     <div class="subnav" id="subnav">
-    <a href="#estrutura">Estrutura das Palavras</a>
-    <a href="#acentuacao">Acentuação</a>
-    <span class="sep"></span>
-    <a href="#transitividade">Transitividade</a>
-    <a href="#regencia">Regência</a>
-    <span class="sep"></span>
-    <a href="#sinonimos">Sinônimos</a>
-    <a href="#antonimos">Antônimos</a>
-    <a href="#paronimos">Parônimos</a>
-    <a href="#homonimos">Homônimos</a><a href="#mnemonicos">Mnemônicos</a></div>
+      <a href="#estrutura">Estrutura das Palavras</a>
+      <a href="#acentuacao">Acentuação</a>
+      <span class="sep"></span>
+      <a href="#transitividade">Transitividade</a>
+      <a href="#regencia">Regência</a>
+      <span class="sep"></span>
+      <a href="#sinonimos">Sinônimos</a>
+      <a href="#antonimos">Antônimos</a>
+      <a href="#paronimos">Parônimos</a>
+      <a href="#homonimos">Homônimos</a><a href="#mnemonicos">Mnemônicos</a>
+    </div>
   </div>
 </nav>
 
@@ -271,22 +1254,23 @@
         <p>Três níveis de análise da língua &mdash; forma, conexão e significado.</p>
       </div>
       <div class="diagram-frame">
-        <svg class="mindmap" viewBox="0 0 1000 430" role="img" aria-label="Mapa mental com um núcleo central conectado a três ramos: Morfologia, reunindo estrutura das palavras e acentuação gráfica; Sintaxe, reunindo transitividade verbal e regência verbal e nominal; e Semântica, reunindo sinônimos, antônimos, parônimos e homônimos.">
+        <svg class="mindmap" viewBox="0 0 1000 430" role="img"
+          aria-label="Mapa mental com um núcleo central conectado a três ramos: Morfologia, reunindo estrutura das palavras e acentuação gráfica; Sintaxe, reunindo transitividade verbal e regência verbal e nominal; e Semântica, reunindo sinônimos, antônimos, parônimos e homônimos.">
           <g class="mm-lines">
-            <line x1="500" y1="134" x2="190" y2="260"/>
-            <line x1="500" y1="134" x2="500" y2="260"/>
-            <line x1="500" y1="134" x2="810" y2="260"/>
+            <line x1="500" y1="134" x2="190" y2="260" />
+            <line x1="500" y1="134" x2="500" y2="260" />
+            <line x1="500" y1="134" x2="810" y2="260" />
           </g>
 
           <g class="mm-center">
-            <rect x="350" y="40" width="300" height="94" rx="18"/>
+            <rect x="350" y="40" width="300" height="94" rx="18" />
             <text x="500" y="82" text-anchor="middle" class="label">Língua em</text>
             <text x="500" y="112" text-anchor="middle" class="label">Três Níveis</text>
           </g>
 
           <a href="#morfologia" class="mm-link" aria-label="Ir para Morfologia">
             <g class="mm-node" transform="translate(190,260)">
-              <rect class="card" x="-140" y="0" width="280" height="120" rx="16"/>
+              <rect class="card" x="-140" y="0" width="280" height="120" rx="16" />
               <text class="label" x="0" y="46" text-anchor="middle">Morfologia</text>
               <text class="kicker" x="0" y="76" text-anchor="middle">A FORMA DA PALAVRA</text>
               <text class="kicker" x="0" y="98" text-anchor="middle">ESTRUTURA · ACENTUAÇÃO</text>
@@ -295,7 +1279,7 @@
 
           <a href="#sintaxe" class="mm-link" aria-label="Ir para Sintaxe">
             <g class="mm-node sintaxe" transform="translate(500,260)">
-              <rect class="card" x="-140" y="0" width="280" height="120" rx="16"/>
+              <rect class="card" x="-140" y="0" width="280" height="120" rx="16" />
               <text class="label" x="0" y="46" text-anchor="middle">Sintaxe</text>
               <text class="kicker" x="0" y="76" text-anchor="middle">A PALAVRA NA FRASE</text>
               <text class="kicker" x="0" y="98" text-anchor="middle">TRANSITIVIDADE · REGÊNCIA</text>
@@ -304,7 +1288,7 @@
 
           <a href="#semantica" class="mm-link" aria-label="Ir para Semântica">
             <g class="mm-node semantica" transform="translate(810,260)">
-              <rect class="card" x="-140" y="0" width="280" height="120" rx="16"/>
+              <rect class="card" x="-140" y="0" width="280" height="120" rx="16" />
               <text class="label" x="0" y="46" text-anchor="middle">Semântica</text>
               <text class="kicker" x="0" y="76" text-anchor="middle">O SENTIDO DA PALAVRA</text>
               <text class="kicker" x="0" y="98" text-anchor="middle">SIN. · ANT. · PAR. · HOM.</text>
@@ -322,14 +1306,38 @@
         <p>Toque em qualquer tema para abrir a explicação completa.</p>
       </div>
       <div class="class-grid">
-        <a class="class-card m" href="#estrutura"><span class="tag">Morfologia</span><h3>Estrutura das Palavras</h3><p>Os morfemas que compõem cada palavra.</p><span class="ex">radical · desinência</span></a>
-        <a class="class-card m" href="#acentuacao"><span class="tag">Morfologia</span><h3>Acentuação Gráfica</h3><p>Marca a sílaba tônica conforme a terminação.</p><span class="ex">café · órgão · líquido</span></a>
-        <a class="class-card s" href="#transitividade"><span class="tag">Sintaxe</span><h3>Transitividade Verbal</h3><p>Que tipo de complemento o verbo exige.</p><span class="ex">VTD · VTI · VTDI</span></a>
-        <a class="class-card s" href="#regencia"><span class="tag">Sintaxe</span><h3>Regência Verbal e Nominal</h3><p>Qual preposição cada verbo ou nome exige.</p><span class="ex">obedecer a · gostar de</span></a>
-        <a class="class-card se" href="#sinonimos"><span class="tag">Semântica</span><h3>Sinônimos</h3><p>Sentidos próximos, quase nunca idênticos.</p><span class="ex">casa / lar</span></a>
-        <a class="class-card se" href="#antonimos"><span class="tag">Semântica</span><h3>Antônimos</h3><p>Sentidos opostos, muitas vezes por prefixação.</p><span class="ex">simpático / antipático</span></a>
-        <a class="class-card se" href="#paronimos"><span class="tag">Semântica</span><h3>Parônimos</h3><p>Grafia parecida, sentido diferente.</p><span class="ex">infligir / infringir</span></a>
-        <a class="class-card se" href="#homonimos"><span class="tag">Semântica</span><h3>Homônimos</h3><p>Mesma pronúncia, sentido diferente.</p><span class="ex">manga (roupa/fruta)</span></a>
+        <a class="class-card m" href="#estrutura"><span class="tag">Morfologia</span>
+          <h3>Estrutura das Palavras</h3>
+          <p>Os morfemas que compõem cada palavra.</p><span class="ex">radical · desinência</span>
+        </a>
+        <a class="class-card m" href="#acentuacao"><span class="tag">Morfologia</span>
+          <h3>Acentuação Gráfica</h3>
+          <p>Marca a sílaba tônica conforme a terminação.</p><span class="ex">café · órgão · líquido</span>
+        </a>
+        <a class="class-card s" href="#transitividade"><span class="tag">Sintaxe</span>
+          <h3>Transitividade Verbal</h3>
+          <p>Que tipo de complemento o verbo exige.</p><span class="ex">VTD · VTI · VTDI</span>
+        </a>
+        <a class="class-card s" href="#regencia"><span class="tag">Sintaxe</span>
+          <h3>Regência Verbal e Nominal</h3>
+          <p>Qual preposição cada verbo ou nome exige.</p><span class="ex">obedecer a · gostar de</span>
+        </a>
+        <a class="class-card se" href="#sinonimos"><span class="tag">Semântica</span>
+          <h3>Sinônimos</h3>
+          <p>Sentidos próximos, quase nunca idênticos.</p><span class="ex">casa / lar</span>
+        </a>
+        <a class="class-card se" href="#antonimos"><span class="tag">Semântica</span>
+          <h3>Antônimos</h3>
+          <p>Sentidos opostos, muitas vezes por prefixação.</p><span class="ex">simpático / antipático</span>
+        </a>
+        <a class="class-card se" href="#paronimos"><span class="tag">Semântica</span>
+          <h3>Parônimos</h3>
+          <p>Grafia parecida, sentido diferente.</p><span class="ex">infligir / infringir</span>
+        </a>
+        <a class="class-card se" href="#homonimos"><span class="tag">Semântica</span>
+          <h3>Homônimos</h3>
+          <p>Mesma pronúncia, sentido diferente.</p><span class="ex">manga (roupa/fruta)</span>
+        </a>
       </div>
     </div>
   </section>
@@ -349,40 +1357,76 @@
           <h3>Estrutura das Palavras</h3>
           <span class="branch-kicker">morfemas: as unidades mínimas de significado</span>
         </div>
-        <p>Toda palavra pode ser decomposta em morfemas &mdash; elementos menores com significado ou função próprios: radical, vogal temática, tema, desinências, afixos e vogais/consoantes de ligação.</p>
+        <p>Toda palavra pode ser decomposta em morfemas &mdash; elementos menores com significado ou função próprios:
+          radical, vogal temática, tema, desinências, afixos e vogais/consoantes de ligação.</p>
 
         <h4 class="sub">Radical</h4>
-        <p>O morfema lexical &mdash; a parte fixa que carrega o significado principal da palavra. É o mesmo em toda uma família de palavras:</p>
-        <div class="chips"><span class="chip">cant- &rarr; cantar</span><span class="chip">cant- &rarr; cantor</span><span class="chip">cant- &rarr; cantiga</span></div>
+        <p>O morfema lexical &mdash; a parte fixa que carrega o significado principal da palavra. É o mesmo em toda uma
+          família de palavras:</p>
+        <div class="chips"><span class="chip">cant- &rarr; cantar</span><span class="chip">cant- &rarr;
+            cantor</span><span class="chip">cant- &rarr; cantiga</span></div>
 
         <h4 class="sub">Vogal temática</h4>
         <p>Liga o radical à desinência. Nos <strong>verbos</strong> (vogal temática verbal), indica a conjugação:</p>
-        <div class="chips"><span class="chip">-a &rarr; 1ª conjugação: falar</span><span class="chip">-e &rarr; 2ª conjugação: entender</span><span class="chip">-i &rarr; 3ª conjugação: dividir</span></div>
-        <p>Nos <strong>nomes</strong> (vogal temática nominal), aparecem principalmente -a, -e, -o: <em>livr-o, dent-e, past-a</em>. Nomes terminados em consoante (como <em>par</em>) recuperam a vogal temática -e no plural (<em>mar-e-s</em>). Nomes terminados em vogal tônica, como <em>café</em>, não têm vogal temática &mdash; ela nunca ocorre em sílaba tônica.</p>
+        <div class="chips"><span class="chip">-a &rarr; 1ª conjugação: falar</span><span class="chip">-e &rarr; 2ª
+            conjugação: entender</span><span class="chip">-i &rarr; 3ª conjugação: dividir</span></div>
+        <p>Nos <strong>nomes</strong> (vogal temática nominal), aparecem principalmente -a, -e, -o: <em>livr-o, dent-e,
+            past-a</em>. Nomes terminados em consoante (como <em>par</em>) recuperam a vogal temática -e no plural
+          (<em>mar-e-s</em>). Nomes terminados em vogal tônica, como <em>café</em>, não têm vogal temática &mdash; ela
+          nunca ocorre em sílaba tônica.</p>
 
         <h4 class="sub">Tema</h4>
-        <p>É a junção do radical com a vogal temática: <em>fala-r, entende-r, dividi-r</em> (temas verbais); <em>livro-s, pasta-s</em> (temas nominais). Quando não há vogal temática, tema e radical coincidem.</p>
+        <p>É a junção do radical com a vogal temática: <em>fala-r, entende-r, dividi-r</em> (temas verbais);
+          <em>livro-s, pasta-s</em> (temas nominais). Quando não há vogal temática, tema e radical coincidem.
+        </p>
 
         <h4 class="sub">Desinências</h4>
         <div class="grid-2">
-          <div class="example"><span class="tag">Nominais</span><p>Indicam gênero e número: -o masculino (amig<strong>o</strong>), -a feminino (amig<strong>a</strong>), -s plural (amigo<strong>s</strong>).</p></div>
-          <div class="example alt"><span class="tag">Verbais</span><p>Modo-temporais (indicam modo e tempo) + número-pessoais (indicam pessoa e número).</p></div>
+          <div class="example"><span class="tag">Nominais</span>
+            <p>Indicam gênero e número: -o masculino (amig<strong>o</strong>), -a feminino (amig<strong>a</strong>), -s
+              plural (amigo<strong>s</strong>).</p>
+          </div>
+          <div class="example alt"><span class="tag">Verbais</span>
+            <p>Modo-temporais (indicam modo e tempo) + número-pessoais (indicam pessoa e número).</p>
+          </div>
         </div>
-        <div class="chip-group"><span class="gl">Modo-temporais</span><div class="chips"><span class="chip">-va/-ia &ndash; pret. imperfeito do indicativo (falava, corria)</span><span class="chip">-ra &ndash; pret. mais-que-perfeito (falara)</span><span class="chip">-ria &ndash; futuro do pretérito (falaria)</span><span class="chip">-sse &ndash; pret. imperfeito do subjuntivo (falasse)</span></div></div>
-        <div class="chip-group"><span class="gl">Número-pessoais</span><div class="chips"><span class="chip">-o &ndash; 1ª sing. (falo)</span><span class="chip">-s &ndash; 2ª sing. (falas)</span><span class="chip">-mos &ndash; 1ª pl. (falamos)</span><span class="chip">-m &ndash; 3ª pl. (falam)</span></div></div>
+        <div class="chip-group"><span class="gl">Modo-temporais</span>
+          <div class="chips"><span class="chip">-va/-ia &ndash; pret. imperfeito do indicativo (falava,
+              corria)</span><span class="chip">-ra &ndash; pret. mais-que-perfeito (falara)</span><span
+              class="chip">-ria &ndash; futuro do pretérito (falaria)</span><span class="chip">-sse &ndash; pret.
+              imperfeito do subjuntivo (falasse)</span></div>
+        </div>
+        <div class="chip-group"><span class="gl">Número-pessoais</span>
+          <div class="chips"><span class="chip">-o &ndash; 1ª singular (falo)</span><span class="chip">-s &ndash; 2ª
+              singular
+              (falas)</span><span class="chip">-mos &ndash; 1ª plural (falamos)</span><span class="chip">-m &ndash; 3ª
+              plural
+              (falam)</span></div>
+        </div>
 
         <h4 class="sub">Prefixos e sufixos (afixos)</h4>
         <p>Juntam-se ao radical para formar uma nova palavra derivada &mdash; o prefixo vem antes, o sufixo depois.</p>
         <div class="grid-2">
-          <div class="example"><span class="tag">Prefixo</span><p>desigual (des- + igual) &middot; infeliz (in- + feliz) &middot; refazer (re- + fazer)</p></div>
-          <div class="example alt"><span class="tag">Sufixo</span><p>caprichar (capricho + -ar) &middot; normalmente (normal + -mente) &middot; lavável (lavar + -ável)</p></div>
+          <div class="example"><span class="tag">Prefixo</span>
+            <p>desigual (des- + igual) &middot; infeliz (in- + feliz) &middot; refazer (re- + fazer)</p>
+          </div>
+          <div class="example alt"><span class="tag">Sufixo</span>
+            <p>caprichar (capricho + -ar) &middot; normalmente (normal + -mente) &middot; lavável (lavar + -ável)</p>
+          </div>
         </div>
 
         <h4 class="sub">Vogais e consoantes de ligação</h4>
-        <p>Surgem só por razão fonética, entre dois morfemas, sem carregar significado próprio &mdash; facilitam a pronúncia. Também chamadas de infixos:</p>
-        <div class="chips"><span class="chip">gasômetro (gás-ô-metro)</span><span class="chip">parisiense (Paris-i-ense)</span><span class="chip">chaleira (chá-l-eira)</span><span class="chip">cafezal (café-z-al)</span></div>
+        <p>Surgem só por razão fonética, entre dois morfemas, sem carregar significado próprio &mdash; facilitam a
+          pronúncia. Também chamadas de infixos:</p>
+        <div class="chips"><span class="chip">gasômetro (gás-ô-metro)</span><span class="chip">parisiense
+            (Paris-i-ense)</span><span class="chip">chaleira (chá-l-eira)</span><span class="chip">cafezal
+            (café-z-al)</span></div>
 
-        <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Atenção</span><p>Na junção dos morfemas podem ocorrer omissões e alterações fônicas: <strong>carteiro</strong> = cart(a) + eiro, com omissão do "a"; <strong>cantávamos/cantáveis</strong> mostram o "a" alterado para "e" por influência do "i" seguinte.</p></div>
+        <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Atenção</span>
+          <p>Na junção dos morfemas podem ocorrer omissões e alterações fônicas: <strong>carteiro</strong> = cart(a) +
+            eiro, com omissão do "a"; <strong>cantávamos/cantáveis</strong> mostram o "a" alterado para "e" por
+            influência do "i" seguinte.</p>
+        </div>
       </div>
 
       <!-- ACENTUAÇÃO GRÁFICA -->
@@ -392,49 +1436,112 @@
           <h3>Acentuação Gráfica</h3>
           <span class="branch-kicker">a marcação segue a sílaba tônica</span>
         </div>
-        <p>As regras dependem da posição da sílaba tônica: oxítona (última sílaba), paroxítona (penúltima) ou proparoxítona (antepenúltima).</p>
+        <p>As regras dependem da posição da sílaba tônica: oxítona (última sílaba), paroxítona (penúltima) ou
+          proparoxítona (antepenúltima).</p>
 
         <h4 class="sub">Monossílabos tônicos</h4>
         <div class="chips">
-          <span class="chip">A, AS &ndash; dá, gás</span><span class="chip">E, ES &ndash; fé, três</span><span class="chip">O, OS &ndash; pôs, nós</span><span class="chip">ÉU, ÉUS &ndash; céu, réu</span><span class="chip">ÉI, ÉIS &ndash; réis</span><span class="chip">ÓI, ÓIS &ndash; dói, sóis</span>
+          <span class="chip">A, AS &ndash; dá, gás</span><span class="chip">E, ES &ndash; fé, três</span><span
+            class="chip">O, OS &ndash; pôs, nós</span><span class="chip">ÉU, ÉUS &ndash; céu, réu</span><span
+            class="chip">ÉI, ÉIS &ndash; réis</span><span class="chip">ÓI, ÓIS &ndash; dói, sóis</span>
         </div>
 
         <h4 class="sub">Oxítonas</h4>
         <table class="data">
-          <thead><tr><th>Terminação</th><th>Exemplos</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Terminação</th>
+              <th>Exemplos</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>vogal tônica -a, -e, -o (+s)</td><td>pajé, vocês, crachá, aliás, mocotó, após</td></tr>
-            <tr><td>ditongo nasal -em, -ens</td><td>além, também, parabéns</td></tr>
-            <tr><td>ditongo aberto -éu, -éi, -ói (+s)</td><td>mausoléu, herói, anéis</td></tr>
+            <tr>
+              <td>vogal tônica -a, -e, -o (+s)</td>
+              <td>pajé, vocês, crachá, aliás, mocotó, após</td>
+            </tr>
+            <tr>
+              <td>ditongo nasal -em, -ens</td>
+              <td>além, também, parabéns</td>
+            </tr>
+            <tr>
+              <td>ditongo aberto -éu, -éi, -ói (+s)</td>
+              <td>mausoléu, herói, anéis</td>
+            </tr>
           </tbody>
         </table>
 
         <h4 class="sub">Paroxítonas</h4>
         <p>São a maioria das palavras da língua &mdash; só acentuam nas terminações abaixo:</p>
         <table class="data">
-          <thead><tr><th>Terminação</th><th>Exemplos</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Terminação</th>
+              <th>Exemplos</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>-r, -l, -n, -x, -ps</td><td>caráter, fóssil, tórax, bíceps</td></tr>
-            <tr><td>-ã, -ão (+s)</td><td>órfã, órgão, bênção</td></tr>
-            <tr><td>-um, -uns</td><td>álbum, fórum, quóruns</td></tr>
-            <tr><td>-om, -ons</td><td>próton, elétrons, nêutrons</td></tr>
-            <tr><td>-us</td><td>vírus, ônus, bônus</td></tr>
-            <tr><td>-i, -is</td><td>júri, lápis, grátis</td></tr>
-            <tr><td>-ei, -eis</td><td>jóquei, pônei, saudáveis</td></tr>
+            <tr>
+              <td>-r, -l, -n, -x, -ps</td>
+              <td>caráter, fóssil, tórax, bíceps</td>
+            </tr>
+            <tr>
+              <td>-ã, -ão (+s)</td>
+              <td>órfã, órgão, bênção</td>
+            </tr>
+            <tr>
+              <td>-um, -uns</td>
+              <td>álbum, fórum, quóruns</td>
+            </tr>
+            <tr>
+              <td>-om, -ons</td>
+              <td>próton, elétrons, nêutrons</td>
+            </tr>
+            <tr>
+              <td>-us</td>
+              <td>vírus, ônus, bônus</td>
+            </tr>
+            <tr>
+              <td>-i, -is</td>
+              <td>júri, lápis, grátis</td>
+            </tr>
+            <tr>
+              <td>-ei, -eis</td>
+              <td>jóquei, pônei, saudáveis</td>
+            </tr>
           </tbody>
         </table>
 
         <h4 class="sub">Proparoxítonas</h4>
-        <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Regra sem exceção</span><p>Toda proparoxítona é acentuada: líquido, lâmpada, ácaro, médico, tática, exército.</p></div>
+        <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Regra sem
+            exceção</span>
+          <p>Toda proparoxítona é acentuada: líquido, lâmpada, ácaro, médico, tática, exército.</p>
+        </div>
 
         <h4 class="sub">Acordo Ortográfico de 1990 (vigente desde 2009)</h4>
         <table class="data">
-          <thead><tr><th>Caso</th><th>Antes &rarr; Depois</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Caso</th>
+              <th>Antes &rarr; Depois</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Ditongos abertos -oi, -ei em paroxítonas</td><td>jóia &rarr; joia, geléia &rarr; geleia</td></tr>
-            <tr><td>-i, -u precedidos de ditongo em paroxítonas</td><td>feiúra &rarr; feiura, baiúca &rarr; baiuca</td></tr>
-            <tr><td>-o tônico fechado de -oo em paroxítonas</td><td>vôo &rarr; voo, enjôo &rarr; enjoo</td></tr>
-            <tr><td>Hiato -eem (3ª pl. pres. ind./subj.)</td><td>vêem &rarr; veem, dêem &rarr; deem</td></tr>
+            <tr>
+              <td>Ditongos abertos -oi, -ei em paroxítonas</td>
+              <td>jóia &rarr; joia, geléia &rarr; geleia</td>
+            </tr>
+            <tr>
+              <td>-i, -u precedidos de ditongo em paroxítonas</td>
+              <td>feiúra &rarr; feiura, baiúca &rarr; baiuca</td>
+            </tr>
+            <tr>
+              <td>-o tônico fechado de -oo em paroxítonas</td>
+              <td>vôo &rarr; voo, enjôo &rarr; enjoo</td>
+            </tr>
+            <tr>
+              <td>Hiato -eem (3ª plural pres. ind./subj.)</td>
+              <td>vêem &rarr; veem, dêem &rarr; deem</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -456,17 +1563,33 @@
           <h3>Transitividade Verbal</h3>
           <span class="branch-kicker">que tipo de complemento o verbo exige</span>
         </div>
-        <p>Um verbo transitivo não tem sentido completo sozinho &mdash; precisa "transitar" até um complemento. A transitividade classifica exatamente que tipo de complemento é exigido.</p>
+        <p>Um verbo transitivo não tem sentido completo sozinho &mdash; precisa "transitar" até um complemento. A
+          transitividade classifica exatamente que tipo de complemento é exigido.</p>
 
         <div class="grid-3">
-          <div class="example"><span class="tag">VTD &middot; transitivo direto</span><p>Complemento <strong>sem</strong> preposição obrigatória &mdash; o objeto direto. "Terminei <strong>a análise</strong>." (terminei o quê?)</p></div>
-          <div class="example alt"><span class="tag">VTI &middot; transitivo indireto</span><p>Complemento <strong>com</strong> preposição obrigatória &mdash; o objeto indireto. "Duvido <strong>da sua honestidade</strong>." (duvido de quê?)</p></div>
-          <div class="example gold"><span class="tag">VTDI &middot; bitransitivo</span><p>Dois complementos: um sem e um com preposição. "Enviei <strong>os postais</strong> (OD) <strong>aos clientes</strong> (OI)."</p></div>
+          <div class="example"><span class="tag">VTD &middot; transitivo direto</span>
+            <p>Complemento <strong>sem</strong> preposição obrigatória &mdash; o objeto direto. "Terminei <strong>a
+                análise</strong>." (terminei o quê?)</p>
+          </div>
+          <div class="example alt"><span class="tag">VTI &middot; transitivo indireto</span>
+            <p>Complemento <strong>com</strong> preposição obrigatória &mdash; o objeto indireto. "Duvido <strong>da sua
+                honestidade</strong>." (duvido de quê?)</p>
+          </div>
+          <div class="example gold"><span class="tag">VTDI &middot; bitransitivo</span>
+            <p>Dois complementos: um sem e um com preposição. "Enviei <strong>os postais</strong> (OD) <strong>aos
+                clientes</strong> (OI)."</p>
+          </div>
         </div>
 
         <h4 class="sub">Intransitivo</h4>
         <p>Tem sentido completo sozinho &mdash; não exige complemento. "João nasceu." já é uma oração completa.</p>
-        <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Cuidado com a pegadinha</span><p>Um verbo intransitivo pode vir seguido de mais palavras sem deixar de ser intransitivo &mdash; desde que o que vem depois seja um <strong>adjunto adverbial</strong>, não um complemento. "João nasceu <u>ontem</u>." / "A planta morreu <u>de sede</u>." / "Adormeci <u>cedo</u>." &mdash; em todos, o verbo continuaria com sentido completo mesmo sem o trecho sublinhado.</p></div>
+        <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Cuidado com a
+            pegadinha</span>
+          <p>Um verbo intransitivo pode vir seguido de mais palavras sem deixar de ser intransitivo &mdash; desde que o
+            que vem depois seja um <strong>adjunto adverbial</strong>, não um complemento. "João nasceu <u>ontem</u>." /
+            "A planta morreu <u>de sede</u>." / "Adormeci <u>cedo</u>." &mdash; em todos, o verbo continuaria com
+            sentido completo mesmo sem o trecho sublinhado.</p>
+        </div>
       </div>
 
       <!-- REGÊNCIA -->
@@ -476,59 +1599,275 @@
           <h3>Regência Verbal e Nominal</h3>
           <span class="branch-kicker">qual preposição cada verbo ou nome exige</span>
         </div>
-        <p>A regência verbal estuda a relação entre o verbo (regente) e o complemento (regido) &mdash; e, sobretudo, qual preposição esse complemento exige. Muitos verbos mudam de regência conforme o sentido empregado &mdash; é aí que mora a pegadinha de prova.</p>
+        <p>A regência verbal estuda a relação entre o verbo (regente) e o complemento (regido) &mdash; e, sobretudo,
+          qual preposição esse complemento exige. Muitos verbos mudam de regência conforme o sentido empregado &mdash; é
+          aí que mora a pegadinha de prova.</p>
 
         <h4 class="sub">Verbos de regência variável</h4>
         <div class="table-scroll">
           <table class="data">
-            <thead><tr><th>Verbo &middot; sentido</th><th>Regência</th><th>Exemplo</th></tr></thead>
+            <thead>
+              <tr>
+                <th>Verbo &middot; sentido</th>
+                <th>Regência</th>
+                <th>Exemplo</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><td>Assistir &ndash; ver</td><td class="hl">com "a"</td><td>Vamos assistir ao filme.</td></tr>
-              <tr><td>Assistir &ndash; dar assistência</td><td>sem prep.</td><td>Sempre assistiu pessoas mais velhas.</td></tr>
-              <tr><td>Assistir &ndash; pertencer</td><td class="hl">com "a"</td><td>Assiste aos prejudicados o direito de indenização.</td></tr>
-              <tr><td>Assistir &ndash; morar</td><td class="hl">com "em"</td><td>Eu assisto em Lisboa.</td></tr>
-              <tr><td>Chegar / Ir</td><td class="hl">com "a"</td><td>Chegamos ao local; vou à biblioteca.</td></tr>
-              <tr><td>Custar &ndash; ser custoso</td><td class="hl">com "a"</td><td>Aquela decisão custou ao filho.</td></tr>
-              <tr><td>Custar &ndash; valor</td><td>sem prep.</td><td>Aquela casa custou caro.</td></tr>
-              <tr><td>Obedecer / Desobedecer</td><td class="hl">com "a"</td><td>Obedeça ao pai! (norma culta &mdash; informalmente usa-se sem prep.)</td></tr>
-              <tr><td>Proceder &ndash; ter fundamento</td><td>intransitivo</td><td>Essa desconfiança não procede.</td></tr>
-              <tr><td>Proceder &ndash; ter origem</td><td class="hl">com "de"</td><td>Procede de situações passadas.</td></tr>
-              <tr><td>Pagar / Perdoar &ndash; a pessoa</td><td class="hl">com "a"</td><td>Paguei-lhe assim que pude (nunca "paguei-o").</td></tr>
-              <tr><td>Pagar &ndash; a coisa</td><td>sem prep.</td><td>Paguei a dívida.</td></tr>
-              <tr><td>Esquecer / Lembrar &ndash; pronominal</td><td class="hl">com "de"</td><td>Esqueci-me do fogão ligado.</td></tr>
-              <tr><td>Esquecer / Lembrar &ndash; não pronominal</td><td>sem prep.</td><td>Esqueci o fogão ligado.</td></tr>
-              <tr><td>Querer &ndash; desejar</td><td>sem prep.</td><td>Quero ficar aqui.</td></tr>
-              <tr><td>Querer &ndash; estimar</td><td class="hl">com "a"</td><td>Queria muito aos seus amigos.</td></tr>
-              <tr><td>Aspirar &ndash; respirar/absorver</td><td>sem prep.</td><td>Aspirou todo o ar do escritório.</td></tr>
-              <tr><td>Aspirar &ndash; pretender</td><td class="hl">com "a"</td><td>Aspirou ao cargo de ministro.</td></tr>
-              <tr><td>Informar</td><td>bitransitivo</td><td>Informei o acontecimento aos professores.</td></tr>
-              <tr><td>Implicar &ndash; consequência</td><td>sem prep.</td><td>O pedido implicará um novo orçamento.</td></tr>
-              <tr><td>Implicar &ndash; embirrar</td><td class="hl">com "com"</td><td>Implica com tudo!</td></tr>
-              <tr><td>Morar / Residir</td><td class="hl">com "em"</td><td>Mora no fim da rua.</td></tr>
-              <tr><td>Namorar</td><td>sem prep. (norma culta)</td><td>Namorou Maria durante anos.</td></tr>
-              <tr><td>Preferir</td><td class="hl">bitransitivo, "a" fixo</td><td>Prefiro carne a peixe (nunca "do que").</td></tr>
-              <tr><td>Simpatizar(-se)</td><td class="hl">com "com"</td><td>Simpatiza com os mais velhinhos.</td></tr>
-              <tr><td>Agradar &ndash; causar prazer</td><td>sem prep.</td><td>A música agradou o público.</td></tr>
-              <tr><td>Agradar &ndash; mimar</td><td class="hl">com "a"</td><td>A avó agradava ao neto com doces.</td></tr>
-              <tr><td>Comparecer</td><td class="hl">com "a"</td><td>Compareceu à reunião com os diretores.</td></tr>
-              <tr><td>Confiar &ndash; ter confiança</td><td class="hl">com "em"</td><td>Confio em você.</td></tr>
-              <tr><td>Confiar &ndash; entregar</td><td>bitransitivo</td><td>Confiou o segredo ao amigo.</td></tr>
-              <tr><td>Faltar</td><td class="hl">com "a"</td><td>Faltou à aula (ou intransitivo absoluto: "faltaram alunos").</td></tr>
-              <tr><td>Gostar / Necessitar</td><td class="hl">com "de"</td><td>Gosto de literatura clássica.</td></tr>
-              <tr><td>Observar / Satisfazer</td><td>sem prep.</td><td>Observei a reação do público.</td></tr>
+              <tr>
+                <td>Assistir &ndash; ver</td>
+                <td class="hl">com "a"</td>
+                <td>Vamos assistir ao filme.</td>
+              </tr>
+              <tr>
+                <td>Assistir &ndash; dar assistência</td>
+                <td>sem prep.</td>
+                <td>Sempre assistiu pessoas mais velhas.</td>
+              </tr>
+              <tr>
+                <td>Assistir &ndash; pertencer</td>
+                <td class="hl">com "a"</td>
+                <td>Assiste aos prejudicados o direito de indenização.</td>
+              </tr>
+              <tr>
+                <td>Assistir &ndash; morar</td>
+                <td class="hl">com "em"</td>
+                <td>Eu assisto em Lisboa.</td>
+              </tr>
+              <tr>
+                <td>Chegar / Ir</td>
+                <td class="hl">com "a"</td>
+                <td>Chegamos ao local; vou à biblioteca.</td>
+              </tr>
+              <tr>
+                <td>Custar &ndash; ser custoso</td>
+                <td class="hl">com "a"</td>
+                <td>Aquela decisão custou ao filho.</td>
+              </tr>
+              <tr>
+                <td>Custar &ndash; valor</td>
+                <td>sem prep.</td>
+                <td>Aquela casa custou caro.</td>
+              </tr>
+              <tr>
+                <td>Obedecer / Desobedecer</td>
+                <td class="hl">com "a"</td>
+                <td>Obedeça ao pai! (norma culta &mdash; informalmente usa-se sem prep.)</td>
+              </tr>
+              <tr>
+                <td>Proceder &ndash; ter fundamento</td>
+                <td>intransitivo</td>
+                <td>Essa desconfiança não procede.</td>
+              </tr>
+              <tr>
+                <td>Proceder &ndash; ter origem</td>
+                <td class="hl">com "de"</td>
+                <td>Procede de situações passadas.</td>
+              </tr>
+              <tr>
+                <td>Pagar / Perdoar &ndash; a pessoa</td>
+                <td class="hl">com "a"</td>
+                <td>Paguei-lhe assim que pude (nunca "paguei-o").</td>
+              </tr>
+              <tr>
+                <td>Pagar &ndash; a coisa</td>
+                <td>sem prep.</td>
+                <td>Paguei a dívida.</td>
+              </tr>
+              <tr>
+                <td>Esquecer / Lembrar &ndash; pronominal</td>
+                <td class="hl">com "de"</td>
+                <td>Esqueci-me do fogão ligado.</td>
+              </tr>
+              <tr>
+                <td>Esquecer / Lembrar &ndash; não pronominal</td>
+                <td>sem prep.</td>
+                <td>Esqueci o fogão ligado.</td>
+              </tr>
+              <tr>
+                <td>Querer &ndash; desejar</td>
+                <td>sem prep.</td>
+                <td>Quero ficar aqui.</td>
+              </tr>
+              <tr>
+                <td>Querer &ndash; estimar</td>
+                <td class="hl">com "a"</td>
+                <td>Queria muito aos seus amigos.</td>
+              </tr>
+              <tr>
+                <td>Aspirar &ndash; respirar/absorver</td>
+                <td>sem prep.</td>
+                <td>Aspirou todo o ar do escritório.</td>
+              </tr>
+              <tr>
+                <td>Aspirar &ndash; pretender</td>
+                <td class="hl">com "a"</td>
+                <td>Aspirou ao cargo de ministro.</td>
+              </tr>
+              <tr>
+                <td>Informar</td>
+                <td>bitransitivo</td>
+                <td>Informei o acontecimento aos professores.</td>
+              </tr>
+              <tr>
+                <td>Implicar &ndash; consequência</td>
+                <td>sem prep.</td>
+                <td>O pedido implicará um novo orçamento.</td>
+              </tr>
+              <tr>
+                <td>Implicar &ndash; embirrar</td>
+                <td class="hl">com "com"</td>
+                <td>Implica com tudo!</td>
+              </tr>
+              <tr>
+                <td>Morar / Residir</td>
+                <td class="hl">com "em"</td>
+                <td>Mora no fim da rua.</td>
+              </tr>
+              <tr>
+                <td>Namorar</td>
+                <td>sem prep. (norma culta)</td>
+                <td>Namorou Maria durante anos.</td>
+              </tr>
+              <tr>
+                <td>Preferir</td>
+                <td class="hl">bitransitivo, "a" fixo</td>
+                <td>Prefiro carne a peixe (nunca "do que").</td>
+              </tr>
+              <tr>
+                <td>Simpatizar(-se)</td>
+                <td class="hl">com "com"</td>
+                <td>Simpatiza com os mais velhinhos.</td>
+              </tr>
+              <tr>
+                <td>Agradar &ndash; causar prazer</td>
+                <td>sem prep.</td>
+                <td>A música agradou o público.</td>
+              </tr>
+              <tr>
+                <td>Agradar &ndash; mimar</td>
+                <td class="hl">com "a"</td>
+                <td>A avó agradava ao neto com doces.</td>
+              </tr>
+              <tr>
+                <td>Comparecer</td>
+                <td class="hl">com "a"</td>
+                <td>Compareceu à reunião com os diretores.</td>
+              </tr>
+              <tr>
+                <td>Confiar &ndash; ter confiança</td>
+                <td class="hl">com "em"</td>
+                <td>Confio em você.</td>
+              </tr>
+              <tr>
+                <td>Confiar &ndash; entregar</td>
+                <td>bitransitivo</td>
+                <td>Confiou o segredo ao amigo.</td>
+              </tr>
+              <tr>
+                <td>Faltar</td>
+                <td class="hl">com "a"</td>
+                <td>Faltou à aula (ou intransitivo absoluto: "faltaram alunos").</td>
+              </tr>
+              <tr>
+                <td>Gostar / Necessitar</td>
+                <td class="hl">com "de"</td>
+                <td>Gosto de literatura clássica.</td>
+              </tr>
+              <tr>
+                <td>Observar / Satisfazer</td>
+                <td>sem prep.</td>
+                <td>Observei a reação do público.</td>
+              </tr>
             </tbody>
           </table>
         </div>
 
         <h4 class="sub">Regência nominal</h4>
         <p>Adjetivos e substantivos também exigem preposições fixas em relação ao termo que completam:</p>
-        <div class="chip-group"><span class="gl">A</span><div class="chips"><span class="chip">alheio a</span><span class="chip">análogo a</span><span class="chip">apto a</span><span class="chip">contemporâneo a</span><span class="chip">contíguo a</span><span class="chip">curioso a</span><span class="chip">grato a</span><span class="chip">nocivo a</span><span class="chip">paralelo a</span><span class="chip">preferível a</span><span class="chip">propício a</span><span class="chip">propenso a</span><span class="chip">próximo a</span><span class="chip">sensível a</span></div></div>
-        <div class="chip-group"><span class="gl">DE</span><div class="chips"><span class="chip">alheio de</span><span class="chip">ambicioso de</span><span class="chip">capacidade de</span><span class="chip">contemporâneo de</span><span class="chip">curioso de</span><span class="chip">falto de</span><span class="chip">longe de</span><span class="chip">natural de</span><span class="chip">perto de</span><span class="chip">próximo de</span><span class="chip">suspeito de</span></div></div>
-        <div class="chip-group"><span class="gl">COM / PARA COM</span><div class="chips"><span class="chip">liberal com</span><span class="chip">misericordioso com, para com</span><span class="chip">incompatível com</span></div></div>
-        <div class="chip-group"><span class="gl">EM / PARA</span><div class="chips"><span class="chip">bacharel em</span><span class="chip">hábil em</span><span class="chip">indeciso em</span><span class="chip">inepto para</span><span class="chip">propenso para</span><span class="chip">capacidade para</span></div></div>
-        <p class="example gold" style="display:block; padding:14px 16px; border-radius:10px;"><span class="tag" style="display:block; margin-bottom:6px;">Satisfeito</span>com, de, em, por &mdash; o único termo do quadro com quatro preposições possíveis.</p>
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Preposição</th>
+              <th>Exemplos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                A
+              </td>
+              <td>
+                <ul class="plain">
+                  <li>alheio a</li>
+                  <li>análogo a</li>
+                  <li>apto a</li>
+                  <li>contemporâneo a</li>
+                  <li>contíguo a</li>
+                  <li>curioso a</li>
+                  <li>grato a</li>
+                  <li>nocivo a</li>
+                  <li>paralelo a</li>
+                  <li>preferível a</li>
+                  <li>propício a</li>
+                  <li>propenso a</li>
+                  <li>próximo a</li>
+                  <li>sensível a</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                DE
+              </td>
+              <td>
+                <ul class="plain">
+                  <li>alheio de</li>
+                  <li>ambicioso de</li>
+                  <li>capacidade de</li>
+                  <li>contemporâneo de</li>
+                  <li>curioso de</li>
+                  <li>falto de</li>
+                  <li>longe de</li>
+                  <li>natural de</li>
+                  <li>perto de</li>
+                  <li>próximo de</li>
+                  <li>suspeito de</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                COM / PARA COM
+              </td>
+              <td>
+                <ul class="plain">
+                  <li>liberal com</li>
+                  <li>misericordioso com, para com</li>
+                  <li>incompatível com</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                EM / PARA </td>
+              <td>
+                <ul class="plain">
+                  <li>bacharel em</li>
+                  <li>hábil em</li>
+                  <li>indeciso em</li>
+                  <li>inepto para</li>
+                  <li>propenso para</li>
+                  <li>capacidade para</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-
+        <p class="example gold" style="display:block; padding:14px 16px; border-radius:10px;"><span class="tag"
+            style="display:block; margin-bottom:6px;">Satisfeito</span>com, de, em, por &mdash; o único termo do quadro
+          com quatro preposições possíveis.</p>
       </div>
     </div>
   </section>
@@ -548,12 +1887,22 @@
           <h3>Sinônimos</h3>
           <span class="branch-kicker">sentidos próximos ou equivalentes</span>
         </div>
-        <p>Termos distintos com sentidos parecidos &mdash; mas raramente idênticos. Cada palavra carrega um matiz específico, e a diferença entre "sinônimos" aparece justamente no contexto:</p>
+        <p>Termos distintos com sentidos parecidos &mdash; mas raramente idênticos. Cada palavra carrega um matiz
+          específico, e a diferença entre "sinônimos" aparece justamente no contexto:</p>
         <div class="grid-2">
-          <div class="example"><span class="tag">Sinônimos, mas com nuance</span><p>"Muda-se a casa, preserva-se o <strong>lar</strong>." &mdash; "casa" e "lar" podem ser sinônimos, mas aqui carregam sentidos ligeiramente diferentes (espaço físico x vínculo afetivo).</p></div>
-          <div class="example alt"><span class="tag">Uso diferenciado</span><p>"O casal não <strong>discutiu</strong>; ele <strong>brigou</strong>." &mdash; discutir e brigar têm sentido próximo, mas foram usados com valores distintos na mesma frase.</p></div>
+          <div class="example"><span class="tag">Sinônimos, mas com nuance</span>
+            <p>"Muda-se a casa, preserva-se o <strong>lar</strong>." &mdash; "casa" e "lar" podem ser sinônimos, mas
+              aqui carregam sentidos ligeiramente diferentes (espaço físico x vínculo afetivo).</p>
+          </div>
+          <div class="example alt"><span class="tag">Uso diferenciado</span>
+            <p>"O casal não <strong>discutiu</strong>; ele <strong>brigou</strong>." &mdash; discutir e brigar têm
+              sentido próximo, mas foram usados com valores distintos na mesma frase.</p>
+          </div>
         </div>
-        <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Atenção</span><p>A capacidade sinonímica de um termo não pode ser avaliada fora de contexto &mdash; a banca costuma testar exatamente essa nuance.</p></div>
+        <div class="callout"><span class="tag"><i data-lucide="lightbulb" aria-hidden="true"></i>Atenção</span>
+          <p>A capacidade sinonímica de um termo não pode ser avaliada fora de contexto &mdash; a banca costuma testar
+            exatamente essa nuance.</p>
+        </div>
       </div>
 
       <!-- ANTÔNIMOS -->
@@ -563,9 +1912,14 @@
           <h3>Antônimos</h3>
           <span class="branch-kicker">grafias diferentes, sentidos opostos</span>
         </div>
-        <p>Muitos antônimos nascem de um processo de <strong>prefixação</strong> &mdash; uma partícula de negação ou contrariedade se junta à palavra original:</p>
+        <p>Muitos antônimos nascem de um processo de <strong>prefixação</strong> &mdash; uma partícula de negação ou
+          contrariedade se junta à palavra original:</p>
         <div class="chips">
-          <span class="chip">bendizer &times; maldizer</span><span class="chip">simpático &times; antipático</span><span class="chip">progredir &times; regredir</span><span class="chip">concórdia &times; discórdia</span><span class="chip">explícito &times; implícito</span><span class="chip">ativo &times; inativo</span><span class="chip">esperar &times; desesperar</span><span class="chip">simetria &times; assimetria</span><span class="chip">pré-nupcial &times; pós-nupcial</span>
+          <span class="chip">bendizer &times; maldizer</span><span class="chip">simpático &times; antipático</span><span
+            class="chip">progredir &times; regredir</span><span class="chip">concórdia &times; discórdia</span><span
+            class="chip">explícito &times; implícito</span><span class="chip">ativo &times; inativo</span><span
+            class="chip">esperar &times; desesperar</span><span class="chip">simetria &times; assimetria</span><span
+            class="chip">pré-nupcial &times; pós-nupcial</span>
         </div>
       </div>
 
@@ -576,13 +1930,32 @@
           <h3>Parônimos</h3>
           <span class="branch-kicker">grafia/som parecidos, sentido diferente</span>
         </div>
-        <p>O oposto do que se vê em sinônimos/antônimos: aqui a <strong>escrita é semelhante</strong>, mas os campos semânticos não têm proximidade nenhuma &mdash; são os pares clássicos da pegadinha de prova.</p>
-        <div class="pair"><div class="side"><b>infligir</b>impor ou aplicar castigo</div><span class="vs">&times;</span><div class="side"><b>infringir</b>desobedecer, transgredir</div></div>
-        <div class="pair"><div class="side"><b>retificar</b>consertar, corrigir</div><span class="vs">&times;</span><div class="side"><b>ratificar</b>confirmar, validar</div></div>
-        <div class="pair"><div class="side"><b>emergir</b>vir à tona</div><span class="vs">&times;</span><div class="side"><b>imergir</b>afundar, mergulhar</div></div>
-        <div class="pair"><div class="side"><b>descrição</b>ato de descrever</div><span class="vs">&times;</span><div class="side"><b>discrição</b>reserva, prudência</div></div>
-        <div class="pair"><div class="side"><b>cavaleiro</b>homem que anda a cavalo</div><span class="vs">&times;</span><div class="side"><b>cavalheiro</b>homem educado</div></div>
-        <div class="pair"><div class="side"><b>comprimento</b>extensão</div><span class="vs">&times;</span><div class="side"><b>cumprimento</b>saudação</div></div>
+        <p>O oposto do que se vê em sinônimos/antônimos: aqui a <strong>escrita é semelhante</strong>, mas os campos
+          semânticos não têm proximidade nenhuma &mdash; são os pares clássicos da pegadinha de prova.</p>
+        <div class="pair">
+          <div class="side"><b>infligir</b>impor ou aplicar castigo</div><span class="vs">&times;</span>
+          <div class="side"><b>infringir</b>desobedecer, transgredir</div>
+        </div>
+        <div class="pair">
+          <div class="side"><b>retificar</b>consertar, corrigir</div><span class="vs">&times;</span>
+          <div class="side"><b>ratificar</b>confirmar, validar</div>
+        </div>
+        <div class="pair">
+          <div class="side"><b>emergir</b>vir à tona</div><span class="vs">&times;</span>
+          <div class="side"><b>imergir</b>afundar, mergulhar</div>
+        </div>
+        <div class="pair">
+          <div class="side"><b>descrição</b>ato de descrever</div><span class="vs">&times;</span>
+          <div class="side"><b>discrição</b>reserva, prudência</div>
+        </div>
+        <div class="pair">
+          <div class="side"><b>cavaleiro</b>homem que anda a cavalo</div><span class="vs">&times;</span>
+          <div class="side"><b>cavalheiro</b>homem educado</div>
+        </div>
+        <div class="pair">
+          <div class="side"><b>comprimento</b>extensão</div><span class="vs">&times;</span>
+          <div class="side"><b>cumprimento</b>saudação</div>
+        </div>
       </div>
 
       <!-- HOMÔNIMOS -->
@@ -592,20 +1965,52 @@
           <h3>Homônimos</h3>
           <span class="branch-kicker">mesma pronúncia, sentidos distintos</span>
         </div>
-        <p>Dividem-se, pela gramática normativa, em perfeitos e imperfeitos &mdash; e os imperfeitos se subdividem em mais dois tipos:</p>
+        <p>Dividem-se, pela gramática normativa, em perfeitos e imperfeitos &mdash; e os imperfeitos se subdividem em
+          mais dois tipos:</p>
         <table class="data">
-          <thead><tr><th>Tipo</th><th>Grafia</th><th>Pronúncia</th><th>Exemplo</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Grafia</th>
+              <th>Pronúncia</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td class="hl">Perfeitos</td><td>idêntica</td><td>idêntica</td><td>"caminho" (verbo) / "o caminho" (substantivo)</td></tr>
-            <tr><td>Imperfeitos &ndash; homógrafos</td><td>idêntica</td><td>difere na vogal tônica</td><td>"o almoço" (subst., <em>ô</em> fechado) / "eu almoço" (verbo, <em>ó</em> aberto)</td></tr>
-            <tr><td class="wine">Imperfeitos &ndash; homófonos</td><td>diferente</td><td>idêntica</td><td>seção / sessão / cessão</td></tr>
+            <tr>
+              <td class="hl">Perfeitos</td>
+              <td>idêntica</td>
+              <td>idêntica</td>
+              <td>"caminho" (verbo) / "o caminho" (substantivo)</td>
+            </tr>
+            <tr>
+              <td>Imperfeitos &ndash; homógrafos</td>
+              <td>idêntica</td>
+              <td>difere na vogal tônica</td>
+              <td>"o almoço" (subst., <em>ô</em> fechado) / "eu almoço" (verbo, <em>ó</em> aberto)</td>
+            </tr>
+            <tr>
+              <td class="wine">Imperfeitos &ndash; homófonos</td>
+              <td>diferente</td>
+              <td>idêntica</td>
+              <td>seção / sessão / cessão</td>
+            </tr>
           </tbody>
         </table>
         <div class="grid-2">
-          <div class="example"><span class="tag">manga</span><p>"Ele rasgou a manga da camisa" (roupa) x "Colheu uma manga madura" (fruta) &mdash; homônimo perfeito.</p></div>
-          <div class="example alt"><span class="tag">colher</span><p>"Vou colher flores" (verbo, <em>colhêr</em>) x "Pegue uma colher de sopa" (substantivo, <em>cólher</em>) &mdash; homógrafo.</p></div>
+          <div class="example"><span class="tag">manga</span>
+            <p>"Ele rasgou a manga da camisa" (roupa) x "Colheu uma manga madura" (fruta) &mdash; homônimo perfeito.</p>
+          </div>
+          <div class="example alt"><span class="tag">colher</span>
+            <p>"Vou colher flores" (verbo, <em>colhêr</em>) x "Pegue uma colher de sopa" (substantivo, <em>cólher</em>)
+              &mdash; homógrafo.</p>
+          </div>
         </div>
-        <div class="chip-group"><span class="gl">Homófonos clássicos</span><div class="chips"><span class="chip">apreçar (perguntar o preço)</span><span class="chip">apressar (acelerar)</span><span class="chip">seção (segmento)</span><span class="chip">sessão (reunião)</span><span class="chip">cessão (ceder)</span></div></div>
+        <div class="chip-group"><span class="gl">Homófonos clássicos</span>
+          <div class="chips"><span class="chip">apreçar (perguntar o preço)</span><span class="chip">apressar
+              (acelerar)</span><span class="chip">seção (segmento)</span><span class="chip">sessão (reunião)</span><span
+              class="chip">cessão (ceder)</span></div>
+        </div>
 
       </div>
     </div>
@@ -616,84 +2021,114 @@
 
 
 
-<!--mnemonicos--><section class="category"><div class="wrap"><div id="mnemonicos" class="branch"><div class="branch-head"><span class="branch-num"><i data-lucide="lightbulb" aria-hidden="true"></i></span><h3>Mnemônicos de concurso</h3><span class="branch-kicker">macetes para fixar</span></div><p style="font-size:.92rem;">Mnemônicos e macetes de memorização. Alguns variam de uma fonte para outra; use os que funcionarem para você e confira sempre com o conteúdo do mapa.</p><div class="grid-2"><div class="example"><span class="tag">Regência: o &ldquo;a&rdquo;</span><p><strong>Assistir (ver) A; Aspirar (desejar) A; Obedecer A; Preferir A; Chegar A.</strong> Sem preposição: <strong>namorar</strong>, <strong>visar</strong> (mirar), <strong>assistir</strong> (dar assistência).</p></div><div class="example"><span class="tag">Complementos</span><p><strong>VTD: quem? o quê? (sem preposição). VTI: a/de/em quem? o quê? (com preposição).</strong></p></div><div class="example"><span class="tag">Ratificar × retificar</span><p><strong>Ratificar = confirmar; Retificar = corrigir</strong> (RE-fazer).</p></div><div class="example"><span class="tag">Emergir × imergir</span><p><strong>E-mergir = sair, vir à tona; I-mergir = entrar, mergulhar.</strong></p></div><div class="example"><span class="tag">Eminente × iminente</span><p><strong>Eminente = elevado, ilustre; iminente = que está prestes a acontecer</strong> (a iminência).</p></div></div></div></div></section><!--/mnemonicos-->
+  <!--mnemonicos-->
+  <section class="category">
+    <div class="wrap">
+      <div id="mnemonicos" class="branch">
+        <div class="branch-head"><span class="branch-num"><i data-lucide="lightbulb" aria-hidden="true"></i></span>
+          <h3>Mnemônicos de concurso</h3><span class="branch-kicker">macetes para fixar</span>
+        </div>
+        <p style="font-size:.92rem;">Mnemônicos e macetes de memorização. Alguns variam de uma fonte para outra; use os
+          que funcionarem para você e confira sempre com o conteúdo do mapa.</p>
+        <div class="grid-2">
+          <div class="example"><span class="tag">Regência: o &ldquo;a&rdquo;</span>
+            <p><strong>Assistir (ver) A; Aspirar (desejar) A; Obedecer A; Preferir A; Chegar A.</strong> Sem preposição:
+              <strong>namorar</strong>, <strong>visar</strong> (mirar), <strong>assistir</strong> (dar assistência).
+            </p>
+          </div>
+          <div class="example"><span class="tag">Complementos</span>
+            <p><strong>VTD: quem? o quê? (sem preposição). VTI: a/de/em quem? o quê? (com preposição).</strong></p>
+          </div>
+          <div class="example"><span class="tag">Ratificar × retificar</span>
+            <p><strong>Ratificar = confirmar; Retificar = corrigir</strong> (RE-fazer).</p>
+          </div>
+          <div class="example"><span class="tag">Emergir × imergir</span>
+            <p><strong>E-mergir = sair, vir à tona; I-mergir = entrar, mergulhar.</strong></p>
+          </div>
+          <div class="example"><span class="tag">Eminente × iminente</span>
+            <p><strong>Eminente = elevado, ilustre; iminente = que está prestes a acontecer</strong> (a iminência).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!--/mnemonicos-->
 </main>
 
 <script>
-(function(){
-  var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a'));
-  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
-  var mmLinks = Array.prototype.slice.call(document.querySelectorAll('.mm-link'));
-  var catMap = {
-    estrutura:'morfologia', acentuacao:'morfologia',
-    transitividade:'sintaxe', regencia:'sintaxe',
-    sinonimos:'semantica', antonimos:'semantica', paronimos:'semantica', homonimos:'semantica'
-  };
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a'));
+    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    var mmLinks = Array.prototype.slice.call(document.querySelectorAll('.mm-link'));
+    var catMap = {
+      estrutura: 'morfologia', acentuacao: 'morfologia',
+      transitividade: 'sintaxe', regencia: 'sintaxe',
+      sinonimos: 'semantica', antonimos: 'semantica', paronimos: 'semantica', homonimos: 'semantica'
+    };
 
-  function setActive(id){
-    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
-    var cat = catMap[id];
-    mmLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + cat); });
-  }
+    function setActive(id) {
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+      var cat = catMap[id];
+      mmLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + cat); });
+    }
 
-  if('IntersectionObserver' in window){
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){ setActive(entry.target.id); }
-      });
-    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
-    sections.forEach(function(s){ observer.observe(s); });
-  }
-})();
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { setActive(entry.target.id); }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      sections.forEach(function (s) { observer.observe(s); });
+    }
+  })();
 </script>
 <script>
-(function(){
-  var toggle=document.getElementById('subnavToggle'), closeBtn=document.getElementById('subnavClose');
-  var panel=document.getElementById('subnavPanel'), backdrop=document.getElementById('subnavBackdrop');
-  if(!toggle || !panel) return;
-  function openPanel(){ panel.classList.add('open'); if(backdrop) backdrop.classList.add('show'); toggle.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-  function closePanel(){ panel.classList.remove('open'); if(backdrop) backdrop.classList.remove('show'); toggle.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-  toggle.addEventListener('click', function(){ panel.classList.contains('open') ? closePanel() : openPanel(); });
-  if(closeBtn) closeBtn.addEventListener('click', closePanel);
-  if(backdrop) backdrop.addEventListener('click', closePanel);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePanel(); });
-  Array.prototype.slice.call(panel.querySelectorAll('#subnav a')).forEach(function(a){ a.addEventListener('click', closePanel); });
-})();
+  (function () {
+    var toggle = document.getElementById('subnavToggle'), closeBtn = document.getElementById('subnavClose');
+    var panel = document.getElementById('subnavPanel'), backdrop = document.getElementById('subnavBackdrop');
+    if (!toggle || !panel) return;
+    function openPanel() { panel.classList.add('open'); if (backdrop) backdrop.classList.add('show'); toggle.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+    function closePanel() { panel.classList.remove('open'); if (backdrop) backdrop.classList.remove('show'); toggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+    toggle.addEventListener('click', function () { panel.classList.contains('open') ? closePanel() : openPanel(); });
+    if (closeBtn) closeBtn.addEventListener('click', closePanel);
+    if (backdrop) backdrop.addEventListener('click', closePanel);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePanel(); });
+    Array.prototype.slice.call(panel.querySelectorAll('#subnav a')).forEach(function (a) { a.addEventListener('click', closePanel); });
+  })();
 </script>
 
 <script>
-(function(){
-  var STEPS=[0.85,1,1.15,1.3,1.5], root=document.documentElement;
-  var down=document.getElementById('fontDown'), up=document.getElementById('fontUp'), reset=document.getElementById('fontReset');
-  function idxOf(v){ var i=STEPS.indexOf(v); return i===-1 ? 1 : i; }
-  function readStored(){ try{ return idxOf(parseFloat(localStorage.getItem('mapas-font-scale'))); }catch(e){ return 1; } }
-  var index=readStored();
-  function applyFont(i){
-    index=Math.min(STEPS.length-1, Math.max(0, i));
-    var v=STEPS[index];
-    root.style.setProperty('--fs', String(v));
-    reset.textContent=Math.round(v*100)+'%';
-    down.disabled=index===0; up.disabled=index===STEPS.length-1;
-    try{ localStorage.setItem('mapas-font-scale', String(v)); }catch(e){}
-  }
-  applyFont(index);
-  down.addEventListener('click', function(){ applyFont(index-1); });
-  up.addEventListener('click', function(){ applyFont(index+1); });
-  reset.addEventListener('click', function(){ applyFont(1); });
-})();
+  (function () {
+    var STEPS = [0.85, 1, 1.15, 1.3, 1.5], root = document.documentElement;
+    var down = document.getElementById('fontDown'), up = document.getElementById('fontUp'), reset = document.getElementById('fontReset');
+    function idxOf(v) { var i = STEPS.indexOf(v); return i === -1 ? 1 : i; }
+    function readStored() { try { return idxOf(parseFloat(localStorage.getItem('mapas-font-scale'))); } catch (e) { return 1; } }
+    var index = readStored();
+    function applyFont(i) {
+      index = Math.min(STEPS.length - 1, Math.max(0, i));
+      var v = STEPS[index];
+      root.style.setProperty('--fs', String(v));
+      reset.textContent = Math.round(v * 100) + '%';
+      down.disabled = index === 0; up.disabled = index === STEPS.length - 1;
+      try { localStorage.setItem('mapas-font-scale', String(v)); } catch (e) { }
+    }
+    applyFont(index);
+    down.addEventListener('click', function () { applyFont(index - 1); });
+    up.addEventListener('click', function () { applyFont(index + 1); });
+    reset.addEventListener('click', function () { applyFont(1); });
+  })();
 </script>
 <script>
-(function(){
-  var root=document.documentElement, btn=document.getElementById('themeBtn');
-  var mq=window.matchMedia('(prefers-color-scheme: dark)');
-  function saved(){ try{ return localStorage.getItem('mapas-theme'); }catch(e){ return null; } }
-  function current(){ return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
-  function apply(t){ root.setAttribute('data-theme', t); btn.setAttribute('aria-pressed', t==='dark'); }
-  var s=saved(); apply(s==='dark'||s==='light' ? s : current());
-  btn.addEventListener('click', function(){
-    var t=current()==='dark' ? 'light' : 'dark'; apply(t);
-    try{ localStorage.setItem('mapas-theme', t); }catch(e){}
-  });
-})();
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('themeBtn');
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    function saved() { try { return localStorage.getItem('mapas-theme'); } catch (e) { return null; } }
+    function current() { return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
+    function apply(t) { root.setAttribute('data-theme', t); btn.setAttribute('aria-pressed', t === 'dark'); }
+    var s = saved(); apply(s === 'dark' || s === 'light' ? s : current());
+    btn.addEventListener('click', function () {
+      var t = current() === 'dark' ? 'light' : 'dark'; apply(t);
+      try { localStorage.setItem('mapas-theme', t); } catch (e) { }
+    });
+  })();
 </script>
 <script>lucide.createIcons();</script>
