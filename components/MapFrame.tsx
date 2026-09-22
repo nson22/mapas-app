@@ -53,7 +53,7 @@ export default function MapFrame({ slug, title }: { slug: string; title: string 
   return (
     <iframe
       ref={ref}
-      className="map-frame"
+      className="w-full flex-1 border-0 bg-[var(--paper)]"
       src={`/mapas/${slug}.html`}
       title={title}
       onLoad={onLoad}

@@ -13,6 +13,16 @@ const icons: Record<Subject['icon'], typeof Languages> = {
   network: Network,
 };
 
+// Cor de destaque de cada matéria, aplicada via variável CSS no <section> —
+// os cards e badges dentro dela leem --accent/--tint pelo estilo inline.
+const accentVars: Record<Subject['id'], { accent: string; tint: string }> = {
+  portugues: { accent: 'var(--c-por)', tint: 'var(--c-por-t)' },
+  raciocinio: { accent: 'var(--c-raciocinio)', tint: 'var(--c-raciocinio-t)' },
+  constitucional: { accent: 'var(--c-constitucional)', tint: 'var(--c-constitucional-t)' },
+  administrativo: { accent: 'var(--c-administrativo)', tint: 'var(--c-administrativo-t)' },
+  informatica: { accent: 'var(--c-informatica)', tint: 'var(--c-informatica-t)' },
+};
+
 type Filter = 'todos' | 'curso' | 'complemento';
 
 const normalize = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -42,9 +52,9 @@ export default function MapGrid() {
 
   return (
     <>
-      <div className="toolbar">
-        <label className="input input-bordered rounded-full flex-1 min-w-[260px] flex items-center gap-2">
-          <Search size={16} className="opacity-60 shrink-0" aria-hidden />
+      <div className="my-2 mb-[18px] flex flex-wrap items-center gap-3">
+        <label className="input input-bordered flex min-w-[260px] flex-1 items-center gap-2 rounded-full">
+          <Search size={16} className="shrink-0 opacity-60" aria-hidden />
           <input
             type="search"
             placeholder="Buscar mapa ou assunto"
@@ -73,58 +83,81 @@ export default function MapGrid() {
         </div>
       </div>
 
-      <nav className="quick" aria-label="Matérias">
+      <nav className="flex gap-2 overflow-x-auto pt-1 pb-2" aria-label="Matérias">
         {subjects.map((s) => {
           const Icon = icons[s.icon];
           const n = visible.filter((m) => m.subject === s.id).length;
           if (n === 0) return null;
           return (
-            <a key={s.id} href={`#${s.id}`}>
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              className="flex flex-none items-center gap-1.5 whitespace-nowrap rounded-full border border-[color:var(--line)] px-3 py-1.5 text-[calc(12px*var(--fs,1))] font-medium text-[color:var(--ink-soft)] no-underline hover:border-[color:var(--ink-soft)] hover:text-[color:var(--ink)]"
+            >
               <Icon size={13} aria-hidden /> {s.name} · {n}
             </a>
           );
         })}
       </nav>
 
-      {visible.length === 0 && <p className="empty">Nenhum mapa encontrado para essa busca.</p>}
+      {visible.length === 0 && (
+        <p className="py-8 text-[color:var(--ink-faint)]">Nenhum mapa encontrado para essa busca.</p>
+      )}
 
       {subjects.map((s) => {
         const list = visible.filter((m) => m.subject === s.id);
         if (list.length === 0) return null;
         const Icon = icons[s.icon];
+        const { accent, tint } = accentVars[s.id];
         return (
-          <section key={s.id} id={s.id} className={`subject ${s.id}`}>
-            <div className="subject-head">
-              <h2>
+          <section
+            key={s.id}
+            id={s.id}
+            className="scroll-mt-16 pt-9 pb-1"
+            style={{ '--accent': accent, '--tint': tint } as React.CSSProperties}
+          >
+            <div
+              className="mb-[18px] flex flex-wrap items-baseline gap-3.5 border-b-2 pb-3"
+              style={{ borderColor: 'var(--accent)' }}
+            >
+              <h2 className="flex items-center gap-2.5 text-[clamp(1.4rem,3vw,1.85rem)] font-bold" style={{ color: 'var(--accent)' }}>
                 <Icon size={24} aria-hidden />
                 {s.name}
               </h2>
-              <span className="n">{list.length} {list.length === 1 ? 'mapa' : 'mapas'}</span>
+              <span className="text-[calc(12px*var(--fs,1))] uppercase tracking-[0.06em] text-[color:var(--ink-faint)]">
+                {list.length} {list.length === 1 ? 'mapa' : 'mapas'}
+              </span>
             </div>
             {groupBySource(list).map((g) => (
               <div key={g.source ?? 'all'}>
                 {g.source && (
-                  <h3 className="source-head">
-                    <FileText size={16} aria-hidden />
+                  <h3 className="mt-[22px] mb-3 flex items-center gap-2 text-base font-bold">
+                    <FileText size={16} aria-hidden style={{ color: 'var(--accent)' }} />
                     {g.source}
                   </h3>
                 )}
-                <div className="grid">
+                <div className="grid grid-cols-[repeat(auto-fill,minmax(290px,1fr))] gap-4">
                   {g.items.map((m) => (
                     <article
                       key={m.slug}
-                      className="map-card card relative bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition-shadow"
+                      className="card relative border border-base-300 bg-base-200 shadow-sm transition-transform hover:-translate-y-[3px] hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0 after:absolute after:inset-0 after:content-['']"
+                      style={{ borderTopWidth: 4, borderTopColor: 'var(--accent)' }}
                     >
-                      <div className="card-body p-[18px] pb-3.5 gap-0">
-                        <div className="kicker flex items-center gap-1.5 text-[0.6875rem] uppercase tracking-wide font-semibold mb-2">
+                      <div className="card-body gap-0 p-[18px] pb-3.5">
+                        <div
+                          className="mb-2 flex items-center gap-1.5 text-[0.6875rem] font-semibold uppercase tracking-wide"
+                          style={{ color: 'var(--accent)' }}
+                        >
                           <MapIcon size={14} aria-hidden />
                           {m.kicker}
                         </div>
-                        <h3 className="text-[1.15rem] font-bold leading-tight mb-2">
-                          <Link href={`/mapas/${m.slug}`}>{m.title}</Link>
+                        <h3 className="relative z-[3] mb-2 text-[1.15rem] font-bold leading-tight">
+                          <Link href={`/mapas/${m.slug}`} className="after:absolute after:inset-0">
+                            {m.title}
+                          </Link>
                         </h3>
-                        <p className="text-sm text-base-content/70 mb-3.5 grow">{m.description}</p>
-                        <div className="flex flex-wrap gap-1.5 mb-3.5">
+                        <p className="mb-3.5 grow text-sm text-base-content/70">{m.description}</p>
+                        <div className="mb-3.5 flex flex-wrap gap-1.5">
                           {m.tags.map((t) => (
                             <span
                               key={t}
@@ -135,8 +168,11 @@ export default function MapGrid() {
                             </span>
                           ))}
                         </div>
-                        <div className="flex items-center text-[0.82rem] border-t border-base-300 pt-2.5 relative z-[2]">
-                          <span className="inline-flex items-center gap-1.5 font-bold pointer-events-none" style={{ color: 'var(--accent)' }}>
+                        <div className="relative z-[2] flex items-center border-t border-base-300 pt-2.5 text-[0.82rem]">
+                          <span
+                            className="pointer-events-none inline-flex items-center gap-1.5 font-bold"
+                            style={{ color: 'var(--accent)' }}
+                          >
                             Abrir mapa <ArrowRight size={15} aria-hidden />
                           </span>
                         </div>

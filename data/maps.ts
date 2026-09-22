@@ -59,7 +59,7 @@ export const maps: MapItem[] = [
   {
     slug: 'portugues-texto-sentido',
     title: 'Texto e Sentido',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Interpretação de textos e gêneros, denotação e conotação, intertextualidade, figuras de linguagem, funções da linguagem e fonética.',
     tags: ['6 ramos', 'conteúdo autoral'],
     subject: 'portugues',
@@ -68,7 +68,7 @@ export const maps: MapItem[] = [
   {
     slug: 'portugues-concordancia-vozes',
     title: 'Concordância e Vozes do Verbo',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Concordância verbal e nominal, casos do "se" e vozes do verbo, com treinos resolvidos.',
     tags: ['3 ramos', 'conteúdo autoral'],
     subject: 'portugues',
@@ -77,7 +77,7 @@ export const maps: MapItem[] = [
   {
     slug: 'portugues-frase-periodo',
     title: 'Frase e Período',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Termos da oração, as multiclasses SE/QUE/COMO, subordinação, pontuação, discurso direto e indireto e correlação de tempos e modos.',
     tags: ['6 ramos', 'conteúdo autoral'],
     subject: 'portugues',
@@ -86,7 +86,7 @@ export const maps: MapItem[] = [
   {
     slug: 'portugues-escrita',
     title: 'Ortografia, Formação e Redação',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Letras, hífen e palavras que confundem, processos de formação de palavras e reescrita.',
     tags: ['3 ramos', 'conteúdo autoral'],
     subject: 'portugues',
@@ -97,7 +97,7 @@ export const maps: MapItem[] = [
   {
     slug: 'rlm-logica',
     title: 'Lógica e Argumentação',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Proposições, tabela-verdade, negações, equivalências, quantificadores e validade de argumentos.',
     tags: ['4 ramos', 'conteúdo autoral'],
     subject: 'raciocinio',
@@ -106,7 +106,7 @@ export const maps: MapItem[] = [
   {
     slug: 'rlm-analitico',
     title: 'Raciocínio Analítico',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Relações arbitrárias, verdades e mentiras, sequências, orientação espacial e temporal, analogias.',
     tags: ['5 ramos', 'conteúdo autoral'],
     subject: 'raciocinio',
@@ -115,7 +115,7 @@ export const maps: MapItem[] = [
   {
     slug: 'rlm-matematica',
     title: 'Matemática e Estatística',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Regra de três, porcentagem, média, mediana, moda, desvio padrão, gráficos e tabelas.',
     tags: ['4 ramos', 'conteúdo autoral'],
     subject: 'raciocinio',
@@ -257,7 +257,7 @@ export const maps: MapItem[] = [
   {
     slug: 'informatica-hardware-so',
     title: 'Hardware, Sistemas Operacionais e Instalação',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Componentes e periféricos, Windows, Linux (comandos e permissões) e preparação de estações.',
     tags: ['4 ramos', 'conteúdo autoral'],
     subject: 'informatica',
@@ -266,7 +266,7 @@ export const maps: MapItem[] = [
   {
     slug: 'informatica-suporte-servicos',
     title: 'Suporte, Central de Serviços e Ativos',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Chamados, Help Desk, SLA, diagnóstico, gestão de ativos e contratação de manutenção.',
     tags: ['5 ramos', 'conteúdo autoral'],
     subject: 'informatica',
@@ -275,7 +275,7 @@ export const maps: MapItem[] = [
   {
     slug: 'informatica-seguranca-backup',
     title: 'Conectividade, Segurança e Backup',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Comandos de rede, contas e acessos, ameaças, MFA, Active Directory e tipos de backup.',
     tags: ['3 ramos', 'conteúdo autoral'],
     subject: 'informatica',
@@ -284,7 +284,7 @@ export const maps: MapItem[] = [
   {
     slug: 'informatica-escritorio-docs',
     title: 'Escritório, Sistemas e Documentação',
-    kicker: 'Complementar · ManausPrev',
+    kicker: 'Complementar',
     description: 'Word, Excel, Outlook, Microsoft 365, sistemas corporativos, documentação, treinamento e inglês técnico.',
     tags: ['4 ramos', 'conteúdo autoral'],
     subject: 'informatica',

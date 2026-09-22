@@ -1,8 +1,8 @@
 # Mapas Mentais (Next.js)
 
-Aplicação Next.js (App Router, TypeScript) que reúne os mapas mentais de estudo para os concursos do TJAM e da ManausPrev, divididos por matéria.
+Aplicação Next.js (App Router, TypeScript) que reúne os mapas mentais de estudo para concursos, divididos por matéria.
 
-UI: Tailwind CSS v4 + [daisyUI](https://daisyui.com/) (temas `light`/`dark` customizados em `app/globals.css` para reaproveitar a paleta do site). Os componentes (botões, cards, badges, busca, grupo de filtros) usam classes daisyUI; o layout, as cores por matéria e o cabeçalho continuam em CSS próprio.
+UI: Tailwind CSS v4 + [daisyUI](https://daisyui.com/) (temas `light`/`dark` customizados em `app/globals.css` para reaproveitar a paleta do site). Layout, espaçamento, tipografia e componentes (botões, cards, badges, busca, grupo de filtros) usam classes utilitárias do Tailwind/daisyUI direto no JSX; `app/globals.css` guarda só os tokens de cor, os temas do daisyUI e um reset mínimo (`@layer base`).
 
 ## Como rodar
 

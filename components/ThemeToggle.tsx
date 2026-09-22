@@ -33,7 +33,7 @@ export default function ThemeToggle() {
       aria-pressed={theme === 'dark'}
     >
       {theme === 'dark' ? <Sun size={15} aria-hidden /> : <Moon size={15} aria-hidden />}
-      <span>{theme === 'dark' ? 'Claro' : 'Escuro'}</span>
+      <span className="max-[720px]:hidden">{theme === 'dark' ? 'Claro' : 'Escuro'}</span>
     </button>
   );
 }

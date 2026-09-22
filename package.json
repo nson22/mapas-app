@@ -1,7 +1,7 @@
 {
   "name": "mapas-mentais",
   "version": "1.0.0",
-  "description": "Mapas mentais para os concursos TJAM e ManausPrev",
+  "description": "Mapas mentais para estudo de concursos",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

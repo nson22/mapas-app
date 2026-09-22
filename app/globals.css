@@ -76,80 +76,44 @@
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 28px -16px rgba(0, 0, 0, 0.6);
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: calc(100% * var(--fs, 1)); }
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font);
-  font-size: calc(15.5px * var(--fs, 1));
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+/*
+  Reset mínimo global — o resto do layout (espaçamento, tipografia,
+  cores, estados de hover/foco) fica em classes utilitárias do Tailwind
+  direto nos componentes. Só o que precisa valer para o documento
+  inteiro (fonte, cor de fundo, foco visível, redução de movimento)
+  continua aqui.
+*/
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+    font-size: calc(100% * var(--fs, 1));
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: calc(15.5px * var(--fs, 1));
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  a {
+    color: inherit;
+  }
+  :focus-visible {
+    outline: 2.5px solid var(--brass);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
-h1, h2, h3 { margin: 0; text-wrap: balance; }
-a { color: inherit; }
-:focus-visible { outline: 2.5px solid var(--brass); outline-offset: 2px; border-radius: 4px; }
-.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
-
-/* Cabeçalho */
-.site-header {
-  position: sticky; top: 0; z-index: 20;
-  background: color-mix(in srgb, var(--paper) 92%, transparent);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--line-soft);
-}
-.site-header .bar { display: flex; align-items: center; gap: 16px; min-height: 52px; }
-.brand { font-weight: 700; letter-spacing: 0.01em; }
-.site-header .bar > :last-child { margin-left: auto; }
-
-.actions { margin-left: auto; display: flex; gap: 8px; align-items: center; }
-.crumb { color: var(--ink-faint); font-size: calc(12.5px * var(--fs, 1)); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
-.crumb b { color: var(--ink); font-weight: 600; }
-
-/* Página inicial */
-.page-hero { padding: 44px 0 22px; }
-.eyebrow { font-size: calc(12.5px * var(--fs, 1)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--brass); font-weight: 700; margin-bottom: 14px; }
-.page-hero h1 { font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.08; font-weight: 800; }
-.dek { color: var(--ink-soft); font-size: 1.06rem; margin: 14px 0 0; max-width: 62ch; }
-
-.toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 8px 0 18px; }
-
-.quick { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 8px; }
-.quick a {
-  flex: none; display: inline-flex; align-items: center; gap: 6px;
-  font-size: calc(12px * var(--fs, 1)); font-weight: 500; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px;
-  text-decoration: none; color: var(--ink-soft); white-space: nowrap;
-}
-.quick a:hover { color: var(--ink); border-color: var(--ink-soft); }
-.empty { color: var(--ink-faint); padding: 32px 0; }
-
-.subject { padding: 36px 0 4px; scroll-margin-top: 64px; }
-.subject.portugues { --accent: var(--c-por); --tint: var(--c-por-t); --color-primary: var(--c-por); }
-.subject.raciocinio { --accent: var(--c-raciocinio); --tint: var(--c-raciocinio-t); --color-primary: var(--c-raciocinio); }
-.subject.constitucional { --accent: var(--c-constitucional); --tint: var(--c-constitucional-t); --color-primary: var(--c-constitucional); }
-.subject.administrativo { --accent: var(--c-administrativo); --tint: var(--c-administrativo-t); --color-primary: var(--c-administrativo); }
-.subject.informatica { --accent: var(--c-informatica); --tint: var(--c-informatica-t); --color-primary: var(--c-informatica); }
-.subject-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding-bottom: 12px; margin-bottom: 18px; border-bottom: 2px solid var(--accent); }
-.subject-head h2 { display: flex; align-items: center; gap: 10px; font-size: clamp(1.4rem, 3vw, 1.85rem); font-weight: 700; color: var(--accent); }
-.subject-head .n { font-size: calc(12px * var(--fs, 1)); color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.06em; }
-
-.source-head { display: flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 700; margin: 22px 0 12px; }
-.source-head svg { color: var(--accent); }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
-
-.map-card { border-top: 4px solid var(--accent); transition: transform 0.15s ease, border-color 0.15s ease; }
-.map-card:hover { transform: translateY(-3px); }
-.map-card .kicker { color: var(--accent); }
-.map-card h3 a::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
-
-/* Página do mapa */
-.map-page { display: flex; flex-direction: column; height: 100dvh; }
-.map-frame { flex: 1; width: 100%; border: 0; background: var(--paper); }
-.map-page .site-header .bar { gap: 12px; }
-@media (max-width: 720px) {
-  .crumb { display: none; }
-  .actions a span { display: none; }
-}
-
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }

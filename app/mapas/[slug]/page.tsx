@@ -26,16 +26,16 @@ export default async function MapPage({ params }: Props) {
   const subject = getSubject(map.subject);
 
   return (
-    <div className="map-page">
-      <header className="site-header">
-        <div className="wrap bar">
-          <Link href="/" className="btn btn-sm btn-outline rounded-full gap-1.5">
+    <div className="flex h-dvh flex-col">
+      <header className="sticky top-0 z-20 border-b border-[color:var(--line-soft)] bg-[color-mix(in_srgb,var(--paper)_92%,transparent)] backdrop-blur-md">
+        <div className="mx-auto flex min-h-[52px] max-w-[1040px] items-center gap-3 px-5">
+          <Link href="/" className="btn btn-sm btn-outline gap-1.5 rounded-full">
             <ArrowLeft size={16} aria-hidden /> Todos os mapas
           </Link>
-          <span className="crumb">
-            {subject.name} <span aria-hidden>/</span> <b>{map.title}</b>
+          <span className="min-w-0 max-[720px]:hidden overflow-hidden text-ellipsis whitespace-nowrap text-[calc(12.5px*var(--fs,1))] text-[color:var(--ink-faint)]">
+            {subject.name} <span aria-hidden>/</span> <b className="font-semibold text-[color:var(--ink)]">{map.title}</b>
           </span>
-          <div className="actions">
+          <div className="ml-auto flex items-center gap-2">
             <FontSizeControl />
             <ThemeToggle />
           </div>
