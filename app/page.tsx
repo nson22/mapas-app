@@ -26,15 +26,6 @@ export default function HomePage() {
         </section>
         <MapGrid />
       </main>
-
-      <footer className="site-footer">
-        <div className="wrap">
-          <p>
-            Os mapas marcados como <b>Complementar</b> são conteúdo autoral, feito a partir do edital. Os links
-            &ldquo;versão online&rdquo; exigem login no Claude.
-          </p>
-        </div>
-      </footer>
     </>
   );
 }

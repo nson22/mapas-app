@@ -9,8 +9,6 @@ export type MapItem = {
   subject: SubjectId;
   /** 'curso' = feito a partir das suas apostilas; 'complemento' = conteúdo autoral para cobrir o edital */
   origin: 'curso' | 'complemento';
-  /** link do artefato publicado no Claude (exige login), quando existir */
-  online?: string;
   /** PDF de origem: agrupa os mapas em um gridview por PDF */
   source?: string;
 };
@@ -29,8 +27,6 @@ export const subjects: Subject[] = [
   { id: 'administrativo', name: 'Direito Administrativo', icon: 'scale' },
 ];
 
-const claude = (id: string) => `https://claude.ai/artifact/${id}`;
-
 export const maps: MapItem[] = [
   // Língua Portuguesa
   {
@@ -41,7 +37,6 @@ export const maps: MapItem[] = [
     tags: ['10 ramos', 'morfologia'],
     subject: 'portugues',
     origin: 'curso',
-    online: claude('6BzcTCjgZJr6n3CSNMK18M'),
   },
   {
     slug: 'portugues-expansao',
@@ -51,7 +46,6 @@ export const maps: MapItem[] = [
     tags: ['3 níveis', 'regência', 'semântica'],
     subject: 'portugues',
     origin: 'curso',
-    online: claude('H7reyMCZse6h3miQzTt1D2'),
   },
   {
     slug: 'portugues-pronomes-crase',
@@ -61,7 +55,6 @@ export const maps: MapItem[] = [
     tags: ['3 ramos', 'crase', 'coordenação'],
     subject: 'portugues',
     origin: 'curso',
-    online: claude('Pa9YxHeJ6eTRYf72P6Hf6W'),
   },
   {
     slug: 'portugues-texto-sentido',
@@ -212,7 +205,6 @@ export const maps: MapItem[] = [
     tags: ['9 ramos', 'art. 37, § 6º'],
     subject: 'administrativo',
     origin: 'curso',
-    online: claude('NjULfstmhEK46C2zAf92e7'),
   },
 
   {
@@ -252,7 +244,6 @@ export const maps: MapItem[] = [
     tags: ['8 ramos', 'protocolos'],
     subject: 'informatica',
     origin: 'curso',
-    online: claude('DnRfob3QQFXgKBkwuhNCNq'),
   },
   {
     slug: 'informatica-redes-nuvem',

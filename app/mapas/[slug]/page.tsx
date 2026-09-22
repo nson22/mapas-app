@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ExternalLink, Maximize2 } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import FontSizeControl from '@/components/FontSizeControl';
 import MapFrame from '@/components/MapFrame';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -36,25 +36,6 @@ export default async function MapPage({ params }: Props) {
             {subject.name} <span aria-hidden>/</span> <b>{map.title}</b>
           </span>
           <div className="actions">
-            <a
-              href={`/mapas/${map.slug}.html`}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Abrir o mapa em tela cheia, em uma nova aba"
-              className="btn btn-sm btn-outline rounded-full gap-1.5"
-            >
-              <Maximize2 size={14} aria-hidden /> <span>Tela cheia</span>
-            </a>
-            {map.online && (
-              <a
-                href={map.online}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-sm btn-outline rounded-full gap-1.5"
-              >
-                <ExternalLink size={14} aria-hidden /> <span>Online</span>
-              </a>
-            )}
             <FontSizeControl />
             <ThemeToggle />
           </div>

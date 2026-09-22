@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calculator, ExternalLink, Landmark, Languages, Map as MapIcon, Network, Scale, Search, FileText } from 'lucide-react';
+import { ArrowRight, Calculator, Landmark, Languages, Map as MapIcon, Network, Scale, Search, FileText } from 'lucide-react';
 import { maps, subjects, type MapItem, type Subject } from '@/data/maps';
 
 const icons: Record<Subject['icon'], typeof Languages> = {
@@ -135,22 +135,10 @@ export default function MapGrid() {
                             </span>
                           ))}
                         </div>
-                        <div className="flex justify-between items-center text-[0.82rem] border-t border-base-300 pt-2.5 relative z-[2]">
+                        <div className="flex items-center text-[0.82rem] border-t border-base-300 pt-2.5 relative z-[2]">
                           <span className="inline-flex items-center gap-1.5 font-bold pointer-events-none" style={{ color: 'var(--accent)' }}>
                             Abrir mapa <ArrowRight size={15} aria-hidden />
                           </span>
-                          {m.online ? (
-                            <a
-                              className="inline-flex items-center gap-1 text-[0.71875rem] text-base-content/60 hover:text-base-content no-underline"
-                              href={m.online}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              versão online <ExternalLink size={13} aria-hidden />
-                            </a>
-                          ) : (
-                            <span />
-                          )}
                         </div>
                       </div>
                     </article>

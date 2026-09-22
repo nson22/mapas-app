@@ -207,9 +207,6 @@
   .icon-btn .i-sun{display:none;}
   :root[data-theme="dark"] .icon-btn .i-sun{display:inline-flex;}
   :root[data-theme="dark"] .icon-btn .i-moon{display:none;}
-  .icon-btn .i-exit-fs{display:none;}
-  html[data-fullscreen="true"] .icon-btn .i-exit-fs{display:inline-flex;}
-  html[data-fullscreen="true"] .icon-btn .i-enter-fs{display:none;}
   .font-ctl{display:inline-flex; align-items:center; gap:2px; padding:2px 4px 2px 10px; border:1px solid var(--line); border-radius:999px; color:var(--ink-soft);}
   .font-ctl button{display:inline-flex; align-items:center; justify-content:center; min-width:26px; height:26px; border:0; background:transparent; color:inherit; border-radius:999px; cursor:pointer; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); font-weight:600;}
   .font-ctl button:hover:not(:disabled){background:var(--paper-2); color:var(--ink);}
@@ -225,7 +222,7 @@
 <script>try{if(window.self!==window.top){document.documentElement.classList.add('embedded');}}catch(e){}</script>
 
 
-<header class="hero"><div class="wrap"><div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Direito Constitucional<span class="crumb-sep">/</span><b>Poder Constituinte</b></span><div class="hdr-actions"><button type="button" class="icon-btn" id="fsBtn" aria-pressed="false" aria-label="Ativar tela cheia" title="Tela cheia"><i data-lucide="maximize" class="i-enter-fs" aria-hidden="true"></i><i data-lucide="minimize" class="i-exit-fs" aria-hidden="true"></i><span>Tela cheia</span></button><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div><h1 class="title">Poder Constituinte</h1><p class="dek">Poder originário e derivado, titularidade, recepção e direito intertemporal.</p></div></header>
+<header class="hero"><div class="wrap"><div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Direito Constitucional<span class="crumb-sep">/</span><b>Poder Constituinte</b></span><div class="hdr-actions"><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div><h1 class="title">Poder Constituinte</h1><p class="dek">Poder originário e derivado, titularidade, recepção e direito intertemporal.</p></div></header>
 <main>
 <section id="poder-constituinte" class="branch">
     <div class="wrap">
@@ -240,7 +237,6 @@
 <!--mnemonicos--><section id="mnemonicos" class="branch"><div class="wrap"><div class="branch-head"><span class="branch-num"><i data-lucide="lightbulb" aria-hidden="true"></i></span><h2>Mnemônicos de concurso</h2><span class="branch-kicker">macetes para fixar</span></div><p style="font-size:.92rem;">Mnemônicos e macetes de memorização. Alguns variam de uma fonte para outra; use os que funcionarem para você e confira sempre com o conteúdo do mapa.</p><div class="grid-2"><div class="example"><span class="tag">Cláusulas pétreas (art. 60, § 4º)</span><p><strong>F-V-S-D</strong>: <strong>F</strong>orma federativa de Estado; <strong>V</strong>oto direto, secreto, universal e periódico; <strong>S</strong>eparação dos Poderes; <strong>D</strong>ireitos e garantias individuais. Lembre: voto <em>obrigatório</em> não é pétreo.</p></div><div class="example"><span class="tag">Direito intertemporal</span><p><strong>ANTES = recepção; DEPOIS = constitucionalidade.</strong> Lei anterior à CF: recepcionada ou não. Lei posterior: constitucional ou inconstitucional. Na recepção importa o <em>conteúdo</em>, não a forma.</p></div><div class="example"><span class="tag">Repristinação</span><p><strong>Tácita = voltou sem mandarem voltar (não vale); Expressa = a norma mandou voltar.</strong></p></div></div></div></section><!--/mnemonicos-->
 
 </main>
-<footer><div class="wrap"><p style="margin:0;">Confira sempre a redação atual do texto constitucional.</p></div></footer>
 <script>
 (function(){
   var STEPS=[0.85,1,1.15,1.3,1.5], root=document.documentElement;
@@ -260,29 +256,6 @@
   down.addEventListener('click', function(){ applyFont(index-1); });
   up.addEventListener('click', function(){ applyFont(index+1); });
   reset.addEventListener('click', function(){ applyFont(1); });
-})();
-</script>
-<script>
-(function(){
-  var btn=document.getElementById('fsBtn');
-  function sync(){
-    var fs=Boolean(document.fullscreenElement||document.webkitFullscreenElement);
-    document.documentElement.setAttribute('data-fullscreen', fs ? 'true' : 'false');
-    btn.setAttribute('aria-pressed', String(fs));
-  }
-  btn.addEventListener('click', function(){
-    var p;
-    if(document.fullscreenElement||document.webkitFullscreenElement){
-      p=(document.exitFullscreen||document.webkitExitFullscreen).call(document);
-    } else {
-      var el=document.documentElement;
-      p=(el.requestFullscreen||el.webkitRequestFullscreen).call(el);
-    }
-    if(p && p.catch){ p.catch(function(){}); }
-  });
-  document.addEventListener('fullscreenchange', sync);
-  document.addEventListener('webkitfullscreenchange', sync);
-  sync();
 })();
 </script>
 <script>

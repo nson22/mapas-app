@@ -16,10 +16,10 @@ Requer Node 20 ou superior e internet no build (a fonte Montserrat vem do Google
 
 ## Como funciona
 
-- `data/maps.ts`: lista de matérias e mapas (título, descrição, etiquetas, origem e link online).
+- `data/maps.ts`: lista de matérias e mapas (título, descrição, etiquetas e origem).
 - `public/mapas/*.html`: os mapas, cada um em um HTML autônomo.
 - `app/page.tsx`: página inicial com grade por matéria, busca e filtro (curso x complementar).
-- `app/mapas/[slug]/page.tsx`: exibe o mapa em um iframe, com cabeçalho, tela cheia e troca de tema.
+- `app/mapas/[slug]/page.tsx`: exibe o mapa em um iframe, com cabeçalho e troca de tema.
 - `components/MapFrame.tsx`: mantém o tema e o tamanho da fonte do mapa sincronizados com o aplicativo.
 - `components/FontSizeControl.tsx`: seletor de tamanho de fonte (85%, 100%, 115%, 130%, 150%), salvo no navegador e aplicado a todos os mapas. Funciona pela variável CSS `--fs`; o diagrama SVG do mapa não muda de tamanho.
 

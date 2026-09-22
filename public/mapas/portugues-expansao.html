@@ -225,9 +225,6 @@
   .icon-btn .i-sun{display:none;}
   :root[data-theme="dark"] .icon-btn .i-sun{display:inline-flex;}
   :root[data-theme="dark"] .icon-btn .i-moon{display:none;}
-  .icon-btn .i-exit-fs{display:none;}
-  html[data-fullscreen="true"] .icon-btn .i-exit-fs{display:inline-flex;}
-  html[data-fullscreen="true"] .icon-btn .i-enter-fs{display:none;}
   .font-ctl{display:inline-flex; align-items:center; gap:2px; padding:2px 4px 2px 10px; border:1px solid var(--line); border-radius:999px; color:var(--ink-soft);}
   .font-ctl button{display:inline-flex; align-items:center; justify-content:center; min-width:26px; height:26px; border:0; background:transparent; color:inherit; border-radius:999px; cursor:pointer; font-family:var(--font-mono); font-size:calc(12px * var(--fs,1)); font-weight:600;}
   .font-ctl button:hover:not(:disabled){background:var(--paper-2); color:var(--ink);}
@@ -245,7 +242,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Língua Portuguesa<span class="crumb-sep">/</span><b>Morfologia, Sintaxe & Semântica</b></span><div class="hdr-actions"><button type="button" class="icon-btn" id="fsBtn" aria-pressed="false" aria-label="Ativar tela cheia" title="Tela cheia"><i data-lucide="maximize" class="i-enter-fs" aria-hidden="true"></i><i data-lucide="minimize" class="i-exit-fs" aria-hidden="true"></i><span>Tela cheia</span></button><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div>
+    <div class="eyebrow"><a class="back" href="/" target="_top" aria-label="Voltar ao índice" title="Voltar ao índice"><i data-lucide="arrow-left" aria-hidden="true"></i></a><span class="crumb"><span class="crumb-brand">Mapas Mentais - Para Concursos</span><span class="crumb-sep">/</span>Língua Portuguesa<span class="crumb-sep">/</span><b>Morfologia, Sintaxe & Semântica</b></span><div class="hdr-actions"><div class="font-ctl" role="group" aria-label="Tamanho da fonte"><i data-lucide="case-sensitive" aria-hidden="true"></i><button type="button" id="fontDown" aria-label="Diminuir a fonte" title="Diminuir a fonte"><i data-lucide="minus" aria-hidden="true"></i></button><button type="button" class="pct" id="fontReset" aria-label="Fonte a 100%. Clique para voltar ao padrão" title="Voltar a 100%">100%</button><button type="button" id="fontUp" aria-label="Aumentar a fonte" title="Aumentar a fonte"><i data-lucide="plus" aria-hidden="true"></i></button></div><button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema"><i data-lucide="moon" class="i-moon" aria-hidden="true"></i><i data-lucide="sun" class="i-sun" aria-hidden="true"></i><span id="themeLbl">Tema</span></button></div></div>
     <h1 class="title">Morfologia, Sintaxe &amp; <em>Semântica</em></h1>
     <p class="dek">Como a palavra se forma, como ela se conecta na frase e como ela significa &mdash; estrutura das palavras, acentuação, transitividade, regência e as relações de sentido, reunidas para revisão.</p>
 
@@ -647,12 +644,6 @@
 <!--mnemonicos--><section class="category"><div class="wrap"><div id="mnemonicos" class="branch"><div class="branch-head"><span class="branch-num"><i data-lucide="lightbulb" aria-hidden="true"></i></span><h3>Mnemônicos de concurso</h3><span class="branch-kicker">macetes para fixar</span></div><p style="font-size:.92rem;">Mnemônicos e macetes de memorização. Alguns variam de uma fonte para outra; use os que funcionarem para você e confira sempre com o conteúdo do mapa.</p><div class="grid-2"><div class="example"><span class="tag">Regência: o &ldquo;a&rdquo;</span><p><strong>Assistir (ver) A; Aspirar (desejar) A; Obedecer A; Preferir A; Chegar A.</strong> Sem preposição: <strong>namorar</strong>, <strong>visar</strong> (mirar), <strong>assistir</strong> (dar assistência).</p></div><div class="example"><span class="tag">Complementos</span><p><strong>VTD: quem? o quê? (sem preposição). VTI: a/de/em quem? o quê? (com preposição).</strong></p></div><div class="example"><span class="tag">Ratificar × retificar</span><p><strong>Ratificar = confirmar; Retificar = corrigir</strong> (RE-fazer).</p></div><div class="example"><span class="tag">Emergir × imergir</span><p><strong>E-mergir = sair, vir à tona; I-mergir = entrar, mergulhar.</strong></p></div><div class="example"><span class="tag">Eminente × iminente</span><p><strong>Eminente = elevado, ilustre; iminente = que está prestes a acontecer</strong> (a iminência).</p></div></div></div></div></section><!--/mnemonicos-->
 </main>
 
-<footer>
-  <div class="wrap">
-    <p style="margin:0;">Três níveis de análise: <strong>morfologia</strong> (forma), <strong>sintaxe</strong> (conexão) e <strong>semântica</strong> (sentido).</p>
-  </div>
-</footer>
-
 <script>
 (function(){
   var links = Array.prototype.slice.call(document.querySelectorAll('#subnav a'));
@@ -700,29 +691,6 @@
   down.addEventListener('click', function(){ applyFont(index-1); });
   up.addEventListener('click', function(){ applyFont(index+1); });
   reset.addEventListener('click', function(){ applyFont(1); });
-})();
-</script>
-<script>
-(function(){
-  var btn=document.getElementById('fsBtn');
-  function sync(){
-    var fs=Boolean(document.fullscreenElement||document.webkitFullscreenElement);
-    document.documentElement.setAttribute('data-fullscreen', fs ? 'true' : 'false');
-    btn.setAttribute('aria-pressed', String(fs));
-  }
-  btn.addEventListener('click', function(){
-    var p;
-    if(document.fullscreenElement||document.webkitFullscreenElement){
-      p=(document.exitFullscreen||document.webkitExitFullscreen).call(document);
-    } else {
-      var el=document.documentElement;
-      p=(el.requestFullscreen||el.webkitRequestFullscreen).call(el);
-    }
-    if(p && p.catch){ p.catch(function(){}); }
-  });
-  document.addEventListener('fullscreenchange', sync);
-  document.addEventListener('webkitfullscreenchange', sync);
-  sync();
 })();
 </script>
 <script>
