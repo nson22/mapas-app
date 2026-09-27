@@ -1,5 +1,7 @@
 export type SubjectId = 'portugues' | 'raciocinio' | 'constitucional' | 'administrativo' | 'informatica';
 
+export type ExamId = 'tjam' | 'manausprev';
+
 export type MapItem = {
   slug: string; // nome do arquivo em /public/mapas, sem .html
   title: string;
@@ -11,20 +13,24 @@ export type MapItem = {
   origin: 'curso' | 'complemento';
   /** PDF de origem: agrupa os mapas em um gridview por PDF */
   source?: string;
+  /** Ordem de estudo recomendada para o edital da ManausPrev (Técnico em Informática); só se aplica às matérias comuns aos dois concursos. */
+  manausOrder?: number;
 };
 
 export type Subject = {
   id: SubjectId;
   name: string;
   icon: 'languages' | 'calculator' | 'landmark' | 'scale' | 'network';
+  /** Em quais concursos essa matéria é cobrada. */
+  exams: ExamId[];
 };
 
 export const subjects: Subject[] = [
-  { id: 'portugues', name: 'Língua Portuguesa', icon: 'languages' },
-  { id: 'informatica', name: 'Informática', icon: 'network' },
-  { id: 'raciocinio', name: 'Raciocínio Lógico-Matemático', icon: 'calculator' },
-  { id: 'constitucional', name: 'Direito Constitucional', icon: 'landmark' },
-  { id: 'administrativo', name: 'Direito Administrativo', icon: 'scale' },
+  { id: 'portugues', name: 'Língua Portuguesa', icon: 'languages', exams: ['tjam', 'manausprev'] },
+  { id: 'informatica', name: 'Informática', icon: 'network', exams: ['tjam', 'manausprev'] },
+  { id: 'raciocinio', name: 'Raciocínio Lógico-Matemático', icon: 'calculator', exams: ['tjam', 'manausprev'] },
+  { id: 'constitucional', name: 'Direito Constitucional', icon: 'landmark', exams: ['tjam'] },
+  { id: 'administrativo', name: 'Direito Administrativo', icon: 'scale', exams: ['tjam'] },
 ];
 
 export const maps: MapItem[] = [
@@ -37,6 +43,7 @@ export const maps: MapItem[] = [
     tags: ['10 ramos', 'morfologia'],
     subject: 'portugues',
     origin: 'curso',
+    manausOrder: 1,
   },
   {
     slug: 'portugues-expansao',
@@ -46,6 +53,7 @@ export const maps: MapItem[] = [
     tags: ['3 níveis', 'regência', 'semântica'],
     subject: 'portugues',
     origin: 'curso',
+    manausOrder: 3,
   },
   {
     slug: 'portugues-pronomes-crase',
@@ -55,6 +63,7 @@ export const maps: MapItem[] = [
     tags: ['3 ramos', 'crase', 'coordenação'],
     subject: 'portugues',
     origin: 'curso',
+    manausOrder: 6,
   },
   {
     slug: 'portugues-texto-sentido',
@@ -64,6 +73,7 @@ export const maps: MapItem[] = [
     tags: ['6 ramos', 'conteúdo autoral'],
     subject: 'portugues',
     origin: 'complemento',
+    manausOrder: 7,
   },
   {
     slug: 'portugues-concordancia-vozes',
@@ -73,6 +83,7 @@ export const maps: MapItem[] = [
     tags: ['3 ramos', 'conteúdo autoral'],
     subject: 'portugues',
     origin: 'complemento',
+    manausOrder: 5,
   },
   {
     slug: 'portugues-frase-periodo',
@@ -82,6 +93,7 @@ export const maps: MapItem[] = [
     tags: ['6 ramos', 'conteúdo autoral'],
     subject: 'portugues',
     origin: 'complemento',
+    manausOrder: 4,
   },
   {
     slug: 'portugues-escrita',
@@ -91,6 +103,7 @@ export const maps: MapItem[] = [
     tags: ['3 ramos', 'conteúdo autoral'],
     subject: 'portugues',
     origin: 'complemento',
+    manausOrder: 2,
   },
 
   // Raciocínio Lógico-Matemático
@@ -102,6 +115,7 @@ export const maps: MapItem[] = [
     tags: ['4 ramos', 'conteúdo autoral'],
     subject: 'raciocinio',
     origin: 'complemento',
+    manausOrder: 1,
   },
   {
     slug: 'rlm-analitico',
@@ -111,6 +125,7 @@ export const maps: MapItem[] = [
     tags: ['5 ramos', 'conteúdo autoral'],
     subject: 'raciocinio',
     origin: 'complemento',
+    manausOrder: 2,
   },
   {
     slug: 'rlm-matematica',
@@ -120,6 +135,7 @@ export const maps: MapItem[] = [
     tags: ['4 ramos', 'conteúdo autoral'],
     subject: 'raciocinio',
     origin: 'complemento',
+    manausOrder: 3,
   },
 
   // Direito Constitucional
@@ -244,6 +260,7 @@ export const maps: MapItem[] = [
     tags: ['8 ramos', 'protocolos'],
     subject: 'informatica',
     origin: 'curso',
+    manausOrder: 2,
   },
   {
     slug: 'informatica-redes-nuvem',
@@ -253,6 +270,7 @@ export const maps: MapItem[] = [
     tags: ['8 ramos', 'protocolos e portas'],
     subject: 'informatica',
     origin: 'curso',
+    manausOrder: 3,
   },
   {
     slug: 'informatica-hardware-so',
@@ -262,6 +280,7 @@ export const maps: MapItem[] = [
     tags: ['4 ramos', 'conteúdo autoral'],
     subject: 'informatica',
     origin: 'complemento',
+    manausOrder: 1,
   },
   {
     slug: 'informatica-suporte-servicos',
@@ -271,6 +290,7 @@ export const maps: MapItem[] = [
     tags: ['5 ramos', 'conteúdo autoral'],
     subject: 'informatica',
     origin: 'complemento',
+    manausOrder: 5,
   },
   {
     slug: 'informatica-seguranca-backup',
@@ -280,6 +300,7 @@ export const maps: MapItem[] = [
     tags: ['3 ramos', 'conteúdo autoral'],
     subject: 'informatica',
     origin: 'complemento',
+    manausOrder: 4,
   },
   {
     slug: 'informatica-escritorio-docs',
@@ -289,6 +310,7 @@ export const maps: MapItem[] = [
     tags: ['4 ramos', 'conteúdo autoral'],
     subject: 'informatica',
     origin: 'complemento',
+    manausOrder: 6,
   },
 ];
 

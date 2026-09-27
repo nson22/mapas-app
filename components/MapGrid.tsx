@@ -1,9 +1,10 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Calculator, Landmark, Languages, Network, Scale, Search, FileText } from 'lucide-react';
-import { maps, subjects, type MapItem, type Subject } from '@/data/maps';
+import { maps, subjects, type ExamId, type MapItem, type Subject } from '@/data/maps';
+import { EXAM_EVENT, readStoredExam } from '@/components/ExamSelector';
 
 const icons: Record<Subject['icon'], typeof Languages> = {
   languages: Languages,
@@ -37,12 +38,26 @@ function groupBySource(list: MapItem[]) {
 
 export default function MapGrid() {
   const [query, setQuery] = useState('');
+  const [exam, setExam] = useState<ExamId>('tjam');
+
+  useEffect(() => {
+    setExam(readStoredExam());
+    const handler = (e: Event) => setExam((e as CustomEvent<ExamId>).detail);
+    window.addEventListener(EXAM_EVENT, handler);
+    return () => window.removeEventListener(EXAM_EVENT, handler);
+  }, []);
+
+  const visibleSubjects = useMemo(() => subjects.filter((s) => s.exams.includes(exam)), [exam]);
 
   const visible = useMemo(() => {
     const q = normalize(query.trim());
-    if (!q) return maps;
-    return maps.filter((m) => normalize([m.title, m.description, m.kicker, ...m.tags].join(' ')).includes(q));
-  }, [query]);
+    const bySubject = maps.filter((m) => visibleSubjects.some((s) => s.id === m.subject));
+    const filtered = q
+      ? bySubject.filter((m) => normalize([m.title, m.description, m.kicker, ...m.tags].join(' ')).includes(q))
+      : bySubject;
+    if (exam !== 'manausprev') return filtered;
+    return [...filtered].sort((a, b) => (a.manausOrder ?? 99) - (b.manausOrder ?? 99));
+  }, [query, exam, visibleSubjects]);
 
   return (
     <>
@@ -64,7 +79,7 @@ export default function MapGrid() {
         <p className="py-8 text-[color:var(--ink-faint)]">Nenhum mapa encontrado para essa busca.</p>
       )}
 
-      {subjects.map((s) => {
+      {visibleSubjects.map((s) => {
         const list = visible.filter((m) => m.subject === s.id);
         if (list.length === 0) return null;
         const Icon = icons[s.icon];

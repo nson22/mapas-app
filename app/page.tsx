@@ -1,3 +1,4 @@
+import ExamSelector from '@/components/ExamSelector';
 import FontSizeControl from '@/components/FontSizeControl';
 import MapGrid from '@/components/MapGrid';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -10,6 +11,7 @@ export default function HomePage() {
         <div className="mx-auto flex min-h-[52px] max-w-[1040px] items-center gap-4 px-5">
           <span className="font-bold tracking-[0.01em]">Mapas Mentais - Para Concursos</span>
           <div className="ml-auto flex items-center gap-2">
+            <ExamSelector />
             <FontSizeControl />
             <ThemeToggle />
           </div>
