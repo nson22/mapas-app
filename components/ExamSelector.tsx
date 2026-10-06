@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import type { ExamId } from '@/data/maps';
+import type { ExamId } from '@/data/resumos';
 
 export const EXAM_KEY = 'mapas-exam';
 export const EXAM_EVENT = 'mapas-exam';

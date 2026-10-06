@@ -10,8 +10,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: { default: 'Mapas Mentais – Concursos', template: '%s · Mapas Mentais' },
-  description: 'Mapas mentais de estudo para concursos, organizados por matéria.',
+  title: { default: 'Resumos para Concursos', template: '%s · Resumos para Concursos' },
+  description: 'Resumos de estudo para concursos, organizados por matéria.',
 };
 
 // Aplica o tema salvo (ou o do sistema) antes da primeira pintura, para não piscar.

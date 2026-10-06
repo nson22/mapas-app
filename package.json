@@ -1,7 +1,7 @@
 {
-  "name": "mapas-mentais",
+  "name": "resumos-concursos",
   "version": "1.0.0",
-  "description": "Mapas mentais para estudo de concursos",
+  "description": "Resumos para estudo de concursos",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,11 +10,17 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.3",
     "daisyui": "^5.7.43",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^1.47.0",
     "next": "^16.3.5",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "tailwindcss": "^4.3.3"
+    "react-markdown": "^10.1.0",
+    "remark-directive": "^4.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "tailwindcss": "^4.3.3",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@types/node": "^26.6.2",
