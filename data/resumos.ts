@@ -1,4 +1,4 @@
-export type SubjectId = 'portugues' | 'raciocinio' | 'constitucional' | 'administrativo' | 'informatica';
+export type SubjectId = 'portugues' | 'raciocinio' | 'legislacao' | 'constitucional' | 'administrativo' | 'informatica';
 
 export type ExamId = 'tjam' | 'manausprev';
 
@@ -21,7 +21,7 @@ export type ResumoItem = {
 export type Subject = {
   id: SubjectId;
   name: string;
-  icon: 'languages' | 'calculator' | 'landmark' | 'scale' | 'network';
+  icon: 'languages' | 'calculator' | 'landmark' | 'scale' | 'network' | 'scroll';
   /** Em quais concursos essa matéria é cobrada. */
   exams: ExamId[];
 };
@@ -30,6 +30,7 @@ export const subjects: Subject[] = [
   { id: 'portugues', name: 'Língua Portuguesa', icon: 'languages', exams: ['tjam', 'manausprev'] },
   { id: 'informatica', name: 'Informática', icon: 'network', exams: ['tjam', 'manausprev'] },
   { id: 'raciocinio', name: 'Raciocínio Lógico-Matemático', icon: 'calculator', exams: ['tjam', 'manausprev'] },
+  { id: 'legislacao', name: 'Legislação Municipal e Institucional', icon: 'scroll', exams: ['manausprev'] },
   { id: 'constitucional', name: 'Direito Constitucional', icon: 'landmark', exams: ['tjam'] },
   { id: 'administrativo', name: 'Direito Administrativo', icon: 'scale', exams: ['tjam'] },
 ];

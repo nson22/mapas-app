@@ -26,6 +26,7 @@
 .resumo[data-subject='constitucional'] { --accent: var(--c-constitucional); --accent-tint: var(--c-constitucional-t); --accent-strong: var(--c-constitucional); }
 .resumo[data-subject='administrativo'] { --accent: var(--c-administrativo); --accent-tint: var(--c-administrativo-t); --accent-strong: var(--c-administrativo); }
 .resumo[data-subject='informatica'] { --accent: var(--c-informatica); --accent-tint: var(--c-informatica-t); --accent-strong: var(--c-informatica); }
+.resumo[data-subject='legislacao'] { --accent: var(--c-legislacao); --accent-tint: var(--c-legislacao-t); --accent-strong: var(--c-legislacao); }
 
 .resumo *,
 .resumo *::before,
@@ -553,3 +554,12 @@
 .resumo .class-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
 .resumo .class-card p { font-size: 0.83rem; color: var(--ink-soft); margin: 0 0 6px; }
 .resumo .class-card .ex { display: block; font-family: ui-monospace, Consolas, monospace; font-size: 0.78rem; color: var(--ink-faint); }
+
+/* Texto solto entre os ramos: mesma margem lateral dos blocos .wrap */
+.resumo > p,
+.resumo > ul,
+.resumo > ol,
+.resumo > blockquote {
+  margin-left: max(24px, calc((100% - 980px) / 2 + 24px));
+  margin-right: 24px;
+}

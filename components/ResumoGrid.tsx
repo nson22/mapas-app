@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calculator, Landmark, Languages, Network, Scale, Search } from 'lucide-react';
+import { ArrowRight, Calculator, Landmark, Languages, Network, Scale, ScrollText, Search } from 'lucide-react';
 import { subjects, type ExamId, type ResumoItem, type Subject } from '@/data/resumos';
 import { EXAM_EVENT, readStoredExam } from '@/components/ExamSelector';
 
@@ -12,6 +12,7 @@ const icons: Record<Subject['icon'], typeof Languages> = {
   landmark: Landmark,
   scale: Scale,
   network: Network,
+  scroll: ScrollText,
 };
 
 // Cor de destaque de cada matéria, aplicada via variável CSS no <section> —
@@ -19,6 +20,7 @@ const icons: Record<Subject['icon'], typeof Languages> = {
 const accentVars: Record<Subject['id'], { accent: string; tint: string }> = {
   portugues: { accent: 'var(--c-por)', tint: 'var(--c-por-t)' },
   raciocinio: { accent: 'var(--c-raciocinio)', tint: 'var(--c-raciocinio-t)' },
+  legislacao: { accent: 'var(--c-legislacao)', tint: 'var(--c-legislacao-t)' },
   constitucional: { accent: 'var(--c-constitucional)', tint: 'var(--c-constitucional-t)' },
   administrativo: { accent: 'var(--c-administrativo)', tint: 'var(--c-administrativo-t)' },
   informatica: { accent: 'var(--c-informatica)', tint: 'var(--c-informatica-t)' },
