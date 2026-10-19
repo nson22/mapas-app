@@ -48,6 +48,10 @@ Enunciado organizado em torno de **um verbo** (ou locução verbal). *Os alunos 
 | :hl[Imperativa] | Ordem, pedido, conselho (afirmativa ou negativa) | Estude mais! / Não desista. |
 | :hl[Optativa] | Exprime desejo | Que Deus o abençoe! |
 
+### Ordem direta e indireta
+
+A ordem direta segue a sequência **sujeito + verbo + complemento**, com os adjuntos adverbiais por último\: *Maria comprou um livro ontem.* Qualquer termo deslocado dessa sequência produz a **ordem indireta (ou inversa)**\: *Ontem, Maria comprou um livro.* / *Um livro, Maria comprou ontem.*
+
 A oração se organiza em **termos essenciais** (sujeito e predicado), **integrantes** (completam o sentido) e **acessórios** (acrescentam informação). O vocativo fica fora da estrutura.
 
 | Grupo | Termo | Como reconhecer | Exemplo |
@@ -67,6 +71,46 @@ A oração se organiza em **termos essenciais** (sujeito e predicado), **integra
 | Acessório | :hl[Adjunto adverbial] | Circunstância (tempo, lugar, modo...) | Estudou à noite. |
 | Acessório | :hl[Aposto] | Explica ou especifica outro termo | Manaus, capital do Amazonas, cresce. |
 | Fora | :hl[Vocativo] | Chamamento, separado por vírgula | Alunos, atenção! |
+
+### Sujeito indeterminado e oração sem sujeito
+
+Duas formas marcam o sujeito indeterminado\:
+
+| Mecanismo | Regra | Exemplo |
+| --- | --- | --- |
+| :hl[Verbo na 3ª pessoa do plural] | Serve para qualquer tipo de verbo, sem referente definido no texto | Telefonaram para você. / Pintaram o prédio. |
+| :hl[Verbo na 3ª pessoa do singular + "se"] | Só com verbo intransitivo, transitivo indireto ou de ligação — é o índice de indeterminação do sujeito (veja a palavra "SE" neste resumo) | Vive-se com conforto aqui. / Gosta-se de música. |
+
+:::callout{tag="Elipse × indeterminado"}
+
+Nem toda 3ª pessoa do plural é sujeito indeterminado\: em "**As crianças** brincavam com tinta e (**elas**) sujaram tudo", o sujeito está oculto e é recuperável pelo contexto. Já em "Sujaram tudo com tinta!", isolada, não há a quem atribuir a ação\: sujeito indeterminado.
+
+:::
+
+A oração fica sem sujeito quando o verbo é impessoal, conjugado só na 3ª pessoa do singular\:
+
+| Situação | Verbos | Exemplo |
+| --- | --- | --- |
+| Fenômenos da natureza | chover, ventar, anoitecer... | Choveu ontem. |
+| "Ter" e "haver" com sentido de existir | haver (uso formal) / ter (uso informal) | Havia muitos convidados na festa. / Teve muitos convidados na festa. |
+| "Fazer", "haver" e "estar" para tempo decorrido ou clima | fazer, haver, estar | Faz muito frio aqui. / Há tempos não o vejo. / Está calor! |
+| "Ser" indicando tempo (hora, data) | ser — concorda com o predicativo | São três horas. / É meio-dia. |
+
+:::callout{variant="warn" tag="Existir tem sujeito"}
+
+Diferente de "haver", o verbo :wine[existir] é regular e tem sujeito normal, concordando com ele\: *Existiram muitas pessoas neste evento* (sujeito\: "muitas pessoas").
+
+:::
+
+A impessoalidade também aparece em locuções verbais\: *Pode haver muitos acidentes nas estradas. / Vai fazer duas horas que estou esperando. / Devem ser onze horas já.*
+
+### Predicado verbo-nominal\: dois núcleos
+
+O predicado verbo-nominal tem dois núcleos\: o verbo e o predicativo, que recai sobre o sujeito ou sobre o objeto.
+
+*João, nervoso, correu para casa* — predicativo do sujeito ("nervoso") e verbo intransitivo ("correu"), em dois núcleos distintos.
+
+*João encontrou Maria nervosa* — verbo transitivo direto ("encontrou"), objeto direto ("Maria") e predicativo do objeto ("nervosa").
 
 :::callout{tag="Verbos de ligação"}
 

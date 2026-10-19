@@ -4,7 +4,7 @@ kicker: "Complementar"
 description: "Componentes e periféricos, Windows, Linux (comandos e permissões) e preparação de estações."
 tags: ["4 ramos", "conteúdo autoral"]
 subject: "informatica"
-order: 25
+order: 26
 origin: "complemento"
 manausOrder: 1
 lede: "Da peça ao sistema pronto: componentes, Windows, Linux e a preparação de estações de trabalho."

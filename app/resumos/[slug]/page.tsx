@@ -36,7 +36,7 @@ export default async function ResumoPage({ params }: Props) {
   return (
     <>
       <header className="sticky top-0 z-20 border-b border-[color:var(--line-soft)] bg-[color-mix(in_srgb,var(--paper)_92%,transparent)] backdrop-blur-md">
-        <div className="mx-auto flex min-h-[52px] max-w-[1040px] items-center gap-3 px-5">
+        <div className="mx-auto flex min-h-[52px] max-w-[1144px] items-center gap-3 px-5">
           <Link href="/" aria-label="Todos os resumos" className="btn btn-sm btn-outline gap-1.5 rounded-full">
             <ArrowLeft size={16} aria-hidden />
             <span className="max-[480px]:hidden">Todos os resumos</span>

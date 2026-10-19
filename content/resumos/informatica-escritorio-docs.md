@@ -4,9 +4,9 @@ kicker: "Complementar"
 description: "Word, Excel, Outlook, Microsoft 365, sistemas corporativos, documentação, treinamento e inglês técnico."
 tags: ["4 ramos", "conteúdo autoral"]
 subject: "informatica"
-order: 28
+order: 29
 origin: "complemento"
-manausOrder: 6
+manausOrder: 7
 lede: "As ferramentas do dia a dia do usuário e o registro do trabalho: Word, Excel, Outlook, sistemas corporativos, documentação, treinamento e inglês técnico."
 diagramNote: "Quatro tópicos do edital ligados ao uso e ao registro."
 center: ["Escritório", "e Documentação"]

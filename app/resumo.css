@@ -51,7 +51,7 @@
 .resumo :focus-visible { outline: 2.5px solid var(--brass); outline-offset: 2px; border-radius: 3px; }
 
 .resumo .wrap {
-  max-width: 980px;
+  max-width: 1078px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -560,6 +560,6 @@
 .resumo > ul,
 .resumo > ol,
 .resumo > blockquote {
-  margin-left: max(24px, calc((100% - 980px) / 2 + 24px));
+  margin-left: max(24px, calc((100% - 1078px) / 2 + 24px));
   margin-right: 24px;
 }

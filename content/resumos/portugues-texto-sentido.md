@@ -1,14 +1,14 @@
 ---
 title: "Texto e *Sentido*"
 kicker: "Complementar"
-description: "Interpretação de textos e gêneros, denotação e conotação, intertextualidade, figuras de linguagem, funções da linguagem e fonética."
-tags: ["6 ramos", "conteúdo autoral"]
+description: "Interpretação de textos e gêneros, denotação e conotação, intertextualidade, figuras de linguagem, funções da linguagem, fonética e variação linguística."
+tags: ["8 ramos", "conteúdo autoral"]
 subject: "portugues"
 order: 4
 origin: "complemento"
 manausOrder: 7
-lede: "Como ler o que está dito e o que está implícito: interpretação, sentido literal e figurado, diálogo entre textos, figuras de linguagem, funções da linguagem e fonética."
-diagramNote: "Sete tópicos do edital ligados ao texto, ao sentido, ao som e à tipologia da língua."
+lede: "Como ler o que está dito e o que está implícito: interpretação, sentido literal e figurado, diálogo entre textos, figuras de linguagem, funções da linguagem, fonética e variação linguística."
+diagramNote: "Oito tópicos do edital ligados ao texto, ao sentido, ao som, à tipologia e à variação da língua."
 center: ["Texto", "e Sentido"]
 ---
 
@@ -482,6 +482,65 @@ Os **tipos textuais** (os 5 acima) têm objetivo e estrutura fixos. Os **gênero
 
 :::::
 
+:::::branch{id="variacao" num="08" title="Variação Linguística" kicker="variedades regionais, sociais, históricas e estilísticas" short="Variação|Linguística" tag="DIATÓPICA · DIASTRÁTICA"}
+
+As variações (ou variedades) linguísticas são as ramificações naturais de uma língua, que se diferenciam da norma-padrão em razão de fatores como convenções sociais, momento histórico, contexto ou região em que um falante ou grupo social se insere. É objeto de estudo da :hl[Sociolinguística], ramo que estuda como a divisão da sociedade em grupos — com diferentes culturas e costumes — dá origem a diferentes formas de expressão da língua, as quais, embora se baseiem nas normas da gramática prescritiva, adquirem regras e características próprias.
+
+As variações linguísticas diferenciam-se em quatro grupos\:
+
+| Variedade | Também chamada | O que influencia |
+| --- | --- | --- |
+| :hl[Regional] | Diatópica | O espaço geográfico ocupado pelo falante |
+| :hl[Social] | Diastrática | O grupo social em que o falante se insere (não a região) |
+| :hl[Histórica] | Diacrônica | O momento no tempo em que a expressão é usada |
+| :hl[Estilística] | Diafásica | O estilo exigido pelo texto ou pela situação comunicativa |
+
+### Variedades regionais (diatópicas)
+
+Em um país de dimensões continentais como o Brasil, essas variedades são extremamente ricas, tanto em número quanto em peculiaridades linguísticas. São percebidas por dois fatores\:
+
+::::grid{cols="2"}
+
+:::example{tag="Sotaque"}
+
+Fenômeno fonético (fonológico)\: pessoas de uma região pronunciam certas palavras ou fonemas de forma particular — por exemplo, a forma como os goianos pronunciam o R ou os cariocas pronunciam o S.
+
+:::
+
+:::example{variant="alt" tag="Regionalismo"}
+
+Fenômeno ligado ao léxico (vocabulário)\: existência de palavras ou expressões típicas de determinada região.
+
+:::
+
+::::
+
+### Variedades sociais (diastráticas)
+
+Não dependem da região em que o falante vive, mas dos grupos sociais em que ele se insere — profissão, classe social, nível de escolaridade, esporte, tribos urbanas, idade, gênero, sexualidade, religião etc. São típicas de grandes centros urbanos. Dois fatores contribuem para identificá-las\: :hl[gírias] (palavras ou expressões informais, efêmeras, normalmente ligadas ao público jovem) e :hl[jargão ou termo técnico] (palavras ou expressões típicas de determinados ambientes profissionais).
+
+### Variedades históricas (diacrônicas)
+
+São as variedades comumente usadas no passado, mas que caíram em desuso. Percebem-se pelos :hl[arcaísmos] — palavras ou expressões que caíram em desuso no decorrer do tempo —, normalmente encontrados em textos literários, músicas ou documentos antigos.
+
+| Forma antiga | O que aconteceu |
+| --- | --- |
+| Vossa mercê | Virou *vosmecê*, depois *você* |
+| Cáfila (caravana de camelos) | Praticamente não é mais usada hoje |
+| Fidalgo (filho de algo / nobre) | Caiu em desuso |
+
+### Variedades estilísticas (diafásicas)
+
+Surgem da adequação que o falante faz de seu nível de linguagem ao estilo exigido pelo texto ou pela situação comunicativa. A crônica, por exemplo, é um texto cujo estilo exige linguagem coloquial; a dissertação, por sua vez, exige um estilo de escrita mais formal. Cabe ao falante ou redator dominar as diferentes variantes para adequá-las à situação (mais ou menos formal) e ao estilo exigido pelo texto.
+
+:::callout{tag="Preconceito linguístico"}
+
+É uma forma de discriminação social que consiste em julgar o indivíduo pela forma como ele se comunica, seja oralmente, seja por escrito, tendo como parâmetro a norma culta\: quanto mais distante dela, mais criticado é o falante. É social porque educação e renda estão interligadas\: quem não tem acesso à escola — muitas vezes por viver em condições de pobreza — fica mais distante da norma culta, o que o afasta de exercer plenamente a cidadania.
+
+:::
+
+:::::
+
 :::::branch{id="mnemonicos" title="Mnemônicos de concurso" kicker="macetes para fixar"}
 
 Mnemônicos e macetes de memorização. Alguns variam de uma fonte para outra; use os que funcionarem para você e confira sempre com o conteúdo do resumo.
@@ -533,6 +592,12 @@ Mnemônicos e macetes de memorização. Alguns variam de uma fonte para outra; u
 :::example{tag="Ditongo × hiato"}
 
 **Ditongo = mesma sílaba; hiato = sílabas separadas.** Sa-**í**-da (hiato) x qu**ei**-jo (ditongo).
+
+:::
+
+:::example{tag="Os 4 tipos de variação"}
+
+**Regional = diaTÓPICA (TÓPos = lugar); social = diaSTRÁTICA (estrato social); histórica = diaCRÔNICA (tempo); estilo = diaFÁSICA (fase/situação).**
 
 :::
 

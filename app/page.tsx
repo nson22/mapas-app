@@ -9,7 +9,8 @@ export default function HomePage() {
   return (
     <>
       <header className="sticky top-0 z-20 border-b border-[color:var(--line-soft)] bg-[color-mix(in_srgb,var(--paper)_92%,transparent)] backdrop-blur-md">
-        <div className="mx-auto flex min-h-[52px] max-w-[1040px] items-center gap-4 px-5">
+        <div className="mx-auto flex min-h-[52px] max-w-[1144px] items-center gap-2.5 px-5">
+          <img src="/logo-mark.svg" alt="" width={26} height={26} className="rounded-[6px]" />
           <span className="font-bold tracking-[0.01em]">Resumos para Concursos</span>
           <div className="ml-auto flex items-center gap-2">
             <ExamSelector />
@@ -19,7 +20,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-[1040px] px-5">
+      <main className="mx-auto max-w-[1144px] px-5">
         <section className="pt-11 pb-[22px]">
           <h1 className="mb-3.5 text-[clamp(2rem,4.6vw,3rem)] font-extrabold uppercase leading-[1.08] tracking-[0.1em] text-[color:var(--brass)]">
             Conteúdo programático

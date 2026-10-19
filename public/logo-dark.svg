@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120">
+  <rect x="4" y="4" width="112" height="112" rx="26" fill="#e0b563"/>
+  <g stroke="#15201d" stroke-width="3.6" stroke-linecap="round" fill="none">
+    <line x1="60" y1="42" x2="34" y2="80"/>
+    <line x1="60" y1="42" x2="60" y2="90"/>
+    <line x1="60" y1="42" x2="86" y2="80"/>
+  </g>
+  <circle cx="60" cy="42" r="14" fill="#15201d"/>
+  <circle cx="34" cy="80" r="9" fill="#111716"/>
+  <circle cx="60" cy="90" r="9" fill="#111716"/>
+  <circle cx="86" cy="80" r="9" fill="#111716"/>
+
+  <text x="144" y="60" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="34" fill="#e6ece9" letter-spacing="0.2">Resumos</text>
+  <text x="144" y="92" font-family="Montserrat, Arial, sans-serif" font-weight="600" font-size="19" fill="#aab8b5" letter-spacing="1.5">PARA CONCURSOS</text>
+</svg>

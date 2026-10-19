@@ -4,9 +4,9 @@ kicker: "Complementar"
 description: "Chamados, Help Desk, SLA, diagnóstico, gestão de ativos e contratação de manutenção."
 tags: ["5 ramos", "conteúdo autoral"]
 subject: "informatica"
-order: 26
+order: 27
 origin: "complemento"
-manausOrder: 5
+manausOrder: 6
 lede: "Do chamado à garantia: atendimento ao usuário, Help Desk, diagnóstico, controle de patrimônio e contratação de manutenção."
 diagramNote: "Cinco tópicos do edital sobre atendimento e gestão."
 center: ["Suporte", "e Serviços"]

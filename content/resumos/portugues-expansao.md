@@ -271,6 +271,49 @@ Um verbo intransitivo pode vir seguido de mais palavras sem deixar de ser intran
 
 :::
 
+### Predicativo do sujeito e do objeto
+
+O predicativo é um termo de base adjetiva que caracteriza um substantivo sem integrar o mesmo sintagma. Os verbos de ligação (ser, estar, ficar, parecer, permanecer, tornar-se, continuar...) só recebem esse nome quando vêm seguidos de um predicativo do sujeito, formando o predicado nominal\: *Maria ficou decepcionada.*
+
+Alguns verbos transitivos pedem, além do objeto, um predicativo do objeto — em geral verbos de juízo de valor ou mudança de estado\: :hl[achar], :hl[considerar], :hl[julgar], :hl[eleger], :hl[nomear]...
+
+:::example{tag="Predicativo do objeto"}
+
+*A menina achou a prova difícil.* — "achou" (VTD) + "a prova" (objeto direto) + "difícil" (predicativo do objeto).
+
+:::
+
+### Objeto direto preposicionado e pleonástico
+
+Em geral o objeto direto vem sem preposição, mas duas exceções aparecem em prova\:
+
+| Caso | Exemplo |
+| --- | --- |
+| Objeto direto preposicionado | O filho ama aos seus pais. |
+| Objeto direto pleonástico (repetido, para ênfase) | A mãe ama-o, o menino. |
+
+### Complemento nominal
+
+É a função sintática sempre iniciada por preposição que completa um adjetivo, um advérbio ou um substantivo abstrato, mantendo a mesma relação de transitividade do verbo de que a palavra deriva. :hl["Realizar"] e :hl["realização"] são ambas transitivas, por exemplo.
+
+| Exemplo | Núcleo completado | Complemento nominal |
+| --- | --- | --- |
+| O moço queria a realização de seus projetos. | realização (substantivo abstrato) | de seus projetos |
+| Esta planta é resistente ao frio. | resistente (adjetivo) | ao frio |
+| Moro longe do trabalho. | longe (advérbio) | do trabalho |
+
+:::callout{tag="Complemento nominal × adjunto adnominal"}
+
+A distinção entre os dois está no resumo Frase e Período, no mesmo "de" que aparece em ambos.
+
+:::
+
+### Agente da passiva
+
+Na voz passiva com auxiliar, é o complemento que indica quem pratica a ação sofrida pelo sujeito, sempre precedido de "por" ou "de"\:
+
+*O jornal é lido por muitas pessoas.* / *A cidade está cercada de policiais.*
+
 :::::
 
 ::::branch{id="regencia" num="04" title="Regência Verbal e Nominal" kicker="qual preposição cada verbo ou nome exige" tone="sintaxe"}
