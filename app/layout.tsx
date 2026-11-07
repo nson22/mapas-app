@@ -19,7 +19,7 @@ const themeScript = `(function(){try{var t=localStorage.getItem('mapas-theme');i
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={montserrat.variable} suppressHydrationWarning>
+    <html lang="pt-BR" className={montserrat.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

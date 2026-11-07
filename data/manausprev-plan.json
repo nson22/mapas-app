@@ -1,0 +1,1812 @@
+[
+  {
+    "date": "2026-11-07",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-07-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "IPv4/IPv6, DNS e DHCP (11.3); configurar IP, gateway e DNS (12.1).",
+        "review": true,
+        "id": "2026-11-07-1",
+        "materials": [
+          {
+            "id": "informatica-redes",
+            "section": "ip"
+          },
+          {
+            "id": "informatica-redes",
+            "section": "protocolos"
+          },
+          {
+            "id": "informatica-redes",
+            "section": "conectividade"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Morfossintaxe: identificar o que falta; classes de palavras e termos da oração (1.9).",
+        "review": true,
+        "id": "2026-11-07-2",
+        "materials": [
+          {
+            "id": "portugues-formacao",
+            "section": "substantivo"
+          },
+          {
+            "id": "portugues-frase-periodo",
+            "section": "termos"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "LC 27/2025 (20.1): primeira parte.",
+        "review": true,
+        "id": "2026-11-07-3",
+        "materials": [
+          {
+            "id": "legislacao-lc27-segurados-custeio",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-08",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-08-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "TCP/UDP e protocolos HTTP/HTTPS/SMTP/POP3/IMAP (11.4–11.5).",
+        "review": true,
+        "id": "2026-11-08-1",
+        "materials": [
+          {
+            "id": "informatica-redes",
+            "section": "protocolos"
+          },
+          {
+            "id": "informatica-internet",
+            "section": "email"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Pronomes: tópicos 9.1 a 9.8 do curso; revisar colocação (1.13).",
+        "review": true,
+        "id": "2026-11-08-2",
+        "materials": [
+          {
+            "id": "portugues-formacao",
+            "section": "pronome"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "LC 27/2025 (20.1): terminar leitura e testar recordação.",
+        "review": true,
+        "id": "2026-11-08-3",
+        "materials": [
+          {
+            "id": "legislacao-lc27-beneficios-transicao",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-09",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-09-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Switch, roteador, modem e AP (11.2); internet/intranet pendentes (11.1); compartilhar arquivos/impressoras (11.7).",
+        "review": true,
+        "id": "2026-11-09-1",
+        "materials": [
+          {
+            "id": "informatica-redes",
+            "section": "equipamentos"
+          },
+          {
+            "id": "informatica-internet",
+            "section": "intranet"
+          },
+          {
+            "id": "informatica-redes",
+            "section": "conectividade"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Flexão nominal/verbal, vozes e correlação verbal (1.15–1.17).",
+        "review": true,
+        "id": "2026-11-09-2",
+        "materials": [
+          {
+            "id": "portugues-formacao",
+            "section": "substantivo"
+          },
+          {
+            "id": "portugues-formacao",
+            "section": "adjetivo"
+          },
+          {
+            "id": "portugues-formacao",
+            "section": "verbo"
+          },
+          {
+            "id": "portugues-concordancia-vozes",
+            "section": "vozes"
+          },
+          {
+            "id": "portugues-frase-periodo",
+            "section": "correlacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Lei 3.605/2025 (20.2): primeira parte.",
+        "review": true,
+        "id": "2026-11-09-3",
+        "materials": [
+          {
+            "id": "legislacao-lei-3605-manausprev",
+            "section": "natureza"
+          },
+          {
+            "id": "legislacao-lei-3605-manausprev",
+            "section": "estrutura"
+          },
+          {
+            "id": "legislacao-lei-3605-manausprev",
+            "section": "cmp"
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-10",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-10-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Wi-Fi, unidades mapeadas e impressoras (12.2); prática de ping/ipconfig/tracert/nslookup e diagnóstico (12.3–12.4).",
+        "review": true,
+        "id": "2026-11-10-1",
+        "materials": [
+          {
+            "id": "informatica-redes",
+            "section": "conectividade"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Concordância nominal e verbal (1.14).",
+        "review": true,
+        "id": "2026-11-10-2",
+        "materials": [
+          {
+            "id": "portugues-concordancia-vozes",
+            "section": "verbal"
+          },
+          {
+            "id": "portugues-concordancia-vozes",
+            "section": "nominal"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Lei 3.605/2025 (20.2): concluir e revisar.",
+        "review": true,
+        "id": "2026-11-10-3",
+        "materials": [
+          {
+            "id": "legislacao-lei-3605-manausprev",
+            "section": "colegiados"
+          },
+          {
+            "id": "legislacao-lei-3605-manausprev",
+            "section": "direcao"
+          },
+          {
+            "id": "legislacao-lei-3605-manausprev",
+            "section": "pessoal"
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-11",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-11-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Hardware: fonte de alimentação, periféricos e portas; instalação, testes e troca de peças (3.1–3.4).",
+        "review": true,
+        "id": "2026-11-11-1",
+        "materials": [
+          {
+            "id": "informatica-hardware-so",
+            "section": "hardware"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Regência nominal/verbal; revisão de crase (1.18 e 1.2).",
+        "review": true,
+        "id": "2026-11-11-2",
+        "materials": [
+          {
+            "id": "portugues-expansao",
+            "section": "regencia"
+          },
+          {
+            "id": "portugues-pronomes-crase",
+            "section": "crase"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Lei 1.997/2015, com alteração indicada no edital (20.3): primeira parte.",
+        "review": true,
+        "id": "2026-11-11-3",
+        "materials": [
+          {
+            "id": "legislacao-lei-3237-processo",
+            "section": ""
+          }
+        ],
+        "gap": "O resumo cobre a alteração de prazos pela Lei 3.237/2023. Complete com a leitura da Lei 1.997/2015."
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-12",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-12-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Windows/Linux: instalação, configuração, atualização, processos, serviços, drivers, dispositivos e discos (4.2, 4.5–4.6).",
+        "review": true,
+        "id": "2026-11-12-1",
+        "materials": [
+          {
+            "id": "informatica-hardware-so",
+            "section": "windows"
+          },
+          {
+            "id": "informatica-hardware-so",
+            "section": "linux"
+          },
+          {
+            "id": "informatica-hardware-so",
+            "section": "instalacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Coordenação, subordinação e conectivos (1.19–1.20).",
+        "review": true,
+        "id": "2026-11-12-2",
+        "materials": [
+          {
+            "id": "portugues-pronomes-crase",
+            "section": "periodo"
+          },
+          {
+            "id": "portugues-frase-periodo",
+            "section": "subordinacao"
+          },
+          {
+            "id": "portugues-formacao",
+            "section": "conjuncao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Lei 1.997/2015 (20.3): concluir e testar.",
+        "review": true,
+        "id": "2026-11-12-3",
+        "materials": [
+          {
+            "id": "legislacao-lei-3237-processo",
+            "section": ""
+          }
+        ],
+        "gap": "O resumo cobre a alteração de prazos pela Lei 3.237/2023. Complete com a leitura da Lei 1.997/2015."
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-13",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-13-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Estações de trabalho e instalação de SO, aplicativos, antivírus e periféricos (5.1–5.2). Revisar 4.1, 4.3–4.4, 4.7–4.8 por questões.",
+        "review": true,
+        "id": "2026-11-13-1",
+        "materials": [
+          {
+            "id": "informatica-hardware-so",
+            "section": "instalacao"
+          },
+          {
+            "id": "informatica-hardware-so",
+            "section": "windows"
+          },
+          {
+            "id": "informatica-hardware-so",
+            "section": "linux"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Pontuação aplicada à sintaxe (1.12).",
+        "review": true,
+        "id": "2026-11-13-2",
+        "materials": [
+          {
+            "id": "portugues-frase-periodo",
+            "section": "pontuacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Resolução 03/2026 (20.4): primeira parte.",
+        "review": true,
+        "id": "2026-11-13-3",
+        "materials": [
+          {
+            "id": "legislacao-regimento-manausprev",
+            "section": "aprovacao"
+          },
+          {
+            "id": "legislacao-regimento-manausprev",
+            "section": "estrutura"
+          },
+          {
+            "id": "legislacao-regimento-manausprev",
+            "section": "cmp"
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-14",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-14-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Configuração de contas, rede, e-mail e sistemas; atualização, ativação, licenciamento e testes (5.3–5.4).",
+        "review": true,
+        "id": "2026-11-14-1",
+        "materials": [
+          {
+            "id": "informatica-hardware-so",
+            "section": "instalacao"
+          },
+          {
+            "id": "informatica-escritorio-docs",
+            "section": "escritorio"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Formação de palavras; sinonímia/antonímia; denotação/conotação (1.10, 1.11, 1.5).",
+        "review": true,
+        "id": "2026-11-14-2",
+        "materials": [
+          {
+            "id": "portugues-escrita",
+            "section": "formacao"
+          },
+          {
+            "id": "portugues-expansao",
+            "section": "sinonimos"
+          },
+          {
+            "id": "portugues-expansao",
+            "section": "antonimos"
+          },
+          {
+            "id": "portugues-texto-sentido",
+            "section": "denotacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Resolução 03/2026 (20.4): concluir e revisar.",
+        "review": true,
+        "id": "2026-11-14-3",
+        "materials": [
+          {
+            "id": "legislacao-regimento-manausprev",
+            "section": "colegiados"
+          },
+          {
+            "id": "legislacao-regimento-manausprev",
+            "section": "direcao"
+          },
+          {
+            "id": "legislacao-regimento-manausprev",
+            "section": "alcadas"
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-15",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-15-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Diagnóstico: sintomas/causas, mensagens, logs e verificações de energia, cabos, disco, memória e serviços (8.1–8.3).",
+        "review": true,
+        "id": "2026-11-15-1",
+        "materials": [
+          {
+            "id": "informatica-suporte-servicos",
+            "section": "diagnostico"
+          },
+          {
+            "id": "informatica-hardware-so",
+            "section": "hardware"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Contexto histórico, discursos direto/indireto/livre, intertextualidade e figuras (1.4, 1.6–1.8).",
+        "review": true,
+        "id": "2026-11-15-2",
+        "materials": [
+          {
+            "id": "portugues-texto-sentido",
+            "section": "interpretacao"
+          },
+          {
+            "id": "portugues-frase-periodo",
+            "section": "discurso"
+          },
+          {
+            "id": "portugues-texto-sentido",
+            "section": "intertextualidade"
+          },
+          {
+            "id": "portugues-texto-sentido",
+            "section": "figuras"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Resolução 04/2026 (20.5): primeira parte.",
+        "review": true,
+        "id": "2026-11-15-3",
+        "materials": [],
+        "gap": "Sem resumo específico da Resolução 04/2026 no repositório. Complete com o texto previsto no edital."
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-16",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-16-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Manutenção preventiva/corretiva, atualização, limpeza, reinstalação, peças, garantia e assistência (8.4–8.6).",
+        "review": true,
+        "id": "2026-11-16-1",
+        "materials": [
+          {
+            "id": "informatica-suporte-servicos",
+            "section": "diagnostico"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Reescrita, equivalência e reorganização de períodos (1.21); revisão de ortografia/interpretação (1.1, 1.3).",
+        "review": true,
+        "id": "2026-11-16-2",
+        "materials": [
+          {
+            "id": "portugues-escrita",
+            "section": "redacao"
+          },
+          {
+            "id": "portugues-escrita",
+            "section": "ortografia"
+          },
+          {
+            "id": "portugues-texto-sentido",
+            "section": "interpretacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Resolução 04/2026 (20.5): concluir e revisar.",
+        "review": true,
+        "id": "2026-11-16-3",
+        "materials": [],
+        "gap": "Sem resumo específico da Resolução 04/2026 no repositório. Complete com o texto previsto no edital."
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-17",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-17-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Contas, senhas, usuários, grupos, permissões, Active Directory, MFA e menor privilégio (13.1–13.3).",
+        "review": true,
+        "id": "2026-11-17-1",
+        "materials": [
+          {
+            "id": "informatica-seguranca-backup",
+            "section": "contas"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Lógica: verdades e mentiras (pendência 2.1).",
+        "review": true,
+        "id": "2026-11-17-2",
+        "materials": [
+          {
+            "id": "rlm-analitico",
+            "section": "verdades"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Código de Ética da Manaus Previdência (20.6).",
+        "review": true,
+        "id": "2026-11-17-3",
+        "materials": [],
+        "gap": "Sem resumo específico do Código de Ética no repositório. Complete com o texto previsto no edital."
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-18",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-18-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Antivírus/firewall e ameaças (13.4–13.5); backup completo, incremental, diferencial e execução de rotinas (14.1–14.2).",
+        "review": true,
+        "id": "2026-11-18-1",
+        "materials": [
+          {
+            "id": "informatica-seguranca-backup",
+            "section": "vpn-antivirus-firewall"
+          },
+          {
+            "id": "informatica-seguranca-backup",
+            "section": "engenharia-social"
+          },
+          {
+            "id": "informatica-seguranca-backup",
+            "section": "backup"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Lógica proposicional: pendência 2.6 do curso; argumentação e conclusões válidas (item 2.3 do edital).",
+        "review": true,
+        "id": "2026-11-18-2",
+        "materials": [
+          {
+            "id": "rlm-logica",
+            "section": "equivalencias"
+          },
+          {
+            "id": "rlm-logica",
+            "section": "argumentos"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Estatuto dos Servidores, Lei 1.118/1971 (20.7): primeira parte.",
+        "review": true,
+        "id": "2026-11-18-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-provimento",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-19",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-19-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Backup local/externo/nuvem; mídias, retenção, logs e falhas (14.3–14.5).",
+        "review": true,
+        "id": "2026-11-19-1",
+        "materials": [
+          {
+            "id": "informatica-seguranca-backup",
+            "section": "backup"
+          },
+          {
+            "id": "informatica-nuvem",
+            "section": "nuvem"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Raciocínio verbal, matemático, sequencial, espacial/temporal, conceitos e discriminação (2.2).",
+        "review": true,
+        "id": "2026-11-19-2",
+        "materials": [
+          {
+            "id": "rlm-analitico",
+            "section": "sequencias"
+          },
+          {
+            "id": "rlm-analitico",
+            "section": "orientacao"
+          },
+          {
+            "id": "rlm-analitico",
+            "section": "conceitos"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Estatuto (20.7): segunda parte.",
+        "review": true,
+        "id": "2026-11-19-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": "tempo"
+          },
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": "vantagens"
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-20",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-20-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Restauração, testes de recuperação, proteção e descarte de backups (14.6–14.7).",
+        "review": true,
+        "id": "2026-11-20-1",
+        "materials": [
+          {
+            "id": "informatica-seguranca-backup",
+            "section": "backup"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Regra de três, proporcionalidade, porcentagem, acréscimos e descontos (2.4).",
+        "review": true,
+        "id": "2026-11-20-2",
+        "materials": [
+          {
+            "id": "rlm-matematica",
+            "section": "proporcao"
+          },
+          {
+            "id": "rlm-matematica",
+            "section": "porcentagem"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Estatuto (20.7): concluir primeira leitura.",
+        "review": true,
+        "id": "2026-11-20-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": "deveres"
+          },
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": "responsabilidade"
+          },
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": "processo"
+          },
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": "outras"
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-21",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-21-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Suporte presencial/remoto; ciclo do chamado; suporte a equipamentos/aplicações e escalonamento (6.1–6.4).",
+        "review": true,
+        "id": "2026-11-21-1",
+        "materials": [
+          {
+            "id": "informatica-suporte-servicos",
+            "section": "suporte"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Média simples/ponderada, moda e mediana (2.5).",
+        "review": true,
+        "id": "2026-11-21-2",
+        "materials": [
+          {
+            "id": "rlm-matematica",
+            "section": "estatistica"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Revisar LC 27/2025 e Lei 3.605/2025 por perguntas.",
+        "review": true,
+        "id": "2026-11-21-3",
+        "materials": [
+          {
+            "id": "legislacao-lc27-segurados-custeio",
+            "section": ""
+          },
+          {
+            "id": "legislacao-lc27-beneficios-transicao",
+            "section": ""
+          },
+          {
+            "id": "legislacao-lei-3605-manausprev",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-22",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-22-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Help Desk/Service Desk, incidentes/requisições, impacto, urgência, prioridade e SLA (7.1–7.3).",
+        "review": true,
+        "id": "2026-11-22-1",
+        "materials": [
+          {
+            "id": "informatica-suporte-servicos",
+            "section": "central"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Amplitude, desvio médio, variância e desvio padrão (2.6).",
+        "review": true,
+        "id": "2026-11-22-2",
+        "materials": [
+          {
+            "id": "rlm-matematica",
+            "section": "estatistica"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Revisar processo administrativo e Regimento Interno.",
+        "review": true,
+        "id": "2026-11-22-3",
+        "materials": [
+          {
+            "id": "legislacao-lei-3237-processo",
+            "section": ""
+          },
+          {
+            "id": "legislacao-regimento-manausprev",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-23",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-23-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Base de conhecimento e indicadores (7.4–7.5); inventário, patrimônio, movimentação e garantias (9.1–9.4).",
+        "review": true,
+        "id": "2026-11-23-1",
+        "materials": [
+          {
+            "id": "informatica-suporte-servicos",
+            "section": "central"
+          },
+          {
+            "id": "informatica-suporte-servicos",
+            "section": "ativos"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Histogramas, setores, infográficos e tabelas (2.7); revisar estatística.",
+        "review": true,
+        "id": "2026-11-23-2",
+        "materials": [
+          {
+            "id": "rlm-matematica",
+            "section": "graficos"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Revisar processo previdenciário, Ética e Estatuto.",
+        "review": true,
+        "id": "2026-11-23-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-24",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-24-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Contratação: necessidade, objeto, Lei 14.133/2021, termo de referência, aceite, ordens de serviço, prazos e não conformidades (10.1–10.5).",
+        "review": true,
+        "id": "2026-11-24-1",
+        "materials": [
+          {
+            "id": "informatica-suporte-servicos",
+            "section": "contratacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Questões de Português: morfossintaxe, concordância, regência e pontuação.",
+        "review": true,
+        "id": "2026-11-24-2",
+        "materials": [
+          {
+            "id": "portugues-frase-periodo",
+            "section": "termos"
+          },
+          {
+            "id": "portugues-expansao",
+            "section": "regencia"
+          },
+          {
+            "id": "portugues-frase-periodo",
+            "section": "pontuacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Legislação: recuperar a leitura que ficou pendente; questões e correção.",
+        "review": true,
+        "id": "2026-11-24-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-25",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-25-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Word/Excel/Outlook/365: completar 16.1–16.4 e 16.6; armazenamento e compartilhamento (16.5). Prática de fórmulas, filtros e permissões.",
+        "review": true,
+        "id": "2026-11-25-1",
+        "materials": [
+          {
+            "id": "informatica-escritorio-docs",
+            "section": "escritorio"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Questões de RLM: lógica e porcentagem.",
+        "review": true,
+        "id": "2026-11-25-2",
+        "materials": [
+          {
+            "id": "rlm-logica",
+            "section": "argumentos"
+          },
+          {
+            "id": "rlm-matematica",
+            "section": "porcentagem"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Legislação: revisão dos erros das sete normas.",
+        "review": true,
+        "id": "2026-11-25-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-26",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-26-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Sistemas corporativos: acesso/perfis, cadastros, consultas, transações, relatórios, validação, evidências e falhas (17.1–17.5).",
+        "review": true,
+        "id": "2026-11-26-1",
+        "materials": [
+          {
+            "id": "informatica-escritorio-docs",
+            "section": "sistemas"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Inglês técnico (19.1): mensagens de erro, instruções, interfaces e pequenos manuais.",
+        "review": true,
+        "id": "2026-11-26-2",
+        "materials": [
+          {
+            "id": "informatica-escritorio-docs",
+            "section": "ingles"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Legislação: questões ou perguntas de recordação, com consulta após responder.",
+        "review": true,
+        "id": "2026-11-26-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-27",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-27-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Treinamento: necessidades, materiais, demonstração, orientação e capacitação presencial/remota (15.1–15.5).",
+        "review": true,
+        "id": "2026-11-27-1",
+        "materials": [
+          {
+            "id": "informatica-escritorio-docs",
+            "section": "documentacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Inglês técnico: leitura aplicada; revisão de interpretação de Português.",
+        "review": true,
+        "id": "2026-11-27-2",
+        "materials": [
+          {
+            "id": "informatica-escritorio-docs",
+            "section": "ingles"
+          },
+          {
+            "id": "portugues-texto-sentido",
+            "section": "interpretacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Legislação: pontos confundidos e dispositivos errados.",
+        "review": true,
+        "id": "2026-11-27-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-28",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-28-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Documentação: registros, procedimentos, checklists, inventários, relatórios, manuais, base de conhecimento e atualização (18.1–18.3).",
+        "review": true,
+        "id": "2026-11-28-1",
+        "materials": [
+          {
+            "id": "informatica-escritorio-docs",
+            "section": "documentacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Recuperar pendências de Português/RLM; verificar cobertura de todos os itens.",
+        "review": true,
+        "id": "2026-11-28-2",
+        "materials": [
+          {
+            "id": "portugues-escrita",
+            "section": "redacao"
+          },
+          {
+            "id": "rlm-matematica",
+            "section": "estatistica"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Legislação: finalizar qualquer norma ainda incompleta.",
+        "review": true,
+        "id": "2026-11-28-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Conteúdo + revisão"
+  },
+  {
+    "date": "2026-11-29",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-11-29-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "REVISÃO: Redes e conectividade (11–12), priorizando IP/DNS/DHCP/TCP/UDP e protocolos.",
+        "review": false,
+        "id": "2026-11-29-1",
+        "materials": [
+          {
+            "id": "informatica-redes",
+            "section": "protocolos"
+          },
+          {
+            "id": "informatica-redes",
+            "section": "conectividade"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "REVISÃO: Português, sobretudo crase, ortografia, pontuação e sintaxe.",
+        "review": false,
+        "id": "2026-11-29-2",
+        "materials": [
+          {
+            "id": "portugues-pronomes-crase",
+            "section": "crase"
+          },
+          {
+            "id": "portugues-frase-periodo",
+            "section": "pontuacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "REVISÃO: legislação pelos erros.",
+        "review": false,
+        "id": "2026-11-29-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Revisão final"
+  },
+  {
+    "date": "2026-11-30",
+    "tasks": [
+      {
+        "name": "Simulado completo",
+        "minutes": 210,
+        "text": "SIMULADO 1: 60 questões, 20 gerais + 40 específicas, em 3h30.",
+        "review": false,
+        "id": "2026-11-30-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Triagem dos erros",
+        "minutes": 30,
+        "text": "Usar os 30 min restantes para triagem dos erros.",
+        "review": false,
+        "id": "2026-11-30-1",
+        "materials": [],
+        "gap": ""
+      }
+    ],
+    "kind": "Simulado"
+  },
+  {
+    "date": "2026-12-01",
+    "tasks": [
+      {
+        "name": "Correção e recuperação",
+        "minutes": 140,
+        "text": "Corrigir integralmente o simulado 1: justificar erros e acertos por dúvida.",
+        "review": false,
+        "id": "2026-12-01-0",
+        "materials": [
+          {
+            "id": "informatica-redes",
+            "section": "protocolos"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais",
+        "minutes": 50,
+        "text": "Refazer questões erradas sem consultar; recuperar o pior assunto geral.",
+        "review": false,
+        "id": "2026-12-01-1",
+        "materials": [
+          {
+            "id": "portugues-frase-periodo",
+            "section": "pontuacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Específicos e legislação",
+        "minutes": 50,
+        "text": "Recuperar o pior assunto específico/legislação. Usar 4h no total.",
+        "review": false,
+        "id": "2026-12-01-2",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Correção"
+  },
+  {
+    "date": "2026-12-02",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-12-02-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "REVISÃO: hardware, SO, instalação, manutenção, segurança e backup (3–5, 8, 13–14).",
+        "review": false,
+        "id": "2026-12-02-1",
+        "materials": [
+          {
+            "id": "informatica-hardware-so",
+            "section": "hardware"
+          },
+          {
+            "id": "informatica-seguranca-backup",
+            "section": "backup"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "REVISÃO: lógica, porcentagem e estatística.",
+        "review": false,
+        "id": "2026-12-02-2",
+        "materials": [
+          {
+            "id": "rlm-logica",
+            "section": "mnemonicos"
+          },
+          {
+            "id": "rlm-matematica",
+            "section": "mnemonicos"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "REVISÃO: legislação, atendimento, gestão de ativos e contratação.",
+        "review": false,
+        "id": "2026-12-02-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Revisão final"
+  },
+  {
+    "date": "2026-12-03",
+    "tasks": [
+      {
+        "name": "Simulado completo",
+        "minutes": 210,
+        "text": "SIMULADO 2: 60 questões, 20 gerais + 40 específicas, em 3h30.",
+        "review": false,
+        "id": "2026-12-03-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Triagem dos erros",
+        "minutes": 30,
+        "text": "Usar os 30 min restantes para triagem dos erros.",
+        "review": false,
+        "id": "2026-12-03-1",
+        "materials": [],
+        "gap": ""
+      }
+    ],
+    "kind": "Simulado"
+  },
+  {
+    "date": "2026-12-04",
+    "tasks": [
+      {
+        "name": "Correção e recuperação",
+        "minutes": 140,
+        "text": "Corrigir simulado 2 e refazer erros; revisar suporte/Service Desk, ativos, contratação, treinamento, aplicativos, sistemas e documentação (6–7, 9–10, 15–18).",
+        "review": false,
+        "id": "2026-12-04-0",
+        "materials": [
+          {
+            "id": "informatica-suporte-servicos",
+            "section": "central"
+          },
+          {
+            "id": "informatica-escritorio-docs",
+            "section": "sistemas"
+          },
+          {
+            "id": "informatica-escritorio-docs",
+            "section": "documentacao"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais",
+        "minutes": 50,
+        "text": "Revisar Português/RLM conforme erros; 15 min de inglês.",
+        "review": false,
+        "id": "2026-12-04-1",
+        "materials": [
+          {
+            "id": "informatica-escritorio-docs",
+            "section": "ingles"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Específicos e legislação",
+        "minutes": 50,
+        "text": "Legislação: rodada final de perguntas; distribuir as 4h conforme os erros.",
+        "review": false,
+        "id": "2026-12-04-2",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Correção"
+  },
+  {
+    "date": "2026-12-05",
+    "tasks": [
+      {
+        "name": "Revisão diária",
+        "minutes": 40,
+        "text": "Recordar antes de consultar: 10 min da revisão de 1 dia, 20 min das revisões de 7/14 dias e 10 min de erros antigos. No início, revisar os conteúdos já estudados.",
+        "review": false,
+        "id": "2026-12-05-0",
+        "materials": [],
+        "gap": ""
+      },
+      {
+        "name": "Conhecimentos específicos",
+        "minutes": 100,
+        "text": "Revisão leve: mapas de Redes, backup, comandos e caderno de erros.",
+        "review": false,
+        "id": "2026-12-05-1",
+        "materials": [
+          {
+            "id": "informatica-redes",
+            "section": "mnemonicos"
+          },
+          {
+            "id": "informatica-seguranca-backup",
+            "section": "mnemonicos"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Gerais ou inglês",
+        "minutes": 50,
+        "text": "Revisar regras de Português e fórmulas de RLM.",
+        "review": false,
+        "id": "2026-12-05-2",
+        "materials": [
+          {
+            "id": "portugues-escrita",
+            "section": "mnemonicos"
+          },
+          {
+            "id": "rlm-matematica",
+            "section": "mnemonicos"
+          }
+        ],
+        "gap": ""
+      },
+      {
+        "name": "Legislação",
+        "minutes": 50,
+        "text": "Leitura curta dos pontos legais mais confundidos; separar documentos e conferir local/horário. Até 4h, sem obrigação de completar se cansado.",
+        "review": false,
+        "id": "2026-12-05-3",
+        "materials": [
+          {
+            "id": "legislacao-estatuto-direitos-deveres",
+            "section": ""
+          }
+        ],
+        "gap": ""
+      }
+    ],
+    "kind": "Revisão final"
+  }
+]
