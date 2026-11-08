@@ -1,29 +1,51 @@
-# Resumos para Concursos (Next.js)
+# Resumos para Concursos e Guia ManausPrev
 
-Aplicação Next.js (App Router, TypeScript) que reúne os resumos mentais de estudo para concursos, divididos por matéria.
+Next.js App Router, React e TypeScript. Os resumos existentes continuam disponíveis; o guia de Técnico em Informática acrescenta calendário, biblioteca, conclusões, anotações e revisões.
 
-UI: Tailwind CSS v4 + [daisyUI](https://daisyui.com/) (temas `light`/`dark` customizados em `app/globals.css` para reaproveitar a paleta do site). Layout, espaçamento, tipografia e componentes (botões, cards, badges, busca, grupo de filtros) usam classes utilitárias do Tailwind/daisyUI direto no JSX; `app/globals.css` guarda só os tokens de cor, os temas do daisyUI e um reset mínimo (`@layer base`).
+## Rodar localmente
 
-## Como rodar
+Requer Node.js 24 ou superior (SQLite nativo via `node:sqlite`).
 
 ```bash
-npm install
-npm run dev      # http://localhost:3000
-npm run build && npm start   # versão de produção
+npm ci
+npm run dev
 ```
 
-Requer Node 20 ou superior e internet no build (a fonte Montserrat vem do Google Fonts via `next/font`).
+Abra http://127.0.0.1:3000/manausprev. O servidor fica restrito ao computador local. Para produção local: `npm run build` e `npm start`. A fonte Montserrat é obtida pelo `next/font/google` durante o build; esse passo requer internet. Se o Turbopack apresentar falha de subprocessos no Windows, compile com `npm run build -- --webpack`.
 
-## Como funciona
+## Guia de estudo
 
-- `data/resumos.ts`: lista de matérias e resumos (título, descrição, etiquetas e origem).
-- `public/resumos/*.html`: os resumos, cada um em um HTML autônomo.
-- `app/page.tsx`: página inicial com grade por matéria, busca e filtro (curso x complementar).
-- `app/resumos/[slug]/page.tsx`: exibe o resumo em um iframe, com cabeçalho e troca de tema.
-- `components/MapFrame.tsx`: mantém o tema e o tamanho da fonte do resumo sincronizados com o aplicativo.
-- `components/FontSizeControl.tsx`: seletor de tamanho de fonte (85%, 100%, 115%, 130%, 150%), salvo no navegador e aplicado a todos os resumos. Funciona pela variável CSS `--fs`; o diagrama SVG do resumo não muda de tamanho.
+- `/manausprev`: painel, calendário de 29 dias e busca de tópicos.
+- `/manausprev/dias/2026-11-07`: página de um dia, com blocos, materiais e anotações.
+- `/manausprev/biblioteca`: materiais vinculados ao edital.
+- `/resumos/[slug]?dia=2026-11-07#secao`: leitura na página original do material, com retorno ao dia do plano. Não usa modal.
+- `/manausprev/revisoes`: fila por data e situação. As revisões de 1, 7 e 14 dias partem da data real da conclusão, no fuso de Manaus. Revisões posteriores ao plano são antecipadas para 05/12/2026; agrupe assuntos para caber no tempo disponível.
+- `/manausprev/dados`: exportar/importar progresso, incluindo JSON da página HTML anterior. A importação exige confirmação e substitui os dados atuais de forma atômica.
 
-## Adicionar um resumo
+O plano considera 4h/dia entre 07/11 e 05/12/2026, totalizando 116h. Horas concluídas somam a duração planejada dos blocos marcados, não tempo cronometrado. A data prevista da prova é 06/12/2026; conferir a convocação. O calendário e as referências estão em `data/manausprev-plan.json`, com IDs estáveis para preservar o progresso.
 
-1. Copie o HTML para `public/resumos/<slug>.html` e rode `node scripts/prepare-map.mjs public/resumos/<slug>.html`. O script liga o botão de voltar ao app e faz o texto respeitar o seletor de fonte (pode ser rodado mais de uma vez). Se o resumo tiver questões no formato antigo (`<details class="exam">`), rode também `python scripts/spoiler-exams.py public/resumos/<slug>.html`: a questão fica visível e só a resposta fica atrás de "+ Ver resposta".
-2. Adicione um item em `data/resumos.ts` com o mesmo `slug`.
+Diagnóstico de origem: planilha verticalizada fornecida pelo usuário, com 79 tópicos não iniciados, 33 em estudo e 6 concluídos. Não há resumos específicos da Resolução 04/2026 e do Código de Ética; o material da Lei 3.237/2023 cobre somente a alteração dos prazos da Lei 1.997/2015. Essas lacunas aparecem nas páginas do guia.
+
+## Persistência e backup
+
+O SQLite é criado automaticamente em `.data/manausprev.sqlite`. A pasta e os arquivos auxiliares WAL não são versionados. Não remova a pasta para atualizar o código. Exporte o progresso na aplicação antes de trocar de computador. Se copiar o banco manualmente, pare o servidor antes.
+
+Opcionalmente configure `STUDY_DB_PATH` com um caminho absoluto para usar outro arquivo. Conclusões, revisões e anotações pertencem a um único perfil local; não existe login ou separação entre usuários. A aplicação deve permanecer local. Uma hospedagem compartilhada exigiria autenticação, isolamento dos usuários e disco persistente; SQLite local não é persistência de produção em plataformas com filesystem efêmero.
+
+As gravações usam Server Actions com validação de entrada, SQL parametrizado e revalidação de páginas. Importações substituem os dados em uma transação. Desfazer um bloco remove suas revisões anteriores para que um novo estudo inicie um ciclo novo.
+
+## Interface e conteúdo
+
+O guia usa componentes oficiais do shadcn/ui adicionados pelo CLI (Button, Card, Badge, Checkbox, Progress, Textarea e Input), com Radix e Tailwind v4. `components.json` configura o shadcn; os tokens acompanham o tema claro/escuro existente. O restante do projeto conserva o daisyUI.
+
+Os materiais estão em `content/resumos/*.md`, com frontmatter e diretivas de seções. `lib/resumos.ts` lê os arquivos e `components/resumo/ResumoContent.tsx` renderiza as páginas, tabelas, exemplos e questões. Para adicionar um resumo, crie um Markdown no mesmo formato e informe metadados como título, matéria e ordem. O guia relaciona slugs e IDs de seções sem duplicar o texto dos resumos.
+
+## Verificação
+
+```bash
+npm run typecheck
+npm test
+npm run build
+```
+
+Os testes verificam persistência após reabrir o banco, preservação da data original da conclusão, reinício do ciclo de revisões e rollback de importações com falha. Não acessam o banco pessoal.

@@ -3,6 +3,7 @@ import FontSizeControl from '@/components/FontSizeControl';
 import ResumoGrid from '@/components/ResumoGrid';
 import ThemeToggle from '@/components/ThemeToggle';
 import { getAllResumos } from '@/lib/resumos';
+import Link from 'next/link';
 
 export default function HomePage() {
   const resumos = getAllResumos();
@@ -21,6 +22,10 @@ export default function HomePage() {
       </header>
 
       <main className="mx-auto max-w-[1144px] px-5">
+        <Link href="/manausprev" className="mt-7 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-emerald-900 p-6 text-white">
+          <span><strong className="block text-lg">Seu guia ManausPrev</strong><span className="text-sm text-emerald-100">Calendário, materiais, progresso e revisões em um só lugar.</span></span>
+          <span className="font-semibold">Abrir plano →</span>
+        </Link>
         <section className="pt-11 pb-[22px]">
           <h1 className="mb-3.5 text-[clamp(2rem,4.6vw,3rem)] font-extrabold uppercase leading-[1.08] tracking-[0.1em] text-[color:var(--brass)]">
             Conteúdo programático

@@ -11,7 +11,7 @@ import { getSubject } from '@/data/resumos';
 import { getAllResumos, getResumoDoc } from '@/lib/resumos';
 import '@/app/resumo.css';
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: Promise<{ slug: string }>; searchParams: Promise<{ dia?: string; guia?: string }> };
 
 export function generateStaticParams() {
   return getAllResumos().map((m) => ({ slug: m.slug }));
@@ -27,11 +27,13 @@ function renderTitle(title: string) {
   return title.split('*').map((part, i) => (i % 2 ? <em key={i}>{part}</em> : part));
 }
 
-export default async function ResumoPage({ params }: Props) {
+export default async function ResumoPage({ params, searchParams }: Props) {
   const { slug } = await params;
   const doc = getResumoDoc(slug);
   if (!doc) notFound();
   const subject = getSubject(doc.item.subject);
+  const query = await searchParams;
+  const day = query.dia && /^2026-(11-(0[7-9]|[12]\d|30)|12-0[1-5])$/.test(query.dia) ? query.dia : undefined;
 
   return (
     <>
@@ -51,6 +53,8 @@ export default async function ResumoPage({ params }: Props) {
           </div>
         </div>
       </header>
+
+      {(day || query.guia === 'manausprev') && <div className="mx-auto max-w-[1144px] px-5 py-4"><Link className="font-semibold text-[var(--brass)] underline underline-offset-4" href={day ? `/manausprev/dias/${day}` : '/manausprev/biblioteca'}>← {day ? `Voltar ao estudo de ${day.slice(8)}/${day.slice(5, 7)}` : 'Biblioteca ManausPrev'}</Link></div>}
 
       <div className="resumo" data-subject={doc.item.subject}>
         <section className="hero">
